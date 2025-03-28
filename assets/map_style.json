@@ -132,26 +132,10 @@
   },
   {
     "featureType": "transit.station",
-    "stylers": [
-      {
-        "visibility": "on"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
     "elementType": "geometry",
     "stylers": [
       {
         "color": "#eeeeee"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station.bus",
-    "stylers": [
-      {
-        "visibility": "off"
       }
     ]
   },

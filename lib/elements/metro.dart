@@ -14,7 +14,7 @@ class _Page1State extends State<Page1> {
   late GoogleMapController mapController;
   String _mapStyle = "";
 
-  final LatLng _center = const LatLng(45.521563, -122.677433);
+  final LatLng _center = const LatLng(28.563183776641193, 77.18832912180038);
 
   @override
   void initState() {
@@ -38,13 +38,22 @@ class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.green[700]),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: const Color.fromARGB(255, 0, 0, 0),
+      ),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Maps Sample App'), elevation: 2),
         body: GoogleMap(
           style: _mapStyle,
           onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(target: _center, zoom: 11.0),
+          initialCameraPosition: CameraPosition(target: _center, zoom: 15.0),
+          markers: {
+            const Marker(
+              markerId: MarkerId("1"),
+              position: LatLng(28.563183776641193, 77.18832912180038),
+            ),
+          },
         ),
       ),
     );
