@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
+import 'map.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
@@ -44,15 +45,8 @@ class _Page2State extends State<Page2> {
         colorSchemeSeed: const Color.fromARGB(255, 0, 0, 0),
       ),
       home: Scaffold(
-        body: GoogleMap(
-          style: _mapStyle,
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(target: _center, zoom: 15.0),
-          tiltGesturesEnabled: false,
-          rotateGesturesEnabled: false,
-          zoomControlsEnabled: false,
-          minMaxZoomPreference: MinMaxZoomPreference(11, 18),
-        ),
+        appBar: AppBar(title: const Text('Bus Route')),
+        body: MapScreen(),
       ),
     );
   }
