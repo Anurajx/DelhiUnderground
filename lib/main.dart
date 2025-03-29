@@ -17,7 +17,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Geolocator.requestPermission();
-    return const MaterialApp(
+    return MaterialApp(
+      title: 'Metro App',
+      theme: ThemeData(
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(
+            fontFamily: "Poppins",
+            fontWeight: FontWeight.w300,
+          ),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
       //
@@ -40,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      body: pages[pageIndex],
+      body: IndexedStack(index: pageIndex, children: pages),
       bottomNavigationBar: buildMyNavBar(context),
     );
   }
@@ -77,7 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(height: 5),
                     const Text(
                       "METRO",
-                      style: TextStyle(color: Colors.white, fontSize: 8),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
@@ -109,7 +122,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     Image.asset('assets/dtc.png', width: 24, height: 24),
                     const Text(
                       "BUS",
-                      style: TextStyle(color: Colors.white, fontSize: 8),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
@@ -141,7 +158,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     Image.asset('assets/ncrtc.png', width: 24, height: 24),
                     const Text(
                       "RRTS",
-                      style: TextStyle(color: Colors.white, fontSize: 8),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
