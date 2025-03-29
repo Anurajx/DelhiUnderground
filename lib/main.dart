@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'elements/bus.dart';
 import 'elements/metro.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Geolocator.requestPermission();
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),

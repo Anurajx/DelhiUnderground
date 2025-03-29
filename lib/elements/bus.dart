@@ -48,6 +48,10 @@ class _Page2State extends State<Page2> {
           style: _mapStyle,
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(target: _center, zoom: 15.0),
+          tiltGesturesEnabled: false,
+          rotateGesturesEnabled: false,
+          zoomControlsEnabled: false,
+          minMaxZoomPreference: MinMaxZoomPreference(11, 18),
         ),
       ),
     );
