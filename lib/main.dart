@@ -5,7 +5,6 @@ import 'package:geolocator/geolocator.dart';
 
 import 'elements/bus.dart';
 import 'elements/metro.dart';
-import 'elements/rrts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,7 +42,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int pageIndex = 0;
-  final pages = [const Page1(), const Page2(), const Page3()];
+  final pages = [const Page1(), const Page2()];
 
   @override
   Widget build(BuildContext context) {
@@ -122,42 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     Image.asset('assets/dtc.png', width: 24, height: 24),
                     const Text(
                       "BUS",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 3, vertical: 3),
-              decoration: BoxDecoration(
-                color:
-                    pageIndex == 2
-                        ? const Color.fromARGB(40, 255, 255, 255)
-                        : Colors.black,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(5),
-                onTap: () {
-                  setState(() {
-                    pageIndex = 2;
-                  });
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset('assets/ncrtc.png', width: 24, height: 24),
-                    const Text(
-                      "RRTS",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 8,
