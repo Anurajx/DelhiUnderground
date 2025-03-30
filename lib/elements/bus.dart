@@ -18,7 +18,12 @@ class _Page2State extends State<Page2> {
         colorSchemeSeed: const Color.fromARGB(255, 0, 0, 0),
       ),
       home: Scaffold(
-        appBar: AppBar(title: const Text('BUS')),
+        appBar: AppBar(
+          title: const Text(
+            'BUS',
+            style: TextStyle(fontWeight: FontWeight.w500),
+          ),
+        ),
         body: MapScreen(),
       ),
     );

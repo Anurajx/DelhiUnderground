@@ -15,14 +15,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Geolocator.requestPermission();
+    Geolocator.requestPermission(); //requesting permission for location: to be shited to intro screen
     return MaterialApp(
-      title: 'Metro App',
+      title: 'Transit Co',
       theme: ThemeData(
         textTheme: TextTheme(
           bodyMedium: TextStyle(
-            fontFamily: "Poppins",
-            fontWeight: FontWeight.w300,
+            fontFamily: "Poppins", //poppins default font
+            fontWeight: FontWeight.w300, //default font weight
           ),
         ),
       ),
@@ -41,15 +41,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int pageIndex = 0;
-  final pages = [const Page1(), const Page2()];
+  int pageIndex = 0; //initizing page index
+  final pages = [
+    const Page1(),
+    const Page2(),
+  ]; //inilizing array of apges for navigation
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: IndexedStack(index: pageIndex, children: pages),
-      bottomNavigationBar: buildMyNavBar(context),
+      bottomNavigationBar: buildMyNavBar(context), //bottom navigation
     );
   }
 
@@ -58,19 +61,27 @@ class _MyHomePageState extends State<MyHomePage> {
       height: 60,
       decoration: const BoxDecoration(color: Colors.black),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment:
+            MainAxisAlignment.spaceAround, //navigation bar alignment
         children: [
           Expanded(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 3, vertical: 3),
               decoration: BoxDecoration(
                 color:
-                    pageIndex == 0
-                        ? const Color.fromARGB(40, 255, 255, 255)
+                    pageIndex ==
+                            0 //checks for index of current page
+                        ? const Color.fromARGB(
+                          40,
+                          255,
+                          255,
+                          255,
+                        ) //suggests current selected page
                         : Colors.black,
                 borderRadius: BorderRadius.circular(5),
               ),
               child: InkWell(
+                //creates inkwell for navigation, making an expanded area for tapping
                 borderRadius: BorderRadius.circular(5),
                 onTap: () {
                   setState(() {

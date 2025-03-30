@@ -18,7 +18,12 @@ class _Page1State extends State<Page1> {
         colorSchemeSeed: const Color.fromARGB(255, 0, 0, 0),
       ),
       home: Scaffold(
-        appBar: AppBar(title: const Text('METRO')),
+        appBar: AppBar(
+          title: const Text(
+            'METRO',
+            style: TextStyle(fontWeight: FontWeight.w500),
+          ),
+        ),
         body: MapScreen(),
       ),
     );
