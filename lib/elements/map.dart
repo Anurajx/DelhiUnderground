@@ -15,65 +15,65 @@ class _MapScreenState extends State<MapScreen> {
 
   String _mapStyle = "";
   LatLng? _center;
+  bool _isLocationLoaded = false;
+
   @override
   void initState() {
     super.initState();
-    _loadMapStyle();
+    loadMapStyle().then((style) {
+      setState(() {
+        _mapStyle = style;
+      });
+      _loadUserLocation().then((_) {
+        setState(() {
+          _isLocationLoaded = true;
+        });
+      });
+    });
   }
 
-  _loadMapStyle() async {
+  loadMapStyle() async {
     String style = await rootBundle.loadString('assets/map_style.json');
-    setState(() {
-      _mapStyle = style;
-    });
+    return style;
     // Apply style when the map is ready
   }
 
-  _loadUserLocation() async {
+  Future<LatLng?> _loadUserLocation() async {
     Position position = await Geolocator.getCurrentPosition(
       locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
     );
-    if (mounted) {
-      setState(() {
-        _center = LatLng(position.latitude, position.longitude);
-      });
-    }
-  }
-
-  void _animateCameraToUserLocation() {
-    if (_center != null) {
-      mapController.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(target: _center!, zoom: 15.0),
-        ),
-      );
-    }
+    _center = LatLng(position.latitude, position.longitude);
+    return _center;
   }
 
   void _onMapCreated(GoogleMapController controller) async {
-    await _loadUserLocation();
     mapController = controller;
-    _animateCameraToUserLocation(); // Apply the style here
+
+    //_animateCameraToUserLocation();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!_isLocationLoaded) {
+      return Center(child: CircularProgressIndicator());
+    }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: const Color.fromARGB(255, 0, 0, 0),
-      ),
+      theme: ThemeData(useMaterial3: true),
       home: Scaffold(
         body: GoogleMap(
           style: _mapStyle,
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: _center ?? LatLng(28.61302114428857, 77.22860971044535),
-            zoom: 13.0,
+            target: LatLng(
+              _center?.latitude ?? 28.61295859148258,
+              _center?.longitude ?? 77.22884208025665,
+            ),
+            zoom: 15,
           ),
           tiltGesturesEnabled: false,
           rotateGesturesEnabled: false,
+          myLocationButtonEnabled: true,
           myLocationEnabled: true,
           zoomControlsEnabled: false,
           minMaxZoomPreference: MinMaxZoomPreference(11, 18),
