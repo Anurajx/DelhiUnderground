@@ -1,0 +1,5 @@
+TO DO;
+1.Make the permission page such that when it asks for permission in the same launch user can see the map
+2. try to add an options for offline mapps 
+3. make the map alignment such that when bottom modal sheet is open screen middle where location blue dot appears is still visible
+4. make sure to change bottom navigation ink well to somthing else in main.dart

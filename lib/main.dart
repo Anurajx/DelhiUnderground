@@ -92,7 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/metro.png', width: 20, height: 20),
+                    Image.asset(
+                      'assets/Image/metro.png',
+                      width: 20,
+                      height: 20,
+                    ),
                     SizedBox(height: 5),
                     const Text(
                       "METRO",
@@ -129,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/dtc.png', width: 24, height: 24),
+                    Image.asset('assets/Image/dtc.png', width: 24, height: 24),
                     const Text(
                       "BUS",
                       style: TextStyle(

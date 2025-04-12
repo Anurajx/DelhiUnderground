@@ -38,6 +38,8 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   geolocator: ^13.0.3
   geocoding: ^3.0.0
+  csv: ^6.0.0
+  marquee: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -62,27 +64,28 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/metro.png
-    - assets/dtc.png
-    - assets/ncrtc.png
-    - assets/train.png
-    - assets/bus.png
-    - assets/map_style.json
-    - assets/playstore.png
+    - assets/Image/metro.png
+    - assets/Image/dtc.png
+    - assets/Image/ncrtc.png
+    - assets/Image/train.png
+    - assets/Image/bus.png
+    - assets/Map/map_style.json
+    - assets/Image/playstore.png
+    - assets/Map/mstops.txt
 
   fonts:
     - family: Poppins
       fonts:
-        - asset: assets/fonts/Poppins-light.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins/Poppins-light.ttf
+        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
     - family: Doto
       fonts:
-        - asset: assets/fonts/static/Doto-Medium.ttf
+        - asset: assets/fonts/Doto/Doto-Medium.ttf
 
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/playstore.png"
+  image_path: "assets/Image/playstore.png"
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

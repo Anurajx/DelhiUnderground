@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:csv/csv.dart' as csv;
 
 class MapScreen extends StatefulWidget {
   const MapScreen({
@@ -23,22 +24,18 @@ class _MapScreenState extends State<MapScreen> {
   void initState() {
     super.initState();
     loadMapStyle().then((style) {
+      //waits for map style to load
       setState(() {
         _mapStyle = style;
       });
       _loadUserLocation().then((_) {
+        //waits for location of user
         //changing the boolean value for when location is loaded
         setState(() {
           _isLocationLoaded = true;
         });
       });
     });
-  }
-
-  loadMapStyle() async {
-    //laoding the style file path
-    String style = await rootBundle.loadString('assets/map_style.json');
-    return style;
   }
 
   Future<LatLng?> _loadUserLocation() async {
@@ -61,34 +58,50 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     if (!_isLocationLoaded) {
       //checking if lacation is loaded through boolean value
-      return Center(
-        child: CircularProgressIndicator(),
+      return Container(
+        decoration: BoxDecoration(color: const Color.fromARGB(255, 0, 0, 0)),
+        child: Center(
+          child: const Text(
+            "Fetching Map",
+            style: TextStyle(
+              fontFamily: 'Doto',
+              fontSize: 30,
+              color: Color.fromARGB(255, 230, 81, 0),
+            ),
+          ),
+        ),
       ); //returing a loading widget
     }
-    return MaterialApp(
-      //returning map centered onuser laoction when loaded
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
-      home: Scaffold(
-        body: GoogleMap(
-          style: _mapStyle,
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(
-              _center?.latitude ??
-                  28.61295859148258, //checks if location is loaded if not then loads at default location
-              _center?.longitude ?? 77.22884208025665,
-            ),
-            zoom: 15,
+    return Scaffold(
+      body: GoogleMap(
+        style: _mapStyle,
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(
+            _center?.latitude ??
+                28.61295859148258, //checks if location is loaded if not then loads at default location
+            _center?.longitude ?? 77.22884208025665,
           ),
-          tiltGesturesEnabled: false,
-          rotateGesturesEnabled: false,
-          myLocationButtonEnabled: true,
-          myLocationEnabled: true,
-          zoomControlsEnabled: false,
-          minMaxZoomPreference: MinMaxZoomPreference(11, 18),
+          zoom: 15,
         ),
+        tiltGesturesEnabled: false,
+        rotateGesturesEnabled: false,
+        myLocationButtonEnabled: true,
+        myLocationEnabled: true,
+        zoomControlsEnabled: false,
+        minMaxZoomPreference: MinMaxZoomPreference(11, 18),
       ),
     );
   }
+}
+
+loadMapStyle() async {
+  //loads data from files
+  //laoding the style file path
+  String style = await rootBundle.loadString('assets/Map/map_style.json');
+  String Stations = await rootBundle.loadString(
+    'assets/Map/mstops.txt',
+  ); //loading stations data
+
+  return style;
 }
