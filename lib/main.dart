@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: SafeArea(
+        child: MyHomePage(),
+      ), //added safe area such that it is not cut by any notch or screen cutouts
       //
     );
   }

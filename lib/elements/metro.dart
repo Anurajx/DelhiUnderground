@@ -42,13 +42,33 @@ class _Page1State extends State<Page1> {
                         //searchBar(),
                         Container(
                           width: double.infinity,
-                          padding: EdgeInsets.all(15),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ), //only hornizontally padded to outer container
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 8, 8, 8),
                           ),
                           child: Column(
                             //new children inside the container for adding an padding and an border around elements
-                            children: [searchBar()],
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      35,
+                                      35,
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [searchBar(), suggestions()],
+                                ), // creating another child children pair to add an outline across all elements
+                              ),
+                            ],
                           ),
                         ),
                       ], // add after eating allt hat needs to go inside the bottom sheet.........................
@@ -109,6 +129,60 @@ searchBar() {
           ),
         ),
         Icon(CupertinoIcons.search),
+      ],
+    ),
+  );
+}
+
+suggestions() {
+  return Container(
+    margin: const EdgeInsets.all(5),
+    width: double.infinity,
+    height: 90,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GestureDetector(
+          onTap: () {
+            // ADD APP LOGIC HERE FOR NEXT SCREEN
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Rajouri Garden',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Icon(CupertinoIcons.arrow_right, color: Colors.white),
+            ],
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            //ADD APP LOGIC HERE FOR NEXT SCREEN
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Nehru Place',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Icon(CupertinoIcons.arrow_right, color: Colors.white),
+            ],
+          ),
+        ),
       ],
     ),
   );
