@@ -13,11 +13,12 @@ class MapScreen extends StatefulWidget {
   State<MapScreen> createState() => _MapScreenState();
 }
 
+const LatLng _defaultLocation = LatLng(28.61295859148258, 77.22884208025665);
+
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
 
-  final LatLng _defultLocation = LatLng(28.61295859148258, 77.22884208025665);
-  String? _mapStyle = ""; //initilizing all the variables
+  String? _mapStyle; //initilizing all the variables
   LatLng? _center;
   bool _isLocationLoaded = false;
 
@@ -37,7 +38,7 @@ class _MapScreenState extends State<MapScreen> {
       _isLocationLoaded = true;
 
       setState(() {
-        _center = loadedLocation ?? _defultLocation;
+        _center = loadedLocation ?? _defaultLocation;
         _mapStyle = loadedStyle;
       });
     } catch (e) {
@@ -71,7 +72,7 @@ class _MapScreenState extends State<MapScreen> {
         decoration: BoxDecoration(color: const Color.fromARGB(255, 0, 0, 0)),
         child: Center(
           child: const Text(
-            "Fetching Map",
+            "Fetching Location",
             style: TextStyle(
               fontFamily: 'Doto',
               fontSize: 30,
@@ -81,25 +82,24 @@ class _MapScreenState extends State<MapScreen> {
         ),
       ); //returing a loading widget
     }
-    return Scaffold(
-      body: GoogleMap(
-        style: _mapStyle,
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: LatLng(
-            _center?.latitude ??
-                28.61295859148258, //checks if location is loaded if not then loads at default location
-            _center?.longitude ?? 77.22884208025665,
-          ),
-          zoom: 15,
+    return GoogleMap(
+      // remove const if adding any varible
+      style: _mapStyle,
+      onMapCreated: _onMapCreated,
+      initialCameraPosition: CameraPosition(
+        target: LatLng(
+          _center?.latitude ??
+              28.61295859148258, //checks if location is loaded if not then loads at default location
+          _center?.longitude ?? 77.22884208025665,
         ),
-        tiltGesturesEnabled: false,
-        rotateGesturesEnabled: false,
-        myLocationButtonEnabled: true,
-        myLocationEnabled: true,
-        zoomControlsEnabled: false,
-        minMaxZoomPreference: MinMaxZoomPreference(11, 18),
+        zoom: 15,
       ),
+      tiltGesturesEnabled: false,
+      rotateGesturesEnabled: false,
+      myLocationButtonEnabled: true,
+      myLocationEnabled: true,
+      zoomControlsEnabled: false,
+      minMaxZoomPreference: MinMaxZoomPreference(11, 18),
     );
   }
 }

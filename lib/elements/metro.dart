@@ -13,69 +13,61 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Stack(
-          children: [
-            MapScreen(), //add the bottom sheet size so that the map can be seen
-            DraggableScrollableSheet(
-              initialChildSize: 0.4,
-              minChildSize: 0.05,
-              maxChildSize: 0.9,
-              snap: true,
-              snapSizes: [0.4],
-              builder: (context, scrollController) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 24, 24, 24),
-                  ),
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        InfoBar(), //adding info bar to scaffold
-                        //searchBar(),
-                        Container(
-                          width: double.infinity,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 15,
-                          ), //only hornizontally padded to outer container
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 8, 8, 8),
-                          ),
-                          child: Column(
-                            //new children inside the container for adding an padding and an border around elements
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: const Color.fromARGB(
-                                      255,
-                                      35,
-                                      35,
-                                      35,
-                                    ),
-                                  ),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [searchBar(), suggestions()],
-                                ), // creating another child children pair to add an outline across all elements
-                              ),
-                            ],
-                          ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          MapScreen(), //add the bottom sheet size so that the map can be seen
+          DraggableScrollableSheet(
+            initialChildSize: 0.4,
+            minChildSize: 0.05,
+            maxChildSize: 0.9,
+            snap: true,
+            snapSizes: [0.4],
+            builder: (context, scrollController) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 24, 24, 24),
+                ),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InfoBar(), //adding info bar to scaffold
+                      //searchBar(),
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 15,
+                        ), //only hornizontally padded to outer container
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 8, 8, 8),
                         ),
-                      ], // add after eating allt hat needs to go inside the bottom sheet.........................
-                    ),
+                        child: Column(
+                          //new children inside the container for adding an padding and an border around elements
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: const Color.fromARGB(255, 35, 35, 35),
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [searchBar(), suggestions()],
+                              ), // creating another child children pair to add an outline across all elements
+                            ),
+                          ],
+                        ),
+                      ),
+                    ], // add after eating allt hat needs to go inside the bottom sheet.........................
                   ),
-                );
-              },
-            ),
-          ],
-        ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
@@ -121,6 +113,7 @@ searchBar() {
           'Where to',
           style: TextStyle(
             fontFamily: 'Poppins',
+            fontWeight: FontWeight.w500,
             fontSize: 18,
             color: const Color.fromARGB(201, 15, 15, 15),
           ),
