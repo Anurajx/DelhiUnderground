@@ -14,34 +14,41 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  late GoogleMapController mapController;
+  GoogleMapController? mapController;
 
-  String _mapStyle = ""; //initilizing all the variables
+  final LatLng _defultLocation = LatLng(28.61295859148258, 77.22884208025665);
+  String? _mapStyle = ""; //initilizing all the variables
   LatLng? _center;
   bool _isLocationLoaded = false;
 
   @override //setting up the state for style at super level
   void initState() {
     super.initState();
-    loadMapStyle().then((style) {
-      //waits for map style to load
+    _mapAssets();
+  }
+
+  Future<void> _mapAssets() async {
+    // consolidated all set states at one place
+    try {
+      final results = await Future.wait([_loadUserLocation(), loadMapStyle()]);
+
+      final loadedLocation = results[0] as LatLng?;
+      final loadedStyle = results[1] as String?;
+      _isLocationLoaded = true;
+
       setState(() {
-        _mapStyle = style;
+        _center = loadedLocation ?? _defultLocation;
+        _mapStyle = loadedStyle;
       });
-      _loadUserLocation().then((_) {
-        //waits for location of user
-        //changing the boolean value for when location is loaded
-        setState(() {
-          _isLocationLoaded = true;
-        });
-      });
-    });
+    } catch (e) {
+      _isLocationLoaded = false;
+    }
   }
 
   Future<LatLng?> _loadUserLocation() async {
     //getting user location through geolocator
     Position position = await Geolocator.getCurrentPosition(
-      locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
+      locationSettings: LocationSettings(accuracy: LocationAccuracy.low),
     );
     _center = LatLng(position.latitude, position.longitude);
     return _center;
@@ -50,7 +57,9 @@ class _MapScreenState extends State<MapScreen> {
   void _onMapCreated(GoogleMapController controller) async {
     //function to intialize mapcontroller when maps is loaded
     mapController = controller;
-
+    if (_mapStyle != null) {
+      mapController!.setMapStyle(_mapStyle);
+    }
     //_animateCameraToUserLocation();
   }
 
@@ -95,7 +104,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 }
 
-loadMapStyle() async {
+Future<String> loadMapStyle() async {
   //loads data from files
   //laoding the style file path
   String style = await rootBundle.loadString('assets/Map/map_style.json');

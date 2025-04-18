@@ -18,7 +18,7 @@ class _Page1State extends State<Page1> {
       home: Scaffold(
         body: Stack(
           children: [
-            MapScreen(),
+            MapScreen(), //add the bottom sheet size so that the map can be seen
             DraggableScrollableSheet(
               initialChildSize: 0.4,
               minChildSize: 0.05,
@@ -35,10 +35,7 @@ class _Page1State extends State<Page1> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Positioned(
-                          top: 0,
-                          child: InfoBar(),
-                        ), //adding info bar to scaffold
+                        InfoBar(), //adding info bar to scaffold
                         //searchBar(),
                         Container(
                           width: double.infinity,

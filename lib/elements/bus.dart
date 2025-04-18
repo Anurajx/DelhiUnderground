@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metroapp/elements/map.dart';
 import 'map.dart';
 
 class Page2 extends StatefulWidget {
