@@ -149,6 +149,24 @@ suggestions() {
                   fontWeight: FontWeight.w300,
                 ),
               ),
+              SizedBox(
+                width: 5,
+              ), // adding to create a bit of space between line indicatot and text
+              Container(
+                width: 5,
+                height: 15,
+                color: const Color(
+                  0xFF0072BC,
+                ), //blue line color will make it dynamic later
+              ), //container for line indication
+              Container(
+                width: 5,
+                height: 15,
+                color: const Color(
+                  0xFFFC8EAC,
+                ), //blue line color will make it dynamic later
+              ), //container for line indication
+              Spacer(), // spacer to make sure spce between text and arrow icon
               Icon(CupertinoIcons.arrow_right, color: Colors.white),
             ],
           ),
@@ -161,7 +179,7 @@ suggestions() {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Nehru Place',
+                'Rajiv Chowk ',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   color: const Color.fromARGB(255, 179, 179, 179),
@@ -169,6 +187,31 @@ suggestions() {
                   fontWeight: FontWeight.w300,
                 ),
               ),
+              SizedBox(
+                width: 5,
+              ), // adding to create a bit of space between line indicatot and text
+              Container(
+                width: 5,
+                height: 15,
+                color: const Color(
+                  0xFF0072BC,
+                ), //blue line color will make it dynamic later
+              ),
+              Container(
+                width: 5,
+                height: 15,
+                color: const Color(
+                  0xFFF47B20,
+                ), //blue line color will make it dynamic later
+              ),
+              Container(
+                width: 5,
+                height: 15,
+                color: const Color(
+                  0xFFFFD300,
+                ), //blue line color will make it dynamic later
+              ),
+              Spacer(),
               Icon(CupertinoIcons.arrow_right, color: Colors.white),
             ],
           ),

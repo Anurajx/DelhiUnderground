@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart' as csv;
+import 'package:shimmer/shimmer.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({
@@ -68,16 +69,15 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     if (!_isLocationLoaded) {
       //checking if lacation is loaded through boolean value
-      return Container(
-        decoration: BoxDecoration(color: const Color.fromARGB(255, 0, 0, 0)),
-        child: Center(
-          child: const Text(
-            "Fetching Location",
-            style: TextStyle(
-              fontFamily: 'Doto',
-              fontSize: 30,
-              color: Color.fromARGB(255, 230, 81, 0),
-            ),
+      return Scaffold(
+        backgroundColor: Colors.black,
+        body: Shimmer.fromColors(
+          baseColor: const Color.fromARGB(255, 0, 0, 0),
+          highlightColor: const Color.fromARGB(255, 27, 27, 27),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.white,
           ),
         ),
       ); //returing a loading widget
@@ -87,17 +87,13 @@ class _MapScreenState extends State<MapScreen> {
       style: _mapStyle,
       onMapCreated: _onMapCreated,
       initialCameraPosition: CameraPosition(
-        target: LatLng(
-          _center?.latitude ??
-              28.61295859148258, //checks if location is loaded if not then loads at default location
-          _center?.longitude ?? 77.22884208025665,
-        ),
-        zoom: 15,
+        target: _center ?? _defaultLocation,
+        zoom: 14,
       ),
       tiltGesturesEnabled: false,
       rotateGesturesEnabled: false,
       myLocationButtonEnabled: true,
-      myLocationEnabled: true,
+      myLocationEnabled: false, //enablet o view that location blue dot
       zoomControlsEnabled: false,
       minMaxZoomPreference: MinMaxZoomPreference(11, 18),
     );
