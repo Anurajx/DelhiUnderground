@@ -18,6 +18,7 @@ class _Page1State extends State<Page1> {
         children: [
           MapScreen(), //add the bottom sheet size so that the map can be seen
           DraggableScrollableSheet(
+            //make this a seprate function so that it can be reused for station info screen
             initialChildSize: 0.4,
             minChildSize: 0.05,
             maxChildSize: 0.9,
@@ -55,7 +56,23 @@ class _Page1State extends State<Page1> {
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: [searchBar(), suggestions()],
+                                children: [
+                                  searchBar(),
+                                  suggestions(),
+                                  Divider(
+                                    thickness: 1,
+
+                                    color: const Color.fromARGB(
+                                      255,
+                                      35,
+                                      35,
+                                      35,
+                                    ),
+                                  ),
+                                  nearYou(),
+                                  ticketAndExit(),
+                                  appFooter(),
+                                ],
                               ), // creating another child children pair to add an outline across all elements
                             ),
                           ],
@@ -128,7 +145,7 @@ suggestions() {
   return Container(
     margin: const EdgeInsets.all(5),
     width: double.infinity,
-    height: 90,
+    height: 80,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,5 +235,122 @@ suggestions() {
         ),
       ],
     ),
+  );
+}
+
+nearYou() {
+  return Container(
+    width: double.infinity,
+    height: 105,
+    margin: EdgeInsets.all(5),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "NEAR YOU",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            //ADD APP LOGIC HERE FOR NEXT SCREEN
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "RK Puram",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Icon(CupertinoIcons.info, color: Colors.white),
+            ],
+          ),
+        ),
+
+        GestureDetector(
+          onTap: () {
+            //ADD APP LOGIC HERE FOR NEXT SCREEN
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Bhikaji Cama Place",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Icon(CupertinoIcons.info, color: Colors.white),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+ticketAndExit() {
+  return InkWell(
+    onTap: () {
+      //ADD APP LOGIC HERE FOR NEXT SCREEN
+    },
+    child: Container(
+      width: double.infinity,
+      height: 105,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/Image/exitLogo.png'),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(0),
+        border: Border(
+          bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            "EXIT GATES",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          Icon(CupertinoIcons.arrow_right, color: Colors.white),
+        ],
+      ),
+    ),
+  );
+}
+
+appFooter() {
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.all(10),
+    height: 400,
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage('assets/Image/footer.jpg'),
+        fit: BoxFit.cover,
+      ),
+    ),
+    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: []),
   );
 }

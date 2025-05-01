@@ -41,6 +41,7 @@ dependencies:
   csv: ^6.0.0
   marquee: ^2.3.0
   shimmer: ^3.0.0
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -71,8 +72,10 @@ flutter:
     - assets/Image/train.png
     - assets/Image/bus.png
     - assets/Map/map_style.json
-    - assets/Image/playstore.png
+    - assets/Image/AppLogoS.png
     - assets/Map/mstops.txt
+    - assets/Image/exitLogo.png
+    - assets/Image/footer.jpg
 
   fonts:
     - family: Poppins
@@ -86,7 +89,7 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/Image/playstore.png"
+  image_path: "assets/Image/AppLogoS.png"
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
