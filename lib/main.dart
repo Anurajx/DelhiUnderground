@@ -1,5 +1,3 @@
-// ignore_for_file: camel_case_types
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Geolocator.requestPermission(); //requesting permission for location: to be shited to intro screen
     return MaterialApp(
-      title: 'Transit Co',
+      title: 'Metro App',
       theme: ThemeData(
         textTheme: TextTheme(
           bodyMedium: TextStyle(
@@ -54,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: IndexedStack(index: pageIndex, children: pages),
-      bottomNavigationBar: buildMyNavBar(context), //bottom navigation
+      //bottomNavigationBar: buildMyNavBar(context), //bottom navigation
     );
   }
 

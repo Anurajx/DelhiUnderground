@@ -21,7 +21,7 @@ class _Page1State extends State<Page1> {
             //make this a seprate function so that it can be reused for station info screen
             initialChildSize: 0.4,
             minChildSize: 0.05,
-            maxChildSize: 0.9,
+            //maxChildSize: 0.9,
             snap: true,
             snapSizes: [0.4],
             builder: (context, scrollController) {
@@ -31,6 +31,7 @@ class _Page1State extends State<Page1> {
                 ),
                 child: SingleChildScrollView(
                   controller: scrollController,
+                  physics: BouncingScrollPhysics(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -309,19 +310,17 @@ ticketAndExit() {
     },
     child: Container(
       width: double.infinity,
-      height: 105,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      height: 70,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/Image/exitLogo.png'),
-          fit: BoxFit.cover,
-        ),
         borderRadius: BorderRadius.circular(0),
         border: Border(
+          top: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
           bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
@@ -333,7 +332,7 @@ ticketAndExit() {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Icon(CupertinoIcons.arrow_right, color: Colors.white),
+          Icon(CupertinoIcons.list_bullet, color: Colors.white),
         ],
       ),
     ),
@@ -343,7 +342,7 @@ ticketAndExit() {
 appFooter() {
   return Container(
     width: double.infinity,
-    margin: EdgeInsets.all(10),
+    margin: EdgeInsets.all(0),
     height: 400,
     decoration: BoxDecoration(
       image: DecorationImage(
@@ -351,6 +350,23 @@ appFooter() {
         fit: BoxFit.cover,
       ),
     ),
-    child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: []),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          margin: EdgeInsets.all(20),
+          child: Text(
+            "Delhi",
+            style: TextStyle(
+              color: const Color.fromARGB(255, 218, 218, 218),
+              fontSize: 40,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
+    ),
   );
 }
