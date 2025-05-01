@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart' as csv;
 import 'package:shimmer/shimmer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({
@@ -83,6 +84,7 @@ class _MapScreenState extends State<MapScreen> {
     //function to intialize mapcontroller when maps is loaded
     mapController = controller;
     mapController!.animateCamera(CameraUpdate.newLatLng(_center!));
+    FlutterNativeSplash.remove(); //removing splash screen
     //_animateCameraToUserLocation();
   }
 

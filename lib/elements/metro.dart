@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'map.dart';
 import 'package:marquee/marquee.dart';
+import 'package:vibration/vibration.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -20,20 +21,21 @@ class _Page1State extends State<Page1> {
           DraggableScrollableSheet(
             //make this a seprate function so that it can be reused for station info screen
             initialChildSize: 0.4,
-            minChildSize: 0.05,
+            minChildSize: 0.12,
             //maxChildSize: 0.9,
             snap: true,
             snapSizes: [0.4],
             builder: (context, scrollController) {
               return Container(
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 24, 24, 24),
+                  color: const Color.fromARGB(255, 8, 8, 8),
                 ),
                 child: SingleChildScrollView(
                   controller: scrollController,
-                  physics: BouncingScrollPhysics(),
+                  physics: ClampingScrollPhysics(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       InfoBar(), //adding info bar to scaffold
                       //searchBar(),
@@ -71,6 +73,15 @@ class _Page1State extends State<Page1> {
                                     ),
                                   ),
                                   nearYou(),
+                                  Divider(
+                                    thickness: 1,
+                                    color: const Color.fromARGB(
+                                      255,
+                                      35,
+                                      35,
+                                      35,
+                                    ),
+                                  ),
                                   ticketAndExit(),
                                   appFooter(),
                                 ],
@@ -118,26 +129,31 @@ class InfoBar extends StatelessWidget {
 
 searchBar() {
   //search bar widget when tapped a new screen opens where user can enter departure and concorse
-  return Container(
-    padding: const EdgeInsets.all(5),
-    width: double.infinity,
-    height: 45,
-    decoration: BoxDecoration(color: const Color.fromARGB(255, 234, 234, 234)),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          'Where to',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-            fontSize: 18,
-            color: const Color.fromARGB(201, 15, 15, 15),
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      padding: const EdgeInsets.all(5),
+      width: double.infinity,
+      height: 45,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 234, 234, 234),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            'Where to',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+              fontSize: 18,
+              color: const Color.fromARGB(201, 15, 15, 15),
+            ),
           ),
-        ),
-        Icon(CupertinoIcons.search),
-      ],
+          Icon(CupertinoIcons.search),
+        ],
+      ),
     ),
   );
 }
@@ -185,7 +201,10 @@ suggestions() {
                 ), //blue line color will make it dynamic later
               ), //container for line indication
               Spacer(), // spacer to make sure spce between text and arrow icon
-              Icon(CupertinoIcons.arrow_right, color: Colors.white),
+              Icon(
+                CupertinoIcons.arrow_right,
+                color: const Color.fromARGB(255, 179, 179, 179),
+              ),
             ],
           ),
         ),
@@ -230,7 +249,10 @@ suggestions() {
                 ), //blue line color will make it dynamic later
               ),
               Spacer(),
-              Icon(CupertinoIcons.arrow_right, color: Colors.white),
+              Icon(
+                CupertinoIcons.arrow_right,
+                color: const Color.fromARGB(255, 179, 179, 179),
+              ),
             ],
           ),
         ),
@@ -273,7 +295,10 @@ nearYou() {
                   fontWeight: FontWeight.w300,
                 ),
               ),
-              Icon(CupertinoIcons.info, color: Colors.white),
+              Icon(
+                CupertinoIcons.chevron_right,
+                color: const Color.fromARGB(255, 179, 179, 179),
+              ),
             ],
           ),
         ),
@@ -294,7 +319,10 @@ nearYou() {
                   fontWeight: FontWeight.w300,
                 ),
               ),
-              Icon(CupertinoIcons.info, color: Colors.white),
+              Icon(
+                CupertinoIcons.chevron_right,
+                color: const Color.fromARGB(255, 179, 179, 179),
+              ),
             ],
           ),
         ),
@@ -310,15 +338,13 @@ ticketAndExit() {
     },
     child: Container(
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      height: 70,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(0),
         border: Border(
-          top: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
           bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
         ),
       ),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      height: 70,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -332,7 +358,10 @@ ticketAndExit() {
               fontWeight: FontWeight.w500,
             ),
           ),
-          Icon(CupertinoIcons.list_bullet, color: Colors.white),
+          Icon(
+            CupertinoIcons.map,
+            color: const Color.fromARGB(255, 179, 179, 179),
+          ),
         ],
       ),
     ),
@@ -343,7 +372,7 @@ appFooter() {
   return Container(
     width: double.infinity,
     margin: EdgeInsets.all(0),
-    height: 400,
+    height: 420,
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage('assets/Image/footer.jpg'),
@@ -357,9 +386,9 @@ appFooter() {
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
-            "Delhi",
+            "New Delhi",
             style: TextStyle(
-              color: const Color.fromARGB(255, 218, 218, 218),
+              color: const Color.fromARGB(255, 216, 216, 216),
               fontSize: 40,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
