@@ -77,8 +77,9 @@ flutter:
     - assets/Image/AppLogoS.png
     - assets/Map/mstops.txt
     - assets/Image/exitLogo.png
-    - assets/Image/footer.webp
+    - assets/Image/Appfooter.jpg
     - assets/Image/branding.png
+    - assets/Image/internet.jpg
 
   fonts:
     - family: Poppins

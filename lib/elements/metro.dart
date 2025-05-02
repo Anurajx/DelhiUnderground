@@ -17,92 +17,84 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          MapScreen(), //add the bottom sheet size so that the map can be seen
-          DraggableScrollableSheet(
-            //make this a seprate function so that it can be reused for station info screen
-            initialChildSize: 0.4,
-            minChildSize: 0.12,
-            //maxChildSize: 0.9,
-            snap: true,
-            snapSizes: [0.4],
-            builder: (context, scrollController) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 8, 8, 8),
-                ),
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  physics: ClampingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      InfoBar(), //adding info bar to scaffold
-                      //searchBar(),
-                      Container(
-                        width: double.infinity,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 15,
-                        ), //only hornizontally padded to outer container
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 8, 8, 8),
-                        ),
-                        child: Column(
-                          //new children inside the container for adding an padding and an border around elements
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: const Color.fromARGB(255, 35, 35, 35),
-                                ),
-                              ),
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  searchBar(context),
-                                  suggestions(),
-                                  Divider(
-                                    thickness: 1,
-
-                                    color: const Color.fromARGB(
-                                      255,
-                                      35,
-                                      35,
-                                      35,
-                                    ),
-                                  ),
-                                  nearYou(),
-                                  Divider(
-                                    thickness: 1,
-                                    color: const Color.fromARGB(
-                                      255,
-                                      35,
-                                      35,
-                                      35,
-                                    ),
-                                  ),
-                                  ticketAndExit(),
-                                  appFooter(),
-                                ],
-                              ), // creating another child children pair to add an outline across all elements
-                            ),
-                          ],
-                        ),
-                      ),
-                    ], // add after eating allt hat needs to go inside the bottom sheet.........................
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-    );
+    return showBottomSheet(context);
   }
+}
+
+showBottomSheet(BuildContext context) {
+  //created a seprate function to dynamically open and close the bottom sheet
+  return Stack(
+    children: [
+      MapScreen(), //add the bottom sheet size so that the map can be seen
+      DraggableScrollableSheet(
+        //make this a seprate function so that it can be reused for station info screen
+        initialChildSize: 0.4,
+        minChildSize: 0.12,
+        //maxChildSize: 0.9,
+        snap: true,
+        snapSizes: [0.4],
+        builder: (context, scrollController) {
+          return Container(
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 8, 8, 8),
+            ),
+            child: SingleChildScrollView(
+              controller: scrollController,
+              physics: ClampingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  InfoBar(), //adding info bar to scaffold
+                  //searchBar(),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15,
+                    ), //only hornizontally padded to outer container
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 8, 8, 8),
+                    ),
+                    child: Column(
+                      //new children inside the container for adding an padding and an border around elements
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 35, 35, 35),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              searchBar(context),
+                              suggestions(),
+                              Divider(
+                                thickness: 1,
+
+                                color: const Color.fromARGB(255, 35, 35, 35),
+                              ),
+                              nearYou(),
+                              Divider(
+                                thickness: 1,
+                                color: const Color.fromARGB(255, 35, 35, 35),
+                              ),
+                              ticketAndExit(),
+                              appFooter(),
+                            ],
+                          ), // creating another child children pair to add an outline across all elements
+                        ),
+                      ],
+                    ),
+                  ),
+                ], // add after eating allt hat needs to go inside the bottom sheet.........................
+              ),
+            ),
+          );
+        },
+      ),
+    ],
+  );
 }
 
 class InfoBar extends StatelessWidget {
@@ -385,7 +377,7 @@ appFooter() {
     height: 420,
     decoration: BoxDecoration(
       image: DecorationImage(
-        image: AssetImage('assets/Image/footer.webp'),
+        image: AssetImage('assets/Image/Appfooter.jpg'),
         fit: BoxFit.cover,
       ),
     ),

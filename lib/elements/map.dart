@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -5,7 +7,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart' as csv;
 import 'package:shimmer/shimmer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({
@@ -20,7 +21,6 @@ const LatLng _defaultLocation = LatLng(28.61295859148258, 77.22884208025665);
 
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
-
   String? _mapStyle; //initilizing all the variables
   LatLng? _center;
   bool _isLocationLoaded = false;
@@ -84,7 +84,6 @@ class _MapScreenState extends State<MapScreen> {
     //function to intialize mapcontroller when maps is loaded
     mapController = controller;
     mapController!.animateCamera(CameraUpdate.newLatLng(_center!));
-    FlutterNativeSplash.remove(); //removing splash screen
     //_animateCameraToUserLocation();
   }
 
@@ -92,18 +91,24 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     if (!_isLocationLoaded) {
       //checking if lacation is loaded through boolean value
-      return Scaffold(
-        backgroundColor: Colors.black,
-        body: Shimmer.fromColors(
-          baseColor: const Color.fromARGB(255, 0, 0, 0),
-          highlightColor: const Color.fromARGB(255, 27, 27, 27),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            color: Colors.white,
-          ),
+      return Container(
+        width: double.infinity,
+        decoration: BoxDecoration(color: const Color.fromARGB(255, 26, 26, 26)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: Image.asset(
+                "assets/Image/internet.jpg",
+                width: 180,
+                height: 200,
+              ),
+            ),
+          ],
         ),
-      ); //returing a loading widget
+        //child: Image.asset("assets/Image/internet.jpeg", width: 50, height: 50),
+      ); //add logic here
     }
     return GoogleMap(
       // remove const if adding any varible

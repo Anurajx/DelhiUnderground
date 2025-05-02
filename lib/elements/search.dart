@@ -11,7 +11,9 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
+        alignment: Alignment.center,
         children: [
           Text(
             "This is search page",
