@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'map.dart';
 import 'package:marquee/marquee.dart';
 import 'package:vibration/vibration.dart';
+import 'search.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -60,7 +63,7 @@ class _Page1State extends State<Page1> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  searchBar(),
+                                  searchBar(context),
                                   suggestions(),
                                   Divider(
                                     thickness: 1,
@@ -127,10 +130,17 @@ class InfoBar extends StatelessWidget {
   }
 }
 
-searchBar() {
+//
+
+searchBar(BuildContext context) {
   //search bar widget when tapped a new screen opens where user can enter departure and concorse
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SearchScreen()),
+      );
+    },
     child: Container(
       padding: const EdgeInsets.all(5),
       width: double.infinity,
@@ -375,7 +385,7 @@ appFooter() {
     height: 420,
     decoration: BoxDecoration(
       image: DecorationImage(
-        image: AssetImage('assets/Image/footer.jpg'),
+        image: AssetImage('assets/Image/footer.webp'),
         fit: BoxFit.cover,
       ),
     ),

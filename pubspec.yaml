@@ -77,7 +77,7 @@ flutter:
     - assets/Image/AppLogoS.png
     - assets/Map/mstops.txt
     - assets/Image/exitLogo.png
-    - assets/Image/footer.jpg
+    - assets/Image/footer.webp
     - assets/Image/branding.png
 
   fonts:
