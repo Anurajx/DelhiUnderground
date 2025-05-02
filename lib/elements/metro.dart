@@ -24,6 +24,7 @@ class _Page1State extends State<Page1> {
 showBottomSheet(BuildContext context) {
   //created a seprate function to dynamically open and close the bottom sheet
   return Stack(
+    //stacks arranges componets in Z-axis so be careful while using it
     children: [
       MapScreen(), //add the bottom sheet size so that the map can be seen
       DraggableScrollableSheet(

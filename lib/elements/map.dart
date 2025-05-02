@@ -5,8 +5,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:csv/csv.dart' as csv;
-import 'package:shimmer/shimmer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({
@@ -89,27 +89,26 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_isLocationLoaded) {
-      //checking if lacation is loaded through boolean value
-      return Container(
-        width: double.infinity,
-        decoration: BoxDecoration(color: const Color.fromARGB(255, 26, 26, 26)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              child: Image.asset(
-                "assets/Image/internet.jpg",
-                width: 180,
-                height: 200,
-              ),
-            ),
-          ],
-        ),
-        //child: Image.asset("assets/Image/internet.jpeg", width: 50, height: 50),
-      ); //add logic here
-    }
+    //   if (!_isLocationLoaded) {
+    //     return Container(
+    //       width: double.infinity,
+    //       decoration: BoxDecoration(color: const Color.fromARGB(255, 26, 26, 26)),
+    //       child: Column(
+    //         mainAxisAlignment: MainAxisAlignment.start,
+    //         crossAxisAlignment: CrossAxisAlignment.center,
+    //         children: [
+    //           Container(
+    //             child: Image.asset(
+    //               "assets/Image/internet.jpg",
+    //               width: 180,
+    //               height: 200,
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //       //child: Image.asset("assets/Image/internet.jpeg", width: 50, height: 50),
+    //     ); //add logic here
+    //   }
     return GoogleMap(
       // remove const if adding any varible
       style: _mapStyle,
