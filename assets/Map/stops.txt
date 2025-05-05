@@ -1,4 +1,3 @@
-stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon
 1,,Dilshad Garden,,28.675991,77.321495
 2,,Jhilmil,,28.675648,77.312393
 3,,Mansrover park,,28.675352,77.301178

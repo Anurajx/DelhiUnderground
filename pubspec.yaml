@@ -76,11 +76,12 @@ flutter:
     - assets/Image/bus.png
     - assets/Map/map_style.json
     - assets/Image/AppLogoS.png
-    - assets/Map/mstops.txt
     - assets/Image/exitLogo.png
     - assets/Image/Appfooter.jpg
     - assets/Image/branding.png
     - assets/Image/internet.jpg
+    - assets/Map/stops.txt
+    - assets/Map/shapes.txt
 
   fonts:
     - family: Poppins

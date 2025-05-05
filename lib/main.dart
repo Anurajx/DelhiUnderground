@@ -10,6 +10,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  //Future<void> _permissions() async {}
+
   @override
   Widget build(BuildContext context) {
     Geolocator.requestPermission(); //requesting permission for location: to be shited to intro screen

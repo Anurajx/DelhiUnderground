@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'SER_Lines_Stations_Styles.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -23,21 +23,46 @@ class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
   String? _mapStyle; //initilizing all the variables
   LatLng? _center;
-  bool _isLocationLoaded = false;
+  Set<Marker> _markers = {};
+  Set<Polyline> _polylines = {};
 
   @override //setting up the state for style at super level
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _mapAssets();
-      _isLocationLoaded = true;
     });
   }
 
   Future<void> _mapAssets() async {
     await _getLastLocation();
+    await _fetchMapDatas();
     _mapStyle = await loadMapStyle();
     _loadUserLocation(); //user loaction will be taken later as it is not await needed
+  }
+
+  Future<void> _fetchMapDatas() async {
+    final mapData = await loadMapData();
+    final polylines = await loadMetroPolylinesFromGTFS();
+    final markers =
+        mapData.stops.asMap().entries.map((entry) {
+          //print("Stops ${entry.value}");
+          //print("Stops Index ${entry.key}");
+          final index = entry.key;
+          final stop = entry.value;
+          return Marker(
+            markerId: MarkerId(index.toString()),
+            position: stop,
+            icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueAzure,
+            ),
+          );
+        }).toSet();
+
+    setState(() {
+      _markers = markers;
+      _polylines = Set.from(polylines);
+    });
   }
 
   Future<LatLng?> _loadUserLocation() async {
@@ -52,7 +77,11 @@ class _MapScreenState extends State<MapScreen> {
 
     LatLng newcenter = LatLng(position.latitude, position.longitude);
 
-    _isLocationLoaded = true;
+    if (mapController != null) {
+      //checks if map controller is available, if yes than animates the camera to location
+      mapController!.animateCamera(CameraUpdate.newLatLngZoom(newcenter, 14));
+    }
+
     setState(() {
       _center = newcenter;
     });
@@ -60,13 +89,13 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<LatLng> _getLastLocation() async {
+    //check if last location cashe service is working as intended
     //fucntion to get last saved location saves time at time of launch
     //get last saved location
     final prefs =
         await SharedPreferences.getInstance(); // reading user location from cashe
     double? lat = prefs.getDouble('lastlatitude');
     double? lon = prefs.getDouble('lastlongitude');
-    _isLocationLoaded = true;
     if (lat == null || lon == null) {
       setState(() {
         _center = _defaultLocation;
@@ -80,42 +109,22 @@ class _MapScreenState extends State<MapScreen> {
     return _center!;
   }
 
-  void _onMapCreated(GoogleMapController controller) async {
-    //function to intialize mapcontroller when maps is loaded
-    mapController = controller;
-    mapController!.animateCamera(CameraUpdate.newLatLng(_center!));
-    //_animateCameraToUserLocation();
-  }
+  // void _onMapCreated(GoogleMapController controller) async {
+  //   //function to intialize mapcontroller when maps is loaded
+  //   mapController = controller;
+  // }
 
   @override
   Widget build(BuildContext context) {
-    //   if (!_isLocationLoaded) {
-    //     return Container(
-    //       width: double.infinity,
-    //       decoration: BoxDecoration(color: const Color.fromARGB(255, 26, 26, 26)),
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.start,
-    //         crossAxisAlignment: CrossAxisAlignment.center,
-    //         children: [
-    //           Container(
-    //             child: Image.asset(
-    //               "assets/Image/internet.jpg",
-    //               width: 180,
-    //               height: 200,
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //       //child: Image.asset("assets/Image/internet.jpeg", width: 50, height: 50),
-    //     ); //add logic here
-    //   }
     return GoogleMap(
       // remove const if adding any varible
       style: _mapStyle,
-      onMapCreated: _onMapCreated,
+      onMapCreated: (controller) {
+        mapController = controller;
+      },
       initialCameraPosition: CameraPosition(
         target: _center ?? _defaultLocation,
-        zoom: 14,
+        zoom: 12,
       ),
       tiltGesturesEnabled: false,
       rotateGesturesEnabled: false,
@@ -123,7 +132,15 @@ class _MapScreenState extends State<MapScreen> {
       myLocationEnabled: false, //enablet o view that location blue dot
       zoomControlsEnabled: false,
       minMaxZoomPreference: MinMaxZoomPreference(11, 18),
+      markers: _markers,
+      polylines: _polylines,
     );
+  }
+
+  @override
+  void dispose() {
+    mapController?.dispose();
+    super.dispose();
   }
 }
 
