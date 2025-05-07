@@ -45,6 +45,7 @@ dependencies:
   vibration: ^3.1.3
   flutter_native_splash: ^2.4.6
   connectivity_plus: ^6.1.4
+  flutter_svg: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +83,7 @@ flutter:
     - assets/Image/internet.jpg
     - assets/Map/stops.txt
     - assets/Map/shapes.txt
+    - assets/Map/svgMap1.svg
 
   fonts:
     - family: Poppins

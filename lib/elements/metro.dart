@@ -1,5 +1,5 @@
 import 'dart:math';
-
+import 'svgMap.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'map.dart';
@@ -26,7 +26,8 @@ showBottomSheet(BuildContext context) {
   return Stack(
     //stacks arranges componets in Z-axis so be careful while using it
     children: [
-      MapScreen(), //add the bottom sheet size so that the map can be seen
+      SvgMap(),
+      //MapScreen(), //add the bottom sheet size so that the map can be seen
       DraggableScrollableSheet(
         //make this a seprate function so that it can be reused for station info screen
         initialChildSize: 0.4,

@@ -132,7 +132,7 @@ class _MapScreenState extends State<MapScreen> {
       myLocationEnabled: false, //enablet o view that location blue dot
       zoomControlsEnabled: false,
       minMaxZoomPreference: MinMaxZoomPreference(11, 18),
-      markers: _markers,
+      //markers: _markers,
       polylines: _polylines,
     );
   }

@@ -50,7 +50,7 @@ Future<List<Polyline>> loadMetroPolylinesFromGTFS() async {
       Polyline(
         polylineId: PolylineId('polyline_$polylineIndex'),
         points: points,
-        width: 4,
+        width: 1,
         color: _randomLineColor(polylineIndex),
       ),
     );
