@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'map.dart';
 import 'package:marquee/marquee.dart';
 import 'package:vibration/vibration.dart';
+import 'Station_element.dart';
 import 'search.dart';
 
 class Page1 extends StatefulWidget {
@@ -170,97 +171,7 @@ suggestions() {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          onTap: () {
-            // ADD APP LOGIC HERE FOR NEXT SCREEN
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Rajouri Garden',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: const Color.fromARGB(255, 179, 179, 179),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ), // adding to create a bit of space between line indicatot and text
-              Container(
-                width: 5,
-                height: 15,
-                color: const Color(
-                  0xFF0072BC,
-                ), //blue line color will make it dynamic later
-              ), //container for line indication
-              Container(
-                width: 5,
-                height: 15,
-                color: const Color(
-                  0xFFFC8EAC,
-                ), //blue line color will make it dynamic later
-              ), //container for line indication
-              Spacer(), // spacer to make sure spce between text and arrow icon
-              Icon(
-                CupertinoIcons.arrow_right,
-                color: const Color.fromARGB(255, 179, 179, 179),
-              ),
-            ],
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            //ADD APP LOGIC HERE FOR NEXT SCREEN
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Rajiv Chowk ',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  color: const Color.fromARGB(255, 179, 179, 179),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              SizedBox(
-                width: 5,
-              ), // adding to create a bit of space between line indicatot and text
-              Container(
-                width: 5,
-                height: 15,
-                color: const Color(
-                  0xFF0072BC,
-                ), //blue line color will make it dynamic later
-              ),
-              Container(
-                width: 5,
-                height: 15,
-                color: const Color(
-                  0xFFF47B20,
-                ), //blue line color will make it dynamic later
-              ),
-              Container(
-                width: 5,
-                height: 15,
-                color: const Color(
-                  0xFFFFD300,
-                ), //blue line color will make it dynamic later
-              ),
-              Spacer(),
-              Icon(
-                CupertinoIcons.arrow_right,
-                color: const Color.fromARGB(255, 179, 179, 179),
-              ),
-            ],
-          ),
-        ),
-      ],
+      children: [Station(name: 'RK Puram'), Station(name: 'Rajouri Garden')],
     ),
   );
 }
@@ -299,6 +210,16 @@ nearYou() {
                   fontWeight: FontWeight.w300,
                 ),
               ),
+              Spacer(),
+              Text(
+                "1.5 KM",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
               Icon(
                 CupertinoIcons.chevron_right,
                 color: const Color.fromARGB(255, 179, 179, 179),
@@ -316,6 +237,16 @@ nearYou() {
             children: [
               Text(
                 "Bhikaji Cama Place",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Spacer(),
+              Text(
+                "1 KM",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 179, 179, 179),
                   fontSize: 18,

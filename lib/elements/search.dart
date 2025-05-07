@@ -44,6 +44,7 @@ backBox(BuildContext context) {
             "Back",
             style: TextStyle(
               color: const Color.fromARGB(255, 47, 130, 255),
+              fontWeight: FontWeight.w500,
               fontFamily: 'Poppins',
               fontSize: 18,
             ),
@@ -62,6 +63,8 @@ searchCluster() {
 }
 
 searchBox() {
+  final TextEditingController _controller1 = TextEditingController();
+  final TextEditingController _controller2 = TextEditingController();
   return Container(
     decoration: BoxDecoration(
       color: const Color.fromARGB(255, 8, 8, 8),
@@ -73,10 +76,48 @@ searchBox() {
     ),
     width: double.infinity,
     height: 130,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [],
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
+          child: TextField(
+            controller: _controller1,
+            decoration: InputDecoration.collapsed(
+              hintText: "From",
+              hintStyle: TextStyle(
+                color: const Color.fromARGB(255, 179, 179, 179),
+              ),
+            ),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+        ),
+        //Divider(color: const Color.fromARGB(255, 89, 89, 89)),
+        Container(
+          margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
+          child: TextField(
+            controller: _controller2,
+            decoration: InputDecoration.collapsed(
+              hintText: "To",
+              hintStyle: TextStyle(
+                color: const Color.fromARGB(255, 179, 179, 179),
+              ),
+            ),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }
@@ -87,8 +128,8 @@ flipCircle() {
       color: const Color.fromARGB(255, 26, 26, 26),
       borderRadius: BorderRadius.circular(40),
     ),
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
     child: Icon(
       CupertinoIcons.chevron_up_chevron_down,
       color: const Color.fromARGB(255, 234, 234, 234),
