@@ -1,4 +1,7 @@
 import 'dart:math';
+import 'dart:ui';
+import 'package:flutter_svg/svg.dart';
+import 'package:shimmer/shimmer.dart';
 import 'svgMap.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,18 +34,18 @@ showBottomSheet(BuildContext context) {
       //MapScreen(), //add the bottom sheet size so that the map can be seen
       DraggableScrollableSheet(
         //make this a seprate function so that it can be reused for station info screen
-        initialChildSize: 0.4,
+        initialChildSize: 1,
         minChildSize: 0.12,
         //maxChildSize: 0.9,
-        snap: true,
-        snapSizes: [0.4],
+        snap: false,
+
         builder: (context, scrollController) {
           return Container(
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 8, 8, 8),
             ),
             child: SingleChildScrollView(
-              controller: scrollController,
+              //controller: scrollController,
               physics: ClampingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +86,7 @@ showBottomSheet(BuildContext context) {
                                 color: const Color.fromARGB(255, 35, 35, 35),
                               ),
                               ticketAndExit(),
-                              appFooter(),
+                              FooterMap(),
                             ],
                           ), // creating another child children pair to add an outline across all elements
                         ),
@@ -113,7 +116,7 @@ class InfoBar extends StatelessWidget {
       child: Marquee(
         //adding marquee effect to text with help of the package
         text:
-            "SLIGHT DELAY ON PINK LINE EXPECTED 5 MINS.", //Hard coded text for now, will add an feature to dyanmically change it
+            "DELHI METRO MEIN AAPKA SWAGAT HAI * DELHI METRO WELLCOMES YOU *", //Hard coded text for now, will add an feature to dyanmically change it
         blankSpace: 20,
         style: TextStyle(
           fontFamily: 'Doto',
@@ -194,73 +197,8 @@ nearYou() {
             fontWeight: FontWeight.w500,
           ),
         ),
-        GestureDetector(
-          onTap: () {
-            //ADD APP LOGIC HERE FOR NEXT SCREEN
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "RK Puram",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 179, 179, 179),
-                  fontSize: 18,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              Spacer(),
-              Text(
-                "1.5 KM",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 179, 179, 179),
-                  fontSize: 18,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              Icon(
-                CupertinoIcons.chevron_right,
-                color: const Color.fromARGB(255, 179, 179, 179),
-              ),
-            ],
-          ),
-        ),
-
-        GestureDetector(
-          onTap: () {
-            //ADD APP LOGIC HERE FOR NEXT SCREEN
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Bhikaji Cama Place",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 179, 179, 179),
-                  fontSize: 18,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              Spacer(),
-              Text(
-                "1 KM",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 179, 179, 179),
-                  fontSize: 18,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              Icon(
-                CupertinoIcons.chevron_right,
-                color: const Color.fromARGB(255, 179, 179, 179),
-              ),
-            ],
-          ),
-        ),
+        Station(name: "Bhikaji Cama Place"),
+        Station(name: "South Extension"),
       ],
     ),
   );
@@ -303,34 +241,61 @@ ticketAndExit() {
   );
 }
 
-appFooter() {
-  return Container(
-    width: double.infinity,
-    margin: EdgeInsets.all(0),
-    height: 420,
-    decoration: BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage('assets/Image/Appfooter.jpg'),
-        fit: BoxFit.cover,
-      ),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Container(
-          margin: EdgeInsets.all(20),
-          child: Text(
-            "New Delhi",
-            style: TextStyle(
-              color: const Color.fromARGB(255, 216, 216, 216),
-              fontSize: 40,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
+// appFooter() {
+//   return
+// }
+
+class FooterMap extends StatefulWidget {
+  const FooterMap({super.key});
+
+  @override
+  State<FooterMap> createState() => _FooterMapState();
+}
+
+class _FooterMapState extends State<FooterMap> {
+  bool _showBlur = true;
+
+  void _removeBlur() {
+    setState(() {
+      _showBlur = false; // Disable the entire layer
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 420,
+      child: Stack(
+        children: [
+          SvgMap(),
+          if (_showBlur)
+            Positioned.fill(
+              child: GestureDetector(
+                onTap: _removeBlur,
+                child: ClipRect(
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+                    child: Container(
+                      color: const Color.fromARGB(120, 0, 0, 0),
+                      child: Center(
+                        child: Text(
+                          "METRO MAP",
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 94, 94, 94),
+                            fontSize: 30,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }

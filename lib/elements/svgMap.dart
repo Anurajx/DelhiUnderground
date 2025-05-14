@@ -20,13 +20,13 @@ class _SvgMapState extends State<SvgMap> {
     _controller.value =
         Matrix4.identity()
           ..scale(3.0)
-          ..translate(-170.0, -300.0);
+          ..translate(-140.0, -115.0);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 24, 24, 27),
+      backgroundColor: const Color.fromARGB(255, 8, 8, 8),
       body: Stack(
         children: [
           InteractiveViewer(
@@ -34,24 +34,9 @@ class _SvgMapState extends State<SvgMap> {
             maxScale: 20,
             minScale: 1,
             panEnabled: true,
-            child: SvgPicture.asset("assets/Map/svgMap1.svg"),
-          ),
-          Positioned(
-            top: 5,
-            right: 5,
-            child: FloatingActionButton(
-              //mini: true,
-              backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-              onPressed: () {
-                _controller.value =
-                    Matrix4.identity()
-                      ..scale(3.0)
-                      ..translate(-170.0, -300.0); // Reset zoom and position
-              },
-              child: const Icon(
-                CupertinoIcons.location_solid,
-                color: Colors.black,
-              ),
+            child: SvgPicture.asset(
+              "assets/Map/svgMap1.svg",
+              fit: BoxFit.contain,
             ),
           ),
         ],

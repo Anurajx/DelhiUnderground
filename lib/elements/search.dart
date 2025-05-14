@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -58,67 +60,7 @@ backBox(BuildContext context) {
 searchCluster() {
   return Stack(
     alignment: Alignment.center,
-    children: [searchBox(), flipCircle()],
-  );
-}
-
-searchBox() {
-  final TextEditingController _controller1 = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
-  return Container(
-    decoration: BoxDecoration(
-      color: const Color.fromARGB(255, 8, 8, 8),
-      border: Border.all(
-        color: const Color.fromARGB(255, 234, 234, 234),
-        width: 3,
-      ),
-      borderRadius: BorderRadius.circular(40),
-    ),
-    width: double.infinity,
-    height: 130,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
-          child: TextField(
-            controller: _controller1,
-            decoration: InputDecoration.collapsed(
-              hintText: "From",
-              hintStyle: TextStyle(
-                color: const Color.fromARGB(255, 179, 179, 179),
-              ),
-            ),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ),
-        //Divider(color: const Color.fromARGB(255, 89, 89, 89)),
-        Container(
-          margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
-          child: TextField(
-            controller: _controller2,
-            decoration: InputDecoration.collapsed(
-              hintText: "To",
-              hintStyle: TextStyle(
-                color: const Color.fromARGB(255, 179, 179, 179),
-              ),
-            ),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ),
-      ],
-    ),
+    children: [searchBoxed()], //add flip circle function flipcircle()
   );
 }
 
@@ -135,4 +77,91 @@ flipCircle() {
       color: const Color.fromARGB(255, 234, 234, 234),
     ),
   );
+}
+
+class searchBoxed extends StatefulWidget {
+  const searchBoxed({super.key});
+
+  @override
+  State<searchBoxed> createState() => _searchBoxedState();
+}
+
+class _searchBoxedState extends State<searchBoxed> {
+  final FocusNode _focusNode = FocusNode();
+  final TextEditingController _controller1 = TextEditingController();
+  final TextEditingController _controller2 = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 8, 8, 8),
+        border: Border.all(
+          color: const Color.fromARGB(255, 234, 234, 234),
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(20), //40
+      ),
+      width: double.infinity,
+      height: 100,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
+            child: TextField(
+              focusNode: _focusNode,
+              cursorOpacityAnimates: true,
+              cursorColor: const Color.fromARGB(255, 234, 234, 234),
+              controller: _controller1,
+              decoration: InputDecoration.collapsed(
+                border: InputBorder.none,
+                hintText: "From",
+                hintStyle: TextStyle(
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+          ),
+          //Divider(color: const Color.fromARGB(255, 89, 89, 89)),
+          Container(
+            margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
+            child: TextField(
+              cursorOpacityAnimates: true,
+              cursorColor: const Color.fromARGB(255, 234, 234, 234),
+              controller: _controller2,
+              decoration: InputDecoration.collapsed(
+                border: InputBorder.none,
+                hintText: "To",
+                hintStyle: TextStyle(
+                  color: const Color.fromARGB(255, 179, 179, 179),
+                ),
+              ),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
