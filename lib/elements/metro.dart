@@ -126,8 +126,8 @@ searchBar(BuildContext context) {
       height: 45,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(5),
-          topRight: Radius.circular(5),
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(0), //remove later if not used
         ),
         color: const Color.fromARGB(255, 234, 234, 234),
       ),
@@ -221,17 +221,24 @@ ticketAndExit() {
               ),
             ),
           ),
-          Container(
-            width: 1,
-            height: 30,
-            color: const Color.fromARGB(255, 35, 35, 35),
-            margin: EdgeInsets.symmetric(horizontal: 10),
+          SizedBox(
+            width: 20,
+            height: 50,
+            child: VerticalDivider(
+              color: const Color.fromARGB(255, 35, 35, 35),
+            ),
           ),
+          // Container(
+          //   width: 1,
+          //   height: 50,
+          //   color: const Color.fromARGB(255, 35, 35, 35),
+          //   margin: EdgeInsets.symmetric(horizontal: 10),
+          // ),
           Expanded(
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "MAP",
+                "METRO MAP",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,

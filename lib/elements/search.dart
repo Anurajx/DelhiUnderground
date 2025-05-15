@@ -43,31 +43,63 @@ searchBody(BuildContext context) {
 }
 
 backBox(BuildContext context) {
-  return SizedBox(
-    width: double.infinity,
-    height: 50,
-    child: GestureDetector(
-      onTap: () {
-        Navigator.pop(context);
-      },
-      child: Row(
-        children: [
-          Icon(
-            CupertinoIcons.back,
-            color: const Color.fromARGB(255, 47, 130, 255),
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      SizedBox(
+        //back button sized box
+        height: 50,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Row(
+            children: [
+              Icon(
+                CupertinoIcons.back,
+                color: const Color.fromARGB(255, 47, 130, 255),
+              ),
+              Text(
+                "Back",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 47, 130, 255),
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                ),
+              ),
+            ],
           ),
-          Text(
-            "Back",
-            style: TextStyle(
-              color: const Color.fromARGB(255, 47, 130, 255),
-              fontWeight: FontWeight.w500,
-              fontFamily: 'Poppins',
-              fontSize: 18,
-            ),
-          ),
-        ],
+        ),
       ),
-    ),
+
+      SizedBox(
+        //submit button sized box
+        height: 50,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.pop(context); //change logic when next screen is added
+          },
+          child: Row(
+            children: [
+              Text(
+                "Next",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 47, 130, 255),
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                ),
+              ),
+              Icon(
+                CupertinoIcons.forward,
+                color: const Color.fromARGB(255, 47, 130, 255),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ],
   );
 }
 
@@ -102,6 +134,7 @@ class searchBoxed extends StatefulWidget {
 
 class _searchBoxedState extends State<searchBoxed> {
   final FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNodeTo = FocusNode();
   final TextEditingController _controller1 = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
 
@@ -138,11 +171,14 @@ class _searchBoxedState extends State<searchBoxed> {
               cursorOpacityAnimates: true,
               cursorColor: const Color.fromARGB(255, 234, 234, 234),
               controller: _controller1,
+              onSubmitted: (_) {
+                FocusScope.of(context).requestFocus(_focusNodeTo);
+              },
               decoration: InputDecoration.collapsed(
                 border: InputBorder.none,
-                hintText: "From",
+                hintText: "Departure",
                 hintStyle: TextStyle(
-                  color: const Color.fromARGB(255, 179, 179, 179),
+                  color: const Color.fromARGB(255, 132, 132, 132),
                 ),
               ),
               style: TextStyle(
@@ -157,14 +193,19 @@ class _searchBoxedState extends State<searchBoxed> {
           Container(
             margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
             child: TextField(
+              focusNode: _focusNodeTo,
               cursorOpacityAnimates: true,
               cursorColor: const Color.fromARGB(255, 234, 234, 234),
               controller: _controller2,
+              onSubmitted:
+                  (
+                    _,
+                  ) {}, //add the logic to navigate to next screen whenever available
               decoration: InputDecoration.collapsed(
                 border: InputBorder.none,
-                hintText: "To",
+                hintText: "Arrival",
                 hintStyle: TextStyle(
-                  color: const Color.fromARGB(255, 179, 179, 179),
+                  color: const Color.fromARGB(255, 132, 132, 132),
                 ),
               ),
               style: TextStyle(
@@ -200,19 +241,19 @@ Widget ListViewed() {
   );
 }
 
-finalSearch() {
-  return NeoPopButton(
-    color: Colors.black,
-    bottomShadowColor: const Color.fromARGB(255, 37, 37, 37),
-    rightShadowColor: Colors.black,
-    onTapUp: () {},
-    border: Border.all(color: Colors.lightGreenAccent),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [Text("Search", style: TextStyle(color: Colors.white))],
-      ),
-    ),
-  );
-}
+// finalSearch() {
+//   return NeoPopButton(
+//     color: Colors.black,
+//     bottomShadowColor: const Color.fromARGB(255, 37, 37, 37),
+//     rightShadowColor: Colors.black,
+//     onTapUp: () {},
+//     border: Border.all(color: Colors.lightGreenAccent),
+//     child: Padding(
+//       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: const [Text("Search", style: TextStyle(color: Colors.white))],
+//       ),
+//     ),
+//   );
+// }

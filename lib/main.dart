@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Geolocator.requestPermission(); //requesting permission for location: to be shited to intro screen
+    //Geolocator.requestPermission(); //requesting permission for location: to be shited to intro screen
     return MaterialApp(
       title: 'Metro App',
       theme: ThemeData(

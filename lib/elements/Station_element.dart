@@ -45,10 +45,10 @@ class Station extends StatelessWidget {
             width: 5,
             height: 15,
             color: const Color.fromARGB(
+              0,
+              249,
+              134,
               255,
-              255,
-              65,
-              65,
             ), //blue line color will make it dynamic later
           ),
           Spacer(),
