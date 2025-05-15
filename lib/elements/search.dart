@@ -116,6 +116,7 @@ class _searchBoxedState extends State<searchBoxed> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 8, 8, 8),
         border: Border.all(
@@ -181,11 +182,7 @@ class _searchBoxedState extends State<searchBoxed> {
 }
 
 Widget ListViewed() {
-  return Container(
-    decoration: const BoxDecoration(color: Color.fromARGB(255, 0, 0, 0)),
-    width: double.infinity,
-    height: 300,
-    margin: const EdgeInsets.symmetric(vertical: 20),
+  return Expanded(
     child: ListView.separated(
       itemCount: metroStations.length,
       itemBuilder: (context, index) {
