@@ -1,7 +1,10 @@
 import 'dart:ffi';
+import 'package:neopop/neopop.dart';
 
+import 'metroStationsList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'Station_element.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -14,7 +17,11 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(backgroundColor: Colors.black, body: searchBody(context)),
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: searchBody(context),
+        resizeToAvoidBottomInset: true,
+      ),
     );
   }
 }
@@ -24,7 +31,14 @@ searchBody(BuildContext context) {
     width: double.infinity,
     height: double.infinity,
     margin: EdgeInsets.symmetric(horizontal: 10),
-    child: Column(children: [backBox(context), searchCluster()]),
+    child: Column(
+      children: [
+        backBox(context),
+        searchCluster(),
+        ListViewed(),
+        //finalSearch(),
+      ],
+    ),
   );
 }
 
@@ -164,4 +178,44 @@ class _searchBoxedState extends State<searchBoxed> {
       ),
     );
   }
+}
+
+Widget ListViewed() {
+  return Container(
+    decoration: const BoxDecoration(color: Color.fromARGB(255, 0, 0, 0)),
+    width: double.infinity,
+    height: 300,
+    margin: const EdgeInsets.symmetric(vertical: 20),
+    child: ListView.separated(
+      itemCount: metroStations.length,
+      itemBuilder: (context, index) {
+        String stationID = metroStations.keys.elementAt(index);
+        var stationName = metroStations[stationID];
+        return Station(name: stationName!["name"]);
+      },
+      separatorBuilder: (context, index) {
+        return const Divider(
+          color: Color.fromARGB(255, 27, 27, 27),
+          height: 25,
+        );
+      },
+    ),
+  );
+}
+
+finalSearch() {
+  return NeoPopButton(
+    color: Colors.black,
+    bottomShadowColor: const Color.fromARGB(255, 37, 37, 37),
+    rightShadowColor: Colors.black,
+    onTapUp: () {},
+    border: Border.all(color: Colors.lightGreenAccent),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [Text("Search", style: TextStyle(color: Colors.white))],
+      ),
+    ),
+  );
 }

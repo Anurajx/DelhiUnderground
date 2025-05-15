@@ -44,8 +44,11 @@ class Station extends StatelessWidget {
           Container(
             width: 5,
             height: 15,
-            color: const Color(
-              0xFFFFD300,
+            color: const Color.fromARGB(
+              255,
+              255,
+              65,
+              65,
             ), //blue line color will make it dynamic later
           ),
           Spacer(),

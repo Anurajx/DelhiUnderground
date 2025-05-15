@@ -1,11 +1,11 @@
 import 'dart:math';
 import 'dart:ui';
+import 'package:neopop/neopop.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
 import 'svgMap.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'map.dart';
 import 'package:marquee/marquee.dart';
 import 'package:vibration/vibration.dart';
 import 'Station_element.dart';
@@ -27,79 +27,60 @@ class _Page1State extends State<Page1> {
 
 showBottomSheet(BuildContext context) {
   //created a seprate function to dynamically open and close the bottom sheet
-  return Stack(
-    //stacks arranges componets in Z-axis so be careful while using it
-    children: [
-      SvgMap(),
-      //MapScreen(), //add the bottom sheet size so that the map can be seen
-      DraggableScrollableSheet(
-        //make this a seprate function so that it can be reused for station info screen
-        initialChildSize: 1,
-        minChildSize: 0.12,
-        //maxChildSize: 0.9,
-        snap: false,
-
-        builder: (context, scrollController) {
-          return Container(
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 8, 8, 8),
-            ),
-            child: SingleChildScrollView(
-              //controller: scrollController,
-              physics: ClampingScrollPhysics(),
+  return Container(
+    decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
+    child: ListView(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            InfoBar(), //adding info bar to scaffold
+            //searchBar(),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                horizontal: 15,
+              ), //only hornizontally padded to outer container
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 8, 8, 8),
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
+                //new children inside the container for adding an padding and an border around elements
                 children: [
-                  InfoBar(), //adding info bar to scaffold
-                  //searchBar(),
                   Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15,
-                    ), //only hornizontally padded to outer container
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 8, 8, 8),
-                    ),
+                    // decoration: BoxDecoration(
+                    //   border: Border.all(
+                    //     color: const Color.fromARGB(255, 35, 35, 35),
+                    //   ),
+                    // ),
                     child: Column(
-                      //new children inside the container for adding an padding and an border around elements
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color.fromARGB(255, 35, 35, 35),
-                            ),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              searchBar(context),
-                              suggestions(),
-                              Divider(
-                                thickness: 1,
+                        searchBar(context),
+                        suggestions(),
+                        Divider(
+                          thickness: 1,
 
-                                color: const Color.fromARGB(255, 35, 35, 35),
-                              ),
-                              nearYou(),
-                              Divider(
-                                thickness: 1,
-                                color: const Color.fromARGB(255, 35, 35, 35),
-                              ),
-                              ticketAndExit(),
-                              FooterMap(),
-                            ],
-                          ), // creating another child children pair to add an outline across all elements
+                          color: const Color.fromARGB(255, 35, 35, 35),
                         ),
+                        nearYou(),
+                        Divider(
+                          thickness: 1,
+                          color: const Color.fromARGB(255, 35, 35, 35),
+                        ),
+                        ticketAndExit(),
+                        appFooter(),
                       ],
-                    ),
+                    ), // creating another child children pair to add an outline across all elements
                   ),
-                ], // add after eating allt hat needs to go inside the bottom sheet.........................
+                ],
               ),
             ),
-          );
-        },
-      ),
-    ],
+          ], // add after eating allt hat needs to go inside the bottom sheet.........................
+        ),
+      ],
+    ),
   );
 }
 
@@ -116,7 +97,7 @@ class InfoBar extends StatelessWidget {
       child: Marquee(
         //adding marquee effect to text with help of the package
         text:
-            "DELHI METRO MEIN AAPKA SWAGAT HAI * DELHI METRO WELLCOMES YOU *", //Hard coded text for now, will add an feature to dyanmically change it
+            "DELHI METRO MEIN AAPKA SWAGAT HAI * DELHI METRO WELCOMES YOU *", //Hard coded text for now, will add an feature to dyanmically change it
         blankSpace: 20,
         style: TextStyle(
           fontFamily: 'Doto',
@@ -144,6 +125,10 @@ searchBar(BuildContext context) {
       width: double.infinity,
       height: 45,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(5),
+          topRight: Radius.circular(5),
+        ),
         color: const Color.fromARGB(255, 234, 234, 234),
       ),
       child: Row(
@@ -205,9 +190,10 @@ nearYou() {
 }
 
 ticketAndExit() {
+  // chat gpt
   return InkWell(
     onTap: () {
-      //ADD APP LOGIC HERE FOR NEXT SCREEN
+      // ADD APP LOGIC HERE FOR NEXT SCREEN
     },
     child: Container(
       width: double.infinity,
@@ -219,21 +205,41 @@ ticketAndExit() {
       margin: const EdgeInsets.symmetric(horizontal: 5),
       height: 70,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            "EXIT GATES",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "EXIT GATES",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ),
-          Icon(
-            CupertinoIcons.map,
-            color: const Color.fromARGB(255, 179, 179, 179),
+          Container(
+            width: 1,
+            height: 30,
+            color: const Color.fromARGB(255, 35, 35, 35),
+            margin: EdgeInsets.symmetric(horizontal: 10),
+          ),
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "MAP",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -245,57 +251,42 @@ ticketAndExit() {
 //   return
 // }
 
-class FooterMap extends StatefulWidget {
-  const FooterMap({super.key});
-
-  @override
-  State<FooterMap> createState() => _FooterMapState();
-}
-
-class _FooterMapState extends State<FooterMap> {
-  bool _showBlur = true;
-
-  void _removeBlur() {
-    setState(() {
-      _showBlur = false; // Disable the entire layer
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 420,
-      child: Stack(
-        children: [
-          SvgMap(),
-          if (_showBlur)
-            Positioned.fill(
-              child: GestureDetector(
-                onTap: _removeBlur,
-                child: ClipRect(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-                    child: Container(
-                      color: const Color.fromARGB(120, 0, 0, 0),
-                      child: Center(
-                        child: Text(
-                          "METRO MAP",
-                          style: TextStyle(
-                            color: const Color.fromARGB(255, 94, 94, 94),
-                            fontSize: 30,
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+appFooter() {
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.all(0),
+    height: 420,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.only(
+        bottomLeft: Radius.circular(0),
+        bottomRight: Radius.circular(0),
+      ),
+      image: DecorationImage(
+        image: AssetImage('assets/Image/Appfooter.jpg'),
+        fit: BoxFit.cover,
+      ),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          margin: EdgeInsets.all(20),
+          child: Shimmer.fromColors(
+            baseColor: const Color.fromARGB(255, 222, 222, 222),
+            highlightColor: const Color.fromARGB(255, 153, 153, 153),
+            child: Text(
+              "New Delhi",
+              style: TextStyle(
+                //color: const Color.fromARGB(255, 216, 216, 216),
+                fontSize: 40,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
               ),
             ),
-        ],
-      ),
-    );
-  }
+          ),
+        ),
+      ],
+    ),
+  );
 }

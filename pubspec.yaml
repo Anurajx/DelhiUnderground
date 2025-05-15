@@ -47,6 +47,7 @@ dependencies:
   connectivity_plus: ^6.1.4
   flutter_svg: ^2.1.0
   jovial_svg: ^1.1.25
+  neopop: ^1.0.2
 
 dev_dependencies:
   flutter_test:
