@@ -24,6 +24,11 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w300, //default font weight
           ),
         ),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: const Color.fromARGB(255, 47, 130, 255),
+          selectionColor: const Color.fromARGB(150, 47, 130, 255),
+          selectionHandleColor: const Color.fromARGB(255, 47, 130, 255),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: SafeArea(

@@ -1,6 +1,6 @@
 import 'dart:ffi';
 import 'package:neopop/neopop.dart';
-
+import 'route.dart';
 import 'metroStationsList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +34,8 @@ searchBody(BuildContext context) {
     child: Column(
       children: [
         backBox(context),
+        screenName(),
+        //SizedBox(height: 15),
         searchCluster(),
         ListViewed(),
         //finalSearch(),
@@ -78,12 +80,15 @@ backBox(BuildContext context) {
         height: 50,
         child: GestureDetector(
           onTap: () {
-            Navigator.pop(context); //change logic when next screen is added
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const routeScreen()),
+            );
           },
           child: Row(
             children: [
               Text(
-                "Next",
+                "Done",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 47, 130, 255),
                   fontWeight: FontWeight.w500,
@@ -103,27 +108,44 @@ backBox(BuildContext context) {
   );
 }
 
-searchCluster() {
-  return Stack(
-    alignment: Alignment.center,
-    children: [searchBoxed()], //add flip circle function flipcircle()
+screenName() {
+  //Plan your trip box
+  return Center(
+    child: Text(
+      "Plan your trip",
+      style: TextStyle(
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
   );
 }
 
-flipCircle() {
-  return Container(
-    decoration: BoxDecoration(
-      color: const Color.fromARGB(255, 26, 26, 26),
-      borderRadius: BorderRadius.circular(40),
-    ),
-    width: 35,
-    height: 35,
-    child: Icon(
-      CupertinoIcons.chevron_up_chevron_down,
-      color: const Color.fromARGB(255, 234, 234, 234),
-    ),
+searchCluster() {
+  return Stack(
+    alignment: Alignment.centerLeft,
+    children: [
+      searchBoxed(),
+      fromToIcon(),
+    ], //add flip circle function flipcircle()
   );
 }
+
+// flipCircle() {
+//   return Container(
+//     decoration: BoxDecoration(
+//       color: const Color.fromARGB(255, 26, 26, 26),
+//       borderRadius: BorderRadius.circular(40),
+//     ),
+//     width: 35,
+//     height: 35,
+//     child: Icon(
+//       CupertinoIcons.chevron_up_chevron_down,
+//       color: const Color.fromARGB(255, 234, 234, 234),
+//     ),
+//   );
+// }
 
 class searchBoxed extends StatefulWidget {
   const searchBoxed({super.key});
@@ -149,16 +171,17 @@ class _searchBoxedState extends State<searchBoxed> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
+      margin: EdgeInsets.only(bottom: 20, left: 40, top: 20),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 8, 8, 8),
+        color: Color.fromARGB(255, 0, 0, 0),
+        //color: const Color.fromARGB(255, 8, 8, 8),
         border: Border.all(
           color: const Color.fromARGB(255, 234, 234, 234),
-          width: 2,
+          width: 1,
         ),
-        borderRadius: BorderRadius.circular(20), //40
+        borderRadius: BorderRadius.circular(10), //40
       ),
-      width: double.infinity,
+      //width: double.infinity,
       height: 100,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -167,35 +190,38 @@ class _searchBoxedState extends State<searchBoxed> {
           Container(
             margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
             child: TextField(
+              textCapitalization:
+                  TextCapitalization
+                      .sentences, //makes the keyboard open with caps on for first letter
               focusNode: _focusNode,
               cursorOpacityAnimates: true,
-              cursorColor: const Color.fromARGB(255, 234, 234, 234),
               controller: _controller1,
               onSubmitted: (_) {
                 FocusScope.of(context).requestFocus(_focusNodeTo);
               },
               decoration: InputDecoration.collapsed(
                 border: InputBorder.none,
-                hintText: "Departure",
+                hintText: "From",
                 hintStyle: TextStyle(
                   color: const Color.fromARGB(255, 132, 132, 132),
+                  fontWeight: FontWeight.w200,
                 ),
               ),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontFamily: 'Poppins',
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
-          //Divider(color: const Color.fromARGB(255, 89, 89, 89)),
+          Divider(color: const Color.fromARGB(255, 50, 50, 50), height: 1),
           Container(
             margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
             child: TextField(
+              textCapitalization: TextCapitalization.sentences,
               focusNode: _focusNodeTo,
               cursorOpacityAnimates: true,
-              cursorColor: const Color.fromARGB(255, 234, 234, 234),
               controller: _controller2,
               onSubmitted:
                   (
@@ -203,16 +229,17 @@ class _searchBoxedState extends State<searchBoxed> {
                   ) {}, //add the logic to navigate to next screen whenever available
               decoration: InputDecoration.collapsed(
                 border: InputBorder.none,
-                hintText: "Arrival",
+                hintText: "To",
                 hintStyle: TextStyle(
                   color: const Color.fromARGB(255, 132, 132, 132),
+                  fontWeight: FontWeight.w200,
                 ),
               ),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontFamily: 'Poppins',
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
@@ -220,6 +247,19 @@ class _searchBoxedState extends State<searchBoxed> {
       ),
     );
   }
+}
+
+Widget fromToIcon() {
+  //icons on the left side of the search box
+  return Container(
+    child: Column(
+      children: [
+        Icon(CupertinoIcons.circle, color: Colors.white),
+        Icon(CupertinoIcons.resize_v, color: Colors.white),
+        Icon(CupertinoIcons.square, color: Colors.white),
+      ],
+    ),
+  );
 }
 
 Widget ListViewed() {

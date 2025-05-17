@@ -21,11 +21,11 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return showBottomSheet(context);
+    return metroScreen(context);
   }
 }
 
-showBottomSheet(BuildContext context) {
+metroScreen(BuildContext context) {
   //created a seprate function to dynamically open and close the bottom sheet
   return Container(
     decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
@@ -57,6 +57,7 @@ showBottomSheet(BuildContext context) {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        appFooter(),
                         searchBar(context),
                         suggestions(),
                         Divider(
@@ -70,7 +71,6 @@ showBottomSheet(BuildContext context) {
                           color: const Color.fromARGB(255, 35, 35, 35),
                         ),
                         ticketAndExit(),
-                        appFooter(),
                       ],
                     ), // creating another child children pair to add an outline across all elements
                   ),
@@ -197,11 +197,11 @@ ticketAndExit() {
     },
     child: Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
-        ),
-      ),
+      // decoration: BoxDecoration(
+      //   border: Border(
+      //     bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
+      //   ),
+      // ),
       margin: const EdgeInsets.symmetric(horizontal: 5),
       height: 70,
       child: Row(
@@ -260,9 +260,10 @@ ticketAndExit() {
 
 appFooter() {
   return Container(
-    width: double.infinity,
-    margin: EdgeInsets.all(0),
-    height: 420,
+    //width: double.infinity,
+    //margin: EdgeInsets.all(0),
+    height:
+        420, //right now the hrigh of container is hard coded make by mkaing it expanded
     decoration: BoxDecoration(
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(0),
