@@ -30,7 +30,7 @@ searchBody(BuildContext context) {
   return Container(
     width: double.infinity,
     height: double.infinity,
-    margin: EdgeInsets.symmetric(horizontal: 10),
+    padding: EdgeInsets.symmetric(horizontal: 10),
     child: Column(
       children: [
         backBox(context),
@@ -53,12 +53,18 @@ backBox(BuildContext context) {
         height: 50,
         child: GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            if (MediaQuery.of(context).viewInsets.bottom != 0) {
+              //if keyboard is open it closes first then the screen goes back
+              FocusScope.of(context).unfocus();
+            } else {
+              Navigator.pop(context);
+            }
           },
           child: Row(
             children: [
               Icon(
-                CupertinoIcons.back,
+                CupertinoIcons
+                    .back, //check if the icon gesture detector working
                 color: const Color.fromARGB(255, 47, 130, 255),
               ),
               Text(
@@ -223,10 +229,17 @@ class _searchBoxedState extends State<searchBoxed> {
               focusNode: _focusNodeTo,
               cursorOpacityAnimates: true,
               controller: _controller2,
-              onSubmitted:
-                  (
-                    _,
-                  ) {}, //add the logic to navigate to next screen whenever available
+              onSubmitted: (_) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      //logic to push user to route screen
+                      return const routeScreen(); //integrate a checking condition whether both stations have been entered or not
+                    },
+                  ),
+                );
+              }, //add the logic to navigate to next screen whenever available
               decoration: InputDecoration.collapsed(
                 border: InputBorder.none,
                 hintText: "To",
@@ -255,7 +268,8 @@ Widget fromToIcon() {
     child: Column(
       children: [
         Icon(CupertinoIcons.circle, color: Colors.white),
-        Icon(CupertinoIcons.resize_v, color: Colors.white),
+        Icon(Icons.arrow_drop_down, color: Colors.white),
+        //Icon(CupertinoIcons.resize_v, color: Colors.white),
         Icon(CupertinoIcons.square, color: Colors.white),
       ],
     ),
@@ -274,7 +288,7 @@ Widget ListViewed() {
       separatorBuilder: (context, index) {
         return const Divider(
           color: Color.fromARGB(255, 27, 27, 27),
-          height: 25,
+          height: 30,
         );
       },
     ),

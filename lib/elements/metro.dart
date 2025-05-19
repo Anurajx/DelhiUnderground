@@ -30,6 +30,7 @@ metroScreen(BuildContext context) {
   return Container(
     decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
     child: ListView(
+      //you can now remove list view as i have modified back button to make sure keyboard closes before going back
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +59,9 @@ metroScreen(BuildContext context) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         appFooter(),
-                        searchBar(context),
+                        searchBar(
+                          context,
+                        ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
                         suggestions(),
                         Divider(
                           thickness: 1,
@@ -159,7 +162,10 @@ suggestions() {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [Station(name: 'RK Puram'), Station(name: 'Rajouri Garden')],
+      children: [
+        stationPrimitive(name: 'RK Puram'),
+        stationPrimitive(name: 'Rajouri Garden'),
+      ],
     ),
   );
 }
@@ -182,8 +188,8 @@ nearYou() {
             fontWeight: FontWeight.w500,
           ),
         ),
-        Station(name: "Bhikaji Cama Place"),
-        Station(name: "South Extension"),
+        stationPrimitive(name: "Bhikaji Cama Place"),
+        stationPrimitive(name: "South Extension"),
       ],
     ),
   );
