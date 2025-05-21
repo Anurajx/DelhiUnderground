@@ -10,6 +10,8 @@ import 'package:marquee/marquee.dart';
 import 'package:vibration/vibration.dart';
 import 'Station_element.dart';
 import 'search.dart';
+import 'stopInfo.dart';
+import 'mapMetro.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -73,7 +75,7 @@ metroScreen(BuildContext context) {
                           thickness: 1,
                           color: const Color.fromARGB(255, 35, 35, 35),
                         ),
-                        ticketAndExit(),
+                        ticketAndExit(context),
                       ],
                     ), // creating another child children pair to add an outline across all elements
                   ),
@@ -114,7 +116,7 @@ class InfoBar extends StatelessWidget {
 
 //
 
-searchBar(BuildContext context) {
+searchBar(context) {
   //search bar widget when tapped a new screen opens where user can enter departure and concorse
   return GestureDetector(
     onTap: () {
@@ -188,36 +190,42 @@ nearYou() {
             fontWeight: FontWeight.w500,
           ),
         ),
-        stationPrimitive(name: "Bhikaji Cama Place"),
-        stationPrimitive(name: "South Extension"),
+        stationNearby(name: "Bhikaji Cama Place"),
+        stationNearby(name: "South Extension"),
       ],
     ),
   );
 }
 
-ticketAndExit() {
+ticketAndExit(context) {
   // chat gpt
-  return InkWell(
-    onTap: () {
-      // ADD APP LOGIC HERE FOR NEXT SCREEN
-    },
-    child: Container(
-      width: double.infinity,
-      // decoration: BoxDecoration(
-      //   border: Border(
-      //     bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
-      //   ),
-      // ),
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      height: 70,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
+  return Container(
+    width: double.infinity,
+    // decoration: BoxDecoration(
+    //   border: Border(
+    //     bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
+    //   ),
+    // ),
+    margin: const EdgeInsets.symmetric(horizontal: 5),
+    height: 70,
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: GestureDetector(
+            behavior:
+                HitTestBehavior
+                    .opaque, // to make sure that when tapped on white space the button is tapped
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => stopInfoScreen()),
+              );
+            },
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "EXIT GATES",
+                "STOP INFO",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -227,20 +235,27 @@ ticketAndExit() {
               ),
             ),
           ),
-          SizedBox(
-            width: 20,
-            height: 50,
-            child: VerticalDivider(
-              color: const Color.fromARGB(255, 35, 35, 35),
-            ),
-          ),
-          // Container(
-          //   width: 1,
-          //   height: 50,
-          //   color: const Color.fromARGB(255, 35, 35, 35),
-          //   margin: EdgeInsets.symmetric(horizontal: 10),
-          // ),
-          Expanded(
+        ),
+        SizedBox(
+          width: 20,
+          height: 50,
+          child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
+        ),
+        // Container(
+        //   width: 1,
+        //   height: 50,
+        //   color: const Color.fromARGB(255, 35, 35, 35),
+        //   margin: EdgeInsets.symmetric(horizontal: 10),
+        // ),
+        Expanded(
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => mapMetroScreen()),
+              );
+            },
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -254,8 +269,8 @@ ticketAndExit() {
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     ),
   );
 }
