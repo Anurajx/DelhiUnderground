@@ -30,6 +30,7 @@ class _Page1State extends State<Page1> {
 metroScreen(BuildContext context) {
   //created a seprate function to dynamically open and close the bottom sheet
   return Container(
+    //height: MediaQuery.of(context).size.height,
     decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
     child: Column(
       //you can now remove list view as i have modified back button to make sure keyboard closes before going back
@@ -49,8 +50,10 @@ metroScreen(BuildContext context) {
               //new children inside the container for adding an padding and an border around elements
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height - 65,
-                  width: MediaQuery.of(context).size.width,
+                  //height: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.90,
+                  //padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                  //width: MediaQuery.of(context).size.width,
                   // decoration: BoxDecoration(
                   //   border: Border.all(
                   //     color: const Color.fromARGB(255, 35, 35, 35),
