@@ -31,58 +31,56 @@ metroScreen(BuildContext context) {
   //created a seprate function to dynamically open and close the bottom sheet
   return Container(
     decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
-    child: ListView(
+    child: Column(
       //you can now remove list view as i have modified back button to make sure keyboard closes before going back
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            InfoBar(), //adding info bar to scaffold
-            //searchBar(),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                horizontal: 15,
-              ), //only hornizontally padded to outer container
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 8, 8, 8),
-              ),
-              child: Column(
-                //new children inside the container for adding an padding and an border around elements
-                children: [
-                  Container(
-                    // decoration: BoxDecoration(
-                    //   border: Border.all(
-                    //     color: const Color.fromARGB(255, 35, 35, 35),
-                    //   ),
-                    // ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        appFooter(),
-                        searchBar(
-                          context,
-                        ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
-                        suggestions(),
-                        Divider(
-                          thickness: 1,
-
-                          color: const Color.fromARGB(255, 35, 35, 35),
-                        ),
-                        nearYou(),
-                        Divider(
-                          thickness: 1,
-                          color: const Color.fromARGB(255, 35, 35, 35),
-                        ),
-                        ticketAndExit(context),
-                      ],
-                    ), // creating another child children pair to add an outline across all elements
-                  ),
-                ],
-              ),
+        InfoBar(), //adding info bar to scaffold
+        //searchBar(),
+        Center(
+          child: Container(
+            //width: double.infinity,
+            padding: EdgeInsets.symmetric(
+              horizontal: 15,
+            ), //only hornizontally padded to outer container
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 8, 8, 8),
             ),
-          ], // add after eating allt hat needs to go inside the bottom sheet.........................
+            child: Column(
+              //new children inside the container for adding an padding and an border around elements
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height - 65,
+                  width: MediaQuery.of(context).size.width,
+                  // decoration: BoxDecoration(
+                  //   border: Border.all(
+                  //     color: const Color.fromARGB(255, 35, 35, 35),
+                  //   ),
+                  // ),
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(child: appFooter()),
+                      searchBar(
+                        context,
+                      ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
+                      suggestions(),
+                      Divider(
+                        thickness: 1,
+
+                        color: const Color.fromARGB(255, 35, 35, 35),
+                      ),
+                      nearYou(),
+                      Divider(
+                        thickness: 1,
+                        color: const Color.fromARGB(255, 35, 35, 35),
+                      ),
+                      ticketAndExit(context),
+                    ],
+                  ), // creating another child children pair to add an outline across all elements
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     ),
@@ -160,7 +158,7 @@ suggestions() {
   return Container(
     margin: const EdgeInsets.all(5),
     width: double.infinity,
-    height: 80,
+    height: 90,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,7 +173,7 @@ suggestions() {
 nearYou() {
   return Container(
     width: double.infinity,
-    height: 105,
+    height: 120,
     margin: EdgeInsets.all(5),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -207,7 +205,7 @@ ticketAndExit(context) {
     //   ),
     // ),
     margin: const EdgeInsets.symmetric(horizontal: 5),
-    height: 70,
+    height: 60,
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -283,8 +281,8 @@ appFooter() {
   return Container(
     //width: double.infinity,
     //margin: EdgeInsets.all(0),
-    height:
-        420, //right now the hrigh of container is hard coded make by mkaing it expanded
+    // height:
+    //     420, //right now the hrigh of container is hard coded make by mkaing it expanded
     decoration: BoxDecoration(
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(0),
