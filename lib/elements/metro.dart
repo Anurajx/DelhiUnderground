@@ -30,14 +30,14 @@ class _Page1State extends State<Page1> {
 metroScreen(BuildContext context) {
   //created a seprate function to dynamically open and close the bottom sheet
   return Container(
-    //height: MediaQuery.of(context).size.height,
+    //height: MediaQuery.of(context).size.height
     decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
     child: Column(
       //you can now remove list view as i have modified back button to make sure keyboard closes before going back
       children: [
         InfoBar(), //adding info bar to scaffold
         //searchBar(),
-        Center(
+        Flexible(
           child: Container(
             //width: double.infinity,
             padding: EdgeInsets.symmetric(
@@ -46,12 +46,15 @@ metroScreen(BuildContext context) {
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 8, 8, 8),
             ),
-            child: Column(
+            child: ListView(
+              physics: BouncingScrollPhysics(),
               //new children inside the container for adding an padding and an border around elements
               children: [
                 Container(
                   //height: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.90,
+                  // padding: EdgeInsets.only(
+                  //   bottom: MediaQuery.of(context).padding.bottom,
+                  // ),
                   //padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                   //width: MediaQuery.of(context).size.width,
                   // decoration: BoxDecoration(
@@ -59,20 +62,21 @@ metroScreen(BuildContext context) {
                   //     color: const Color.fromARGB(255, 35, 35, 35),
                   //   ),
                   // ),
+                  //432
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(child: appFooter()),
+                      appFooter(context),
                       searchBar(
                         context,
                       ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
-                      suggestions(),
+                      suggestions(context),
                       Divider(
                         thickness: 1,
 
                         color: const Color.fromARGB(255, 35, 35, 35),
                       ),
-                      nearYou(),
+                      nearYou(context),
                       Divider(
                         thickness: 1,
                         color: const Color.fromARGB(255, 35, 35, 35),
@@ -97,9 +101,9 @@ class InfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: processedHeight(context, 0.05, 35, 35),
       decoration: const BoxDecoration(color: Color.fromARGB(255, 8, 8, 8)),
       width: double.infinity,
-      height: 40,
       child: Marquee(
         //adding marquee effect to text with help of the package
         text:
@@ -129,7 +133,8 @@ searchBar(context) {
     child: Container(
       padding: const EdgeInsets.all(5),
       width: double.infinity,
-      height: 45,
+      height: processedHeight(context, 0.06, 45, 45),
+      //height: MediaQuery.of(context).size.height * 0.06,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(0),
@@ -157,11 +162,13 @@ searchBar(context) {
   );
 }
 
-suggestions() {
+suggestions(context) {
   return Container(
     margin: const EdgeInsets.all(5),
     width: double.infinity,
-    height: 90,
+    height: processedHeight(context, 0.12, 90, 90),
+    //context, 0.125, 60, 80
+    //height: MediaQuery.of(context).size.height * 0.125,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,10 +180,11 @@ suggestions() {
   );
 }
 
-nearYou() {
+nearYou(context) {
   return Container(
     width: double.infinity,
-    height: 120,
+    height: processedHeight(context, 0.17, 125, 125),
+    //height: MediaQuery.of(context).size.height * 0.18,
     margin: EdgeInsets.all(5),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -202,13 +210,14 @@ ticketAndExit(context) {
   // chat gpt
   return Container(
     width: double.infinity,
+    height: processedHeight(context, 0.1, 50, 70),
+    //height: MediaQuery.of(context).size.height * 0.1,
     // decoration: BoxDecoration(
     //   border: Border(
     //     bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
     //   ),
     // ),
     margin: const EdgeInsets.symmetric(horizontal: 5),
-    height: 60,
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -280,8 +289,12 @@ ticketAndExit(context) {
 //   return
 // }
 
-appFooter() {
+appFooter(context) {
   return Container(
+    height: processedHeight(context, 0.40, 300, 400),
+    // height:
+    //     MediaQuery.of(context).size.height *
+    //     0.4, //this is genius idk how i did this but why not, height is equal to width of screen
     //width: double.infinity,
     //margin: EdgeInsets.all(0),
     // height:
@@ -319,4 +332,36 @@ appFooter() {
       ],
     ),
   );
+}
+
+double processedHeight(context, factorMax, minSize, prefferedHeight) {
+  //not working in split view, solve that bug
+  try {
+    double finalHeight;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    print("HEIGHT IS $height");
+    print("WIDTH IS $width ");
+    double maxHeight = height * factorMax;
+    if (maxHeight == double.infinity || maxHeight.isNaN) {
+      maxHeight = prefferedHeight; // or some other default value
+    }
+    double minHeight = minSize.toDouble();
+    if (width > 600) {
+      //checks if phone or tab
+      //960 moto
+      //841 samsung
+
+      finalHeight = maxHeight.clamp(minHeight, height).toDouble();
+      print("FINAL HEIGHT IS $finalHeight");
+    } else {
+      print("using preffered height");
+      finalHeight = prefferedHeight.toDouble();
+    }
+
+    return finalHeight;
+  } catch (e) {
+    print("Error processing height: $e ");
+    return prefferedHeight.toDouble();
+  }
 }

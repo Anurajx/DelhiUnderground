@@ -86,6 +86,7 @@ flutter:
     - assets/Map/stops.txt
     - assets/Map/shapes.txt
     - assets/Map/svgMap1.svg
+    - assets/Image/Appfooter.jpg
 
   fonts:
     - family: Poppins
