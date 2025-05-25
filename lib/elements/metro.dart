@@ -47,7 +47,7 @@ metroScreen(BuildContext context) {
               color: const Color.fromARGB(255, 8, 8, 8),
             ),
             child: ListView(
-              physics: BouncingScrollPhysics(),
+              physics: AlwaysScrollableScrollPhysics(),
               //new children inside the container for adding an padding and an border around elements
               children: [
                 Container(
@@ -101,7 +101,7 @@ class InfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: processedHeight(context, 0.05, 35, 35),
+      height: processedHeight(context, 0.04, 35, 35),
       decoration: const BoxDecoration(color: Color.fromARGB(255, 8, 8, 8)),
       width: double.infinity,
       child: Marquee(
@@ -133,7 +133,7 @@ searchBar(context) {
     child: Container(
       padding: const EdgeInsets.all(5),
       width: double.infinity,
-      height: processedHeight(context, 0.06, 45, 45),
+      height: processedHeight(context, 0.05, 45, 45),
       //height: MediaQuery.of(context).size.height * 0.06,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -151,7 +151,7 @@ searchBar(context) {
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontSize: processedFontheight(context),
               color: const Color.fromARGB(201, 15, 15, 15),
             ),
           ),
@@ -166,7 +166,7 @@ suggestions(context) {
   return Container(
     margin: const EdgeInsets.all(5),
     width: double.infinity,
-    height: processedHeight(context, 0.12, 90, 90),
+    height: processedHeight(context, 0.10, 90, 90),
     //context, 0.125, 60, 80
     //height: MediaQuery.of(context).size.height * 0.125,
     child: Column(
@@ -183,7 +183,7 @@ suggestions(context) {
 nearYou(context) {
   return Container(
     width: double.infinity,
-    height: processedHeight(context, 0.17, 125, 125),
+    height: processedHeight(context, 0.15, 125, 125),
     //height: MediaQuery.of(context).size.height * 0.18,
     margin: EdgeInsets.all(5),
     child: Column(
@@ -194,7 +194,7 @@ nearYou(context) {
           "NEAR YOU",
           style: TextStyle(
             color: Colors.white,
-            fontSize: 18,
+            fontSize: processedFontheight(context),
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
@@ -238,7 +238,7 @@ ticketAndExit(context) {
                 "STOP INFO",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: processedFontheight(context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                 ),
@@ -272,7 +272,7 @@ ticketAndExit(context) {
                 "METRO MAP",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: processedFontheight(context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                 ),
@@ -291,7 +291,7 @@ ticketAndExit(context) {
 
 appFooter(context) {
   return Container(
-    height: processedHeight(context, 0.40, 300, 400),
+    height: processedHeight(context, 0.45, 300, 400),
     // height:
     //     MediaQuery.of(context).size.height *
     //     0.4, //this is genius idk how i did this but why not, height is equal to width of screen
@@ -337,6 +337,7 @@ appFooter(context) {
 double processedHeight(context, factorMax, minSize, prefferedHeight) {
   //not working in split view, solve that bug
   try {
+    print("Factor Max is $factorMax");
     double finalHeight;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -347,12 +348,16 @@ double processedHeight(context, factorMax, minSize, prefferedHeight) {
       maxHeight = prefferedHeight; // or some other default value
     }
     double minHeight = minSize.toDouble();
-    if (width > 600) {
-      //checks if phone or tab
-      //960 moto
-      //841 samsung
+    if (height > 400) {
+      //checks if phone multiview or normal screen
 
-      finalHeight = maxHeight.clamp(minHeight, height).toDouble();
+      finalHeight =
+          maxHeight
+              .clamp(
+                minHeight,
+                height,
+              ) //bit of scrolling is inevitbale, so let it be
+              .toDouble(); //SOLVED: right now it has a bit of empty space at the bottom on some screens that are large, make it so that everyscreen has height derieved from screen height and preferred heigth is taken only when that cant be applied
       print("FINAL HEIGHT IS $finalHeight");
     } else {
       print("using preffered height");
@@ -363,5 +368,20 @@ double processedHeight(context, factorMax, minSize, prefferedHeight) {
   } catch (e) {
     print("Error processing height: $e ");
     return prefferedHeight.toDouble();
+  }
+}
+
+double processedFontheight(context) {
+  double width = MediaQuery.of(context).size.width;
+  if (width < 600) {
+    print("18");
+    return 18;
+  }
+  if (width >= 600) {
+    print("22");
+    return 22;
+  } else {
+    print("18");
+    return 18;
   }
 }
