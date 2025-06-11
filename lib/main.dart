@@ -32,27 +32,9 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: MyHomePage(),
+        child: Page1(),
       ), //added safe area such that it is not cut by any notch or screen cutouts
       //
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      body: Page1(),
-      //bottomNavigationBar: buildMyNavBar(context), //bottom navigation
     );
   }
 }

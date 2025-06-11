@@ -1,10 +1,10 @@
 import 'dart:ffi';
 import 'package:neopop/neopop.dart';
 import 'route.dart';
-import 'metroStationsList.dart';
+import './ServicesDir/metroStationsList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Station_element.dart';
+import './ServicesDir/Station_element.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -18,7 +18,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 8, 8, 8),
         body: searchBody(context),
         resizeToAvoidBottomInset: true,
       ),
@@ -88,7 +88,7 @@ backBox(BuildContext context) {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const routeScreen()),
+              CupertinoPageRoute(builder: (context) => const routeScreen()),
             );
           },
           child: Row(
@@ -232,7 +232,7 @@ class _searchBoxedState extends State<searchBoxed> {
               onSubmitted: (_) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
+                  CupertinoPageRoute(
                     builder: (context) {
                       //logic to push user to route screen
                       return const routeScreen(); //integrate a checking condition whether both stations have been entered or not

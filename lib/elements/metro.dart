@@ -1,17 +1,18 @@
 import 'dart:math';
 import 'dart:ui';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:neopop/neopop.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
-import 'svgMap.dart';
+import './MapDir/mapMetro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:vibration/vibration.dart';
-import 'Station_element.dart';
+import './ServicesDir/Station_element.dart';
 import 'search.dart';
-import 'stopInfo.dart';
-import 'mapMetro.dart';
+import './StationDir/stopInfo.dart';
+import './MapDir/svgMap.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -23,75 +24,44 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return metroScreen(context);
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+      body: metroHomeScreen(),
+    ); //add this inside an scaffold
+    // return metroScreen(context);
   }
 }
 
-metroScreen(BuildContext context) {
-  //created a seprate function to dynamically open and close the bottom sheet
-  return Container(
-    //height: MediaQuery.of(context).size.height
-    decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
-    child: Column(
-      //you can now remove list view as i have modified back button to make sure keyboard closes before going back
-      children: [
-        InfoBar(), //adding info bar to scaffold
-        //searchBar(),
-        Flexible(
-          child: Container(
-            //width: double.infinity,
-            padding: EdgeInsets.symmetric(
-              horizontal: 15,
-            ), //only hornizontally padded to outer container
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 8, 8, 8),
-            ),
-            child: ListView(
-              physics: AlwaysScrollableScrollPhysics(),
-              //new children inside the container for adding an padding and an border around elements
-              children: [
-                Container(
-                  //height: double.infinity,
-                  // padding: EdgeInsets.only(
-                  //   bottom: MediaQuery.of(context).padding.bottom,
-                  // ),
-                  //padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                  //width: MediaQuery.of(context).size.width,
-                  // decoration: BoxDecoration(
-                  //   border: Border.all(
-                  //     color: const Color.fromARGB(255, 35, 35, 35),
-                  //   ),
-                  // ),
-                  //432
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      appFooter(context),
-                      searchBar(
-                        context,
-                      ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
-                      suggestions(context),
-                      Divider(
-                        thickness: 1,
+class metroHomeScreen extends StatefulWidget {
+  const metroHomeScreen({super.key});
 
-                        color: const Color.fromARGB(255, 35, 35, 35),
-                      ),
-                      nearYou(context),
-                      Divider(
-                        thickness: 1,
-                        color: const Color.fromARGB(255, 35, 35, 35),
-                      ),
-                      ticketAndExit(context),
-                    ],
-                  ), // creating another child children pair to add an outline across all elements
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
+  @override
+  State<metroHomeScreen> createState() => _metroHomeScreenState();
+}
+
+class _metroHomeScreenState extends State<metroHomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+      child: Column(
+        children: [
+          InfoBar(),
+          Expanded(child: appFooter(context)),
+          searchBar(
+            context,
+          ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
+          suggestions(context),
+          Divider(thickness: 1, color: const Color.fromARGB(255, 35, 35, 35)),
+          nearYou(context),
+          Divider(thickness: 1, color: const Color.fromARGB(255, 35, 35, 35)),
+          ticketAndExit(context),
+        ],
+      ),
+    );
+  }
 }
 
 class InfoBar extends StatelessWidget {
@@ -113,6 +83,7 @@ class InfoBar extends StatelessWidget {
           fontFamily: 'Doto',
           color: Color.fromARGB(255, 230, 81, 0),
           fontSize: 20,
+          fontWeight: FontWeight.w200,
         ),
       ),
     );
@@ -127,7 +98,7 @@ searchBar(context) {
     onTap: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const SearchScreen()),
+        CupertinoPageRoute(builder: (context) => const SearchScreen()),
       );
     },
     child: Container(
@@ -229,7 +200,7 @@ ticketAndExit(context) {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => stopInfoScreen()),
+                CupertinoPageRoute(builder: (context) => stopInfoScreen()),
               );
             },
             child: Align(
@@ -263,7 +234,7 @@ ticketAndExit(context) {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => mapMetroScreen()),
+                CupertinoPageRoute(builder: (context) => mapMetroScreen()),
               );
             },
             child: Align(
@@ -291,7 +262,7 @@ ticketAndExit(context) {
 
 appFooter(context) {
   return Container(
-    height: processedHeight(context, 0.45, 300, 400),
+    //height: processedHeight(context, 0.45, 300, 400),
     // height:
     //     MediaQuery.of(context).size.height *
     //     0.4, //this is genius idk how i did this but why not, height is equal to width of screen
@@ -309,23 +280,20 @@ appFooter(context) {
         fit: BoxFit.cover,
       ),
     ),
+
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Container(
           margin: EdgeInsets.all(20),
-          child: Shimmer.fromColors(
-            baseColor: const Color.fromARGB(255, 222, 222, 222),
-            highlightColor: const Color.fromARGB(255, 153, 153, 153),
-            child: Text(
-              "New Delhi",
-              style: TextStyle(
-                //color: const Color.fromARGB(255, 216, 216, 216),
-                fontSize: 40,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
+          child: Text(
+            "New Delhi",
+            style: TextStyle(
+              color: const Color.fromARGB(255, 216, 216, 216),
+              fontSize: 40,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -339,7 +307,10 @@ double processedHeight(context, factorMax, minSize, prefferedHeight) {
   try {
     print("Factor Max is $factorMax");
     double finalHeight;
-    double height = MediaQuery.of(context).size.height;
+    double height =
+        MediaQuery.of(context).size.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
     double width = MediaQuery.of(context).size.width;
     print("HEIGHT IS $height");
     print("WIDTH IS $width ");
