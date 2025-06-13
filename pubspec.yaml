@@ -87,6 +87,8 @@ flutter:
     - assets/Map/shapes.txt
     - assets/Map/svgMap1.svg
     - assets/Image/Appfooter.jpg
+    - assets/Image/pf1.png
+    - assets/Map/DelhiMetroMap.png
 
   fonts:
     - family: Poppins

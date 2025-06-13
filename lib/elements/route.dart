@@ -28,15 +28,26 @@ class RouteDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+      padding: EdgeInsets.fromLTRB(15, 10, 15, 5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           topNavBar(context),
           tripSummary(),
           Divider(thickness: 1, color: const Color.fromARGB(255, 35, 35, 35)),
-          routeCluster(),
-          routeCluster(),
+          Expanded(
+            // to give scroll behaviour
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                routeCluster("pink"),
+                interchangeInfo(),
+                routeCluster("blue"),
+                interchangeInfo(),
+                routeCluster("yellow"),
+              ],
+            ),
+          ),
           // routeCluster(),
           //Cancel button and option selector
           //Route summary
@@ -81,6 +92,7 @@ topNavBar(context) {
 }
 
 class tripSummary extends StatelessWidget {
+  //full bottom part comes under this
   const tripSummary({super.key});
 
   @override
@@ -145,7 +157,8 @@ class tripSummary extends StatelessWidget {
   }
 }
 
-routeCluster() {
+routeCluster(lineColor) {
+  //here both the left line indicator and right info indicator are combined
   double height =
       250; //presetting height at one place so that text and line indicator stay at same height
   return Container(
@@ -153,7 +166,7 @@ routeCluster() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        lineIndicator(height), //bar line indicator on left
+        lineIndicator(height, lineColor), //bar line indicator on left
         Expanded(
           child: infoIndicator(height),
         ), //station info and other info on right
@@ -162,18 +175,20 @@ routeCluster() {
   );
 }
 
-lineIndicator(height) {
+lineIndicator(height, lineColor) {
+  //left line
   return Container(
     width: 7,
     height: height,
     decoration: BoxDecoration(
-      color: const Color.fromARGB(255, 47, 130, 255),
+      color: Colors.blueAccent, //impllemt line color to change dynamically
       borderRadius: BorderRadius.all(Radius.circular(50)),
     ),
   );
 }
 
 infoIndicator(height) {
+  //right line info
   return Container(
     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
     height: height,
@@ -192,12 +207,24 @@ infoIndicator(height) {
           ),
         ),
         SizedBox(height: 10),
-        Text(
-          "Heaing towards Majlis Park",
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 15,
-            fontWeight: FontWeight.w300,
+        Container(
+          //train heading info
+          child: Row(
+            children: [
+              Icon(
+                CupertinoIcons.train_style_two,
+                color: Colors.grey,
+                size: 15,
+              ),
+              Text(
+                " Heading towards Majlis Park",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            ],
           ),
         ),
         SizedBox(height: 2),
@@ -251,6 +278,71 @@ infoIndicator(height) {
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+interchangeInfo() {
+  return Container(
+    height: 70,
+    margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
+    width: double.infinity,
+    //decoration: BoxDecoration(color: const Color.fromARGB(255, 54, 54, 54)),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          width: 7,
+          height: 100,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                const Color.fromARGB(255, 0, 0, 0),
+                const Color.fromARGB(255, 255, 255, 255),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(50)),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Make transfer",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+
+                SizedBox(height: 2),
+                Container(
+                  child: Row(
+                    children: [
+                      Icon(Icons.directions_walk, color: Colors.grey, size: 15),
+                      Text(
+                        "5 Min",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

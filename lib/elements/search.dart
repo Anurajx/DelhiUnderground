@@ -56,6 +56,7 @@ backBox(BuildContext context) {
             if (MediaQuery.of(context).viewInsets.bottom != 0) {
               //if keyboard is open it closes first then the screen goes back
               FocusScope.of(context).unfocus();
+              Navigator.pop(context);
             } else {
               Navigator.pop(context);
             }

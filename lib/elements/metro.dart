@@ -77,7 +77,7 @@ class InfoBar extends StatelessWidget {
       child: Marquee(
         //adding marquee effect to text with help of the package
         text:
-            "DELHI METRO MEIN AAPKA SWAGAT HAI * DELHI METRO WELCOMES YOU *", //Hard coded text for now, will add an feature to dyanmically change it
+            "DELHI METRO WELCOMES YOU * ALL METRO LINES OPERATING ON SCHEDULE *", //Hard coded text for now, will add an feature to dyanmically change it
         blankSpace: 20,
         style: TextStyle(
           fontFamily: 'Doto',
