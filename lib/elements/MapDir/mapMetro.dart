@@ -13,7 +13,7 @@ class _mapMetroScreenState extends State<mapMetroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: mapScreenCluster(context),
     );
   }
@@ -25,8 +25,8 @@ mapScreenCluster(context) {
 
 topNavBar(context) {
   return Container(
-    color: const Color.fromARGB(255, 0, 0, 0),
-    padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+    color: Colors.black,
+    padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,9 +53,17 @@ topNavBar(context) {
             ],
           ),
         ),
+        Spacer(),
+        Text(
+          "Credit - www.inat.fr",
+          style: TextStyle(
+            color: const Color.fromARGB(255, 177, 177, 177),
+            fontSize: 14,
+          ),
+        ),
       ],
     ),
-  );
+  ); //////////////
 }
 
 // topNavBlur(context) {

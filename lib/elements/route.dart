@@ -98,7 +98,7 @@ class tripSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
+      padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
       child: Text.rich(
         TextSpan(
           children: [
@@ -189,98 +189,108 @@ lineIndicator(height, lineColor) {
 
 infoIndicator(height) {
   //right line info
-  return Container(
-    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-    height: height,
-    //decoration: BoxDecoration(color: const Color.fromARGB(255, 93, 93, 93)),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          //heading
-          "Bhikaji Cama Place",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
+  bool isExpanded = false;
+  return InkWell(
+    //implement this condition
+    onTap: () {
+      print("container pressed");
+      isExpanded = !isExpanded; //if open than closes if closed than opens
+    },
+    splashColor: const Color.fromARGB(255, 16, 16, 16),
+    highlightColor: const Color.fromARGB(255, 0, 0, 0),
+    child: Container(
+      margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+      height: height,
+      //decoration: BoxDecoration(color: const Color.fromARGB(255, 93, 93, 93)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            //heading
+            "Bhikaji Cama Place",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
-        SizedBox(height: 10),
-        Container(
-          //train heading info
-          child: Row(
-            children: [
-              Icon(
-                CupertinoIcons.train_style_two,
-                color: Colors.grey,
-                size: 15,
-              ),
-              Text(
-                " Heading towards Majlis Park",
-                style: TextStyle(
+          SizedBox(height: 10),
+          Container(
+            //train heading info
+            child: Row(
+              children: [
+                Icon(
+                  CupertinoIcons.train_style_two,
                   color: Colors.grey,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w300,
+                  size: 15,
                 ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 2),
-        Text(
-          "Every 2 min",
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 15,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        SizedBox(height: 2),
-        Text(
-          "Slightly Crowded",
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 15,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        SizedBox(height: 10),
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(102, 54, 54, 54),
-            borderRadius: BorderRadius.circular(50),
-          ),
-          width: 150,
-          height: 30,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                "30 Stations",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w300,
+                Text(
+                  " Heading towards Majlis Park",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
-              ),
-              Spacer(),
-              Icon(CupertinoIcons.sort_down, color: Colors.grey),
-            ],
+              ],
+            ),
           ),
-        ),
-        Spacer(), //SPACERRRR
-        Text(
-          //heading
-          "Rajori Garden",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
+          SizedBox(height: 2),
+          Text(
+            "Every 2 min",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 15,
+              fontWeight: FontWeight.w300,
+            ),
           ),
-        ),
-      ],
+          SizedBox(height: 2),
+          Text(
+            "Slightly Crowded",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 15,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          SizedBox(height: 10),
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(102, 54, 54, 54),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            width: 150,
+            height: 30,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "30 Stations",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                Spacer(),
+                Icon(CupertinoIcons.sort_down, color: Colors.grey),
+              ],
+            ),
+          ),
+          Spacer(), //SPACERRRR
+          Text(
+            //heading
+            "Rajori Garden",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
