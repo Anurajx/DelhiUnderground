@@ -40,11 +40,11 @@ class RouteDisplay extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: [
-                routeCluster("pink"),
+                routeCluster(lineColor: "red"),
                 interchangeInfo(),
-                routeCluster("blue"),
+                routeCluster(lineColor: "red"),
                 interchangeInfo(),
-                routeCluster("yellow"),
+                routeCluster(lineColor: "red"),
               ],
             ),
           ),
@@ -105,7 +105,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "Your trip takes ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 110, 110, 110),
+                color: const Color.fromARGB(255, 109, 109, 109),
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
@@ -113,7 +113,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "50 Minutes ", //make these a variable
               style: TextStyle(
-                color: const Color.fromARGB(255, 230, 81, 0),
+                color: const Color.fromARGB(255, 187, 187, 187),
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
@@ -121,7 +121,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "has ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 110, 110, 110),
+                color: const Color.fromARGB(255, 109, 109, 109),
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
@@ -129,7 +129,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "2 interchange ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 230, 81, 0),
+                color: const Color.fromARGB(255, 187, 187, 187),
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
@@ -137,15 +137,15 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "and costs ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 110, 110, 110),
+                color: const Color.fromARGB(255, 109, 109, 109),
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
             ),
             TextSpan(
-              text: "Rs 50. ",
+              text: "50 Rs. ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 230, 81, 0),
+                color: const Color.fromARGB(255, 187, 187, 187),
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
@@ -157,50 +157,127 @@ class tripSummary extends StatelessWidget {
   }
 }
 
-routeCluster(lineColor) {
-  //here both the left line indicator and right info indicator are combined
+// routeCluster(lineColor) {
+//   //here both the left line indicator and right info indicator are combined
+
+// }
+
+class routeCluster extends StatefulWidget {
+  dynamic lineColor;
+  routeCluster({super.key, required this.lineColor});
+
+  @override
+  State<routeCluster> createState() => _routeClusterState();
+}
+
+class _routeClusterState extends State<routeCluster> {
+  // combines both line indicator and info indicator
   double height =
       250; //presetting height at one place so that text and line indicator stay at same height
-  return Container(
-    padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        lineIndicator(height, lineColor), //bar line indicator on left
-        Expanded(
-          child: infoIndicator(height),
-        ), //station info and other info on right
-      ],
-    ),
-  );
-}
-
-lineIndicator(height, lineColor) {
-  //left line
-  return Container(
-    width: 7,
-    height: height,
-    decoration: BoxDecoration(
-      color: Colors.blueAccent, //impllemt line color to change dynamically
-      borderRadius: BorderRadius.all(Radius.circular(50)),
-    ),
-  );
-}
-
-infoIndicator(height) {
-  //right line info
+  double collapsableHeight = 30;
+  double collapsableWidth = 150;
   bool isExpanded = false;
-  return InkWell(
-    //implement this condition
-    onTap: () {
-      print("container pressed");
-      isExpanded = !isExpanded; //if open than closes if closed than opens
-    },
-    splashColor: const Color.fromARGB(255, 16, 16, 16),
-    highlightColor: const Color.fromARGB(255, 0, 0, 0),
-    child: Container(
+  void _containerToggle() {
+    setState(() {
+      isExpanded = !isExpanded;
+      print(isExpanded);
+      if (isExpanded) {
+        collapsableHeight = 100; //collapsed and increased height
+        collapsableWidth = 250; //collapsed and increased width
+
+        height = height + collapsableHeight;
+        //height = height + collapsableHeight;
+      } else {
+        collapsableWidth = 150;
+        height = height - collapsableHeight;
+        collapsableHeight = 30;
+        //height = height - collapsableHeight;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      splashColor: const Color.fromARGB(255, 16, 16, 16),
+      highlightColor: const Color.fromARGB(255, 0, 0, 0),
+      onTap: _containerToggle,
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 100),
+        height: height,
+        padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            lineIndicator(height: height, lineColor: widget.lineColor),
+            Expanded(
+              child: infoIndicator(
+                height: height,
+                collapsableHeight: collapsableHeight,
+                collapsableWidth: collapsableWidth,
+              ),
+            ),
+            // InkWell(
+            //   child: //bar line indicator on left
+            //       Expanded(child: infoIndicator(height: height)),
+            // ), //station info and other info on right
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// lineIndicator(height, lineColor) {
+// }
+
+class lineIndicator extends StatefulWidget {
+  double height = 250;
+  dynamic lineColor;
+  lineIndicator({super.key, required this.height, required this.lineColor});
+
+  @override
+  State<lineIndicator> createState() => _lineIndicatorState();
+}
+
+class _lineIndicatorState extends State<lineIndicator> {
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 100),
+      width: 7,
+      height: widget.height,
+      decoration: BoxDecoration(
+        color: Colors.blueAccent, //impllemt line color to change dynamically
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+      ),
+    );
+    ;
+  }
+}
+
+class infoIndicator extends StatefulWidget {
+  double height;
+  double collapsableWidth = 150;
+  double collapsableHeight = 30;
+  infoIndicator({
+    super.key,
+    required this.height,
+    required this.collapsableHeight,
+    required this.collapsableWidth,
+  });
+
+  @override
+  State<infoIndicator> createState() => _infoIndicatorState();
+}
+
+class _infoIndicatorState extends State<infoIndicator> {
+  @override
+  Widget build(BuildContext context) {
+    //right line info
+    return Container(
       margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-      height: height,
+      height: widget.height,
       //decoration: BoxDecoration(color: const Color.fromARGB(255, 93, 93, 93)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -255,19 +332,23 @@ infoIndicator(height) {
             ),
           ),
           SizedBox(height: 10),
-          Container(
+          AnimatedContainer(
+            //animated collapsable container
+            duration: const Duration(milliseconds: 100),
             padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             decoration: BoxDecoration(
               color: const Color.fromARGB(102, 54, 54, 54),
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(5),
             ),
-            width: 150,
-            height: 30,
+            width: widget.collapsableWidth,
+            //height: 30,
+            height: widget.collapsableHeight,
+            //curve: Curves.fastOutSlowIn,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "30 Stations",
+                  "6 Stations",
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 15,
@@ -291,8 +372,8 @@ infoIndicator(height) {
           ),
         ],
       ),
-    ),
-  );
+    ); ////
+  }
 }
 
 interchangeInfo() {
@@ -310,8 +391,8 @@ interchangeInfo() {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                const Color.fromARGB(255, 0, 0, 0),
-                const Color.fromARGB(255, 255, 255, 255),
+                const Color.fromARGB(255, 80, 80, 80),
+                const Color.fromARGB(255, 200, 200, 200),
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
