@@ -89,6 +89,8 @@ flutter:
     - assets/Image/Appfooter.jpg
     - assets/Image/pf1.png
     - assets/Map/DelhiMetroMap.png
+    - assets/Image/Vector.png
+    - assets/Image/Vector2.png
 
   fonts:
     - family: Poppins
@@ -99,10 +101,14 @@ flutter:
       fonts:
         - asset: assets/fonts/Doto/Doto-Medium.ttf
 
-flutter_icons:
+flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/Image/AppLogoS.png"
+  image_path: "assets/Image/Vector2.png"
+  adaptive_icon_foreground: "assets/Image/Vector2.png"
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground_inset: 25
+  #try making ios true or false if getting an error
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

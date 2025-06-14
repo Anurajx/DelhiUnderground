@@ -55,9 +55,10 @@ topNavBar(context) {
         ),
         Spacer(),
         Text(
-          "Credit - www.inat.fr",
+          "Credit: jug cerovic | www.inat.fr",
           style: TextStyle(
             color: const Color.fromARGB(255, 177, 177, 177),
+            fontWeight: FontWeight.w500,
             fontSize: 14,
           ),
         ),

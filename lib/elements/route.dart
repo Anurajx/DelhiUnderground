@@ -5,6 +5,7 @@ import './ServicesDir/Station_element.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './ServicesDir/Station_element.dart';
+import './ServicesDir/minimetroStationList.dart';
 
 class routeScreen extends StatefulWidget {
   const routeScreen({super.key});
@@ -172,6 +173,9 @@ class routeCluster extends StatefulWidget {
 
 class _routeClusterState extends State<routeCluster> {
   // combines both line indicator and info indicator
+
+  int extraStations = minimetroStations.length;
+  double stationHeight = 25;
   double height =
       250; //presetting height at one place so that text and line indicator stay at same height
   double collapsableHeight = 30;
@@ -182,15 +186,15 @@ class _routeClusterState extends State<routeCluster> {
       isExpanded = !isExpanded;
       print(isExpanded);
       if (isExpanded) {
-        collapsableHeight = 100; //collapsed and increased height
+        collapsableHeight =
+            20 + extraStations * stationHeight; //collapsed and increased height
         collapsableWidth = 250; //collapsed and increased width
-
         height = height + collapsableHeight;
         //height = height + collapsableHeight;
       } else {
         collapsableWidth = 150;
         height = height - collapsableHeight;
-        collapsableHeight = 30;
+        //collapsableHeight = 30;
         //height = height - collapsableHeight;
       }
     });
@@ -209,12 +213,17 @@ class _routeClusterState extends State<routeCluster> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            lineIndicator(height: height, lineColor: widget.lineColor),
+            lineIndicator(
+              height: height,
+              lineColor: widget.lineColor,
+              extraStations: 5,
+            ),
             Expanded(
               child: infoIndicator(
                 height: height,
                 collapsableHeight: collapsableHeight,
                 collapsableWidth: collapsableWidth,
+                isExpanded: isExpanded,
               ),
             ),
             // InkWell(
@@ -233,8 +242,15 @@ class _routeClusterState extends State<routeCluster> {
 
 class lineIndicator extends StatefulWidget {
   double height = 250;
+  int extraStations = 0;
+  double stationHeight = 5;
   dynamic lineColor;
-  lineIndicator({super.key, required this.height, required this.lineColor});
+  lineIndicator({
+    super.key,
+    required this.height,
+    required this.lineColor,
+    required this.extraStations,
+  });
 
   @override
   State<lineIndicator> createState() => _lineIndicatorState();
@@ -260,11 +276,13 @@ class infoIndicator extends StatefulWidget {
   double height;
   double collapsableWidth = 150;
   double collapsableHeight = 30;
+  bool isExpanded;
   infoIndicator({
     super.key,
     required this.height,
     required this.collapsableHeight,
     required this.collapsableWidth,
+    required this.isExpanded,
   });
 
   @override
@@ -331,35 +349,20 @@ class _infoIndicatorState extends State<infoIndicator> {
               fontWeight: FontWeight.w300,
             ),
           ),
-          SizedBox(height: 10),
-          AnimatedContainer(
-            //animated collapsable container
-            duration: const Duration(milliseconds: 100),
-            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(102, 54, 54, 54),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            width: widget.collapsableWidth,
-            //height: 30,
-            height: widget.collapsableHeight,
-            //curve: Curves.fastOutSlowIn,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  "6 Stations",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w300,
+          //SizedBox(height: 10),
+          Spacer(),
+          (widget.isExpanded == true)
+              ? collapsedExpandedView() //add the collapsed station expanded display logo
+              : Row(
+                children: [
+                  Text(
+                    "6 Stations",
+                    style: TextStyle(color: Colors.grey, fontSize: 15),
                   ),
-                ),
-                Spacer(),
-                Icon(CupertinoIcons.sort_down, color: Colors.grey),
-              ],
-            ),
-          ),
+                  SizedBox(width: 5),
+                  Icon(CupertinoIcons.sort_down, color: Colors.grey, size: 20),
+                ],
+              ),
           Spacer(), //SPACERRRR
           Text(
             //heading
@@ -374,6 +377,32 @@ class _infoIndicatorState extends State<infoIndicator> {
       ),
     ); ////
   }
+}
+
+collapsedExpandedView() {
+  //learn how itsss DONEE
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children:
+        minimetroStations.entries.map((entry) {
+          final station = entry.value;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.arrow_circle_right, color: Colors.grey, size: 15),
+                SizedBox(width: 2),
+                Text(
+                  station["name"],
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                ),
+              ],
+            ),
+          );
+        }).toList(),
+  );
 }
 
 interchangeInfo() {
@@ -391,7 +420,7 @@ interchangeInfo() {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                const Color.fromARGB(255, 80, 80, 80),
+                const Color.fromARGB(0, 80, 80, 80),
                 const Color.fromARGB(255, 200, 200, 200),
               ],
               begin: Alignment.topCenter,
