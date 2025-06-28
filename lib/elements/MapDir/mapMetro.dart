@@ -13,14 +13,14 @@ class _mapMetroScreenState extends State<mapMetroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: Colors.black,
       body: mapScreenCluster(context),
     );
   }
 }
 
 mapScreenCluster(context) {
-  return Stack(children: [metroMap(), topNavBar(context)]);
+  return SafeArea(child: Stack(children: [metroMap(), topNavBar(context)]));
 }
 
 topNavBar(context) {
@@ -55,7 +55,7 @@ topNavBar(context) {
         ),
         Spacer(),
         Text(
-          "Credit: jug cerovic | www.inat.fr",
+          "Credit: jug cerovic ",
           style: TextStyle(
             color: const Color.fromARGB(255, 177, 177, 177),
             fontWeight: FontWeight.w500,

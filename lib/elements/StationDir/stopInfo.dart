@@ -19,9 +19,11 @@ class _stopInfoScreenState extends State<stopInfoScreen> {
 }
 
 stationCluster(context) {
-  return Container(
-    padding: EdgeInsets.fromLTRB(20, 20, 10, 5),
-    child: Column(children: [topNavBar(context), stationLineMarker()]),
+  return SafeArea(
+    child: Container(
+      padding: EdgeInsets.fromLTRB(20, 20, 10, 5),
+      child: Column(children: [topNavBar(context), stationLineMarker()]),
+    ),
   );
 }
 

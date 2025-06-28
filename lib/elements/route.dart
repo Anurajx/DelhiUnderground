@@ -18,7 +18,10 @@ class _routeScreenState extends State<routeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(backgroundColor: Colors.black, body: RouteDisplay()),
+      child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        body: RouteDisplay(),
+      ),
     );
   }
 }

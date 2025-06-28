@@ -169,7 +169,7 @@ class stationPrimitive extends StatelessWidget {
               fontFamily: 'Poppins',
               color: const Color.fromARGB(255, 179, 179, 179),
               fontSize: 18,
-              fontWeight: FontWeight.w300,
+              fontWeight: FontWeight.w300, //300
             ),
           ),
           SizedBox(
@@ -277,7 +277,7 @@ class stationNearby extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Poppins',
               color: const Color.fromARGB(255, 179, 179, 179),
-              fontSize: 18,
+              fontSize: 18, //18
               fontWeight: FontWeight.w300,
             ),
           ),

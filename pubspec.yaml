@@ -91,6 +91,7 @@ flutter:
     - assets/Map/DelhiMetroMap.png
     - assets/Image/Vector.png
     - assets/Image/Vector2.png
+    - assets/Image/carfooter.jpg
 
   fonts:
     - family: Poppins

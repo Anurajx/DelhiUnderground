@@ -48,16 +48,17 @@ class _metroHomeScreenState extends State<metroHomeScreen> {
       padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
       child: Column(
         children: [
-          InfoBar(),
+          //InfoBar(),
           Expanded(child: appFooter(context)),
           searchBar(
             context,
           ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
           suggestions(context),
-          Divider(thickness: 1, color: const Color.fromARGB(255, 35, 35, 35)),
+          Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
           nearYou(context),
-          Divider(thickness: 1, color: const Color.fromARGB(255, 35, 35, 35)),
+          Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
           ticketAndExit(context),
+          InfoBar(),
         ],
       ),
     );
@@ -82,7 +83,7 @@ class InfoBar extends StatelessWidget {
         style: TextStyle(
           fontFamily: 'Doto',
           color: Color.fromARGB(255, 230, 81, 0),
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.w200,
         ),
       ),
@@ -111,7 +112,7 @@ searchBar(context) {
           topLeft: Radius.circular(0),
           topRight: Radius.circular(0), //remove later if not used
         ),
-        color: const Color.fromARGB(255, 234, 234, 234),
+        color: const Color.fromARGB(255, 224, 224, 224),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -162,7 +163,7 @@ nearYou(context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "NEAR YOU",
+          "Near you",
           style: TextStyle(
             color: Colors.white,
             fontSize: processedFontheight(context),
@@ -181,46 +182,54 @@ ticketAndExit(context) {
   // chat gpt
   return Container(
     width: double.infinity,
-    height: processedHeight(context, 0.1, 50, 70),
+    height: 60, //processedHeight(context, 0.1, 50, 70),
     //height: MediaQuery.of(context).size.height * 0.1,
     // decoration: BoxDecoration(
     //   border: Border(
     //     bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
     //   ),
     // ),
-    margin: const EdgeInsets.symmetric(horizontal: 5),
+    margin: const EdgeInsets.all(5),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          child: GestureDetector(
-            behavior:
-                HitTestBehavior
-                    .opaque, // to make sure that when tapped on white space the button is tapped
-            onTap: () {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(builder: (context) => stopInfoScreen()),
-              );
-            },
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "STOP INFO",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: processedFontheight(context),
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(2)),
+              //color: const Color.fromARGB(255, 17, 17, 17),
+              border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+            ),
+            child: GestureDetector(
+              behavior:
+                  HitTestBehavior
+                      .opaque, // to make sure that when tapped on white space the button is tapped
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => stopInfoScreen()),
+                );
+              },
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "stop info",
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 224, 224, 224),
+                    fontSize: processedFontheight(context),
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
           ),
         ),
         SizedBox(
-          width: 20,
-          height: 50,
-          child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
+          width: 10,
+          // height: 50,
+          // child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
         ),
         // Container(
         //   width: 1,
@@ -229,23 +238,30 @@ ticketAndExit(context) {
         //   margin: EdgeInsets.symmetric(horizontal: 10),
         // ),
         Expanded(
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(builder: (context) => mapMetroScreen()),
-              );
-            },
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "METRO MAP",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: processedFontheight(context),
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(2)),
+              border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+              //color: const Color.fromARGB(255, 17, 17, 17),
+            ),
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => mapMetroScreen()),
+                );
+              },
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "metro map",
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 224, 224, 224),
+                    fontSize: processedFontheight(context),
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
@@ -275,30 +291,30 @@ appFooter(context) {
         bottomLeft: Radius.circular(0),
         bottomRight: Radius.circular(0),
       ),
-      image: DecorationImage(
-        image: AssetImage('assets/Image/Appfooter.jpg'),
+      image: const DecorationImage(
+        image: AssetImage('assets/Image/carfooter.jpg'),
         fit: BoxFit.cover,
       ),
     ),
 
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Container(
-          margin: EdgeInsets.all(20),
-          child: Text(
-            "New Delhi",
-            style: TextStyle(
-              color: const Color.fromARGB(255, 216, 216, 216),
-              fontSize: 40,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
-      ],
-    ),
+    // child: Row(
+    //   mainAxisAlignment: MainAxisAlignment.start,
+    //   crossAxisAlignment: CrossAxisAlignment.start,
+    //   children: [
+    //     Container(
+    //       margin: EdgeInsets.all(20),
+    //       child: Text(
+    //         "New Delhi \nDelay on red line",
+    //         style: TextStyle(
+    //           color: const Color.fromARGB(255, 230, 81, 0),
+    //           fontSize: 25,
+    //           fontFamily: 'Doto',
+    //           fontWeight: FontWeight.w400,
+    //         ),
+    //       ),
+    //     ),
+    //   ],
+    // ),
   );
 }
 
@@ -319,7 +335,7 @@ double processedHeight(context, factorMax, minSize, prefferedHeight) {
       maxHeight = prefferedHeight; // or some other default value
     }
     double minHeight = minSize.toDouble();
-    if (height > 400) {
+    if (height < 700) {
       //checks if phone multiview or normal screen
 
       finalHeight =
@@ -332,7 +348,7 @@ double processedHeight(context, factorMax, minSize, prefferedHeight) {
       print("FINAL HEIGHT IS $finalHeight");
     } else {
       print("using preffered height");
-      finalHeight = prefferedHeight.toDouble();
+      finalHeight = maxHeight = height * factorMax;
     }
 
     return finalHeight;
