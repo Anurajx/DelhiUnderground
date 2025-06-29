@@ -19,7 +19,7 @@ class _routeScreenState extends State<routeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 8, 8, 8),
         body: RouteDisplay(),
       ),
     );
@@ -308,7 +308,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             //heading
             "Bhikaji Cama Place",
             style: TextStyle(
-              color: Colors.white,
+              color: const Color.fromARGB(255, 220, 220, 220),
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
@@ -371,7 +371,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             //heading
             "Rajori Garden",
             style: TextStyle(
-              color: Colors.white,
+              color: const Color.fromARGB(255, 220, 220, 220),
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),

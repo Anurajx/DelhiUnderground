@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Station extends StatelessWidget {
+class stationUnit extends StatelessWidget {
   final dynamic name;
 
-  const Station({super.key, required this.name});
+  const stationUnit({super.key, required this.name, required String zone});
 
   @override
   Widget build(BuildContext context) {

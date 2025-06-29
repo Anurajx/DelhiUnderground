@@ -1,4 +1,6 @@
 import 'dart:ffi';
+import 'package:csv/csv.dart';
+import 'package:flutter/services.dart';
 import 'package:neopop/neopop.dart';
 import 'route.dart';
 import './ServicesDir/metroStationsList.dart';
@@ -37,7 +39,7 @@ searchBody(BuildContext context) {
         screenName(),
         //SizedBox(height: 15),
         searchCluster(),
-        ListViewed(),
+        searchLogic(),
         //finalSearch(),
       ],
     ),
@@ -277,38 +279,65 @@ Widget fromToIcon() {
   );
 }
 
-Widget ListViewed() {
-  return Expanded(
-    child: ListView.separated(
-      itemCount: metroStations.length,
-      itemBuilder: (context, index) {
-        String stationID = metroStations.keys.elementAt(index);
-        var stationName = metroStations[stationID];
-        return Station(name: stationName!["name"]);
-      },
-      separatorBuilder: (context, index) {
-        return const Divider(
-          color: Color.fromARGB(255, 27, 27, 27),
-          height: 30,
-        );
-      },
-    ),
-  );
+// Widget ListViewed() {
+//   return
+// }
+class StationType {
+  //defining station variable
+  final String zone;
+  final String name;
+
+  StationType({required this.zone, required this.name});
 }
 
-// finalSearch() {
-//   return NeoPopButton(
-//     color: Colors.black,
-//     bottomShadowColor: const Color.fromARGB(255, 37, 37, 37),
-//     rightShadowColor: Colors.black,
-//     onTapUp: () {},
-//     border: Border.all(color: Colors.lightGreenAccent),
-//     child: Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: const [Text("Search", style: TextStyle(color: Colors.white))],
-//       ),
-//     ),
-//   );
-// }
+Future<List<StationType>> loadStationsFromCSV() async {
+  final rawData = await rootBundle.loadString('assets/Map/Stops.csv');
+  final List<List<dynamic>> rows = CsvToListConverter().convert(rawData);
+  return rows.map((Row) {
+    return StationType(name: Row[2].toString(), zone: Row[3].toString());
+  }).toList();
+}
+
+class searchLogic extends StatefulWidget {
+  //widget for search logic
+  const searchLogic({super.key});
+
+  @override
+  State<searchLogic> createState() => _searchLogicState();
+}
+
+class _searchLogicState extends State<searchLogic> {
+  List<StationType> stations = [];
+  List<StationType> filteredStations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadStationsFromCSV().then((Stations) {
+      setState(() {
+        stations = Stations;
+        filteredStations = Stations;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.separated(
+        itemCount: metroStations.length,
+        itemBuilder: (context, index) {
+          String stationID = metroStations.keys.elementAt(index);
+          var stationName = metroStations[stationID];
+          return stationUnit(name: stationName!["name"], zone: '');
+        },
+        separatorBuilder: (context, index) {
+          return const Divider(
+            color: Color.fromARGB(255, 27, 27, 27),
+            height: 30,
+          );
+        },
+      ),
+    );
+  }
+}

@@ -49,12 +49,12 @@ class _metroHomeScreenState extends State<metroHomeScreen> {
       child: Column(
         children: [
           //InfoBar(),
-          Expanded(child: appFooter(context)),
+          Expanded(child: topHeader()),
           searchBar(
             context,
           ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
           suggestions(context),
-          Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
+          Divider(thickness: 0, color: const Color.fromARGB(251, 35, 35, 35)),
           nearYou(context),
           Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
           ticketAndExit(context),
@@ -198,6 +198,42 @@ ticketAndExit(context) {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(2)),
+              border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+              //color: const Color.fromARGB(255, 17, 17, 17),
+            ),
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => mapMetroScreen()),
+                );
+              },
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "metro map",
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 187, 187, 187),
+                    fontSize: processedFontheight(context),
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+
+        SizedBox(
+          width: 10,
+          // height: 50,
+          // child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
+        ),
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(2)),
               //color: const Color.fromARGB(255, 17, 17, 17),
               border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
             ),
@@ -216,7 +252,7 @@ ticketAndExit(context) {
                 child: Text(
                   "stop info",
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 224, 224, 224),
+                    color: const Color.fromARGB(255, 187, 187, 187),
                     fontSize: processedFontheight(context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
@@ -226,47 +262,13 @@ ticketAndExit(context) {
             ),
           ),
         ),
-        SizedBox(
-          width: 10,
-          // height: 50,
-          // child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
-        ),
+
         // Container(
         //   width: 1,
         //   height: 50,
         //   color: const Color.fromARGB(255, 35, 35, 35),
         //   margin: EdgeInsets.symmetric(horizontal: 10),
         // ),
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(2)),
-              border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
-              //color: const Color.fromARGB(255, 17, 17, 17),
-            ),
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(builder: (context) => mapMetroScreen()),
-                );
-              },
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "metro map",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 224, 224, 224),
-                    fontSize: processedFontheight(context),
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
       ],
     ),
   );
@@ -275,6 +277,62 @@ ticketAndExit(context) {
 // appFooter() {
 //   return
 // }
+
+class topHeader extends StatefulWidget {
+  const topHeader({super.key});
+
+  @override
+  State<topHeader> createState() => _topHeaderState();
+}
+
+class _topHeaderState extends State<topHeader>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+  Widget build(BuildContext context) {
+    super.build(context);
+    return Container(
+      //height: processedHeight(context, 0.45, 300, 400),
+      // height:
+      //     MediaQuery.of(context).size.height *
+      //     0.4, //this is genius idk how i did this but why not, height is equal to width of screen
+      //width: double.infinity,
+      //margin: EdgeInsets.all(0),
+      // height:
+      //     420, //right now the hrigh of container is hard coded make by mkaing it expanded
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(0),
+          bottomRight: Radius.circular(0),
+        ),
+        image: DecorationImage(
+          image: const AssetImage('assets/Image/carfooter.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+
+      // child: Row(
+      //   mainAxisAlignment: MainAxisAlignment.start,
+      //   crossAxisAlignment: CrossAxisAlignment.start,
+      //   children: [
+      //     Container(
+      //       margin: EdgeInsets.all(20),
+      //       child: Text(
+      //         "New Delhi \nDelay on red line",
+      //         style: TextStyle(
+      //           color: const Color.fromARGB(255, 230, 81, 0),
+      //           fontSize: 25,
+      //           fontFamily: 'Doto',
+      //           fontWeight: FontWeight.w400,
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
+    );
+    ;
+  }
+}
 
 appFooter(context) {
   return Container(
@@ -291,7 +349,7 @@ appFooter(context) {
         bottomLeft: Radius.circular(0),
         bottomRight: Radius.circular(0),
       ),
-      image: const DecorationImage(
+      image: DecorationImage(
         image: AssetImage('assets/Image/carfooter.jpg'),
         fit: BoxFit.cover,
       ),
