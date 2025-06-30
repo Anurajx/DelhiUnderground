@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class stationUnit extends StatelessWidget {
   final dynamic name;
+  final dynamic zone;
 
-  const stationUnit({super.key, required this.name, required String zone});
+  const stationUnit({super.key, required this.name, required this.zone});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class stationUnit extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           StationNameAndArrow(name),
-          commonName(name),
+          commonName(zone),
           SizedBox(
             height: 5,
           ), //added to even out the padding from top and bottom

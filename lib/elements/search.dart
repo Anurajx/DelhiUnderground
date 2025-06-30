@@ -7,6 +7,7 @@ import './ServicesDir/metroStationsList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './ServicesDir/Station_element.dart';
+import 'dart:isolate';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -21,29 +22,219 @@ class _SearchScreenState extends State<SearchScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-        body: searchBody(context),
-        resizeToAvoidBottomInset: true,
+        body: searchBody(context: context),
+        //resizeToAvoidBottomInset: true,
       ),
     );
   }
 }
 
-searchBody(BuildContext context) {
-  return Container(
-    width: double.infinity,
-    height: double.infinity,
-    padding: EdgeInsets.symmetric(horizontal: 10),
-    child: Column(
-      children: [
-        backBox(context),
-        screenName(),
-        //SizedBox(height: 15),
-        searchCluster(),
-        searchLogic(),
-        //finalSearch(),
-      ],
-    ),
-  );
+class searchBody extends StatefulWidget {
+  final dynamic context;
+
+  const searchBody({super.key, required this.context});
+
+  @override
+  State<searchBody> createState() => _searchBodyState();
+}
+
+class _searchBodyState extends State<searchBody> {
+  final FocusNode _focusNode = FocusNode();
+  final FocusNode _focusNodeTo = FocusNode();
+  final TextEditingController _controller1 = TextEditingController();
+  final TextEditingController _controller2 = TextEditingController();
+  List<dynamic> orignalStations = [];
+  List<dynamic> filteredStations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+    loadStationsFromCSV().then((stations) {
+      setState(() {
+        //print("Stations is $Stations");
+        orignalStations = stations;
+        //print("Stations is $stations");
+        filteredStations = stations;
+
+        print("filteredStations is $filteredStations");
+        //print("filteredStations is $filteredStations");
+      });
+    });
+  }
+
+  void filterStations(String query) {
+    //filtered station not wroking properly correct it
+    //search logic to find station
+    final lowerQuery = query.toLowerCase();
+    setState(() {
+      if (query != "") {
+        filteredStations =
+            orignalStations.where((station) {
+              if (station.length >= 1) {
+                //print("filter station suggestion $stations[1]");
+                final name = station[2]?.toString().toLowerCase();
+                final zone = station[1]?.toString().toLowerCase();
+                print("name is $name zone is $zone");
+                return name!.contains(lowerQuery) || zone!.contains(lowerQuery);
+              }
+              return false;
+            }).toList();
+        //print("filteredStations is $filteredStations");
+      } else {
+        filteredStations = orignalStations;
+        //print("falseeeeeee user request ${List.from(orignalStations)}");
+      }
+      //print("filteredStations is $filteredStations");
+      // var name = stations[0].name;
+      // var zone = stations[0].name;
+      // stationList(name, zone);
+      //print("filteredStations is $filteredStations");
+    });
+  }
+
+  Future<List> loadStationsFromCSV() async {
+    //fetching data from CSV file logic
+    final rawData = await rootBundle.loadString('assets/Map/stops.csv');
+    final List<List<dynamic>> rows = await Isolate.run(() {
+      return CsvToListConverter(
+        eol: '\n',
+        fieldDelimiter: ',',
+        textDelimiter: '"',
+        shouldParseNumbers: false,
+      ).convert(rawData);
+    });
+    print("Total rows parsed: ${rows}");
+    return rows;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          backBox(context), //leave as is
+          screenName(), //leave as is
+          Stack(
+            //adding the search cluster here
+            alignment: Alignment.centerLeft,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20, left: 40, top: 20),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      //color: const Color.fromARGB(255, 8, 8, 8),
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 234, 234, 234),
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(10), //40
+                    ),
+                    //width: double.infinity,
+                    height: 100,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
+                          child: TextField(
+                            textCapitalization:
+                                TextCapitalization
+                                    .sentences, //makes the keyboard open with caps on for first letter
+                            focusNode: _focusNode,
+                            cursorOpacityAnimates: true,
+                            controller: _controller1,
+                            onChanged: filterStations,
+                            //onChanged: filterStations,
+                            onSubmitted: (_) {
+                              FocusScope.of(context).requestFocus(_focusNodeTo);
+                            },
+                            decoration: InputDecoration.collapsed(
+                              border: InputBorder.none,
+                              hintText: "From",
+                              hintStyle: TextStyle(
+                                color: const Color.fromARGB(255, 132, 132, 132),
+                                fontWeight: FontWeight.w200,
+                              ),
+                            ),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                        Divider(
+                          color: const Color.fromARGB(255, 50, 50, 50),
+                          height: 1,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
+                          child: TextField(
+                            textCapitalization: TextCapitalization.sentences,
+                            focusNode: _focusNodeTo,
+                            cursorOpacityAnimates: true,
+                            controller: _controller2,
+                            onSubmitted: (_) {
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) {
+                                    //logic to push user to route screen
+                                    return const routeScreen(); //integrate a checking condition whether both stations have been entered or not
+                                  },
+                                ),
+                              );
+                            }, //add the logic to navigate to next screen whenever available
+                            decoration: InputDecoration.collapsed(
+                              border: InputBorder.none,
+                              hintText: "To",
+                              hintStyle: TextStyle(
+                                color: const Color.fromARGB(255, 132, 132, 132),
+                                fontWeight: FontWeight.w200,
+                              ),
+                            ),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  //stationList("okayy", "nicee"),
+                  // stations.length >= 2
+                  //     ? SizedBox(
+                  //       height: 300,
+                  //       child: stationList(stations[0].name, stations[2].zone),
+                  //     )
+                  //     : const CircularProgressIndicator(),
+                ],
+              ),
+              fromToIcon(),
+            ], //add flip circle function flipcircle()
+          ),
+          stationList(
+            filteredStations,
+          ), //apply the logic that the this compoents intself takes out usefull vaues out of the list of lists
+          // searchLogic(),
+          //finalSearch(),
+        ],
+      ),
+    );
+  }
 }
 
 backBox(BuildContext context) {
@@ -131,140 +322,6 @@ screenName() {
   );
 }
 
-searchCluster() {
-  return Stack(
-    alignment: Alignment.centerLeft,
-    children: [
-      searchBoxed(),
-      fromToIcon(),
-    ], //add flip circle function flipcircle()
-  );
-}
-
-// flipCircle() {
-//   return Container(
-//     decoration: BoxDecoration(
-//       color: const Color.fromARGB(255, 26, 26, 26),
-//       borderRadius: BorderRadius.circular(40),
-//     ),
-//     width: 35,
-//     height: 35,
-//     child: Icon(
-//       CupertinoIcons.chevron_up_chevron_down,
-//       color: const Color.fromARGB(255, 234, 234, 234),
-//     ),
-//   );
-// }
-
-class searchBoxed extends StatefulWidget {
-  const searchBoxed({super.key});
-
-  @override
-  State<searchBoxed> createState() => _searchBoxedState();
-}
-
-class _searchBoxedState extends State<searchBoxed> {
-  final FocusNode _focusNode = FocusNode();
-  final FocusNode _focusNodeTo = FocusNode();
-  final TextEditingController _controller1 = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _focusNode.requestFocus();
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20, left: 40, top: 20),
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 0, 0, 0),
-        //color: const Color.fromARGB(255, 8, 8, 8),
-        border: Border.all(
-          color: const Color.fromARGB(255, 234, 234, 234),
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(10), //40
-      ),
-      //width: double.infinity,
-      height: 100,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
-            child: TextField(
-              textCapitalization:
-                  TextCapitalization
-                      .sentences, //makes the keyboard open with caps on for first letter
-              focusNode: _focusNode,
-              cursorOpacityAnimates: true,
-              controller: _controller1,
-              onSubmitted: (_) {
-                FocusScope.of(context).requestFocus(_focusNodeTo);
-              },
-              decoration: InputDecoration.collapsed(
-                border: InputBorder.none,
-                hintText: "From",
-                hintStyle: TextStyle(
-                  color: const Color.fromARGB(255, 132, 132, 132),
-                  fontWeight: FontWeight.w200,
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          Divider(color: const Color.fromARGB(255, 50, 50, 50), height: 1),
-          Container(
-            margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
-            child: TextField(
-              textCapitalization: TextCapitalization.sentences,
-              focusNode: _focusNodeTo,
-              cursorOpacityAnimates: true,
-              controller: _controller2,
-              onSubmitted: (_) {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (context) {
-                      //logic to push user to route screen
-                      return const routeScreen(); //integrate a checking condition whether both stations have been entered or not
-                    },
-                  ),
-                );
-              }, //add the logic to navigate to next screen whenever available
-              decoration: InputDecoration.collapsed(
-                border: InputBorder.none,
-                hintText: "To",
-                hintStyle: TextStyle(
-                  color: const Color.fromARGB(255, 132, 132, 132),
-                  fontWeight: FontWeight.w200,
-                ),
-              ),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 Widget fromToIcon() {
   //icons on the left side of the search box
   return Container(
@@ -282,62 +339,130 @@ Widget fromToIcon() {
 // Widget ListViewed() {
 //   return
 // }
+///////////////////////////////////////////-----------------------------------
 class StationType {
-  //defining station variable
   final String zone;
   final String name;
 
   StationType({required this.zone, required this.name});
+
+  // @override
+  // String toString() => 'StationType(name: $name, zone: $zone)';
 }
 
 Future<List<StationType>> loadStationsFromCSV() async {
-  final rawData = await rootBundle.loadString('assets/Map/Stops.csv');
-  final List<List<dynamic>> rows = CsvToListConverter().convert(rawData);
-  return rows.map((Row) {
-    return StationType(name: Row[2].toString(), zone: Row[3].toString());
-  }).toList();
-}
+  try {
+    final rawData = await rootBundle.loadString('assets/Map/stops.csv');
+    print("length: ${rawData}");
 
-class searchLogic extends StatefulWidget {
-  //widget for search logic
-  const searchLogic({super.key});
-
-  @override
-  State<searchLogic> createState() => _searchLogicState();
-}
-
-class _searchLogicState extends State<searchLogic> {
-  List<StationType> stations = [];
-  List<StationType> filteredStations = [];
-
-  @override
-  void initState() {
-    super.initState();
-    loadStationsFromCSV().then((Stations) {
-      setState(() {
-        stations = Stations;
-        filteredStations = Stations;
-      });
+    final List<List<dynamic>> rows = await Isolate.run(() {
+      return CsvToListConverter(
+        eol: '\n',
+        fieldDelimiter: ',',
+        textDelimiter: '"',
+        shouldParseNumbers: false,
+      ).convert(rawData);
     });
-  }
+    print("length: ${rows.length}");
 
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.separated(
-        itemCount: metroStations.length,
-        itemBuilder: (context, index) {
-          String stationID = metroStations.keys.elementAt(index);
-          var stationName = metroStations[stationID];
-          return stationUnit(name: stationName!["name"], zone: '');
-        },
-        separatorBuilder: (context, index) {
-          return const Divider(
-            color: Color.fromARGB(255, 27, 27, 27),
-            height: 30,
-          );
-        },
-      ),
+    //print("Total rows parsed: ${rows.length}");
+
+    final stations =
+        rows
+            .where(
+              (row) =>
+                  row.length > 3 &&
+                  row[2] != null &&
+                  row[3] != null &&
+                  row[2].toString().trim().isNotEmpty &&
+                  row[3].toString().trim().isNotEmpty,
+            )
+            .map((row) {
+              print("leng: $row");
+              return StationType(
+                name: row[1].toString().trim(),
+                zone: row[2].toString().trim(),
+              );
+            })
+            .toList();
+
+    print("Successfully created ${stations.length} stations");
+    print('leng detail: $stations');
+    return stations;
+  } catch (e, stackTrace) {
+    print("Error loading CSV: $e");
+    print("Stack trace: $stackTrace");
+    return [];
+  }
+}
+
+// Widget stationList(station) {
+//   print("Finalised list: $station");
+//   station = [];
+//   //print("Station list called for $name and $zone");
+//   if (station != []) {
+//     return Expanded(
+//       child: ListView.separated(
+//         itemCount: metroStations.length,
+//         itemBuilder: (context, index) {
+//           String stationID = metroStations.keys.elementAt(index);
+//           var stationName = metroStations[stationID];
+//           return stationUnit(name: " station[12][2]", zone: "station[12][1]");
+//         },
+//         separatorBuilder: (context, index) {
+//           return const Divider(
+//             color: Color.fromARGB(255, 27, 27, 27),
+//             height: 30,
+//           );
+//         },
+//       ),
+//     );
+//   } else {
+//     return CircularProgressIndicator();
+//   }
+// }
+
+Widget stationList(List<dynamic> stations) {
+  if (stations.isEmpty) {
+    return const Center(
+      child: CupertinoActivityIndicator(color: Colors.white, radius: 15),
     );
   }
+
+  return Expanded(
+    child: ListView.separated(
+      itemCount: stations.length,
+      itemBuilder: (context, index) {
+        var station = stations[index];
+
+        // Defensive check
+        if (station.length < 3) {
+          return const SizedBox(); // or some error placeholder
+        }
+
+        String name = station[2].toString(); // Station Name
+        String zone = station[1].toString(); // Zone
+
+        return stationUnit(name: name, zone: zone);
+      },
+      separatorBuilder: (context, index) {
+        return const Divider(
+          color: Color.fromARGB(255, 27, 27, 27),
+          height: 30,
+        );
+      },
+    ),
+  );
 }
+
+// Widget stationList(station) {
+//   return ListView.builder(
+//     itemCount: metroStations.length,
+//     itemBuilder: (context, index) {
+//       return stationUnit(name: station[2], zone: "station[12][1]");
+//     },
+//   );
+// }
+
+
+//return stationUnit(name: station[12][2], zone: "station[12][1]");
