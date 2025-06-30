@@ -4,26 +4,25 @@ import 'package:flutter/material.dart';
 class stationUnit extends StatelessWidget {
   final dynamic name;
   final dynamic zone;
+  final List lines;
 
-  const stationUnit({super.key, required this.name, required this.zone});
+  const stationUnit({
+    super.key,
+    required this.name,
+    required this.zone,
+    required this.lines,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        //ADD APP LOGIC HERE FOR NEXT SCREEN
-      },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          StationNameAndArrow(name),
-          commonName(zone),
-          SizedBox(
-            height: 5,
-          ), //added to even out the padding from top and bottom
-          stationLineBadge(),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        StationNameAndArrow(name),
+        commonName(zone),
+        SizedBox(height: 5), //added to even out the padding from top and bottom
+        stationLineBadge(lines),
+      ],
     );
   }
 }
@@ -80,7 +79,35 @@ StationNameAndArrow(name) {
   );
 }
 
-stationLineBadge() {
+Color getColorFromLineNumber(int lineNumber) {
+  switch (lineNumber) {
+    case 1:
+      return Colors.red;
+    case 2:
+      return Colors.blue;
+    case 3:
+      return Colors.green;
+    case 4:
+      return Colors.yellow;
+    case 5:
+      return Colors.purple;
+    case 6:
+      return const Color.fromARGB(255, 255, 215, 34);
+    case 7:
+      return const Color.fromARGB(255, 220, 24, 255);
+    case 8:
+      return const Color.fromARGB(255, 67, 34, 255);
+    case 9:
+      return const Color.fromARGB(255, 36, 208, 255);
+    case 15:
+      return const Color.fromARGB(255, 255, 137, 3);
+    default:
+      return const Color.fromARGB(228, 255, 255, 255);
+  }
+} //build this line indicator builder tommorow
+
+stationLineBadge(lines) {
+  int lineNumber = lines[0];
   return Row(
     children: [
       // SizedBox(
@@ -90,7 +117,7 @@ stationLineBadge() {
         width: 17,
         height: 17,
         decoration: BoxDecoration(
-          color: Colors.blueAccent,
+          color: getColorFromLineNumber(lineNumber),
           borderRadius: BorderRadius.all(Radius.circular(50)),
         ),
         child: Center(
@@ -110,7 +137,7 @@ stationLineBadge() {
         height: 17,
 
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: const Color.fromARGB(0, 244, 67, 54),
           borderRadius: BorderRadius.all(Radius.circular(50)),
         ),
         child: Center(

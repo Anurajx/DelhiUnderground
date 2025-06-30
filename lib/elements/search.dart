@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './ServicesDir/Station_element.dart';
 import 'dart:isolate';
+import 'package:string_similarity/string_similarity.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -77,11 +78,25 @@ class _searchBodyState extends State<searchBody> {
                 //print("filter station suggestion $stations[1]");
                 final name = station[2]?.toString().toLowerCase();
                 final zone = station[1]?.toString().toLowerCase();
-                print("name is $name zone is $zone");
+                //print("name is $name zone is $zone");
+                final nameScore = StringSimilarity.compareTwoStrings(
+                  name,
+                  lowerQuery,
+                );
+                print("nameScore is $nameScore");
+                final zoneScore = StringSimilarity.compareTwoStrings(
+                  zone,
+                  lowerQuery,
+                );
+                if (nameScore > 0.5 || zoneScore > 0.5) {
+                  return true;
+                }
                 return name!.contains(lowerQuery) || zone!.contains(lowerQuery);
+                //return name!.contains(lowerQuery) || zone!.contains(lowerQuery);
               }
               return false;
             }).toList();
+
         //print("filteredStations is $filteredStations");
       } else {
         filteredStations = orignalStations;
@@ -439,11 +454,20 @@ Widget stationList(List<dynamic> stations) {
         if (station.length < 3) {
           return const SizedBox(); // or some error placeholder
         }
-
+        String line = station[3].toString();
+        line = line.replaceAll(RegExp(r'[\[\]]'), '');
+        List<String> parts = line.split('-');
+        List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
+        print("Line numbers: $lineNumbers");
         String name = station[2].toString(); // Station Name
         String zone = station[1].toString(); // Zone
 
-        return stationUnit(name: name, zone: zone);
+        return InkWell(
+          focusColor: const Color.fromARGB(0, 255, 255, 255),
+          splashColor: const Color.fromARGB(86, 76, 76, 76),
+          onTap: () {},
+          child: stationUnit(name: name, zone: zone, lines: lineNumbers),
+        );
       },
       separatorBuilder: (context, index) {
         return const Divider(
