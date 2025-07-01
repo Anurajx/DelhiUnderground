@@ -15,14 +15,21 @@ class stationUnit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        StationNameAndArrow(name),
-        commonName(zone),
-        SizedBox(height: 5), //added to even out the padding from top and bottom
-        stationLineBadge(lines),
-      ],
+    return Container(
+      //height: 60,
+      margin: EdgeInsets.only(top: 20, bottom: 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          StationNameAndArrow(name),
+          commonName(zone),
+          SizedBox(
+            height: 5,
+          ), //added to even out the padding from top and bottom
+          stationLineBadgeBuilder(lines),
+        ],
+      ),
     );
   }
 }
@@ -82,32 +89,51 @@ StationNameAndArrow(name) {
 Color getColorFromLineNumber(int lineNumber) {
   switch (lineNumber) {
     case 1:
-      return Colors.red;
+      return const Color.fromARGB(255, 209, 52, 56); //red line
     case 2:
-      return Colors.blue;
+      return const Color.fromARGB(255, 200, 155, 0); //yellow line
     case 3:
-      return Colors.green;
+      return const Color.fromARGB(255, 0, 122, 204); //blue line main
     case 4:
-      return Colors.yellow;
+      return const Color.fromARGB(255, 0, 142, 224); //check blue line branch
     case 5:
-      return Colors.purple;
+      return const Color.fromARGB(255, 0, 168, 107); //green line
     case 6:
-      return const Color.fromARGB(255, 255, 215, 34);
+      return const Color.fromARGB(255, 125, 68, 157); //violet line
     case 7:
-      return const Color.fromARGB(255, 220, 24, 255);
+      return const Color.fromARGB(255, 219, 112, 147); //pink line
     case 8:
-      return const Color.fromARGB(255, 67, 34, 255);
+      return const Color.fromARGB(255, 170, 0, 119); //magenta line
     case 9:
-      return const Color.fromARGB(255, 36, 208, 255);
+      return const Color.fromARGB(255, 130, 130, 130); //grey line
+    case 10:
+      return const Color.fromARGB(255, 255, 114, 12); //check airport line
+
     case 15:
-      return const Color.fromARGB(255, 255, 137, 3);
+      return const Color.fromARGB(255, 0, 185, 235); //rapid metro line
+    case 20:
+      return const Color.fromARGB(255, 0, 185, 235); //aqua line
+    //green line
     default:
-      return const Color.fromARGB(228, 255, 255, 255);
+      return const Color.fromARGB(226, 255, 255, 255); //default
   }
 } //build this line indicator builder tommorow
 
-stationLineBadge(lines) {
-  int lineNumber = lines[0];
+//9,
+Widget stationLineBadgeBuilder(List<dynamic> lines) {
+  return Row(
+    children:
+        lines.map<Widget>((line) {
+          return Padding(
+            padding: const EdgeInsets.only(right: 5.0),
+            child: stationLineBadge(line),
+          );
+        }).toList(),
+  );
+}
+
+stationLineBadge(line) {
+  //int lineNumber = line[0];
   return Row(
     children: [
       // SizedBox(
@@ -117,12 +143,12 @@ stationLineBadge(lines) {
         width: 17,
         height: 17,
         decoration: BoxDecoration(
-          color: getColorFromLineNumber(lineNumber),
+          color: getColorFromLineNumber(line),
           borderRadius: BorderRadius.all(Radius.circular(50)),
         ),
         child: Center(
           child: Text(
-            "3",
+            "$line",
             style: TextStyle(
               color: Colors.black,
               fontSize: 12,
@@ -131,47 +157,7 @@ stationLineBadge(lines) {
           ),
         ),
       ),
-      SizedBox(width: 5),
-      Container(
-        width: 17,
-        height: 17,
-
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(0, 244, 67, 54),
-          borderRadius: BorderRadius.all(Radius.circular(50)),
-        ),
-        child: Center(
-          child: Text(
-            "7",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ), //make this change dynamically based on the station
-      ),
-
-      SizedBox(width: 5),
-      Container(
-        width: 17,
-        height: 17,
-
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(0, 255, 235, 59),
-          borderRadius: BorderRadius.all(Radius.circular(50)),
-        ),
-        child: Center(
-          child: Text(
-            "1",
-            style: TextStyle(
-              color: const Color.fromARGB(0, 255, 255, 255),
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-      ),
+      //SizedBox(width: 10),
     ],
   );
 }

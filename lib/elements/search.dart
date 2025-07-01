@@ -88,13 +88,16 @@ class _searchBodyState extends State<searchBody> {
                   zone,
                   lowerQuery,
                 );
-                if (nameScore > 0.5 || zoneScore > 0.5) {
+                if (nameScore > 0.7 || zoneScore > 0.5) {
+                  //have an extra check here for numbers
+                  //unconvetional check
                   return true;
                 }
-                return name!.contains(lowerQuery) || zone!.contains(lowerQuery);
+                return name!.contains(lowerQuery) ||
+                    zone!.contains(lowerQuery); //conventional check
                 //return name!.contains(lowerQuery) || zone!.contains(lowerQuery);
               }
-              return false;
+              return false; //if none matches work out
             }).toList();
 
         //print("filteredStations is $filteredStations");
@@ -181,7 +184,7 @@ class _searchBodyState extends State<searchBody> {
                               ),
                             ),
                             style: TextStyle(
-                              color: Colors.white,
+                              color: const Color.fromARGB(255, 179, 179, 179),
                               fontSize: 18,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
@@ -199,6 +202,7 @@ class _searchBodyState extends State<searchBody> {
                             focusNode: _focusNodeTo,
                             cursorOpacityAnimates: true,
                             controller: _controller2,
+                            onChanged: filterStations,
                             onSubmitted: (_) {
                               Navigator.push(
                                 context,
@@ -219,7 +223,7 @@ class _searchBodyState extends State<searchBody> {
                               ),
                             ),
                             style: TextStyle(
-                              color: Colors.white,
+                              color: const Color.fromARGB(255, 179, 179, 179),
                               fontSize: 18,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
@@ -470,10 +474,7 @@ Widget stationList(List<dynamic> stations) {
         );
       },
       separatorBuilder: (context, index) {
-        return const Divider(
-          color: Color.fromARGB(255, 27, 27, 27),
-          height: 30,
-        );
+        return const Divider(color: Color.fromARGB(255, 27, 27, 27), height: 1);
       },
     ),
   );
