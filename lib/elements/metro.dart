@@ -145,7 +145,20 @@ suggestions(context) {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        stationPrimitive(name: 'RK Puram'),
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            print("tapped");
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder:
+                    (context) => const SearchScreen(destination: "RK Puram"),
+              ),
+            );
+          },
+          child: stationPrimitive(name: 'RK Puram'),
+        ),
         stationPrimitive(name: 'Rajouri Garden'),
       ],
     ),

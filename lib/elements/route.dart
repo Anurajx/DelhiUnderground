@@ -47,8 +47,6 @@ class RouteDisplay extends StatelessWidget {
                 routeCluster(lineColor: "red"),
                 interchangeInfo(),
                 routeCluster(lineColor: "red"),
-                interchangeInfo(),
-                routeCluster(lineColor: "red"),
               ],
             ),
           ),
@@ -270,8 +268,28 @@ class _lineIndicatorState extends State<lineIndicator> {
         color: Colors.blueAccent, //impllemt line color to change dynamically
         borderRadius: BorderRadius.all(Radius.circular(50)),
       ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            width: 6,
+            height: 6,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+            ),
+          ),
+          Container(
+            width: 6,
+            height: 6,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+            ),
+          ),
+        ],
+      ),
     );
-    ;
   }
 }
 
@@ -308,7 +326,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             //heading
             "Bhikaji Cama Place",
             style: TextStyle(
-              color: const Color.fromARGB(255, 220, 220, 220),
+              color: const Color.fromARGB(255, 187, 187, 187),
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
@@ -371,7 +389,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             //heading
             "Rajori Garden",
             style: TextStyle(
-              color: const Color.fromARGB(255, 220, 220, 220),
+              color: const Color.fromARGB(255, 187, 187, 187),
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
@@ -395,7 +413,7 @@ collapsedExpandedView() {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.arrow_circle_right, color: Colors.grey, size: 15),
+                Icon(Icons.arrow_right_rounded, color: Colors.grey, size: 15),
                 SizedBox(width: 2),
                 Text(
                   station["name"],
