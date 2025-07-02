@@ -57,29 +57,41 @@ class _searchBodyState extends State<searchBody> {
   void initState() {
     super.initState();
     if (widget.destination != null) {
-      //if an argument available it gives it to second text filed controller
+      //if an argument from HOME SCREEN available it gives it to second text filed controller
       _controller2.text = widget.destination!;
     }
-
+    _focusNode1.addListener(() {
+      //important for filtered list reset
+      setState(() {
+        filteredStations = orignalStations;
+      });
+    });
     _focusNode2.addListener(() {
       //manual check
-      if (_focusNode2.hasFocus || _focusNode1.hasFocus) {
-        //sets the filtered list to default when the focus changes
-        //print("Focus Node 2 has focus");
-        setState(() {
-          if (_focusNode2.hasFocus) {
-            // resets the field check if the valid argumanet is given or not
-            fieldvalidator2 = false;
-            manualStationVerificationLogic();
-          }
-          if (_focusNode1.hasFocus) {
-            fieldvalidator1 = false;
-            manualStationVerificationLogic();
-          }
-          filteredStations =
-              orignalStations; //important for filtered list reset
-        });
-      }
+      // if (_focusNode2.hasFocus || _focusNode1.hasFocus) {
+      //sets the filtered list to default when the focus changes
+      //print("Focus Node 2 has focus");
+      setState(() {
+        // if (_focusNode2.hasFocus) {
+        //   // resets the field check if the valid argumanet is given or not
+        //   fieldvalidator2 = false;
+        //   manualStationVerificationLogic();
+        // }
+        // if (_focusNode1.hasFocus) {
+        //   fieldvalidator1 = false;
+        //   manualStationVerificationLogic();
+        // }
+        filteredStations = orignalStations; //important for filtered list reset
+      });
+      // Map<String, List<dynamic>> coreTransferStationsDict = {
+      //   //to reset the dictionry everytime
+      //   //Dictionary format
+      //   //SIMPLIFY-----
+      //   // alternative of using lists
+      //   'Source': [], //adding some defaults
+      //   'Destination': [],
+      // };
+      // }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -96,31 +108,32 @@ class _searchBodyState extends State<searchBody> {
     });
   }
 
-  manualStationVerificationLogic() {
-    //when adding that list that stores data suppose an argumanet is alredy given and is comcing frm home screen than you will need to also indetify which staiotn that query that is laredy there is, it will be easy as mostly 99.9% times it will be exact match
-    //and delay is fine as user if really wants to change some station he will take time
-    //works with abit of delay but that should'nt be an issue as planned the inputed station in the first time will be stored inside a list that will be reatined that has full detail of from and to station, making sure that even if an invalid station is inputed the app will use the stored data
-    //to hadnle situtation when user selctes the sation form hoemscreen from recent fields and when the user returns from route screen and we need to validate the stations
-    bool isExactStationMatch(String query, List<dynamic> stationList) {
-      return stationList.any(
-        (station) =>
-            station[2].toLowerCase().trim() == query.toLowerCase().trim(),
-      );
-    }
+  // manualStationVerificationLogic() {
+  //   //when adding that list that stores data suppose an argumanet is alredy given and is comcing frm home screen than you will need to also indetify which staiotn that query that is laredy there is, it will be easy as mostly 99.9% times it will be exact match
+  //   //and delay is fine as user if really wants to change some station he will take time
+  //   //works with abit of delay but that should'nt be an issue as planned the inputed station in the first time will be stored inside a list that will be reatined that has full detail of from and to station, making sure that even if an invalid station is inputed the app will use the stored data
+  //   //to hadnle situtation when user selctes the sation form hoemscreen from recent fields and when the user returns from route screen and we need to validate the stations
+  //   bool isExactStationMatch(String query, List<dynamic> stationList) {
+  //     return stationList.any(
+  //       (station) =>
+  //           station[2].toLowerCase().trim() == query.toLowerCase().trim(),
+  //     );
+  //   }
 
-    if (isExactStationMatch(_controller1.text, orignalStations)) {
-      setState(() {
-        fieldvalidator1 = true;
-      });
-    }
-    if (isExactStationMatch(_controller2.text, orignalStations)) {
-      setState(() {
-        fieldvalidator2 = true;
-      });
-    }
-  }
+  //   if (isExactStationMatch(_controller1.text, orignalStations)) {
+  //     setState(() {
+  //       fieldvalidator1 = true;
+  //     });
+  //   }
+  //   if (isExactStationMatch(_controller2.text, orignalStations)) {
+  //     setState(() {
+  //       fieldvalidator2 = true;
+  //     });
+  //   }
+  // }
 
   void filterStationsLogic(String query) {
+    //Logiv to find the best match
     final lowerQuery = query.toLowerCase();
 
     setState(() {
@@ -422,6 +435,7 @@ class StationType {
 }
 
 Future<List<StationType>> loadStationsFromCSV() async {
+  //NEEDS SIMPLE FIX-------
   try {
     final rawData = await rootBundle.loadString('assets/Map/stops.csv');
     print("length: ${rawData}");
@@ -467,9 +481,17 @@ Future<List<StationType>> loadStationsFromCSV() async {
   }
 }
 
-bool fieldvalidator1 = false;
-bool fieldvalidator2 = false;
-List<dynamic> coreTransferStations = [];
+// bool fieldvalidator1 = false;
+// bool fieldvalidator2 = false;
+//ist<dynamic> coreTransferStations = [];
+
+Map<String, List<dynamic>> coreTransferStationsDict = {
+  //Dictionary format
+  //SIMPLIFY-----
+  // alternative of using lists
+  'Source': [], //adding some defaults
+  'Destination': [],
+};
 
 Widget stationList(
   //rather than sending direct names of stations to route searching algorithm send the station list
@@ -502,7 +524,7 @@ Widget stationList(
         List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
         print("Line numbers: $lineNumbers");
         String name = station[2].toString(); // Station Name
-        String zone = station[1].toString(); // Zone
+        String zone = station[1].toString(); // not zone actually hindi name
 
         return InkWell(
           focusColor: const Color.fromARGB(0, 255, 255, 255),
@@ -514,8 +536,10 @@ Widget stationList(
               //filteredStations; //check why the recommedation is not reverting back to orginal list after changing focus
               _controller1.text = name;
               FocusScope.of(context).requestFocus(_focusNode2);
-              fieldvalidator1 = true;
-              coreTransferStations.add(station);
+              //fieldvalidator1 = true;
+              coreTransferStationsDict['Source'] =
+                  station; ////-- setting name to be sent to search algorithm
+              //coreTransferStations.add(station);-- previous list prototype
               //print("filed1 is $fieldvalidator1");
 
               // filteredStationsLogic;
@@ -525,8 +549,9 @@ Widget stationList(
             }
             if (_focusNode2.hasFocus) {
               _controller2.text = name;
-              fieldvalidator2 = true;
-              coreTransferStations.add(station);
+              //fieldvalidator2 = true;
+              coreTransferStationsDict['Destination'] = station;
+              //coreTransferStations.add(station);
 
               ScreenTransferController(
                 context,
@@ -538,8 +563,6 @@ Widget stationList(
               _controller1.text = name;
               FocusScope.of(context).requestFocus(_focusNode2);
             }
-            //_controller1.text = name;
-            //FocusScope.of(context).requestFocus(_focusNodeTo);
           },
           child: stationUnit(name: name, zone: zone, lines: lineNumbers),
         );
@@ -552,31 +575,39 @@ Widget stationList(
 }
 
 ScreenTransferController(context, source, destination) {
-  //transition list working but has an bug that keeps adding the source and desitnimation staiotn everytime we go ahead and back fix this , send this to route calculating algorithm
   print(
-    "the transition is from $source to $destination and the core list is $coreTransferStations",
+    "the transition is from $source to $destination and the core list is $coreTransferStationsDict",
   );
   //sends user to next route screen
-  if (fieldvalidator2 && fieldvalidator1) {
-    //same as done button checks and validabetes if both staitons have been inputed correctly
-    //checks if both fileds are populated or not
+  if (coreTransferStationsDict['Source']!.isNotEmpty &&
+      coreTransferStationsDict['Destination']!.isNotEmpty &&
+      source.isNotEmpty &&
+      destination.isNotEmpty) {
+    //checks for source and destination in dectinory and the text controller text if all are valid only then proceed
     Navigator.push(
       context,
-      CupertinoPageRoute(builder: (context) => const routeScreen()),
+      CupertinoPageRoute(
+        builder:
+            (context) =>
+                routeScreen(coreTransferStationsDict: coreTransferStationsDict),
+      ),
     );
   } else {
     final snackBar = SnackBar(
-      content: const Text('Please select both departure and arrival correctly'),
+      backgroundColor: const Color.fromARGB(255, 31, 200, 127),
+      content: const Text(
+        'Please select both departure and arrival correctly',
+        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w300),
+      ),
       action: SnackBarAction(
-        label: 'Close',
+        backgroundColor: Colors.black,
+        label: 'Okay',
+        textColor: Colors.white,
         onPressed: () {
           // Some code to undo the change.
         },
       ),
     );
-
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
-
-coreSourceDestinationList() {}

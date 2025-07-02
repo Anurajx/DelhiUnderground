@@ -24,10 +24,11 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-      body: metroHomeScreen(),
-    ); //add this inside an scaffold
+    return metroHomeScreen();
+    // return Scaffold(
+    //   backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+    //   body: metroHomeScreen(),
+    // ); //add this inside an scaffold
     // return metroScreen(context);
   }
 }
@@ -219,7 +220,7 @@ ticketAndExit(context) {
               onTap: () {
                 Navigator.push(
                   context,
-                  CupertinoPageRoute(builder: (context) => mapMetroScreen()),
+                  MaterialPageRoute(builder: (context) => mapMetroScreen()),
                 );
               },
               child: Align(
@@ -257,7 +258,7 @@ ticketAndExit(context) {
               onTap: () {
                 Navigator.push(
                   context,
-                  CupertinoPageRoute(builder: (context) => stopInfoScreen()),
+                  MaterialPageRoute(builder: (context) => stopInfoScreen()),
                 );
               },
               child: Align(
@@ -343,7 +344,6 @@ class _topHeaderState extends State<topHeader>
       //   ],
       // ),
     );
-    ;
   }
 }
 

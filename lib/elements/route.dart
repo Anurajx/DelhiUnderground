@@ -8,7 +8,10 @@ import './ServicesDir/Station_element.dart';
 import './ServicesDir/minimetroStationList.dart';
 
 class routeScreen extends StatefulWidget {
-  const routeScreen({super.key});
+  //final Map<String, Map<String, dynamic>> coreTransferStationsDict;
+  final Map<String, List<dynamic>>
+  coreTransferStationsDict; //temprory, this will have to go though the search alorithm than it will send data here. not directly
+  const routeScreen({super.key, required this.coreTransferStationsDict});
 
   @override
   State<routeScreen> createState() => _routeScreenState();
@@ -20,7 +23,7 @@ class _routeScreenState extends State<routeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-        body: RouteDisplay(),
+        body: RouteDisplay(), //temprory
       ),
     );
   }
@@ -44,9 +47,9 @@ class RouteDisplay extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: [
-                routeCluster(lineColor: "red"),
+                routeCluster(lineColor: "DOES NOT DO ANYTHING"),
                 interchangeInfo(),
-                routeCluster(lineColor: "red"),
+                routeCluster(lineColor: "DOES NOT DO ANYTHING"),
               ],
             ),
           ),
@@ -324,7 +327,7 @@ class _infoIndicatorState extends State<infoIndicator> {
         children: [
           Text(
             //heading
-            "Bhikaji Cama Place",
+            "Bhikaji Cama Place", //-------------------HERE--------------------------------------------
             style: TextStyle(
               color: const Color.fromARGB(255, 187, 187, 187),
               fontSize: 18,
@@ -354,7 +357,7 @@ class _infoIndicatorState extends State<infoIndicator> {
           ),
           SizedBox(height: 2),
           Text(
-            "Every 2 min",
+            "Blue Line",
             style: TextStyle(
               color: Colors.grey,
               fontSize: 15,
@@ -363,7 +366,7 @@ class _infoIndicatorState extends State<infoIndicator> {
           ),
           SizedBox(height: 2),
           Text(
-            "Slightly Crowded",
+            "Every 2 min",
             style: TextStyle(
               color: Colors.grey,
               fontSize: 15,
