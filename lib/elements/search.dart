@@ -57,37 +57,16 @@ class _searchBodyState extends State<searchBody> {
   @override
   void initState() {
     super.initState();
-    // _focusNode1.addListener(() {
-    //   if (_focusNode1.hasFocus) {
-    //     filterStationsLogic(_controller1.text); // trigger recommendation
-    //   }
-    // });
-
-    // _focusNode2.addListener(() {
-    //   if (_focusNode2.hasFocus) {
-    //     filterStationsLogic(_controller2.text); // trigger recommendation
-    //   }
-    // });
-
-    ///REMOVE
-    if (widget.destination != null) {
-      //if an argument from HOME SCREEN available it gives it to second text filed controller
-      _controller2.text =
-          widget
-              .destination!; //nah in future directly send this to search algorithm no need to go though this search screen
-    }
     _focusNode1.addListener(() {
-      //important for filtered list reset
       setState(() {
-        // _controller1.text =
-        //     coreTransferStationsDict['Source']![2]; //makes sure the user input to dictinory is correct and accdroding to user and if not he can change it
-        filteredStations = orignalStations;
+        filterStationsLogic(_controller1.text);
+
+        ///FUCKKKKK YESSSS
       });
     });
     _focusNode2.addListener(() {
       setState(() {
-        // _controller2.text = coreTransferStationsDict['Destination']![2];
-        filteredStations = orignalStations; //important for filtered list reset
+        filterStationsLogic(_controller2.text);
       });
     });
 
@@ -96,27 +75,20 @@ class _searchBodyState extends State<searchBody> {
     });
     loadStationsFromCSV().then((stations) {
       setState(() {
-        //print("Stations is $Stations");
         orignalStations = stations;
         filteredStations = stations;
-        //print("filteredStations is $filteredStations");
       });
     });
   }
 
+  @override
   void deactivate() {
     // when the router is poped and user goes back to home screen this is triggered
     super.deactivate();
     if (!Navigator.canPop(context)) {
-      //_shouldClear = true;
       coreTransferStationsDict.clear();
-      // print(
-      //   "$_shouldClear Clearing coreTransferStationsDict $coreTransferStationsDict",
-      // );
     }
   }
-  //////////////
-
   //////////////
 
   void filterStationsLogic(String query) {
@@ -333,40 +305,6 @@ backBox(BuildContext context, controller1, controller2) {
           ),
         ),
       ),
-
-      // SizedBox(
-      //   //submit button sized box
-      //   height: 50,
-      // ),
-      // GestureDetector(
-      //   onTap: () {
-      //     HitTestBehavior.opaque;
-      //     screenTransferController(
-      //       //sends user to next route screen and sends data to process
-      //       context,
-      //       controller1,
-      //       controller2,
-      //     );
-      //   },
-
-      //   child: Row(
-      //     children: [
-      //       Text(
-      //         "Done",
-      //         style: TextStyle(
-      //           color: const Color.fromARGB(255, 47, 130, 255),
-      //           fontWeight: FontWeight.w500,
-      //           fontFamily: 'Poppins',
-      //           fontSize: 18,
-      //         ),
-      //       ),
-      //       Icon(
-      //         CupertinoIcons.forward,
-      //         color: const Color.fromARGB(255, 47, 130, 255),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     ],
   );
 }
@@ -391,7 +329,6 @@ Widget fromToIcon() {
     children: [
       Icon(CupertinoIcons.circle, color: Colors.white),
       Icon(Icons.arrow_drop_down, color: Colors.white),
-      //Icon(CupertinoIcons.resize_v, color: Colors.white),
       Icon(CupertinoIcons.square, color: Colors.white),
     ],
   );
@@ -413,7 +350,6 @@ Widget stationList(
   focusNode2,
 ) {
   if (stations.isEmpty) {
-    //print("controller is $controller1");
     return const Center(
       child: Column(
         children: [
@@ -518,10 +454,6 @@ Widget stationList(
 screenTransferController(context, controller1, controller2) {
   String source = controller1.text;
   String destination = controller2.text;
-  print("coreTransferStationsDict when transferring $coreTransferStationsDict");
-  // print(
-  //   "the transition is from $source to $destination and the core list is $coreTransferStationsDict",
-  // );
   //sends user to next route screen
   if (ifSourceSelected() &&
       ifDestinationSelected() &&
@@ -534,6 +466,7 @@ screenTransferController(context, controller1, controller2) {
         coreTransferStationsDict['Destination']![2] != destination) {
       //confirms user input if there is a mismatch between dictionary and textfield
       showDialog(
+        //warns user with that BIG GREEN BOX for mis match
         context: context,
         builder:
             (context) => AlertDialog(
@@ -626,7 +559,7 @@ screenTransferController(context, controller1, controller2) {
         label: 'Okay',
         textColor: Colors.white,
         onPressed: () {
-          // Some code to undo the change.
+          //if you think of anyhting that would be good for UX add here
         },
       ),
     );
