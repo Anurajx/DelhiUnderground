@@ -52,22 +52,41 @@ class _searchBodyState extends State<searchBody> {
   final TextEditingController _controller2 = TextEditingController();
   List<dynamic> orignalStations = [];
   List<dynamic> filteredStations = [];
+  //bool _shouldClear = false;
 
   @override
   void initState() {
     super.initState();
+    // _focusNode1.addListener(() {
+    //   if (_focusNode1.hasFocus) {
+    //     filterStationsLogic(_controller1.text); // trigger recommendation
+    //   }
+    // });
+
+    // _focusNode2.addListener(() {
+    //   if (_focusNode2.hasFocus) {
+    //     filterStationsLogic(_controller2.text); // trigger recommendation
+    //   }
+    // });
+
+    ///REMOVE
     if (widget.destination != null) {
       //if an argument from HOME SCREEN available it gives it to second text filed controller
-      _controller2.text = widget.destination!;
+      _controller2.text =
+          widget
+              .destination!; //nah in future directly send this to search algorithm no need to go though this search screen
     }
     _focusNode1.addListener(() {
       //important for filtered list reset
       setState(() {
+        // _controller1.text =
+        //     coreTransferStationsDict['Source']![2]; //makes sure the user input to dictinory is correct and accdroding to user and if not he can change it
         filteredStations = orignalStations;
       });
     });
     _focusNode2.addListener(() {
       setState(() {
+        // _controller2.text = coreTransferStationsDict['Destination']![2];
         filteredStations = orignalStations; //important for filtered list reset
       });
     });
@@ -84,6 +103,21 @@ class _searchBodyState extends State<searchBody> {
       });
     });
   }
+
+  void deactivate() {
+    // when the router is poped and user goes back to home screen this is triggered
+    super.deactivate();
+    if (!Navigator.canPop(context)) {
+      //_shouldClear = true;
+      coreTransferStationsDict.clear();
+      // print(
+      //   "$_shouldClear Clearing coreTransferStationsDict $coreTransferStationsDict",
+      // );
+    }
+  }
+  //////////////
+
+  //////////////
 
   void filterStationsLogic(String query) {
     //Logiv to find the best match
@@ -300,39 +334,39 @@ backBox(BuildContext context, controller1, controller2) {
         ),
       ),
 
-      SizedBox(
-        //submit button sized box
-        height: 50,
-      ),
-      GestureDetector(
-        onTap: () {
-          HitTestBehavior.opaque;
-          screenTransferController(
-            //sends user to next route screen and sends data to process
-            context,
-            controller1.text,
-            controller2.text,
-          );
-        },
+      // SizedBox(
+      //   //submit button sized box
+      //   height: 50,
+      // ),
+      // GestureDetector(
+      //   onTap: () {
+      //     HitTestBehavior.opaque;
+      //     screenTransferController(
+      //       //sends user to next route screen and sends data to process
+      //       context,
+      //       controller1,
+      //       controller2,
+      //     );
+      //   },
 
-        child: Row(
-          children: [
-            Text(
-              "Done",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 47, 130, 255),
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Poppins',
-                fontSize: 18,
-              ),
-            ),
-            Icon(
-              CupertinoIcons.forward,
-              color: const Color.fromARGB(255, 47, 130, 255),
-            ),
-          ],
-        ),
-      ),
+      //   child: Row(
+      //     children: [
+      //       Text(
+      //         "Done",
+      //         style: TextStyle(
+      //           color: const Color.fromARGB(255, 47, 130, 255),
+      //           fontWeight: FontWeight.w500,
+      //           fontFamily: 'Poppins',
+      //           fontSize: 18,
+      //         ),
+      //       ),
+      //       Icon(
+      //         CupertinoIcons.forward,
+      //         color: const Color.fromARGB(255, 47, 130, 255),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     ],
   );
 }
@@ -426,26 +460,46 @@ Widget stationList(
           onTap: () {
             //print("ControllerName: $name");
             if (focusNode1.hasFocus) {
+              print("coreTransferStationsDict is focus node 2 fault");
               //inputs text in the text filed on tap
               controller1.text = name;
-              FocusScope.of(context).requestFocus(focusNode2);
+              //FocusScope.of(context).requestFocus(focusNode2);
               coreTransferStationsDict['Source'] =
                   station; ////-- setting name to be sent to search algorithm
+              if (ifDestinationSelected() && ifSourceSelected()) {
+                /////////NEWLY ADDED-------------
+                print("Destination selected ${controller2.text}");
+                screenTransferController(
+                  context,
+                  controller1, //changed
+                  controller2,
+                );
+              } else {
+                focusNode2.requestFocus();
+              }
             }
             if (focusNode2.hasFocus) {
+              print("coreTransferStationsDict is focus node 2 fault");
               controller2.text = name;
               coreTransferStationsDict['Destination'] = station;
 
-              screenTransferController(
-                context,
-                controller1.text,
-                controller2.text,
-              );
-            } else {
-              focusNode1.requestFocus();
-              controller1.text = name;
-              FocusScope.of(context).requestFocus(focusNode2);
+              // screenTransferController(
+              //   context,
+              //   controller1.text,
+              //   controller2.text,
+              // );
+              if (ifSourceSelected() && ifDestinationSelected()) {
+                /////////NEWLY ADDED-------------
+                screenTransferController(context, controller1, controller2);
+              } else {
+                focusNode1.requestFocus();
+              }
             }
+            //  else {
+            //   focusNode1.requestFocus();
+            //   controller1.text = name;
+            //   FocusScope.of(context).requestFocus(focusNode2);
+            // }
           },
           child: stationUnit(
             name: name,
@@ -461,17 +515,20 @@ Widget stationList(
   );
 }
 
-screenTransferController(context, source, destination) {
+screenTransferController(context, controller1, controller2) {
+  String source = controller1.text;
+  String destination = controller2.text;
+  print("coreTransferStationsDict when transferring $coreTransferStationsDict");
   // print(
   //   "the transition is from $source to $destination and the core list is $coreTransferStationsDict",
   // );
   //sends user to next route screen
-  if (coreTransferStationsDict['Source']!.isNotEmpty &&
-      coreTransferStationsDict['Destination']!.isNotEmpty &&
-      coreTransferStationsDict['Source'] !=
-          coreTransferStationsDict['Destination'] &&
+  if (ifSourceSelected() &&
+      ifDestinationSelected() &&
       source.isNotEmpty &&
-      destination.isNotEmpty) {
+      destination.isNotEmpty &&
+      coreTransferStationsDict['Source'] !=
+          coreTransferStationsDict['Destination']) {
     //checks for source and destination in dectinory and the text controller text if all are valid only then proceed and destination is not same as source
     if (coreTransferStationsDict['Source']![2] != source ||
         coreTransferStationsDict['Destination']![2] != destination) {
@@ -505,7 +562,13 @@ screenTransferController(context, source, destination) {
                     backgroundColor: Colors.black,
                     foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                   ),
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    coreTransferStationsDict
+                        .clear(); //reset just so user does not gets even more confused
+                    controller1.text = ''; //reset
+                    controller2.text = ''; //reset
+                  },
                   child: Text(
                     'Cancel',
                     style: TextStyle(fontFamily: "Poppins"),
@@ -568,5 +631,22 @@ screenTransferController(context, source, destination) {
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+}
+
+bool ifSourceSelected() {
+  //put these checks on different and opposite text fields
+  try {
+    return coreTransferStationsDict['Source']?.isNotEmpty ?? false;
+  } catch (e) {
+    return false;
+  }
+}
+
+bool ifDestinationSelected() {
+  try {
+    return coreTransferStationsDict['Destination']?.isNotEmpty ?? false;
+  } catch (e) {
+    return false;
   }
 }
