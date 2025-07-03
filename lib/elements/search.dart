@@ -1,10 +1,10 @@
-import 'dart:ffi';
-import 'dart:math';
+// import 'dart:ffi';
+// import 'dart:math';
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
-import 'package:neopop/neopop.dart';
+// import 'package:neopop/neopop.dart';
 import 'route.dart';
-import './ServicesDir/metroStationsList.dart';
+//import './ServicesDir/metroStationsList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './ServicesDir/Station_element.dart';
@@ -67,31 +67,9 @@ class _searchBodyState extends State<searchBody> {
       });
     });
     _focusNode2.addListener(() {
-      //manual check
-      // if (_focusNode2.hasFocus || _focusNode1.hasFocus) {
-      //sets the filtered list to default when the focus changes
-      //print("Focus Node 2 has focus");
       setState(() {
-        // if (_focusNode2.hasFocus) {
-        //   // resets the field check if the valid argumanet is given or not
-        //   fieldvalidator2 = false;
-        //   manualStationVerificationLogic();
-        // }
-        // if (_focusNode1.hasFocus) {
-        //   fieldvalidator1 = false;
-        //   manualStationVerificationLogic();
-        // }
         filteredStations = orignalStations; //important for filtered list reset
       });
-      // Map<String, List<dynamic>> coreTransferStationsDict = {
-      //   //to reset the dictionry everytime
-      //   //Dictionary format
-      //   //SIMPLIFY-----
-      //   // alternative of using lists
-      //   'Source': [], //adding some defaults
-      //   'Destination': [],
-      // };
-      // }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -102,35 +80,10 @@ class _searchBodyState extends State<searchBody> {
         //print("Stations is $Stations");
         orignalStations = stations;
         filteredStations = stations;
-        print("filteredStations is $filteredStations");
         //print("filteredStations is $filteredStations");
       });
     });
   }
-
-  // manualStationVerificationLogic() {
-  //   //when adding that list that stores data suppose an argumanet is alredy given and is comcing frm home screen than you will need to also indetify which staiotn that query that is laredy there is, it will be easy as mostly 99.9% times it will be exact match
-  //   //and delay is fine as user if really wants to change some station he will take time
-  //   //works with abit of delay but that should'nt be an issue as planned the inputed station in the first time will be stored inside a list that will be reatined that has full detail of from and to station, making sure that even if an invalid station is inputed the app will use the stored data
-  //   //to hadnle situtation when user selctes the sation form hoemscreen from recent fields and when the user returns from route screen and we need to validate the stations
-  //   bool isExactStationMatch(String query, List<dynamic> stationList) {
-  //     return stationList.any(
-  //       (station) =>
-  //           station[2].toLowerCase().trim() == query.toLowerCase().trim(),
-  //     );
-  //   }
-
-  //   if (isExactStationMatch(_controller1.text, orignalStations)) {
-  //     setState(() {
-  //       fieldvalidator1 = true;
-  //     });
-  //   }
-  //   if (isExactStationMatch(_controller2.text, orignalStations)) {
-  //     setState(() {
-  //       fieldvalidator2 = true;
-  //     });
-  //   }
-  // }
 
   void filterStationsLogic(String query) {
     //Logiv to find the best match
@@ -196,7 +149,7 @@ class _searchBodyState extends State<searchBody> {
         shouldParseNumbers: false,
       ).convert(rawData);
     });
-    print("Total rows parsed: ${rows}");
+    //print("Total rows parsed: ${rows}");
     return rows;
   }
 
@@ -271,17 +224,6 @@ class _searchBodyState extends State<searchBody> {
                             cursorOpacityAnimates: true,
                             controller: _controller2,
                             onChanged: filterStationsLogic,
-                            // onSubmitted: (_) {
-                            //   Navigator.push(
-                            //     context,
-                            //     CupertinoPageRoute(
-                            //       builder: (context) {
-                            //         //logic to push user to route screen
-                            //         return const routeScreen(); //integrate a checking condition whether both stations have been entered or not
-                            //       },
-                            //     ),
-                            //   );
-                            // }, //add the logic to navigate to next screen whenever available
                             decoration: InputDecoration.collapsed(
                               border: InputBorder.none,
                               hintText: "To",
@@ -319,7 +261,7 @@ class _searchBodyState extends State<searchBody> {
   }
 }
 
-backBox(BuildContext context, _controller1, _controller2) {
+backBox(BuildContext context, controller1, controller2) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -328,6 +270,7 @@ backBox(BuildContext context, _controller1, _controller2) {
         height: 50,
         child: GestureDetector(
           onTap: () {
+            HitTestBehavior.opaque;
             if (MediaQuery.of(context).viewInsets.bottom != 0) {
               //if keyboard is open it closes first then the screen goes back
               FocusScope.of(context).unfocus();
@@ -363,10 +306,12 @@ backBox(BuildContext context, _controller1, _controller2) {
       ),
       GestureDetector(
         onTap: () {
-          ScreenTransferController(
+          HitTestBehavior.opaque;
+          screenTransferController(
+            //sends user to next route screen and sends data to process
             context,
-            _controller1.text,
-            _controller2.text,
+            controller1.text,
+            controller2.text,
           );
         },
 
@@ -408,103 +353,51 @@ screenName() {
 
 Widget fromToIcon() {
   //icons on the left side of the search box
-  return Container(
-    child: Column(
-      children: [
-        Icon(CupertinoIcons.circle, color: Colors.white),
-        Icon(Icons.arrow_drop_down, color: Colors.white),
-        //Icon(CupertinoIcons.resize_v, color: Colors.white),
-        Icon(CupertinoIcons.square, color: Colors.white),
-      ],
-    ),
+  return Column(
+    children: [
+      Icon(CupertinoIcons.circle, color: Colors.white),
+      Icon(Icons.arrow_drop_down, color: Colors.white),
+      //Icon(CupertinoIcons.resize_v, color: Colors.white),
+      Icon(CupertinoIcons.square, color: Colors.white),
+    ],
   );
 }
 
-// Widget ListViewed() {
-//   return
-// }
-///////////////////////////////////////////-----------------------------------
-class StationType {
-  final String zone;
-  final String name;
-
-  StationType({required this.zone, required this.name});
-
-  // @override
-  // String toString() => 'StationType(name: $name, zone: $zone)';
-}
-
-Future<List<StationType>> loadStationsFromCSV() async {
-  //NEEDS SIMPLE FIX-------
-  try {
-    final rawData = await rootBundle.loadString('assets/Map/stops.csv');
-    print("length: ${rawData}");
-
-    final List<List<dynamic>> rows = await Isolate.run(() {
-      return CsvToListConverter(
-        eol: '\n',
-        fieldDelimiter: ',',
-        textDelimiter: '"',
-        shouldParseNumbers: false,
-      ).convert(rawData);
-    });
-    print("length: ${rows.length}");
-
-    //print("Total rows parsed: ${rows.length}");
-
-    final stations =
-        rows
-            .where(
-              (row) =>
-                  row.length > 3 &&
-                  row[2] != null &&
-                  row[3] != null &&
-                  row[2].toString().trim().isNotEmpty &&
-                  row[3].toString().trim().isNotEmpty,
-            )
-            .map((row) {
-              print("leng: $row");
-              return StationType(
-                name: row[1].toString().trim(),
-                zone: row[2].toString().trim(),
-              );
-            })
-            .toList();
-
-    print("Successfully created ${stations.length} stations");
-    print('leng detail: $stations');
-    return stations;
-  } catch (e, stackTrace) {
-    print("Error loading CSV: $e");
-    print("Stack trace: $stackTrace");
-    return [];
-  }
-}
-
-// bool fieldvalidator1 = false;
-// bool fieldvalidator2 = false;
-//ist<dynamic> coreTransferStations = [];
-
 Map<String, List<dynamic>> coreTransferStationsDict = {
+  //used for transfer screen process, making sure both source and destination are available
   //Dictionary format
-  //SIMPLIFY-----
-  // alternative of using lists
   'Source': [], //adding some defaults
   'Destination': [],
 };
 
 Widget stationList(
-  //rather than sending direct names of stations to route searching algorithm send the station list
+  // widget that is expanded and scrollable of stations at bottom
   List<dynamic> stations,
-  _controller1,
-  _controller2,
-  _focusNode1,
-  _focusNode2,
+  controller1,
+  controller2,
+  focusNode1,
+  focusNode2,
 ) {
   if (stations.isEmpty) {
-    print("controller is $_controller1");
+    //print("controller is $controller1");
     return const Center(
-      child: CupertinoActivityIndicator(color: Colors.white, radius: 15),
+      child: Column(
+        children: [
+          //CupertinoActivityIndicator(color: Colors.white, radius: 15),
+          Icon(
+            CupertinoIcons.exclamationmark_circle_fill,
+            color: Color.fromARGB(255, 255, 145, 145),
+          ),
+          Text(
+            "no matches found",
+            style: TextStyle(
+              color: Color.fromARGB(255, 255, 145, 145),
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -522,49 +415,43 @@ Widget stationList(
         line = line.replaceAll(RegExp(r'[\[\]]'), '');
         List<String> parts = line.split('-');
         List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
-        print("Line numbers: $lineNumbers");
+        //print("Line numbers: $lineNumbers");
         String name = station[2].toString(); // Station Name
-        String zone = station[1].toString(); // not zone actually hindi name
+        String hindiName =
+            station[1].toString(); // not hindiName actually hindi name
 
         return InkWell(
           focusColor: const Color.fromARGB(0, 255, 255, 255),
           splashColor: const Color.fromARGB(86, 76, 76, 76),
           onTap: () {
-            print("ControllerName: $name");
-            if (_focusNode1.hasFocus) {
+            //print("ControllerName: $name");
+            if (focusNode1.hasFocus) {
               //inputs text in the text filed on tap
-              //filteredStations; //check why the recommedation is not reverting back to orginal list after changing focus
-              _controller1.text = name;
-              FocusScope.of(context).requestFocus(_focusNode2);
-              //fieldvalidator1 = true;
+              controller1.text = name;
+              FocusScope.of(context).requestFocus(focusNode2);
               coreTransferStationsDict['Source'] =
                   station; ////-- setting name to be sent to search algorithm
-              //coreTransferStations.add(station);-- previous list prototype
-              //print("filed1 is $fieldvalidator1");
-
-              // filteredStationsLogic;
-              // filteredStations = orignalStations;
-
-              //filteredStations;
             }
-            if (_focusNode2.hasFocus) {
-              _controller2.text = name;
-              //fieldvalidator2 = true;
+            if (focusNode2.hasFocus) {
+              controller2.text = name;
               coreTransferStationsDict['Destination'] = station;
-              //coreTransferStations.add(station);
 
-              ScreenTransferController(
+              screenTransferController(
                 context,
-                _controller1.text,
-                _controller2.text,
+                controller1.text,
+                controller2.text,
               );
             } else {
-              _focusNode1.requestFocus();
-              _controller1.text = name;
-              FocusScope.of(context).requestFocus(_focusNode2);
+              focusNode1.requestFocus();
+              controller1.text = name;
+              FocusScope.of(context).requestFocus(focusNode2);
             }
           },
-          child: stationUnit(name: name, zone: zone, lines: lineNumbers),
+          child: stationUnit(
+            name: name,
+            hindiName: hindiName,
+            lines: lineNumbers,
+          ),
         );
       },
       separatorBuilder: (context, index) {
@@ -574,30 +461,102 @@ Widget stationList(
   );
 }
 
-ScreenTransferController(context, source, destination) {
-  print(
-    "the transition is from $source to $destination and the core list is $coreTransferStationsDict",
-  );
+screenTransferController(context, source, destination) {
+  // print(
+  //   "the transition is from $source to $destination and the core list is $coreTransferStationsDict",
+  // );
   //sends user to next route screen
   if (coreTransferStationsDict['Source']!.isNotEmpty &&
       coreTransferStationsDict['Destination']!.isNotEmpty &&
+      coreTransferStationsDict['Source'] !=
+          coreTransferStationsDict['Destination'] &&
       source.isNotEmpty &&
       destination.isNotEmpty) {
-    //checks for source and destination in dectinory and the text controller text if all are valid only then proceed
-    Navigator.push(
-      context,
-      CupertinoPageRoute(
+    //checks for source and destination in dectinory and the text controller text if all are valid only then proceed and destination is not same as source
+    if (coreTransferStationsDict['Source']![2] != source ||
+        coreTransferStationsDict['Destination']![2] != destination) {
+      //confirms user input if there is a mismatch between dictionary and textfield
+      showDialog(
+        context: context,
         builder:
-            (context) =>
-                routeScreen(coreTransferStationsDict: coreTransferStationsDict),
-      ),
-    );
+            (context) => AlertDialog(
+              backgroundColor: const Color.fromARGB(255, 31, 200, 127),
+              title: Text(
+                "${coreTransferStationsDict['Source']![2]} to ${coreTransferStationsDict['Destination']![2]}",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "Poppins",
+                ),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(2),
+              ),
+              content: Text(
+                'Is this correct?',
+                style: TextStyle(
+                  fontFamily: "Poppins",
+                  color: Colors.black,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              actions: [
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(fontFamily: "Poppins"),
+                  ),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder:
+                            (context) => routeScreen(
+                              coreTransferStationsDict:
+                                  coreTransferStationsDict,
+                            ),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(fontFamily: "Poppins"),
+                  ),
+                ),
+              ],
+            ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        CupertinoPageRoute(
+          builder:
+              (context) => routeScreen(
+                coreTransferStationsDict: coreTransferStationsDict,
+              ),
+        ),
+      );
+    }
   } else {
     final snackBar = SnackBar(
       backgroundColor: const Color.fromARGB(255, 31, 200, 127),
       content: const Text(
         'Please select both departure and arrival correctly',
-        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w300),
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w300,
+          fontFamily: "Poppins",
+        ),
       ),
       action: SnackBarAction(
         backgroundColor: Colors.black,

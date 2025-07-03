@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'package:marquee/marquee.dart';
 import 'package:neopop/neopop.dart';
 
 import './ServicesDir/Station_element.dart';
@@ -65,12 +66,16 @@ class RouteDisplay extends StatelessWidget {
 
 topNavBar(context) {
   return Container(
+    //color: Colors.white,
+    width: double.infinity,
+    height: 50,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         GestureDetector(
           onTap: () {
+            HitTestBehavior.opaque;
             Navigator.pop(context);
           },
           child: Row(
@@ -91,6 +96,43 @@ topNavBar(context) {
             ],
           ),
         ),
+        Spacer(),
+        Container(
+          width: 200,
+          child: Marquee(
+            text: "BHIKAJI CAMA PLACE -> RAJORI GARDEN",
+            blankSpace: 20,
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              color: Color.fromARGB(255, 202, 202, 202),
+              fontSize: 12,
+              fontWeight: FontWeight.w200,
+            ),
+          ),
+        ),
+        // Text(
+        //   "BHIKAJI CAMA PLACE ",
+        //   style: TextStyle(
+        //     color: const Color.fromARGB(255, 255, 255, 255),
+        //     fontWeight: FontWeight.w500,
+        //     fontFamily: 'Poppins',
+        //     fontSize: 12,
+        //   ),
+        // ),
+        // Icon(
+        //   CupertinoIcons.arrow_right,
+        //   color: const Color.fromARGB(255, 255, 255, 255),
+        //   size: 15,
+        // ),
+        // Text(
+        //   " RAJORI GARDEN",
+        //   style: TextStyle(
+        //     color: const Color.fromARGB(255, 255, 255, 255),
+        //     fontWeight: FontWeight.w500,
+        //     fontFamily: 'Poppins',
+        //     fontSize: 12,
+        //   ),
+        // ),
       ],
     ),
   );

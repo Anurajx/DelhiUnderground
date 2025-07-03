@@ -325,24 +325,27 @@ class _topHeaderState extends State<topHeader>
         ),
       ),
 
-      // child: Row(
-      //   mainAxisAlignment: MainAxisAlignment.start,
-      //   crossAxisAlignment: CrossAxisAlignment.start,
-      //   children: [
-      //     Container(
-      //       margin: EdgeInsets.all(20),
-      //       child: Text(
-      //         "New Delhi \nDelay on red line",
-      //         style: TextStyle(
-      //           color: const Color.fromARGB(255, 230, 81, 0),
-      //           fontSize: 25,
-      //           fontFamily: 'Doto',
-      //           fontWeight: FontWeight.w400,
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Container(
+            margin: EdgeInsets.all(20),
+            child: Text(
+              "Delhi\nUnderground",
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: const Color.fromARGB(183, 255, 255, 255),
+                //color: const Color.fromARGB(255, 61, 61, 61),
+                height: 1,
+                fontSize: 30,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

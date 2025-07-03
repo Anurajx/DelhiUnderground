@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 class stationUnit extends StatelessWidget {
   final dynamic name;
-  final dynamic zone;
+  final dynamic hindiName;
   final List lines;
 
   const stationUnit({
     super.key,
     required this.name,
-    required this.zone,
+    required this.hindiName,
     required this.lines,
   });
 
@@ -23,7 +23,7 @@ class stationUnit extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           StationNameAndArrow(name),
-          commonName(zone),
+          commonName(hindiName),
           SizedBox(
             height: 5,
           ), //added to even out the padding from top and bottom
