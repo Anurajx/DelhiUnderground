@@ -13,6 +13,7 @@ import './ServicesDir/Station_element.dart';
 import 'search.dart';
 import './StationDir/stopInfo.dart';
 import './MapDir/svgMap.dart';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -50,12 +51,13 @@ class _metroHomeScreenState extends State<metroHomeScreen> {
       child: Column(
         children: [
           //InfoBar(),
-          Expanded(child: topHeader()),
+          Expanded(child: appFooter(context)),
+          //Expanded(child: topHeader()),
           searchBar(
             context,
           ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
           suggestions(context),
-          Divider(thickness: 0, color: const Color.fromARGB(251, 35, 35, 35)),
+          Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
           nearYou(context),
           Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
           ticketAndExit(context),
@@ -113,7 +115,7 @@ searchBar(context) {
           topLeft: Radius.circular(0),
           topRight: Radius.circular(0), //remove later if not used
         ),
-        color: const Color.fromARGB(255, 224, 224, 224),
+        color: const Color.fromARGB(255, 208, 208, 208),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,7 +126,7 @@ searchBar(context) {
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
-              fontSize: processedFontheight(context),
+              fontSize: 18,
               color: const Color.fromARGB(201, 15, 15, 15),
             ),
           ),
@@ -177,10 +179,10 @@ nearYou(context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Near you",
+          "NEAR YOU",
           style: TextStyle(
-            color: Colors.white,
-            fontSize: processedFontheight(context),
+            color: const Color.fromARGB(255, 109, 109, 109),
+            fontSize: 16, //processedFontheight(context),
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
@@ -229,7 +231,7 @@ ticketAndExit(context) {
                   "metro map",
                   style: TextStyle(
                     color: const Color.fromARGB(255, 187, 187, 187),
-                    fontSize: processedFontheight(context),
+                    fontSize: 18, //processedFontheight(context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                   ),
@@ -267,7 +269,7 @@ ticketAndExit(context) {
                   "stop info",
                   style: TextStyle(
                     color: const Color.fromARGB(255, 187, 187, 187),
-                    fontSize: processedFontheight(context),
+                    fontSize: 18, //processedFontheight(context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                   ),
@@ -292,63 +294,64 @@ ticketAndExit(context) {
 //   return
 // }
 
-class topHeader extends StatefulWidget {
-  const topHeader({super.key});
+// class topHeader extends StatefulWidget {
+//   //CHECK IF STATEFULL WIDGET IS NEEDED HERE
+//   const topHeader({super.key});
 
-  @override
-  State<topHeader> createState() => _topHeaderState();
-}
+//   @override
+//   State<topHeader> createState() => _topHeaderState();
+// }
 
-class _topHeaderState extends State<topHeader>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
-  Widget build(BuildContext context) {
-    super.build(context);
-    return Container(
-      //height: processedHeight(context, 0.45, 300, 400),
-      // height:
-      //     MediaQuery.of(context).size.height *
-      //     0.4, //this is genius idk how i did this but why not, height is equal to width of screen
-      //width: double.infinity,
-      //margin: EdgeInsets.all(0),
-      // height:
-      //     420, //right now the hrigh of container is hard coded make by mkaing it expanded
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0),
-          bottomRight: Radius.circular(0),
-        ),
-        image: DecorationImage(
-          image: const AssetImage('assets/Image/carfooter.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
+// class _topHeaderState extends State<topHeader>
+//     with AutomaticKeepAliveClientMixin {
+//   @override
+//   bool get wantKeepAlive => true;
+//   Widget build(BuildContext context) {
+//     super.build(context);
+//     return Container(
+//       //height: processedHeight(context, 0.45, 300, 400),
+//       // height:
+//       //     MediaQuery.of(context).size.height *
+//       //     0.4, //this is genius idk how i did this but why not, height is equal to width of screen
+//       //width: double.infinity,
+//       //margin: EdgeInsets.all(0),
+//       // height:
+//       //     420, //right now the hrigh of container is hard coded make by mkaing it expanded
+//       decoration: BoxDecoration(
+//         borderRadius: BorderRadius.only(
+//           bottomLeft: Radius.circular(0),
+//           bottomRight: Radius.circular(0),
+//         ),
+//         image: DecorationImage(
+//           image: const AssetImage('assets/Image/carfooter.jpg'),
+//           fit: BoxFit.cover,
+//         ),
+//       ),
 
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Container(
-            margin: EdgeInsets.all(20),
-            child: Text(
-              "Delhi\nUnderground",
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                color: const Color.fromARGB(183, 255, 255, 255),
-                //color: const Color.fromARGB(255, 61, 61, 61),
-                height: 1,
-                fontSize: 30,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.end,
+//         crossAxisAlignment: CrossAxisAlignment.end,
+//         children: [
+//           Container(
+//             margin: EdgeInsets.all(20),
+//             child: Text(
+//               "Delhi\nUnderground",
+//               textAlign: TextAlign.right,
+//               style: TextStyle(
+//                 color: const Color.fromARGB(183, 255, 255, 255),
+//                 //color: const Color.fromARGB(255, 61, 61, 61),
+//                 height: 1,
+//                 fontSize: 30,
+//                 fontFamily: 'Poppins',
+//                 fontWeight: FontWeight.w800,
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 appFooter(context) {
   return Container(
@@ -366,29 +369,32 @@ appFooter(context) {
         bottomRight: Radius.circular(0),
       ),
       image: DecorationImage(
-        image: AssetImage('assets/Image/carfooter.jpg'),
+        image: AssetImage('assets/Image/fluted.jpg'),
         fit: BoxFit.cover,
       ),
     ),
 
-    // child: Row(
-    //   mainAxisAlignment: MainAxisAlignment.start,
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     Container(
-    //       margin: EdgeInsets.all(20),
-    //       child: Text(
-    //         "New Delhi \nDelay on red line",
-    //         style: TextStyle(
-    //           color: const Color.fromARGB(255, 230, 81, 0),
-    //           fontSize: 25,
-    //           fontFamily: 'Doto',
-    //           fontWeight: FontWeight.w400,
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          margin: EdgeInsets.all(20),
+          child: Text(
+            "Delhi\nUnderground",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: const Color.fromARGB(183, 255, 255, 255),
+              //color: const Color.fromARGB(255, 61, 61, 61),
+              height: 1,
+              fontSize: 30,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
+      ],
+    ),
   );
 }
 
@@ -432,17 +438,17 @@ double processedHeight(context, factorMax, minSize, prefferedHeight) {
   }
 }
 
-double processedFontheight(context) {
-  double width = MediaQuery.of(context).size.width;
-  if (width < 600) {
-    print("18");
-    return 18;
-  }
-  if (width >= 600) {
-    print("22");
-    return 22;
-  } else {
-    print("18");
-    return 18;
-  }
-}
+// double processedFontheight(context) {
+//   double width = MediaQuery.of(context).size.width;
+//   if (width < 600) {
+//     print("18");
+//     return 18;
+//   }
+//   if (width >= 600) {
+//     print("22");
+//     return 22;
+//   } else {
+//     print("18");
+//     return 18;
+//   }
+// }

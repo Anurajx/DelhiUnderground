@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           statusBarIconBrightness: Brightness.light, // White icons for dark bg
         ),
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+          backgroundColor: const Color.fromARGB(255, 8, 8, 8),
           body: SafeArea(child: Page1()),
         ),
       ), //added safe area such that it is not cut by any notch or screen cutouts      //

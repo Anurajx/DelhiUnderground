@@ -95,6 +95,8 @@ flutter:
     - assets/Image/Vector2.png
     - assets/Image/carfooter.jpg
     - assets/Map/stops.csv
+    - assets/Image/fluted.jpg
+    - assets/Image/mapimg.png
 
   fonts:
     - family: Poppins

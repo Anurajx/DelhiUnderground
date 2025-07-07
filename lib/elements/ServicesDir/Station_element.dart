@@ -189,7 +189,7 @@ class stationPrimitive extends StatelessWidget {
           width: 15,
           height: 15,
           decoration: BoxDecoration(
-            color: Colors.blueAccent,
+            color: const Color.fromARGB(255, 0, 122, 204),
             borderRadius: BorderRadius.all(Radius.circular(50)),
           ),
           child: Center(
@@ -212,7 +212,7 @@ class stationPrimitive extends StatelessWidget {
           height: 15,
 
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: const Color.fromARGB(255, 200, 155, 0),
             borderRadius: BorderRadius.all(Radius.circular(50)),
           ),
           child: Center(
@@ -293,7 +293,7 @@ class stationNearby extends StatelessWidget {
           width: 15,
           height: 15,
           decoration: BoxDecoration(
-            color: Colors.blueAccent,
+            color: const Color.fromARGB(255, 0, 122, 204),
             borderRadius: BorderRadius.all(Radius.circular(50)),
           ),
           child: Center(
@@ -316,7 +316,7 @@ class stationNearby extends StatelessWidget {
           height: 15,
 
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: const Color.fromARGB(255, 219, 112, 147),
             borderRadius: BorderRadius.all(Radius.circular(50)),
           ),
           child: Center(
@@ -361,9 +361,24 @@ class stationNearby extends StatelessWidget {
           // ), //blue line color will make it dynamic later
         ),
         Spacer(),
-        Icon(
-          CupertinoIcons.info_circle,
-          color: const Color.fromARGB(255, 179, 179, 179),
+        // Icon(
+        //   CupertinoIcons.info_circle,
+        //   color: const Color.fromARGB(255, 179, 179, 179),
+        // ),
+        Container(
+          height: 20,
+          width: 50,
+          color: const Color.fromARGB(41, 255, 255, 255),
+          child: Center(
+            child: Text(
+              "1 KM",
+              style: TextStyle(
+                color: const Color.fromARGB(255, 188, 188, 188),
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
         ),
       ],
     );
