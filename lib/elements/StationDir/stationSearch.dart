@@ -59,16 +59,11 @@ class _searchBodyState extends State<searchBody> {
   @override
   void initState() {
     super.initState();
-    _focusNode1.addListener(() {
-      setState(() {
-        filterStationsLogic(_controller1.text);
-
-        ///FUCKKKKK YESSSS
-      });
-    });
-    // _focusNode2.addListener(() {
+    // _focusNode1.addListener(() {
     //   setState(() {
-    //     filterStationsLogic(_controller2.text);
+    //     filterStationsLogic(_controller1.text);
+
+    //     ///FUCKKKKK YESSSS
     //   });
     // });
 
@@ -226,6 +221,11 @@ class _searchBodyState extends State<searchBody> {
                         //NEOPOP
                       ],
                     ),
+                  ),
+                  Divider(
+                    color: const Color.fromARGB(255, 130, 130, 130),
+                    thickness: 0.2,
+                    height: 1,
                   ),
                 ],
               ),

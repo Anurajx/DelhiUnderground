@@ -249,6 +249,11 @@ class _searchBodyState extends State<searchBody> {
                       ],
                     ),
                   ),
+                  Divider(
+                    color: const Color.fromARGB(255, 130, 130, 130),
+                    thickness: 0.2,
+                    height: 1,
+                  ),
                 ],
               ),
               fromToIcon(),
@@ -305,6 +310,7 @@ backBox(BuildContext context, controller1, controller2) {
           ),
         ),
       ),
+      Icon(Icons.support, color: const Color.fromARGB(255, 175, 175, 175)),
     ],
   );
 }
