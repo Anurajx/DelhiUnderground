@@ -65,10 +65,10 @@ topNavBar(context) {
         ),
         Spacer(),
         Text(
-          "Credit: Inat.fr  ",
+          "From Inat.fr  ",
           style: TextStyle(
             color: const Color.fromARGB(255, 177, 177, 177),
-            fontWeight: FontWeight.w300,
+            fontWeight: FontWeight.w700,
             fontSize: 14,
           ),
         ),

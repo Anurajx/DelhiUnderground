@@ -1,24 +1,43 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:metroapp/elements/StationDir/stationSearch.dart';
 
-class stopInfoScreen extends StatefulWidget {
-  const stopInfoScreen({super.key});
+class stopInfoScreen extends StatelessWidget {
+  final dynamic stationDict;
+  const stopInfoScreen({super.key, required this.stationDict});
 
-  @override
-  State<stopInfoScreen> createState() => _stopInfoScreenState();
-}
-
-class _stopInfoScreenState extends State<stopInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: stationCluster(context),
+      body: stationCluster(context, stationDict),
     );
   }
 }
 
-stationCluster(context) {
+/////////////////
+// class stopInfoScreen extends StatefulWidget {
+//   final dynamic stationDict;
+//   final station;
+//   //final List<dynamic> stationList = [];
+//   const stopInfoScreen({super.key, required this.stationDict, this.station});
+
+//   @override
+//   State<stopInfoScreen> createState() => _stopInfoScreenState();
+// }
+
+// class _stopInfoScreenState extends State<stopInfoScreen> {
+//   //final List<dynamic> stationList = stationD;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.black,
+//       body: stationCluster(context),
+//     );
+//   }
+// }
+////////////////////
+stationCluster(context, stationDict) {
   return Container(
     padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
     child: Column(
@@ -28,7 +47,7 @@ stationCluster(context) {
           child: ListView(
             shrinkWrap: true,
             children: [
-              stationLineMarker(),
+              stationLineMarker(stationDict),
               SizedBox(height: 80),
               closeAndOpeningTime(),
               stationStatus(),
@@ -86,7 +105,11 @@ topNavBar(context) {
   ); //////////////
 }
 
-stationLineMarker() {
+stationLineMarker(stationDict) {
+  dynamic station =
+      stationDict["Source"]; //uses station to change the name of station dynamically
+  String stationName = station[2].toString();
+  String stationNameHindiCommon = station[1].toString();
   return Container(
     //decoration: BoxDecoration(color: const Color.fromARGB(255, 164, 164, 164)),
     margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -97,7 +120,7 @@ stationLineMarker() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Hauz Khas",
+          "$stationName",
           style: TextStyle(
             color: const Color.fromARGB(255, 187, 187, 187),
             fontWeight: FontWeight.w500,
@@ -105,7 +128,7 @@ stationLineMarker() {
           ),
         ),
         Text(
-          "हौज़ खास",
+          "$stationNameHindiCommon",
           style: TextStyle(
             color: const Color.fromARGB(255, 187, 187, 187),
             fontWeight: FontWeight.w300,
@@ -342,14 +365,14 @@ exitBlock() {
           alignment: Alignment.centerLeft,
           children: [
             Container(
-              height: 60,
+              height: 50,
               width: double.infinity,
               child: Row(
                 children: [
                   Container(width: 80),
                   Expanded(
                     child: Container(
-                      height: 60,
+                      height: 50,
                       color: const Color.fromARGB(255, 25, 25, 25),
                       child: Row(
                         //crossAxisAlignment: CrossAxisAlignment.center,
@@ -374,7 +397,7 @@ exitBlock() {
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
-                  color: const Color.fromARGB(255, 42, 42, 42),
+                  color: const Color.fromARGB(255, 25, 25, 25),
                 ),
               ),
               margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -398,14 +421,14 @@ exitBlock() {
           alignment: Alignment.centerLeft,
           children: [
             Container(
-              height: 60,
+              height: 50,
               width: double.infinity,
               child: Row(
                 children: [
                   Container(width: 80),
                   Expanded(
                     child: Container(
-                      height: 60,
+                      height: 50,
                       color: const Color.fromARGB(255, 25, 25, 25),
                       child: Row(
                         //crossAxisAlignment: CrossAxisAlignment.center,
@@ -430,7 +453,7 @@ exitBlock() {
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
-                  color: const Color.fromARGB(255, 42, 42, 42),
+                  color: const Color.fromARGB(255, 25, 25, 25),
                 ),
               ),
               margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -453,14 +476,14 @@ exitBlock() {
           alignment: Alignment.centerLeft,
           children: [
             Container(
-              height: 60,
+              height: 50,
               width: double.infinity,
               child: Row(
                 children: [
                   Container(width: 80),
                   Expanded(
                     child: Container(
-                      height: 60,
+                      height: 50,
                       color: const Color.fromARGB(255, 25, 25, 25),
                       child: Row(
                         //crossAxisAlignment: CrossAxisAlignment.center,
@@ -485,7 +508,7 @@ exitBlock() {
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
-                  color: const Color.fromARGB(255, 42, 42, 42),
+                  color: const Color.fromARGB(255, 25, 25, 25),
                 ),
               ),
               margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -518,7 +541,7 @@ exitBlock() {
           child: Row(
             children: [
               Text(
-                "VISULIZE ON MAP",
+                "VISUALIZE ON MAP",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 179, 179, 179),
                   fontWeight: FontWeight.w500,
@@ -560,7 +583,7 @@ scheduleBlock() {
           children: [
             Container(
               width: double.infinity,
-              height: 60,
+              height: 50,
               color: const Color.fromARGB(255, 25, 25, 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -577,7 +600,7 @@ scheduleBlock() {
                   ),
                   Spacer(),
                   Container(
-                    width: 100,
+                    width: 80,
                     height: 60,
                     color: const Color.fromARGB(255, 196, 196, 196),
                     child: Column(
@@ -601,7 +624,7 @@ scheduleBlock() {
                 ],
               ),
             ),
-            Container(height: 15, width: 15, color: Colors.blue),
+            Container(height: 10, width: 10, color: Colors.blue),
           ],
         ),
         /////////
@@ -611,7 +634,7 @@ scheduleBlock() {
           children: [
             Container(
               width: double.infinity,
-              height: 60,
+              height: 50,
               color: const Color.fromARGB(255, 25, 25, 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -628,7 +651,7 @@ scheduleBlock() {
                   ),
                   Spacer(),
                   Container(
-                    width: 100,
+                    width: 80,
                     height: 60,
                     color: const Color.fromARGB(255, 212, 212, 212),
                     child: Column(
@@ -652,7 +675,7 @@ scheduleBlock() {
                 ],
               ),
             ),
-            Container(height: 15, width: 15, color: Colors.blue),
+            Container(height: 10, width: 10, color: Colors.blue),
           ],
         ),
       ],
@@ -751,6 +774,7 @@ ammenitiesBlock() {
                 fontSize: 16,
               ),
             ),
+            //SizedBox(height: 10),
             // SizedBox(width: 10),
             // Icon(
             //   Icons.wifi,
@@ -759,6 +783,7 @@ ammenitiesBlock() {
             // ),
           ],
         ),
+        Divider(height: 2, color: const Color.fromARGB(255, 40, 40, 40)),
       ],
     ),
   );

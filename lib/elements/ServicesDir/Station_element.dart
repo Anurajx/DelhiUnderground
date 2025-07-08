@@ -368,12 +368,12 @@ class stationNearby extends StatelessWidget {
         Container(
           height: 20,
           width: 50,
-          color: const Color.fromARGB(41, 255, 255, 255),
+          color: const Color.fromARGB(255, 199, 199, 199),
           child: Center(
             child: Text(
               "1 KM",
               style: TextStyle(
-                color: const Color.fromARGB(255, 188, 188, 188),
+                color: const Color.fromARGB(255, 0, 0, 0),
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
               ),

@@ -2,27 +2,29 @@
 // import 'dart:math';
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
+import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 // import 'package:neopop/neopop.dart';
-import 'route.dart';
+import 'stopInfo.dart';
 //import './ServicesDir/metroStationsList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './ServicesDir/Station_element.dart';
+//import './ServicesDir/Station_element.dart';
+import 'package:neopop/neopop.dart';
 import 'dart:isolate';
 import 'package:string_similarity/string_similarity.dart';
 
-class SearchScreen extends StatefulWidget {
+class stationSearchScreen extends StatefulWidget {
   final String? destination;
-  const SearchScreen({
+  const stationSearchScreen({
     super.key,
     this.destination,
   }); //if destination comes as an argument aslo calulate sopurce station with gps location if gps not available use homestation if that too now available leave that space empty
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<stationSearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchScreenState extends State<stationSearchScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,9 +49,9 @@ class searchBody extends StatefulWidget {
 
 class _searchBodyState extends State<searchBody> {
   final FocusNode _focusNode1 = FocusNode();
-  final FocusNode _focusNode2 = FocusNode();
+  //final FocusNode _focusNode2 = FocusNode();
   final TextEditingController _controller1 = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
+  //final TextEditingController _controller2 = TextEditingController();
   List<dynamic> orignalStations = [];
   List<dynamic> filteredStations = [];
   //bool _shouldClear = false;
@@ -64,11 +66,11 @@ class _searchBodyState extends State<searchBody> {
         ///FUCKKKKK YESSSS
       });
     });
-    _focusNode2.addListener(() {
-      setState(() {
-        filterStationsLogic(_controller2.text);
-      });
-    });
+    // _focusNode2.addListener(() {
+    //   setState(() {
+    //     filterStationsLogic(_controller2.text);
+    //   });
+    // });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode1.requestFocus();
@@ -167,7 +169,10 @@ class _searchBodyState extends State<searchBody> {
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          backBox(context, _controller1, _controller2), //leave as is
+          backBox(
+            context,
+            _controller1, //_controller2
+          ), //leave as is
           screenName(), //leave as is
           Stack(
             //adding the search cluster here
@@ -187,7 +192,7 @@ class _searchBodyState extends State<searchBody> {
                       borderRadius: BorderRadius.circular(10), //40
                     ),
                     //width: double.infinity,
-                    height: 100,
+                    height: 50,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -204,7 +209,7 @@ class _searchBodyState extends State<searchBody> {
                             onChanged: filterStationsLogic,
                             decoration: InputDecoration.collapsed(
                               border: InputBorder.none,
-                              hintText: "From",
+                              hintText: "Search",
                               hintStyle: TextStyle(
                                 color: const Color.fromARGB(255, 132, 132, 132),
                                 fontWeight: FontWeight.w200,
@@ -218,34 +223,7 @@ class _searchBodyState extends State<searchBody> {
                             ),
                           ),
                         ),
-                        Divider(
-                          color: const Color.fromARGB(255, 50, 50, 50),
-                          height: 1,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
-                          child: TextField(
-                            textCapitalization: TextCapitalization.sentences,
-                            focusNode: _focusNode2,
-                            cursorOpacityAnimates: true,
-                            controller: _controller2,
-                            onChanged: filterStationsLogic,
-                            decoration: InputDecoration.collapsed(
-                              border: InputBorder.none,
-                              hintText: "To",
-                              hintStyle: TextStyle(
-                                color: const Color.fromARGB(255, 132, 132, 132),
-                                fontWeight: FontWeight.w200,
-                              ),
-                            ),
-                            style: TextStyle(
-                              color: const Color.fromARGB(255, 179, 179, 179),
-                              fontSize: 18,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
+                        //NEOPOP
                       ],
                     ),
                   ),
@@ -257,9 +235,9 @@ class _searchBodyState extends State<searchBody> {
           stationList(
             filteredStations,
             _controller1,
-            _controller2,
+            //_controller2,
             _focusNode1,
-            _focusNode2,
+            //_focusNode2,
           ),
         ],
       ),
@@ -267,7 +245,10 @@ class _searchBodyState extends State<searchBody> {
   }
 }
 
-backBox(BuildContext context, controller1, controller2) {
+backBox(
+  BuildContext context,
+  controller1, //controller2
+) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -313,7 +294,7 @@ screenName() {
   //Plan your trip box
   return Center(
     child: Text(
-      "Plan your trip",
+      "Enquiry",
       style: TextStyle(
         color: Color.fromARGB(255, 220, 220, 220),
         fontSize: 20,
@@ -325,29 +306,19 @@ screenName() {
 
 Widget fromToIcon() {
   //icons on the left side of the search box
-  return Column(
-    children: [
-      Icon(CupertinoIcons.circle, color: Colors.white),
-      Icon(Icons.arrow_drop_down, color: Colors.white),
-      Icon(CupertinoIcons.square, color: Colors.white),
-    ],
-  );
+  return Column(children: [Icon(CupertinoIcons.circle, color: Colors.white)]);
 }
 
 Map<String, List<dynamic>> coreTransferStationsDict = {
-  //used for transfer screen process, making sure both source and destination are available
   //Dictionary format
-  'Source': [], //adding some defaults
-  'Destination': [],
+  'Source': [],
 };
 
 Widget stationList(
   // widget that is expanded and scrollable of stations at bottom
   List<dynamic> stations,
   controller1,
-  controller2,
   focusNode1,
-  focusNode2,
 ) {
   if (stations.isEmpty) {
     return const Center(
@@ -394,48 +365,20 @@ Widget stationList(
           focusColor: const Color.fromARGB(0, 255, 255, 255),
           splashColor: const Color.fromARGB(86, 76, 76, 76),
           onTap: () {
-            //print("ControllerName: $name");
             if (focusNode1.hasFocus) {
               print("coreTransferStationsDict is focus node 2 fault");
-              //inputs text in the text filed on tap
               controller1.text = name;
-              //FocusScope.of(context).requestFocus(focusNode2);
-              coreTransferStationsDict['Source'] =
-                  station; ////-- setting name to be sent to search algorithm
-              if (ifDestinationSelected() && ifSourceSelected()) {
-                /////////NEWLY ADDED-------------
-                print("Destination selected ${controller2.text}");
+              coreTransferStationsDict['Source'] = station;
+              if (ifSourceSelected()) {
                 screenTransferController(
                   context,
                   controller1, //changed
-                  controller2,
+                  //controller2,
                 );
               } else {
-                focusNode2.requestFocus();
+                //focusNode2.requestFocus();
               }
             }
-            if (focusNode2.hasFocus) {
-              print("coreTransferStationsDict is focus node 2 fault");
-              controller2.text = name;
-              coreTransferStationsDict['Destination'] = station;
-
-              // screenTransferController(
-              //   context,
-              //   controller1.text,
-              //   controller2.text,
-              // );
-              if (ifSourceSelected() && ifDestinationSelected()) {
-                /////////NEWLY ADDED-------------
-                screenTransferController(context, controller1, controller2);
-              } else {
-                focusNode1.requestFocus();
-              }
-            }
-            //  else {
-            //   focusNode1.requestFocus();
-            //   controller1.text = name;
-            //   FocusScope.of(context).requestFocus(focusNode2);
-            // }
           },
           child: stationUnit(
             name: name,
@@ -451,103 +394,27 @@ Widget stationList(
   );
 }
 
-screenTransferController(context, controller1, controller2) {
+screenTransferController(
+  context,
+  controller1, //controller2
+) {
   String source = controller1.text;
-  String destination = controller2.text;
+  //String destination = controller2.text;
   //sends user to next route screen
-  if (ifSourceSelected() &&
-      ifDestinationSelected() &&
-      source.isNotEmpty &&
-      destination.isNotEmpty &&
-      coreTransferStationsDict['Source'] !=
-          coreTransferStationsDict['Destination']) {
-    //checks for source and destination in dectinory and the text controller text if all are valid only then proceed and destination is not same as source
-    if (coreTransferStationsDict['Source']![2] != source ||
-        coreTransferStationsDict['Destination']![2] != destination) {
-      //confirms user input if there is a mismatch between dictionary and textfield
-      showDialog(
-        //warns user with that BIG GREEN BOX for mis match
-        context: context,
+  if (ifSourceSelected() && source.isNotEmpty) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
         builder:
-            (context) => AlertDialog(
-              backgroundColor: const Color.fromARGB(255, 31, 200, 127),
-              title: Text(
-                "${coreTransferStationsDict['Source']![2]} to ${coreTransferStationsDict['Destination']![2]}",
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "Poppins",
-                ),
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(2),
-              ),
-              content: Text(
-                'Is this correct?',
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                  color: Colors.black,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              actions: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    coreTransferStationsDict
-                        .clear(); //reset just so user does not gets even more confused
-                    controller1.text = ''; //reset
-                    controller2.text = ''; //reset
-                  },
-                  child: Text(
-                    'Cancel',
-                    style: TextStyle(fontFamily: "Poppins"),
-                  ),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder:
-                            (context) => routeScreen(
-                              coreTransferStationsDict:
-                                  coreTransferStationsDict,
-                            ),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(fontFamily: "Poppins"),
-                  ),
-                ),
-              ],
-            ),
-      );
-    } else {
-      Navigator.push(
-        context,
-        CupertinoPageRoute(
-          builder:
-              (context) => routeScreen(
-                coreTransferStationsDict: coreTransferStationsDict,
-              ),
-        ),
-      );
-    }
+            (context) => stopInfoScreen(stationDict: coreTransferStationsDict),
+      ),
+    );
+    //checks for source and destination in dectinory and the text controller text if all are valid only then proceed and destination is not same as source
   } else {
     final snackBar = SnackBar(
       backgroundColor: const Color.fromARGB(255, 31, 200, 127),
       content: const Text(
-        'Please select both departure and arrival correctly',
+        'Please select station for enquiry correctly',
         style: TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.w300,
@@ -571,14 +438,6 @@ bool ifSourceSelected() {
   //put these checks on different and opposite text fields
   try {
     return coreTransferStationsDict['Source']?.isNotEmpty ?? false;
-  } catch (e) {
-    return false;
-  }
-}
-
-bool ifDestinationSelected() {
-  try {
-    return coreTransferStationsDict['Destination']?.isNotEmpty ?? false;
   } catch (e) {
     return false;
   }

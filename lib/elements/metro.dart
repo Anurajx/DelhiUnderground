@@ -12,6 +12,7 @@ import 'package:vibration/vibration.dart';
 import './ServicesDir/Station_element.dart';
 import 'search.dart';
 import './StationDir/stopInfo.dart';
+import 'StationDir/stationSearch.dart';
 import './MapDir/svgMap.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 
@@ -258,9 +259,12 @@ ticketAndExit(context) {
                   HitTestBehavior
                       .opaque, // to make sure that when tapped on white space the button is tapped
               onTap: () {
+                //TEMPROARY
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => stopInfoScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => stationSearchScreen(),
+                  ),
                 );
               },
               child: Align(
