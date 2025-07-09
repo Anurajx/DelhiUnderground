@@ -1,5 +1,5 @@
 name: metroapp
-description: "A new Flutter project."
+description: "An metro map for Delhi."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
@@ -50,6 +50,7 @@ dependencies:
   neopop: ^1.0.2
   string_similarity: ^2.1.1
   liquid_glass_renderer: ^0.1.1-dev.6
+  provider: ^6.1.5
 
 dev_dependencies:
   flutter_test:
@@ -103,6 +104,10 @@ flutter:
       fonts:
         - asset: assets/fonts/Poppins/Poppins-light.ttf
         - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+        #- asset: assets/fonts/Poppins/Poppins-Thin.ttf
     - family: Doto
       fonts:
         - asset: assets/fonts/Doto/Doto-Medium.ttf

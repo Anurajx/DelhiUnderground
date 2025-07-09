@@ -375,7 +375,7 @@ class stationNearby extends StatelessWidget {
               style: TextStyle(
                 color: const Color.fromARGB(255, 0, 0, 0),
                 fontSize: 14,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
+import 'package:provider/provider.dart';
 import 'elements/metro.dart';
 
 void main() {
@@ -14,7 +15,12 @@ void main() {
     ),
   );
   //making sure splash screen persisits
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => DataProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -4,7 +4,9 @@ import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:neopop/neopop.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
+import 'ServicesDir/geolocatorService.dart';
 import './MapDir/mapMetro.dart';
+import './ServicesDir/geolocatorService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
@@ -26,6 +28,7 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
+    //print(Geolocatorservice());
     return metroHomeScreen();
     // return Scaffold(
     //   backgroundColor: const Color.fromARGB(255, 8, 8, 8),
@@ -188,8 +191,12 @@ nearYou(context) {
             fontWeight: FontWeight.w500,
           ),
         ),
-        stationNearby(name: "Bhikaji Cama Place"),
+        GestureDetector(
+          onTap: () {},
+          child: stationNearby(name: "Bhikaji Cama Place"),
+        ),
         stationNearby(name: "South Extension"),
+        //Geolocatorservice(), //HERE TEMPRORY TEST
       ],
     ),
   );
@@ -393,7 +400,7 @@ appFooter(context) {
               height: 1,
               fontSize: 30,
               fontFamily: 'Poppins',
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
