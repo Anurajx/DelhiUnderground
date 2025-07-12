@@ -1,22 +1,15 @@
-import 'dart:math';
 import 'dart:ui';
-import 'package:flutter_launcher_icons/xml_templates.dart';
-import 'package:neopop/neopop.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:shimmer/shimmer.dart';
-import 'ServicesDir/geolocatorService.dart';
+import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
+
 import './MapDir/mapMetro.dart';
-import './ServicesDir/geolocatorService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
-import 'package:vibration/vibration.dart';
 import './ServicesDir/Station_element.dart';
 import 'search.dart';
-import './StationDir/stopInfo.dart';
 import 'StationDir/stationSearch.dart';
-import './MapDir/svgMap.dart';
-import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+import 'ServicesDir/data_Provider.dart';
+import 'package:provider/provider.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -26,6 +19,12 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => initialize(context));
+  }
+
   @override
   Widget build(BuildContext context) {
     //print(Geolocatorservice());
@@ -178,27 +177,105 @@ nearYou(context) {
     height: processedHeight(context, 0.15, 125, 125),
     //height: MediaQuery.of(context).size.height * 0.18,
     margin: EdgeInsets.all(5),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "NEAR YOU",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16, //processedFontheight(context),
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        GestureDetector(
-          onTap: () {},
-          child: stationNearby(name: "Bhikaji Cama Place"),
-        ),
-        stationNearby(name: "South Extension"),
-        //Geolocatorservice(), //HERE TEMPRORY TEST
-      ],
+    child: Consumer<DataProvider>(
+      builder: (context, data, child) {
+        final data = Provider.of<DataProvider>(context).coreNearestStationsDict;
+        print("data is $data");
+        //print(data.coreNearestStationsDict);
+        if (data["Near"] != null && data["NearEnough"] != null) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "NEAR YOU",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 109, 109, 109),
+                  fontSize: 16, //processedFontheight(context),
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+
+              stationNearby(name: data["Near"]![0][2]),
+              //Spacer(),
+              stationNearby(name: data["NearEnough"]![0][2]),
+            ],
+          );
+        } else {
+          return Container(
+            padding: EdgeInsets.all(10),
+            //height: 10, width: 10,
+            //color: Colors.greenAccent,
+            child: Center(
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Fetching nearby ",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "stations ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+
+                    WidgetSpan(
+                      child: Icon(Icons.location_on, color: Colors.white),
+                    ),
+                    TextSpan(
+                      text: " just a",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    TextSpan(
+                      text: " moment ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    WidgetSpan(
+                      child: Icon(Icons.punch_clock, color: Colors.white),
+                    ),
+                    TextSpan(
+                      text: " check GPS if not.",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 161, 161, 161),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    //WidgetSpan(child: cupertinoprogressindicator),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+
+        //return Column(children: [stationNearby(name: data["Near"]![0])]);
+      },
     ),
+    // GestureDetector(
+    //   onTap: () {},
+    //   child: stationNearby(name: "Bhikaji Cama Place"),
+    // ),
+    // stationNearby(name: "South Extension"),
+    //Geolocatorservice(), //HERE TEMPRORY TEST
   );
 }
 

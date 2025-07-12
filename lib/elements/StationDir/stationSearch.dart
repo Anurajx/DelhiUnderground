@@ -176,7 +176,7 @@ class _searchBodyState extends State<searchBody> {
               Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: 20, left: 40, top: 20),
+                    margin: EdgeInsets.only(bottom: 20, top: 20),
                     decoration: BoxDecoration(
                       color: Color.fromARGB(255, 0, 0, 0),
                       //color: const Color.fromARGB(255, 8, 8, 8),
@@ -229,7 +229,7 @@ class _searchBodyState extends State<searchBody> {
                   ),
                 ],
               ),
-              fromToIcon(),
+              //fromToIcon(),
             ], //add flip circle function flipcircle()
           ),
           stationList(
@@ -302,11 +302,6 @@ screenName() {
       ),
     ),
   );
-}
-
-Widget fromToIcon() {
-  //icons on the left side of the search box
-  return Column(children: [Icon(CupertinoIcons.circle, color: Colors.white)]);
 }
 
 Map<String, List<dynamic>> coreTransferStationsDict = {

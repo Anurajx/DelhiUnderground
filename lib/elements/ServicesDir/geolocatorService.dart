@@ -1,97 +1,98 @@
 import 'dart:isolate';
-//import 'global.dart';
+
 import 'package:csv/csv.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
-import 'dart:math';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:metroapp/elements/ServicesDir/Station_element.dart';
+import 'package:provider/provider.dart';
+import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 
-void initilize() async {
-  await getCurrentLocation(); // If you need it for permission or service check
+/// Call this from a widget’s `initState` using
+/// WidgetsBinding.instance.addPostFrameCallback((_) => initialize(context));
+Future<void> initialize(BuildContext context) async {
+  try {
+    // 1️⃣ Get user location once
+    final Position userPosition = await getCurrentLocation();
+    final double userLat = userPosition.latitude;
+    final double userLon = userPosition.longitude;
 
-  List<List<dynamic>> originalStations = await loadStationsFromCSV();
+    // 2️⃣ Load station CSV
+    List<List<dynamic>> originalStations = await loadStationsFromCSV();
 
-  // Get user's current location
-  Position userPosition = await getCurrentLocation();
-  double userLat = userPosition.latitude;
-  double userLon = userPosition.longitude;
+    // (Optional) skip CSV header row
+    if (originalStations.isNotEmpty &&
+        originalStations.first[0].toString().toLowerCase().contains(
+          'station',
+        )) {
+      originalStations = originalStations.skip(1).toList();
+    }
 
-  // Find closest station
-  originalStations.sort((a, b) {
-    double distA = Geolocator.distanceBetween(
-      userLat,
-      userLon,
-      double.parse(a[4].toString()),
-      double.parse(a[5].toString()),
-    );
-    double distB = Geolocator.distanceBetween(
-      userLat,
-      userLon,
-      double.parse(b[4].toString()),
-      double.parse(b[5].toString()),
-    );
-    return distA.compareTo(distB); // Ascending sort
-  });
+    if (originalStations.length < 2) {
+      print('⚠️ CSV has less than 2 stations; aborting update');
+      return;
+    }
 
-  var nearest = originalStations[0];
-  var nextNearest = originalStations[1];
-  coreNearestStationsDict['UserLocation'] = [userPosition];
-  coreNearestStationsDict['Near'] = [nearest];
-  coreNearestStationsDict['NearEnough'] = [nextNearest];
-  print("coreNearestStationsDict: $coreNearestStationsDict['Near']");
-  print(coreNearestStationsDict['NearEnough']);
+    // 3️⃣ Sort by distance
+    originalStations.sort((a, b) {
+      final distA = Geolocator.distanceBetween(
+        userLat,
+        userLon,
+        double.parse(a[4].toString()),
+        double.parse(a[5].toString()),
+      );
+      final distB = Geolocator.distanceBetween(
+        userLat,
+        userLon,
+        double.parse(b[4].toString()),
+        double.parse(b[5].toString()),
+      );
+      return distA.compareTo(distB);
+    });
+
+    final nearest = originalStations[0];
+    final nextNearest = originalStations[1];
+
+    // 4️⃣ Push into Provider
+    context.read<DataProvider>().updateCoreNearestStationsDict({
+      'UserLocation': [userPosition],
+      'Near': [nearest],
+      'NearEnough': [nextNearest],
+    });
+
+    print('🚀 Provider updated with nearest stations');
+  } catch (e, st) {
+    print('⚠️ initialize() failed: $e\n$st');
+  }
 }
 
-////////////////////////////////////////
-///
-///
-///
-///
-///
-///
-///
-///
+/// ----- helpers -----------------------------------------------------------
+
 Future<Position> getCurrentLocation() async {
-  bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  if (!serviceEnabled) {
-    print("Location services are disabled.");
+  if (!await Geolocator.isLocationServiceEnabled()) {
+    throw Exception('Location services disabled.');
+    //throw Exception('Location services disabled.');
   }
 
   LocationPermission permission = await Geolocator.checkPermission();
   if (permission == LocationPermission.denied) {
     permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-      print("Location permissions are denied");
-    }
+  }
+  if (permission == LocationPermission.denied ||
+      permission == LocationPermission.deniedForever) {
+    throw Exception('Location permission denied.');
   }
 
-  if (permission == LocationPermission.deniedForever) {
-    print("Permission Denied Forever");
-  }
-
-  return await Geolocator.getCurrentPosition();
+  return Geolocator.getCurrentPosition();
 }
 
 Future<List<List<dynamic>>> loadStationsFromCSV() async {
   final rawData = await rootBundle.loadString('assets/Map/stops.csv');
-  final List<List<dynamic>> rows = await Isolate.run(() {
-    return CsvToListConverter(
+  return Isolate.run(
+    () => CsvToListConverter(
       eol: '\n',
       fieldDelimiter: ',',
       textDelimiter: '"',
       shouldParseNumbers: false,
-    ).convert(rawData);
-  });
-  return rows;
+    ).convert(rawData),
+  );
 }
-
-Map<String, List<dynamic>> coreNearestStationsDict = {
-  //used for transfer screen process, making sure both source and destination are available
-  //Dictionary format
-  'UserLocation': [],
-  'Near': [], //adding some defaults
-  'NearEnough': [],
-};

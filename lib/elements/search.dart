@@ -461,9 +461,10 @@ screenTransferController(context, controller1, controller2) {
   String source = controller1.text;
   String destination = controller2.text;
   //sends user to next route screen
-  if (ifSourceSelected() &&
-      ifDestinationSelected() &&
-      source.isNotEmpty &&
+  if (
+  // ifSourceSelected() &&
+  //   ifDestinationSelected() &&
+  source.isNotEmpty &&
       destination.isNotEmpty &&
       coreTransferStationsDict['Source'] !=
           coreTransferStationsDict['Destination']) {
