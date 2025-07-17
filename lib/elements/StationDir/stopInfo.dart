@@ -231,7 +231,7 @@ stationStatus() {
                       ),
                     ),
                     Spacer(),
-                    Icon(Icons.arrow_forward, color: Colors.green, size: 15),
+                    Icon(Icons.arrow_forward, color: Colors.green, size: 20),
                   ],
                 ),
                 Text(
@@ -261,7 +261,7 @@ toAndFromBlock() {
         Expanded(
           child: Container(
             padding: EdgeInsets.all(10),
-            color: const Color.fromARGB(255, 25, 25, 25),
+            color: const Color.fromARGB(255, 212, 212, 212),
             width: 90,
             height: double.infinity,
             child: Column(
@@ -273,7 +273,7 @@ toAndFromBlock() {
                     Text(
                       "GO TO",
                       style: TextStyle(
-                        color: Colors.blueAccent,
+                        color: const Color.fromARGB(255, 0, 0, 0),
                         fontWeight: FontWeight.w500,
                         fontSize: 15,
                       ),
@@ -281,8 +281,8 @@ toAndFromBlock() {
                     Spacer(),
                     Icon(
                       Icons.arrow_downward,
-                      color: Colors.blueAccent,
-                      size: 15,
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      size: 20,
                     ),
                   ],
                 ),
@@ -302,7 +302,7 @@ toAndFromBlock() {
         Expanded(
           child: Container(
             padding: EdgeInsets.all(10),
-            color: const Color.fromARGB(255, 25, 25, 25),
+            color: const Color.fromARGB(255, 212, 212, 212),
             width: 90,
             height: double.infinity,
             child: Column(
@@ -314,7 +314,7 @@ toAndFromBlock() {
                     Text(
                       "GET FROM",
                       style: TextStyle(
-                        color: Colors.blueAccent,
+                        color: const Color.fromARGB(255, 0, 0, 0),
                         fontWeight: FontWeight.w500,
                         fontSize: 15,
                       ),
@@ -322,8 +322,8 @@ toAndFromBlock() {
                     Spacer(),
                     Icon(
                       Icons.arrow_upward,
-                      color: Colors.blueAccent,
-                      size: 15,
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      size: 20,
                     ),
                   ],
                 ),
@@ -541,7 +541,7 @@ exitBlock() {
           child: Row(
             children: [
               Text(
-                "VISUALIZE ON MAP",
+                "VIEW ON MAP",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 179, 179, 179),
                   fontWeight: FontWeight.w500,
@@ -584,7 +584,7 @@ scheduleBlock() {
             Container(
               width: double.infinity,
               height: 50,
-              color: const Color.fromARGB(255, 25, 25, 25),
+              color: const Color.fromARGB(255, 212, 212, 212),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -593,16 +593,16 @@ scheduleBlock() {
                   Text(
                     "Majlis Park",
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 182, 182, 182),
+                      color: const Color.fromARGB(255, 72, 72, 72),
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Spacer(),
                   Container(
-                    width: 80,
+                    width: 100,
                     height: 60,
-                    color: const Color.fromARGB(255, 196, 196, 196),
+                    color: const Color.fromARGB(255, 25, 25, 25),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -610,13 +610,16 @@ scheduleBlock() {
                         Text(
                           "Every",
                           style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: const Color.fromARGB(255, 72, 72, 72),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
                           ),
                         ),
                         Text(
                           "15 min",
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromARGB(255, 182, 182, 182),
+                          ),
                         ),
                       ],
                     ),
@@ -635,7 +638,7 @@ scheduleBlock() {
             Container(
               width: double.infinity,
               height: 50,
-              color: const Color.fromARGB(255, 25, 25, 25),
+              color: const Color.fromARGB(255, 212, 212, 212),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -644,16 +647,16 @@ scheduleBlock() {
                   Text(
                     "Majlis Park",
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 181, 181, 181),
+                      color: const Color.fromARGB(255, 72, 72, 72),
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Spacer(),
                   Container(
-                    width: 80,
+                    width: 100,
                     height: 60,
-                    color: const Color.fromARGB(255, 212, 212, 212),
+                    color: const Color.fromARGB(255, 25, 25, 25),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -661,13 +664,16 @@ scheduleBlock() {
                         Text(
                           "Every",
                           style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: const Color.fromARGB(255, 72, 72, 72),
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
                           ),
                         ),
                         Text(
                           "15 min",
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromARGB(255, 182, 182, 182),
+                          ),
                         ),
                       ],
                     ),
@@ -704,7 +710,7 @@ ammenitiesBlock() {
             Text(
               "Washroom",
               style: TextStyle(
-                color: const Color.fromARGB(255, 128, 128, 128),
+                color: const Color.fromARGB(255, 205, 205, 205),
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -732,7 +738,7 @@ ammenitiesBlock() {
             Text(
               "Foodcourt",
               style: TextStyle(
-                color: const Color.fromARGB(255, 128, 128, 128),
+                color: const Color.fromARGB(255, 205, 205, 205),
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -761,7 +767,7 @@ ammenitiesBlock() {
             Text(
               "Wifi",
               style: TextStyle(
-                color: const Color.fromARGB(255, 128, 128, 128),
+                color: const Color.fromARGB(255, 205, 205, 205),
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),

@@ -184,7 +184,7 @@ class _searchBodyState extends State<searchBody> {
                         color: const Color.fromARGB(255, 234, 234, 234),
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(10), //40
+                      borderRadius: BorderRadius.circular(2), //40
                     ),
                     //width: double.infinity,
                     height: 50,

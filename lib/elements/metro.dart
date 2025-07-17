@@ -105,7 +105,7 @@ searchBar(context) {
     onTap: () {
       Navigator.push(
         context,
-        CupertinoPageRoute(builder: (context) => const SearchScreen()),
+        MaterialPageRoute(builder: (context) => const SearchScreen()),
       );
     },
     child: Container(
@@ -183,6 +183,12 @@ nearYou(context) {
         print("data is $data");
         //print(data.coreNearestStationsDict);
         if (data["Near"] != null && data["NearEnough"] != null) {
+          /////////////
+          String line = data["NearEnough"]![0][3].toString();
+          line = line.replaceAll(RegExp(r'[\[\]]'), '');
+          List<String> parts = line.split('-');
+          List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
+          /////////////
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,9 +204,9 @@ nearYou(context) {
                 ),
               ),
 
-              stationNearby(name: data["Near"]![0][2]),
+              stationNearby(name: data["Near"]![0][2], line: lineNumbers),
               //Spacer(),
-              stationNearby(name: data["NearEnough"]![0][2]),
+              stationNearby(name: data["NearEnough"]![0][2], line: lineNumbers),
             ],
           );
         } else {
@@ -456,10 +462,16 @@ appFooter(context) {
         bottomLeft: Radius.circular(0),
         bottomRight: Radius.circular(0),
       ),
-      image: DecorationImage(
-        image: AssetImage('assets/Image/fluted.jpg'),
-        fit: BoxFit.cover,
+      //color: const Color.fromARGB(255, 22, 22, 22),
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [Color(0xFF002A2E), Color(0xFF0D0D0D)],
       ),
+      // image: DecorationImage(
+      //   image: AssetImage('assets/Image/fluted.jpg'),
+      //   fit: BoxFit.cover,
+      // ),
     ),
 
     child: Row(
@@ -472,7 +484,7 @@ appFooter(context) {
             "Delhi\nUnderground",
             textAlign: TextAlign.right,
             style: TextStyle(
-              color: const Color.fromARGB(183, 255, 255, 255),
+              color: const Color.fromARGB(255, 225, 225, 225),
               //color: const Color.fromARGB(255, 61, 61, 61),
               height: 1,
               fontSize: 30,

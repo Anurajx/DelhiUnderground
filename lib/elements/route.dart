@@ -145,7 +145,7 @@ class tripSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Text.rich(
         TextSpan(
           children: [

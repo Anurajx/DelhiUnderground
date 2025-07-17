@@ -108,7 +108,6 @@ Color getColorFromLineNumber(int lineNumber) {
       return const Color.fromARGB(255, 130, 130, 130); //grey line
     case 10:
       return const Color.fromARGB(255, 255, 114, 12); //check airport line
-
     case 15:
       return const Color.fromARGB(255, 0, 185, 235); //rapid metro line
     case 20:
@@ -269,8 +268,8 @@ class stationPrimitive extends StatelessWidget {
 class stationNearby extends StatelessWidget {
   //for station list on main screen
   final dynamic name;
-
-  const stationNearby({super.key, required this.name});
+  final dynamic line;
+  const stationNearby({super.key, required this.name, required this.line});
 
   @override
   Widget build(BuildContext context) {
@@ -286,100 +285,28 @@ class stationNearby extends StatelessWidget {
             fontWeight: FontWeight.w300,
           ),
         ),
-        SizedBox(
-          width: 10,
-        ), // adding to create a bit of space between line indicatot and text
-        Container(
-          width: 15,
-          height: 15,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 122, 204),
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Center(
-            child: Text(
-              "3",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          // color: const Color(
-          //   0xFF0072BC,
-          // ), //blue line color will make it dynamic later
-        ),
-        SizedBox(width: 5),
-        Container(
-          width: 15,
-          height: 15,
-
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 219, 112, 147),
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Center(
-            child: Text(
-              "7",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ), //make this change dynamically based on the station
-          // color: const Color(
-          //   0xFFF47B20,
-          // ), //blue line color will make it dynamic later
-        ),
-
-        SizedBox(width: 5),
-        Container(
-          width: 15,
-          height: 15,
-
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(0, 255, 235, 59),
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Center(
-            child: Text(
-              "1",
-              style: TextStyle(
-                color: const Color.fromARGB(0, 0, 0, 0),
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          // color: const Color.fromARGB(
-          //   255,
-          //   249,
-          //   134,
-          //   255,
-          // ), //blue line color will make it dynamic later
-        ),
+        SizedBox(width: 10),
+        stationLineBadgeBuilder(line),
         Spacer(),
-        // Icon(
-        //   CupertinoIcons.info_circle,
-        //   color: const Color.fromARGB(255, 179, 179, 179),
-        // ),
-        Container(
-          height: 20,
-          width: 50,
-          color: const Color.fromARGB(255, 199, 199, 199),
-          child: Center(
-            child: Text(
-              "1 KM",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
+        Icon(
+          Icons.location_searching,
+          color: const Color.fromARGB(255, 179, 179, 179),
         ),
+        // Container(
+        //   height: 20,
+        //   width: 50,
+        //   color: const Color.fromARGB(255, 199, 199, 199),
+        //   child: Center(
+        //     child: Text(
+        //       "1.2 KM",
+        //       style: TextStyle(
+        //         color: const Color.fromARGB(255, 0, 0, 0),
+        //         fontSize: 14,
+        //         fontWeight: FontWeight.w500,
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

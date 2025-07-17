@@ -146,17 +146,25 @@ class _searchBodyState extends State<searchBody> {
 
   Future<List> loadStationsFromCSV() async {
     //fetching data from CSV file logic
-    final rawData = await rootBundle.loadString('assets/Map/stops.csv');
-    final List<List<dynamic>> rows = await Isolate.run(() {
-      return CsvToListConverter(
-        eol: '\n',
-        fieldDelimiter: ',',
-        textDelimiter: '"',
-        shouldParseNumbers: false,
-      ).convert(rawData);
-    });
+    try {
+      final rawData = await rootBundle.loadString(
+        'assets/Map/stops.csv',
+      ); //stops
+      final List<List<dynamic>> rows = await Isolate.run(() {
+        return CsvToListConverter(
+          eol: '\n',
+          fieldDelimiter: ',',
+          textDelimiter: '"',
+          shouldParseNumbers: false,
+        ).convert(rawData);
+      });
+      return rows;
+    } catch (e) {
+      return [];
+      //error protection
+    }
     //print("Total rows parsed: ${rows}");
-    return rows;
+    //return rows;
   }
 
   @override
@@ -184,7 +192,7 @@ class _searchBodyState extends State<searchBody> {
                         color: const Color.fromARGB(255, 234, 234, 234),
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(10), //40
+                      borderRadius: BorderRadius.circular(2), //40
                     ),
                     //width: double.infinity,
                     height: 100,
@@ -310,7 +318,7 @@ backBox(BuildContext context, controller1, controller2) {
           ),
         ),
       ),
-      Icon(Icons.support, color: const Color.fromARGB(255, 175, 175, 175)),
+      Icon(Icons.route, color: const Color.fromARGB(255, 175, 175, 175)),
     ],
   );
 }
@@ -481,7 +489,7 @@ screenTransferController(context, controller1, controller2) {
               title: Text(
                 "${coreTransferStationsDict['Source']![2]} to ${coreTransferStationsDict['Destination']![2]}",
                 style: TextStyle(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   fontFamily: "Poppins",
                 ),
               ),
@@ -542,7 +550,7 @@ screenTransferController(context, controller1, controller2) {
     } else {
       Navigator.push(
         context,
-        CupertinoPageRoute(
+        MaterialPageRoute(
           builder:
               (context) => routeScreen(
                 coreTransferStationsDict: coreTransferStationsDict,

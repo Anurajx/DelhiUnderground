@@ -20,12 +20,12 @@ Future<void> initialize(BuildContext context) async {
     List<List<dynamic>> originalStations = await loadStationsFromCSV();
 
     // (Optional) skip CSV header row
-    if (originalStations.isNotEmpty &&
-        originalStations.first[0].toString().toLowerCase().contains(
-          'station',
-        )) {
-      originalStations = originalStations.skip(1).toList();
-    }
+    // if (originalStations.isNotEmpty &&
+    //     originalStations.first[0].toString().toLowerCase().contains(
+    //       'station',
+    //     )) {
+    //   originalStations = originalStations.skip(1).toList();
+    // }
 
     if (originalStations.length < 2) {
       print('⚠️ CSV has less than 2 stations; aborting update');
@@ -49,8 +49,8 @@ Future<void> initialize(BuildContext context) async {
       return distA.compareTo(distB);
     });
 
-    final nearest = originalStations[0];
-    final nextNearest = originalStations[1];
+    final nearest = originalStations[1];
+    final nextNearest = originalStations[0];
 
     // 4️⃣ Push into Provider
     context.read<DataProvider>().updateCoreNearestStationsDict({
