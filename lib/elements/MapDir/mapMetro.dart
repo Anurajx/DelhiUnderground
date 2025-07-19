@@ -65,7 +65,7 @@ topNavBar(context) {
         ),
         Spacer(),
         Text(
-          "From Inat.fr  ",
+          "From DMRC  ",
           style: TextStyle(
             color: const Color.fromARGB(255, 177, 177, 177),
             fontWeight: FontWeight.w700,
@@ -96,7 +96,7 @@ metroMap() {
       maxScale: 20,
       child: Center(
         child: Image.asset(
-          "assets/Map/DelhiMetroMap.png",
+          "assets/Map/DelhiMetroMap.jpg",
           fit: BoxFit.contain,
           filterQuality: FilterQuality.high,
         ),

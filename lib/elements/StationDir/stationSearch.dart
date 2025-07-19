@@ -176,18 +176,19 @@ class _searchBodyState extends State<searchBody> {
               Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: 20, top: 20),
+                    margin: EdgeInsets.only(bottom: 10, top: 20),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      //color: const Color.fromARGB(255, 8, 8, 8),
+                      color: const Color.fromARGB(255, 208, 208, 208),
+                      //color: Color.fromARGB(255, 0, 0, 0),
+                      ////color: const Color.fromARGB(255, 8, 8, 8),
                       border: Border.all(
                         color: const Color.fromARGB(255, 234, 234, 234),
                         width: 1,
                       ),
-                      borderRadius: BorderRadius.circular(2), //40
+                      borderRadius: BorderRadius.circular(0), //40
                     ),
                     //width: double.infinity,
-                    height: 50,
+                    height: 45,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -206,12 +207,12 @@ class _searchBodyState extends State<searchBody> {
                               border: InputBorder.none,
                               hintText: "Search",
                               hintStyle: TextStyle(
-                                color: const Color.fromARGB(255, 132, 132, 132),
-                                fontWeight: FontWeight.w200,
+                                color: const Color.fromARGB(200, 68, 68, 68),
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             style: TextStyle(
-                              color: const Color.fromARGB(255, 179, 179, 179),
+                              color: const Color.fromARGB(225, 15, 15, 15),
                               fontSize: 18,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
@@ -319,6 +320,7 @@ Widget stationList(
     return const Center(
       child: Column(
         children: [
+          SizedBox(height: 30),
           //CupertinoActivityIndicator(color: Colors.white, radius: 15),
           Icon(
             CupertinoIcons.exclamationmark_circle_fill,

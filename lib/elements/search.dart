@@ -172,6 +172,7 @@ class _searchBodyState extends State<searchBody> {
     return Container(
       width: double.infinity,
       height: double.infinity,
+      //decoration: BoxDecoration(color: const Color.fromARGB(255, 8, 8, 8)),
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
@@ -184,18 +185,21 @@ class _searchBodyState extends State<searchBody> {
               Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: 20, left: 40, top: 20),
+                    margin: EdgeInsets.only(
+                      bottom: 10, //left: 40,
+                      top: 20,
+                    ),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: const Color.fromARGB(255, 208, 208, 208),
                       //color: const Color.fromARGB(255, 8, 8, 8),
-                      border: Border.all(
-                        color: const Color.fromARGB(255, 234, 234, 234),
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(2), //40
+                      // border: Border.all(
+                      //   color: const Color.fromARGB(255, 234, 234, 234),
+                      //   width: 1,
+                      // ),
+                      borderRadius: BorderRadius.circular(0), //40
                     ),
                     //width: double.infinity,
-                    height: 100,
+                    height: 90,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,12 +218,12 @@ class _searchBodyState extends State<searchBody> {
                               border: InputBorder.none,
                               hintText: "From",
                               hintStyle: TextStyle(
-                                color: const Color.fromARGB(255, 132, 132, 132),
-                                fontWeight: FontWeight.w200,
+                                color: const Color.fromARGB(200, 68, 68, 68),
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             style: TextStyle(
-                              color: const Color.fromARGB(255, 179, 179, 179),
+                              color: const Color.fromARGB(225, 15, 15, 15),
                               fontSize: 18,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
@@ -227,11 +231,12 @@ class _searchBodyState extends State<searchBody> {
                           ),
                         ),
                         Divider(
-                          color: const Color.fromARGB(255, 50, 50, 50),
+                          color: const Color.fromARGB(255, 8, 8, 8),
                           height: 1,
+                          thickness: 2,
                         ),
                         Container(
-                          margin: const EdgeInsets.fromLTRB(15, 0, 10, 5),
+                          margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
                           child: TextField(
                             textCapitalization: TextCapitalization.sentences,
                             focusNode: _focusNode2,
@@ -242,12 +247,12 @@ class _searchBodyState extends State<searchBody> {
                               border: InputBorder.none,
                               hintText: "To",
                               hintStyle: TextStyle(
-                                color: const Color.fromARGB(255, 132, 132, 132),
-                                fontWeight: FontWeight.w200,
+                                color: const Color.fromARGB(200, 68, 68, 68),
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             style: TextStyle(
-                              color: const Color.fromARGB(255, 179, 179, 179),
+                              color: const Color.fromARGB(225, 15, 15, 15),
                               fontSize: 18,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
@@ -264,7 +269,7 @@ class _searchBodyState extends State<searchBody> {
                   ),
                 ],
               ),
-              fromToIcon(),
+              //fromToIcon(),
             ], //add flip circle function flipcircle()
           ),
           stationList(
@@ -318,7 +323,7 @@ backBox(BuildContext context, controller1, controller2) {
           ),
         ),
       ),
-      Icon(Icons.route, color: const Color.fromARGB(255, 175, 175, 175)),
+      //Icon(Icons.route, color: const Color.fromARGB(255, 175, 175, 175)),
     ],
   );
 }
@@ -329,7 +334,7 @@ screenName() {
     child: Text(
       "Plan your trip",
       style: TextStyle(
-        color: Color.fromARGB(255, 220, 220, 220),
+        color: Color.fromARGB(255, 139, 139, 139),
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
@@ -367,6 +372,7 @@ Widget stationList(
     return const Center(
       child: Column(
         children: [
+          SizedBox(height: 30),
           //CupertinoActivityIndicator(color: Colors.white, radius: 15),
           Icon(
             CupertinoIcons.exclamationmark_circle_fill,

@@ -60,6 +60,8 @@ stationCluster(context, stationDict) {
               SizedBox(height: 40),
               ammenitiesBlock(),
               SizedBox(height: 40),
+              reportError(),
+              SizedBox(height: 40),
               companyFooter(),
             ],
           ),
@@ -721,6 +723,7 @@ ammenitiesBlock() {
               style: TextStyle(
                 color: const Color.fromARGB(255, 191, 191, 191),
                 fontSize: 16,
+                fontWeight: FontWeight.w500,
               ),
             ),
             // SizedBox(width: 10),
@@ -749,6 +752,7 @@ ammenitiesBlock() {
               style: TextStyle(
                 color: const Color.fromARGB(255, 191, 191, 191),
                 fontSize: 16,
+                fontWeight: FontWeight.w500,
               ),
             ),
 
@@ -778,6 +782,7 @@ ammenitiesBlock() {
               style: TextStyle(
                 color: const Color.fromARGB(255, 191, 191, 191),
                 fontSize: 16,
+                fontWeight: FontWeight.w500,
               ),
             ),
             //SizedBox(height: 10),
@@ -790,8 +795,44 @@ ammenitiesBlock() {
           ],
         ),
         Divider(height: 2, color: const Color.fromARGB(255, 40, 40, 40)),
+
+        //SizedBox(height: 50),
       ],
     ),
+  );
+}
+
+reportError() {
+  return Row(
+    children: [
+      Container(
+        height: 50,
+        width: 170,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(2)),
+          //color: const Color.fromARGB(255, 17, 17, 17),
+          border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+        ),
+        child: GestureDetector(
+          behavior:
+              HitTestBehavior
+                  .opaque, // to make sure that when tapped on white space the button is tapped
+          onTap: () {},
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              "report error",
+              style: TextStyle(
+                color: const Color.fromARGB(255, 187, 187, 187),
+                fontSize: 18, //processedFontheight(context),
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+      ),
+    ],
   );
 }
 
@@ -802,7 +843,7 @@ companyFooter() {
       //borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     width: double.infinity,
-    height: 100,
+    height: 50,
     //color: const Color.fromARGB(255, 57, 57, 57),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,

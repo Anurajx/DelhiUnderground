@@ -51,6 +51,10 @@ class RouteDisplay extends StatelessWidget {
                 routeCluster(lineColor: "DOES NOT DO ANYTHING"),
                 interchangeInfo(),
                 routeCluster(lineColor: "DOES NOT DO ANYTHING"),
+                SizedBox(height: 40),
+                reportError(),
+                SizedBox(height: 40),
+                companyFooter(),
               ],
             ),
           ),
@@ -531,6 +535,77 @@ interchangeInfo() {
             ),
           ),
         ),
+      ],
+    ),
+  );
+}
+
+reportError() {
+  return Row(
+    children: [
+      Container(
+        height: 50,
+        width: 170,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(2)),
+          //color: const Color.fromARGB(255, 17, 17, 17),
+          border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+        ),
+        child: GestureDetector(
+          behavior:
+              HitTestBehavior
+                  .opaque, // to make sure that when tapped on white space the button is tapped
+          onTap: () {},
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              "report error",
+              style: TextStyle(
+                color: const Color.fromARGB(255, 187, 187, 187),
+                fontSize: 18, //processedFontheight(context),
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+companyFooter() {
+  return Container(
+    decoration: BoxDecoration(
+      //color: const Color.fromARGB(255, 11, 11, 11),
+      //borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    width: double.infinity,
+    height: 50,
+    //color: const Color.fromARGB(255, 57, 57, 57),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          "DELHI\nUNDERGROUND",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            height: 1,
+            color: const Color.fromARGB(255, 90, 90, 90),
+            fontWeight: FontWeight.w700,
+            fontSize: 14,
+          ),
+        ),
+        // Text(
+        //   "From New Delhi",
+        //   textAlign: TextAlign.center,
+        //   style: TextStyle(
+        //     color: Colors.grey,
+        //     fontWeight: FontWeight.w300,
+        //     fontSize: 12,
+        //   ),
+        // ),
       ],
     ),
   );
