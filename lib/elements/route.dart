@@ -1,6 +1,9 @@
 import 'dart:ffi';
 import 'package:marquee/marquee.dart';
+import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
+import 'package:metroapp/elements/StationDir/stationSearch.dart';
 import 'package:neopop/neopop.dart';
+import 'package:provider/provider.dart';
 
 import './ServicesDir/Station_element.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +22,22 @@ class routeScreen extends StatefulWidget {
 }
 
 class _routeScreenState extends State<routeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    print("CORE STATIONS: ${widget.coreTransferStationsDict}");
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<DataProvider>().updateCoreTransferStationsDict({
+        'just': [widget.coreTransferStationsDict],
+        'justBefore': [widget.coreTransferStationsDict],
+      });
+    });
+
+    // context.read<DataProvider>().updateCoreTransferStationsDict({
+    //   //UPDATE PROVIDER DICT
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

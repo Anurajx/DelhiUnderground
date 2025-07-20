@@ -53,11 +53,13 @@ Future<void> initialize(BuildContext context) async {
     final nextNearest = originalStations[0];
 
     // 4️⃣ Push into Provider
-    context.read<DataProvider>().updateCoreNearestStationsDict({
-      'UserLocation': [userPosition],
-      'Near': [nearest],
-      'NearEnough': [nextNearest],
-    });
+    if (context.mounted) {
+      context.read<DataProvider>().updateCoreNearestStationsDict({
+        'UserLocation': [userPosition],
+        'Near': [nearest],
+        'NearEnough': [nextNearest],
+      });
+    }
 
     print('🚀 Provider updated with nearest stations');
   } catch (e, st) {

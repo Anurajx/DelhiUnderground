@@ -2,6 +2,8 @@
 // import 'dart:math';
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
+import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
+import 'package:provider/provider.dart';
 // import 'package:neopop/neopop.dart';
 import 'route.dart';
 //import './ServicesDir/metroStationsList.dart';
@@ -85,6 +87,8 @@ class _searchBodyState extends State<searchBody> {
   void deactivate() {
     // when the router is poped and user goes back to home screen this is triggered
     super.deactivate();
+    // context.read<DataProvider>().updateCoreTransferStationsDict({
+    // });
     if (!Navigator.canPop(context)) {
       coreTransferStationsDict.clear();
     }

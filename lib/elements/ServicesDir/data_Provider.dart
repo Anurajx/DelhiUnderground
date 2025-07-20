@@ -8,6 +8,13 @@ class DataProvider extends ChangeNotifier {
     _coreNearestStationsDict = data;
     notifyListeners();
   }
-}
 
-//WELL CLEAN UP THIS MESS TOO
+  //////////------------------------------------------------------
+  Map<String, List<dynamic>> _coreTransferStationsDict = {};
+  Map<String, List<dynamic>> get coreTransferStationsDict =>
+      _coreTransferStationsDict;
+  void updateCoreTransferStationsDict(Map<String, List<dynamic>> data) {
+    _coreTransferStationsDict = data;
+    notifyListeners();
+  }
+}

@@ -165,7 +165,27 @@ suggestions(context) {
           },
           child: stationPrimitive(name: 'RK Puram'),
         ),
-        stationPrimitive(name: 'Rajouri Garden'),
+        //stationPrimitive(name: 'Rajouri Garden'),
+        Consumer<DataProvider>(
+          builder: (context, data, child) {
+            final data =
+                Provider.of<DataProvider>(context).coreTransferStationsDict;
+            print("data is $data");
+            //print(data.coreNearestStationsDict);
+            if (data["just"] != null &&
+                data["justBefore"] != null &&
+                data["just"]![0] != {} &&
+                data["justBefore"]![0] != {}) {
+              return stationPrimitive(
+                name:
+                    data["just"]![0]["Source"]![2]
+                        .toString(), //CHECK NOT ERROR SAFE
+              );
+            } else {
+              return Container(color: Colors.white, height: 30, width: 20);
+            }
+          },
+        ),
       ],
     ),
   );
