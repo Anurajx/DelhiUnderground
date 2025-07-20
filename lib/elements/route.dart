@@ -27,10 +27,10 @@ class _routeScreenState extends State<routeScreen> {
     super.initState();
     print("CORE STATIONS: ${widget.coreTransferStationsDict}");
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<DataProvider>().updateCoreTransferStationsDict({
-        'just': [widget.coreTransferStationsDict],
-        'justBefore': [widget.coreTransferStationsDict],
-      });
+      final dataProvider = context.read<DataProvider>();
+      //print("PREVIOUS data is: $previous");
+
+      dataProvider.updateJustData(widget.coreTransferStationsDict);
     });
 
     // context.read<DataProvider>().updateCoreTransferStationsDict({

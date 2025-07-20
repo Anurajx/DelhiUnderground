@@ -170,19 +170,21 @@ suggestions(context) {
           builder: (context, data, child) {
             final data =
                 Provider.of<DataProvider>(context).coreTransferStationsDict;
-            print("data is $data");
+            print("transfer data is $data");
             //print(data.coreNearestStationsDict);
-            if (data["just"] != null &&
+            if (data.isNotEmpty &&
+                data["just"] != null &&
                 data["justBefore"] != null &&
-                data["just"]![0] != {} &&
-                data["justBefore"]![0] != {}) {
+                data["just"]?[0] != {}
+            //data["justBefore"]?[0] != {}
+            ) {
               return stationPrimitive(
                 name:
-                    data["just"]![0]["Source"]![2]
+                    data["just"]?[0]["Source"]?[2]
                         .toString(), //CHECK NOT ERROR SAFE
               );
             } else {
-              return Container(color: Colors.white, height: 30, width: 20);
+              return Container(color: Colors.white, height: 20, width: 60);
             }
           },
         ),
@@ -224,9 +226,9 @@ nearYou(context) {
                 ),
               ),
 
-              stationNearby(name: data["Near"]![0][2], line: lineNumbers),
+              stationNearby(name: data["Near"]?[0][2], line: lineNumbers),
               //Spacer(),
-              stationNearby(name: data["NearEnough"]![0][2], line: lineNumbers),
+              stationNearby(name: data["NearEnough"]?[0][2], line: lineNumbers),
             ],
           );
         } else {
