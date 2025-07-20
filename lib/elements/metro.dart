@@ -147,48 +147,41 @@ suggestions(context) {
     height: processedHeight(context, 0.10, 90, 90),
     //context, 0.125, 60, 80
     //height: MediaQuery.of(context).size.height * 0.125,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            print("tapped");
-            Navigator.push(
-              context,
-              CupertinoPageRoute(
-                builder:
-                    (context) => const SearchScreen(destination: "RK Puram"),
-              ),
-            );
-          },
-          child: stationPrimitive(name: 'RK Puram'),
-        ),
-        //stationPrimitive(name: 'Rajouri Garden'),
-        Consumer<DataProvider>(
-          builder: (context, data, child) {
-            final data =
-                Provider.of<DataProvider>(context).coreTransferStationsDict;
-            print("transfer data is $data");
-            //print(data.coreNearestStationsDict);
-            if (data.isNotEmpty &&
-                data["just"] != null &&
-                data["justBefore"] != null &&
-                data["just"]?[0] != {}
-            //data["justBefore"]?[0] != {}
-            ) {
-              return stationPrimitive(
+    child: Consumer<DataProvider>(
+      builder: (context, data, child) {
+        final data =
+            Provider.of<DataProvider>(context).coreTransferStationsDict;
+        print("transfer data is $data");
+        //print(data.coreNearestStationsDict);
+        var just = data["just"];
+        var justBefore = data["justBefore"];
+        if (data.isNotEmpty && just != [] && justBefore != []
+        // data["just"] != null &&
+        // data["justBefore"] != null &&
+        // data["just"]?[0] != {}
+        //data["justBefore"]?[0] != {}
+        ) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              stationPrimitive(
                 name:
                     data["just"]?[0]["Source"]?[2]
                         .toString(), //CHECK NOT ERROR SAFE
-              );
-            } else {
-              return Container(color: Colors.white, height: 20, width: 60);
-            }
-          },
-        ),
-      ],
+                        //STILL HAS BUG
+              ),
+              stationPrimitive(
+                name:
+                    data["justBefore"]?[0]?["Source"]?[2]
+                        .toString(), //CHECK NOT ERROR SAFE
+              ),
+            ],
+          );
+        } else {
+          return Container(color: Colors.white, height: 20, width: 60);
+        }
+      },
     ),
   );
 }

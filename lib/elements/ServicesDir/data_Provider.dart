@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DataProvider extends ChangeNotifier {
   Map<String, List<dynamic>> _coreNearestStationsDict = {};
@@ -13,7 +16,7 @@ class DataProvider extends ChangeNotifier {
   Map<String, List<dynamic>> _coreTransferStationsDict = {};
   Map<String, List<dynamic>> get coreTransferStationsDict =>
       _coreTransferStationsDict;
-  void updateJustData(Map<String, dynamic> newSearch) {
+  void updateJustData(Map<String, dynamic> newSearch) async {
     // Deep copy of previous 'just' if it exists
     final prev = _coreTransferStationsDict['just'];
     final justBefore =
@@ -23,7 +26,7 @@ class DataProvider extends ChangeNotifier {
     final justNow = [_deepCopyTransferData(newSearch)];
 
     _coreTransferStationsDict = {'just': justNow, 'justBefore': justBefore};
-
+    await _saveTransferDictToPrefs(); //SAVES DATA TO MEMORY FOR RETRIVING WHEN APP RESTARTS
     notifyListeners();
   }
 
@@ -41,5 +44,28 @@ class DataProvider extends ChangeNotifier {
     });
 
     return copy;
+  }
+
+  Future<void> _saveTransferDictToPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // Convert to JSON
+    final encoded = jsonEncode(_coreTransferStationsDict);
+    await prefs.setString('coreTransferDict', encoded);
+  }
+
+  Future<void> loadTransferDictFromPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saved = prefs.getString('coreTransferDict');
+
+    if (saved != null) {
+      final Map<String, dynamic> decoded = jsonDecode(saved);
+
+      _coreTransferStationsDict = decoded.map(
+        (k, v) => MapEntry(k, List<dynamic>.from(v)),
+      );
+
+      notifyListeners();
+    }
   }
 }

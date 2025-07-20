@@ -4,7 +4,11 @@ import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:provider/provider.dart';
 import 'elements/metro.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final dataProvider =
+      DataProvider(); //UPDATES MOST RECENT SEARCHES FROM MEMORY
+  await dataProvider.loadTransferDictFromPrefs();
   //WidgetsFlutterBinding.ensureInitialized(); // Required to set system styles before UI build
 
   SystemChrome.setSystemUIOverlayStyle(
@@ -16,10 +20,14 @@ void main() {
   );
   //making sure splash screen persisits
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => DataProvider(),
+    ChangeNotifierProvider<DataProvider>.value(
+      value: dataProvider, // ✅ using the one with loaded data
       child: const MyApp(),
     ),
+    //ChangeNotifierProvider(
+    //create: (context) => DataProvider(),
+    //child: const MyApp(),
+    //),
   );
 }
 
