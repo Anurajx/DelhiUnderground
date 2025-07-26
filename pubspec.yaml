@@ -51,6 +51,9 @@ dependencies:
   string_similarity: ^2.1.1
   liquid_glass_renderer: ^0.1.1-dev.6
   provider: ^6.1.5
+  auto_size_text: ^3.0.0
+  lottie: ^3.3.1
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
@@ -91,21 +94,26 @@ flutter:
     - assets/Map/svgMap1.svg
     - assets/Image/Appfooter.jpg
     - assets/Image/pf1.png
-    - assets/Map/DelhiMetroMap.jpg
+    - assets/Map/DelhiMetroMap.webp
     - assets/Image/Vector.png
     - assets/Image/Vector2.png
     - assets/Image/carfooter.jpg
     - assets/Map/stops.csv
     - assets/Image/fluted.jpg
     - assets/Image/mapimg.png
+    - assets/Image/radaranim.json
+    - assets/Image/carinf.jpeg
+    - assets/Image/bikeinf.jpeg
+    - assets/Image/elevatorinf.jpeg
+    - assets/Image/washroominf.jpeg
 
   fonts:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins/Poppins-light.ttf
         - asset: assets/fonts/Poppins/Poppins-Medium.ttf
-        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
-        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
+        #- asset: assets/fonts/Poppins/Poppins-Bold.ttf
+        #- asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
         - asset: assets/fonts/Poppins/Poppins-Regular.ttf
         #- asset: assets/fonts/Poppins/Poppins-Thin.ttf
     - family: Doto

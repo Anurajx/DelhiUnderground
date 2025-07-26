@@ -1,5 +1,8 @@
 import 'dart:ui';
+import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
+import 'package:url_launcher/url_launcher.dart';
+//import 'package:metroapp/elements/ServicesDir/whatsappURLTransfer.dart';
 
 import './MapDir/mapMetro.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +13,7 @@ import 'search.dart';
 import 'StationDir/stationSearch.dart';
 import 'ServicesDir/data_Provider.dart';
 import 'package:provider/provider.dart';
+//import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -169,7 +173,7 @@ suggestions(context) {
                 name:
                     data["just"]?[0]["Source"]?[2]
                         .toString(), //CHECK NOT ERROR SAFE
-                        //STILL HAS BUG
+                //STILL HAS BUG
               ),
               stationPrimitive(
                 name:
@@ -187,6 +191,7 @@ suggestions(context) {
 }
 
 nearYou(context) {
+  //bool isNear = false;
   return Container(
     width: double.infinity,
     height: processedHeight(context, 0.15, 125, 125),
@@ -198,11 +203,16 @@ nearYou(context) {
         print("data is $data");
         //print(data.coreNearestStationsDict);
         if (data["Near"] != null && data["NearEnough"] != null) {
+          //isNear= !isNear;
           /////////////
-          String line = data["NearEnough"]![0][3].toString();
-          line = line.replaceAll(RegExp(r'[\[\]]'), '');
-          List<String> parts = line.split('-');
-          List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
+          String lineNE = data["NearEnough"]![0][3].toString();
+          lineNE = lineNE.replaceAll(RegExp(r'[\[\]]'), '');
+          List<String> partsNE = lineNE.split('-');
+          List<int> lineNumbersNE = partsNE.map((e) => int.parse(e)).toList();
+          String lineN = data["Near"]![0][3].toString();
+          lineN = lineN.replaceAll(RegExp(r'[\[\]]'), '');
+          List<String> partsN = lineN.split('-');
+          List<int> lineNumbersN = partsN.map((e) => int.parse(e)).toList();
           /////////////
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -219,9 +229,15 @@ nearYou(context) {
                 ),
               ),
 
-              stationNearby(name: data["Near"]?[0][2], line: lineNumbers),
+              // if(isNear){
+
+              // },
+              stationNearby(name: data["Near"]?[0][2], line: lineNumbersN),
               //Spacer(),
-              stationNearby(name: data["NearEnough"]?[0][2], line: lineNumbers),
+              stationNearby(
+                name: data["NearEnough"]?[0][2],
+                line: lineNumbersNE,
+              ),
             ],
           );
         } else {
@@ -348,7 +364,7 @@ ticketAndExit(context) {
         ),
 
         SizedBox(
-          width: 10,
+          width: 5,
           // height: 50,
           // child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
         ),
@@ -464,6 +480,7 @@ ticketAndExit(context) {
 
 appFooter(context) {
   return Container(
+    width: double.infinity,
     //height: processedHeight(context, 0.45, 300, 400),
     // height:
     //     MediaQuery.of(context).size.height *
@@ -478,36 +495,87 @@ appFooter(context) {
         bottomRight: Radius.circular(0),
       ),
       //color: const Color.fromARGB(255, 22, 22, 22),
-      gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Color(0xFF002A2E), Color(0xFF0D0D0D)],
-      ),
-      // image: DecorationImage(
-      //   image: AssetImage('assets/Image/fluted.jpg'),
-      //   fit: BoxFit.cover,
+      // gradient: LinearGradient(
+      //   begin: Alignment.topCenter,
+      //   end: Alignment.bottomCenter,
+      //   colors: [
+      //     Color.fromARGB(255, 45, 237, 255),
+      //     Color.fromARGB(255, 45, 237, 255),
+      //     // Color.fromARGB(121, 45, 237, 255),
+      //     // Color(0xFF0D0D0D),
+      //   ],
       // ),
+      image: DecorationImage(
+        image: AssetImage('assets/Image/fluted.jpg'),
+        fit: BoxFit.cover,
+      ),
     ),
 
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.end,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
             "Delhi\nUnderground",
-            textAlign: TextAlign.right,
+            textAlign: TextAlign.left,
             style: TextStyle(
-              color: const Color.fromARGB(255, 225, 225, 225),
+              color: const Color.fromARGB(255, 175, 175, 175),
               //color: const Color.fromARGB(255, 61, 61, 61),
               height: 1,
               fontSize: 30,
               fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ),
+        Spacer(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            //Spacer(),
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () async {
+                final whatsappUrl = Uri.parse(
+                  'https://wa.me/+919650855800?text=Hi',
+                ); //add ?text=hi
+                await launchUrl(whatsappUrl);
+              },
+              child: LiquidGlass(
+                blur: 5,
+                shape: LiquidRoundedSuperellipse(
+                  borderRadius: Radius.circular(10),
+                ),
+                settings: const LiquidGlassSettings(
+                  thickness: 10,
+                  glassColor: Color(0x1AFFFFFF), // A subtle white tint
+                  lightIntensity: 1.5,
+                  blend: 40,
+                  //outlineIntensity: 0.5,
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                    "buy tickets",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 175, 175, 175),
+                      //color: const Color.fromARGB(255, 61, 61, 61),
+                      height: 1,
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: 5),
+          ],
+        ),
+        SizedBox(height: 5),
       ],
     ),
   );

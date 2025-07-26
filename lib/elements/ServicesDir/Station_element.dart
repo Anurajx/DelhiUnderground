@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -124,7 +125,7 @@ Widget stationLineBadgeBuilder(List<dynamic> lines) {
     children:
         lines.map<Widget>((line) {
           return Padding(
-            padding: const EdgeInsets.only(right: 5.0),
+            padding: const EdgeInsets.only(right: 3),
             child: stationLineBadge(line),
           );
         }).toList(),
@@ -151,7 +152,7 @@ stationLineBadge(line) {
             style: TextStyle(
               color: Colors.black,
               fontSize: 12,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ),
@@ -172,90 +173,76 @@ class stationPrimitive extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          '$name',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            color: const Color.fromARGB(255, 179, 179, 179),
-            fontSize: 18,
-            fontWeight: FontWeight.w300, //300
-          ),
-        ),
-        SizedBox(
-          width: 10,
-        ), // adding to create a bit of space between line indicatot and text
-        Container(
-          width: 15,
-          height: 15,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 122, 204),
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Center(
-            child: Text(
-              "3",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-              ),
+        Flexible(
+          child: Text(
+            '$name',
+            //maxLines: 2,
+            overflow: TextOverflow.fade,
+            softWrap: false,
+            // minFontSize: 14,
+            // maxFontSize: 18,
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              color: const Color.fromARGB(255, 179, 179, 179),
+              fontSize: 18,
+              fontWeight: FontWeight.w400, //300
             ),
           ),
-          // color: const Color(
-          //   0xFF0072BC,
-          // ), //blue line color will make it dynamic later
         ),
-        SizedBox(width: 5),
-        Container(
-          width: 15,
-          height: 15,
+        //Spacer(),
+        // Row(
+        //   children: [
+        //     SizedBox(
+        //       width: 10,
+        //     ), // adding to create a bit of space between line indicatot and text
+        //     Container(
+        //       width: 15,
+        //       height: 15,
+        //       decoration: BoxDecoration(
+        //         color: const Color.fromARGB(255, 0, 122, 204),
+        //         borderRadius: BorderRadius.all(Radius.circular(3)),
+        //       ),
+        //       child: Center(
+        //         child: Text(
+        //           "3",
+        //           style: TextStyle(
+        //             color: Colors.black,
+        //             fontSize: 10,
+        //             fontWeight: FontWeight.w700,
+        //           ),
+        //         ),
+        //       ),
+        //       // color: const Color(
+        //       //   0xFF0072BC,
+        //       // ), //blue line color will make it dynamic later
+        //     ),
+        //     SizedBox(width: 1),
+        //     Container(
+        //       width: 15,
+        //       height: 15,
 
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 200, 155, 0),
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Center(
-            child: Text(
-              "7",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ), //make this change dynamically based on the station
-          // color: const Color(
-          //   0xFFF47B20,
-          // ), //blue line color will make it dynamic later
-        ),
-
-        SizedBox(width: 5),
-        Container(
-          width: 15,
-          height: 15,
-
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(0, 255, 235, 59),
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-          ),
-          child: Center(
-            child: Text(
-              "1",
-              style: TextStyle(
-                color: const Color.fromARGB(0, 0, 0, 0),
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          // color: const Color.fromARGB(
-          //   255,
-          //   249,
-          //   134,
-          //   255,
-          // ), //blue line color will make it dynamic later
-        ),
-        Spacer(),
+        //       decoration: BoxDecoration(
+        //         color: const Color.fromARGB(255, 200, 155, 0),
+        //         borderRadius: BorderRadius.all(Radius.circular(3)),
+        //       ),
+        //       child: Center(
+        //         child: Text(
+        //           "7",
+        //           style: TextStyle(
+        //             color: Colors.black,
+        //             fontSize: 10,
+        //             fontWeight: FontWeight.w700,
+        //           ),
+        //         ),
+        //       ), //make this change dynamically based on the station
+        //       // color: const Color(
+        //       //   0xFFF47B20,
+        //       // ), //blue line color will make it dynamic later
+        //     ),
+        //   ],
+        // ),
+        //Spacer(),
+        //right: 0,
         Icon(
           CupertinoIcons.arrow_right,
           color: const Color.fromARGB(255, 179, 179, 179),
@@ -276,25 +263,28 @@ class stationNearby extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          '$name',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            color: const Color.fromARGB(255, 179, 179, 179),
-            fontSize: 18, //18
-            fontWeight: FontWeight.w300,
+        Flexible(
+          child: Text(
+            '$name',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              color: const Color.fromARGB(255, 179, 179, 179),
+              fontSize: 18, //18
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
-        SizedBox(width: 10),
-        stationLineBadgeBuilder(line),
-        Spacer(),
+        //SizedBox(width: 10),
+        //stationLineBadgeBuilder(line),
+        // Spacer(),
         Icon(
-          Icons.location_searching,
+          Icons.info_outline_rounded,
           color: const Color.fromARGB(255, 179, 179, 179),
         ),
         // Container(
-        //   height: 20,
-        //   width: 50,
+        //   // height: 20,
+        //   // width: 50,
+        //   padding: const EdgeInsets.all(2.0),
         //   color: const Color.fromARGB(255, 199, 199, 199),
         //   child: Center(
         //     child: Text(

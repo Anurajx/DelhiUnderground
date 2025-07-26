@@ -149,6 +149,7 @@ class _searchBodyState extends State<searchBody> {
   }
 
   Future<List> loadStationsFromCSV() async {
+    //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
     //fetching data from CSV file logic
     try {
       final rawData = await rootBundle.loadString(

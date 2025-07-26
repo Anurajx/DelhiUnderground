@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
+import 'package:lottie/lottie.dart';
 
 class stopInfoScreen extends StatelessWidget {
   final dynamic stationDict;
@@ -54,9 +55,9 @@ stationCluster(context, stationDict) {
               SizedBox(height: 2),
               toAndFromBlock(),
               SizedBox(height: 40),
-              exitBlock(),
-              SizedBox(height: 40),
               scheduleBlock(),
+              SizedBox(height: 40),
+              exitBlock(),
               SizedBox(height: 40),
               ammenitiesBlock(),
               SizedBox(height: 40),
@@ -74,7 +75,8 @@ stationCluster(context, stationDict) {
 topNavBar(context) {
   return Container(
     //color: const Color.fromARGB(0, 8, 8, 8),
-    padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
+    height: 50,
+    //padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -169,9 +171,16 @@ stationLineMarker(stationDict) {
 closeAndOpeningTime() {
   return Container(
     padding: EdgeInsets.all(5),
-    child: Text(
-      "Opens from 06:00 until 23:00",
-      style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        //Lottie.asset('assets/Image/radaranim.json', height: 30, width: 35),
+        Text(
+          "Opens from 06:00 until 23:00",
+          style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+        ),
+        //Spacer(),
+      ],
     ),
   );
 }
@@ -263,7 +272,7 @@ toAndFromBlock() {
         Expanded(
           child: Container(
             padding: EdgeInsets.all(10),
-            color: const Color.fromARGB(255, 212, 212, 212),
+            color: const Color.fromARGB(255, 207, 207, 207),
             width: 90,
             height: double.infinity,
             child: Column(
@@ -304,7 +313,7 @@ toAndFromBlock() {
         Expanded(
           child: Container(
             padding: EdgeInsets.all(10),
-            color: const Color.fromARGB(255, 212, 212, 212),
+            color: const Color.fromARGB(255, 207, 207, 207),
             width: 90,
             height: double.infinity,
             child: Column(
@@ -380,10 +389,15 @@ exitBlock() {
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(width: 12),
-                          Text(
-                            "Palika Bhawan, RK Puram Sector-13",
-                            style: TextStyle(
-                              color: const Color.fromARGB(255, 172, 172, 172),
+                          Expanded(
+                            child: Text(
+                              "Palika Bhawan, RK Puram Sector-13, New Delhi",
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
+                              maxLines: 2,
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 172, 172, 172),
+                              ),
                             ),
                           ),
                         ],
@@ -436,10 +450,15 @@ exitBlock() {
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(width: 12),
-                          Text(
-                            "DTC Sarojini Nagar Depot",
-                            style: TextStyle(
-                              color: const Color.fromARGB(255, 172, 172, 172),
+                          Expanded(
+                            child: Text(
+                              "DTC Sarojini Nagar Depot",
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
+                              maxLines: 2,
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 172, 172, 172),
+                              ),
                             ),
                           ),
                         ],
@@ -491,10 +510,15 @@ exitBlock() {
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(width: 12),
-                          Text(
-                            "EIL,Hyatt Regency, Gail India Ltd",
-                            style: TextStyle(
-                              color: const Color.fromARGB(255, 172, 172, 172),
+                          Expanded(
+                            child: Text(
+                              "EIL,Hyatt Regency, Gail India Ltd",
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
+                              maxLines: 2,
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 172, 172, 172),
+                              ),
                             ),
                           ),
                         ],
@@ -586,7 +610,7 @@ scheduleBlock() {
             Container(
               width: double.infinity,
               height: 50,
-              color: const Color.fromARGB(255, 212, 212, 212),
+              color: const Color.fromARGB(255, 207, 207, 207),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -640,7 +664,7 @@ scheduleBlock() {
             Container(
               width: double.infinity,
               height: 50,
-              color: const Color.fromARGB(255, 212, 212, 212),
+              color: const Color.fromARGB(255, 207, 207, 207),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -698,7 +722,7 @@ ammenitiesBlock() {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
-          "AMMENITIES",
+          "INFORMATION",
           style: TextStyle(
             color: const Color.fromARGB(255, 109, 109, 109),
             fontSize: 16, //processedFontheight(context),
@@ -707,96 +731,223 @@ ammenitiesBlock() {
           ),
         ),
         SizedBox(height: 10),
-        Row(
-          children: [
-            Text(
-              "Washroom",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 205, 205, 205),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+        Container(
+          width: double.infinity,
+          height: 80,
+          color: const Color.fromARGB(255, 25, 25, 25),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "car parking",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 182, 182, 182),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Container(
+                            color: const Color.fromARGB(255, 207, 207, 207),
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              "available",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 14, 14, 14),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            color: Colors.black,
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              "30 slots",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 207, 207, 207),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            Spacer(),
-            Text(
-              "Avilable",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 191, 191, 191),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+              //Spacer(),
+              Image.asset(
+                "assets/Image/carinf.jpeg",
+                height: 80,
+                width: 130,
+                fit: BoxFit.cover,
               ),
-            ),
-            // SizedBox(width: 10),
-            // Icon(
-            //   Icons.wash,
-            //   color: const Color.fromARGB(255, 191, 191, 191),
-            //   size: 15,
-            // ),
-          ],
+            ],
+          ),
         ),
-        Divider(height: 2, color: const Color.fromARGB(255, 40, 40, 40)),
-        SizedBox(height: 10),
-        Row(
-          children: [
-            Text(
-              "Foodcourt",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 205, 205, 205),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+        SizedBox(height: 2),
+        Container(
+          width: double.infinity,
+          height: 80,
+          color: const Color.fromARGB(255, 25, 25, 25),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "bike parking",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 182, 182, 182),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Container(
+                            color: const Color.fromARGB(255, 207, 207, 207),
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              "unavailable",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 14, 14, 14),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            color: Colors.black,
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              "0 slots",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 207, 207, 207),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            Spacer(),
-            Text(
-              " Avilable",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 191, 191, 191),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+              Image.asset(
+                "assets/Image/bikeinf.jpeg",
+                height: 80,
+                width: 130,
+                fit: BoxFit.cover,
               ),
-            ),
-
-            // SizedBox(width: 10),
-            // Icon(
-            //   Icons.food_bank,
-            //   color: const Color.fromARGB(255, 191, 191, 191),
-            //   size: 15,
-            // ),
-          ],
+            ],
+          ),
         ),
-        Divider(height: 2, color: const Color.fromARGB(255, 40, 40, 40)),
-        SizedBox(height: 10),
-        Row(
-          children: [
-            Text(
-              "Wifi",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 205, 205, 205),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+        SizedBox(height: 2),
+        Container(
+          padding: EdgeInsets.all(10),
+          width: double.infinity,
+          height: 50,
+          color: const Color.fromARGB(255, 25, 25, 25),
+          child: Row(
+            children: [
+              //SizedBox(width: 10),
+              Text(
+                "elevator",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 182, 182, 182),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            Spacer(),
-            Text(
-              "Unavilable",
-              style: TextStyle(
-                color: const Color.fromARGB(255, 191, 191, 191),
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+              Spacer(),
+              Text(
+                ">",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 182, 182, 182),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            //SizedBox(height: 10),
-            // SizedBox(width: 10),
-            // Icon(
-            //   Icons.wifi,
-            //   color: const Color.fromARGB(255, 191, 191, 191),
-            //   size: 15,
-            // ),
-          ],
+              Spacer(),
+              Text(
+                "available",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 182, 182, 182),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              // Spacer(),
+              // Image.asset(
+              //   "assets/Image/elevatorinf.jpeg",
+              //   height: 80,
+              //   width: 130,
+              //   fit: BoxFit.cover,
+              // ),
+            ],
+          ),
         ),
-        Divider(height: 2, color: const Color.fromARGB(255, 40, 40, 40)),
-
-        //SizedBox(height: 50),
+        SizedBox(height: 2),
+        Container(
+          padding: EdgeInsets.all(10),
+          width: double.infinity,
+          height: 50,
+          color: const Color.fromARGB(255, 25, 25, 25),
+          child: Row(
+            children: [
+              //SizedBox(width: 10),
+              Text(
+                "washroom",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 182, 182, 182),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Spacer(),
+              Text(
+                ">",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 182, 182, 182),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Spacer(),
+              Text(
+                "available",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 182, 182, 182),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              // Image.asset(
+              //   "assets/Image/washroominf.jpeg",
+              //   height: 80,
+              //   width: 130,
+              //   fit: BoxFit.cover,
+              // ),
+            ],
+          ),
+        ),
       ],
     ),
   );

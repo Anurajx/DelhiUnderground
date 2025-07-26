@@ -124,6 +124,9 @@ topNavBar(context) {
           width: 200,
           child: Marquee(
             text: "BHIKAJI CAMA PLACE -> RAJORI GARDEN",
+            showFadingOnlyWhenScrolling: true,
+            fadingEdgeStartFraction: 0.2,
+            fadingEdgeEndFraction: 0.1,
             blankSpace: 20,
             style: TextStyle(
               fontFamily: 'Poppins',
