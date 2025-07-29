@@ -52,8 +52,15 @@ dependencies:
   liquid_glass_renderer: ^0.1.1-dev.6
   provider: ^6.1.5
   auto_size_text: ^3.0.0
-  lottie: ^3.3.1
+  #lottie: ^3.3.1
   url_launcher: ^6.3.2
+  ############
+  sqflite: ^2.4.2
+  path: ^1.9.1
+  path_provider: ^2.1.5
+  #csv: ^5.1.1
+  archive: ^4.0.7
+  graphs: ^2.3.2
 
 dev_dependencies:
   flutter_test:

@@ -339,7 +339,7 @@ screenName() {
     child: Text(
       "Plan your trip",
       style: TextStyle(
-        color: Color.fromARGB(255, 139, 139, 139),
+        color: Color.fromARGB(255, 220, 220, 220),
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),

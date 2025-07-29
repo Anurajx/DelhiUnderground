@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:convert';
 import 'dart:ui';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
@@ -13,7 +15,9 @@ import 'search.dart';
 import 'StationDir/stationSearch.dart';
 import 'ServicesDir/data_Provider.dart';
 import 'package:provider/provider.dart';
+
 //import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+//bool showMarquee = true;
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -26,6 +30,7 @@ class _Page1State extends State<Page1> {
   @override
   void initState() {
     super.initState();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => initialize(context));
   }
 
@@ -59,16 +64,26 @@ class _metroHomeScreenState extends State<metroHomeScreen> {
         children: [
           //InfoBar(),
           Expanded(child: appFooter(context)),
+
           //Expanded(child: topHeader()),
           searchBar(
             context,
           ), //there is a feature in flutter for hero widget that transitions smoothly between screen transitions
           suggestions(context),
-          Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
+          Divider(
+            thickness: 0,
+            color: const Color.fromARGB(0, 35, 35, 35),
+            //height: 10,
+          ),
           nearYou(context),
-          Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
+          Divider(
+            thickness: 0,
+            color: const Color.fromARGB(0, 35, 35, 35),
+            //height: 10,
+          ),
           ticketAndExit(context),
-          InfoBar(),
+
+          //Divider(thickness: 0, color: const Color.fromARGB(0, 35, 35, 35)),
         ],
       ),
     );
@@ -81,20 +96,32 @@ class InfoBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: processedHeight(context, 0.04, 35, 35),
-      decoration: const BoxDecoration(color: Color.fromARGB(255, 8, 8, 8)),
-      width: double.infinity,
-      child: Marquee(
-        //adding marquee effect to text with help of the package
-        text:
-            "DELHI METRO WELCOMES YOU * ALL METRO LINES OPERATING ON SCHEDULE *", //Hard coded text for now, will add an feature to dyanmically change it
-        blankSpace: 20,
-        style: TextStyle(
-          fontFamily: 'Doto',
-          color: Color.fromARGB(255, 230, 81, 0),
-          fontSize: 18,
-          fontWeight: FontWeight.w200,
+    return LiquidGlass(
+      shape: LiquidRoundedSuperellipse(borderRadius: Radius.circular(10)),
+      blur: 5,
+      settings: const LiquidGlassSettings(
+        thickness: 10,
+        glassColor: Color(0x1AFFFFFF), // A subtle white tint
+        lightIntensity: 1.5,
+        blend: 40,
+
+        //outlineIntensity: 0.5,
+      ),
+      child: Container(
+        height: 35,
+        decoration: const BoxDecoration(color: Color.fromARGB(0, 8, 8, 8)),
+        width: 150,
+        child: Marquee(
+          //adding marquee effect to text with help of the package
+          text:
+              "DELHI METRO WELCOMES YOU * ALL METRO LINES OPERATING ON SCHEDULE *", //Hard coded text for now, will add an feature to dyanmically change it
+          blankSpace: 20,
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            color: Color.fromARGB(255, 198, 198, 198),
+            fontSize: 12,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ),
     );
@@ -155,11 +182,16 @@ suggestions(context) {
       builder: (context, data, child) {
         final data =
             Provider.of<DataProvider>(context).coreTransferStationsDict;
-        print("transfer data is $data");
+        print("transfer data is **$data");
         //print(data.coreNearestStationsDict);
         var just = data["just"];
         var justBefore = data["justBefore"];
-        if (data.isNotEmpty && just != [] && justBefore != []
+        if (data.isNotEmpty &&
+            just is List &&
+            just.isNotEmpty &&
+            justBefore is List &&
+            justBefore.isNotEmpty
+        //just != [] && justBefore != []
         // data["just"] != null &&
         // data["justBefore"] != null &&
         // data["just"]?[0] != {}
@@ -183,7 +215,43 @@ suggestions(context) {
             ],
           );
         } else {
-          return Container(color: Colors.white, height: 20, width: 60);
+          //DEFAULT DATA WHEN SAVED SUGGESTIONAS ARE NOT AVAILABLE
+          final String defaultData = '''
+                        {
+                          "just": [
+                            {
+                              "Source": [59, "हौज खास", "Hauz Khas", [2, 8], 28.543346, 77.206673],
+                              "Destination": [44, "विश्वविद्यालय", "Vishwavidyalaya", [2], 28.694765, 77.212418]
+                            }
+                          ],
+                          "justBefore": [
+                            {
+                              "Source": [52, "सेंट्रल सेक्रेटेरिएट", "Central Secretariat", [2, 6], 28.614973, 77.212029],
+                              "Destination": [130, "नेहरू प्लेस", "Nehru Place", [6], 28.551134, 77.251511]
+                            }
+                          ]
+                        }
+                        ''';
+          final Map<String, dynamic> defaultDataParsed = jsonDecode(
+            defaultData,
+          );
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              stationPrimitive(
+                name:
+                    defaultDataParsed["just"]?[0]["Source"]?[2]
+                        .toString(), //CHECK NOT ERROR SAFE
+                //STILL HAS BUG
+              ),
+              stationPrimitive(
+                name:
+                    defaultDataParsed["justBefore"]?[0]?["Source"]?[2]
+                        .toString(), //CHECK NOT ERROR SAFE
+              ),
+            ],
+          );
         }
       },
     ),
@@ -574,6 +642,12 @@ appFooter(context) {
             ),
             SizedBox(width: 5),
           ],
+        ),
+
+        SizedBox(height: 5),
+        Align(
+          alignment: Alignment.bottomRight, // ⬅️ change this to desired side
+          child: InfoBar(),
         ),
         SizedBox(height: 5),
       ],

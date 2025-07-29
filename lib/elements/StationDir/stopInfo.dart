@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
-import 'package:lottie/lottie.dart';
+//import 'package:lottie/lottie.dart';
 
 class stopInfoScreen extends StatelessWidget {
   final dynamic stationDict;
@@ -49,15 +49,16 @@ stationCluster(context, stationDict) {
             shrinkWrap: true,
             children: [
               stationLineMarker(stationDict),
-              SizedBox(height: 80),
+              //SizedBox(height: 100),
               closeAndOpeningTime(),
               stationStatus(),
               SizedBox(height: 2),
-              toAndFromBlock(),
-              SizedBox(height: 40),
-              scheduleBlock(),
+              //toAndFromBlock(),
               SizedBox(height: 40),
               exitBlock(),
+              SizedBox(height: 40),
+              //exitBlock(),
+              scheduleBlock(),
               SizedBox(height: 40),
               ammenitiesBlock(),
               SizedBox(height: 40),
@@ -116,21 +117,24 @@ stationLineMarker(stationDict) {
   String stationNameHindiCommon = station[1].toString();
   return Container(
     //decoration: BoxDecoration(color: const Color.fromARGB(255, 164, 164, 164)),
-    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-    //height: 200,
+    //margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
+    height: 230,
     width: double.infinity,
     child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Spacer(),
         Text(
           "$stationName",
           style: TextStyle(
+            height: 1.2,
             color: const Color.fromARGB(255, 187, 187, 187),
             fontWeight: FontWeight.w500,
             fontSize: 28,
           ),
         ),
+        SizedBox(height: 10),
         Text(
           "$stationNameHindiCommon",
           style: TextStyle(
@@ -163,6 +167,8 @@ stationLineMarker(stationDict) {
             ],
           ),
         ),
+        Spacer(),
+        SizedBox(height: 30),
       ],
     ),
   );
@@ -408,7 +414,7 @@ exitBlock() {
               ),
             ),
             Container(
-              height: 40,
+              height: 50,
               width: 80,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
@@ -416,7 +422,7 @@ exitBlock() {
                   color: const Color.fromARGB(255, 25, 25, 25),
                 ),
               ),
-              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              //margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Center(
                 child: Text(
                   "GATE 1",
@@ -469,7 +475,7 @@ exitBlock() {
               ),
             ),
             Container(
-              height: 40,
+              height: 50,
               width: 80,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
@@ -477,7 +483,7 @@ exitBlock() {
                   color: const Color.fromARGB(255, 25, 25, 25),
                 ),
               ),
-              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: Center(
                 child: Text(
                   "GATE 2",
@@ -529,7 +535,7 @@ exitBlock() {
               ),
             ),
             Container(
-              height: 40,
+              height: 50,
               width: 80,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
@@ -537,7 +543,7 @@ exitBlock() {
                   color: const Color.fromARGB(255, 25, 25, 25),
                 ),
               ),
-              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+              //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: Center(
                 child: Text(
                   "GATE 3",
@@ -560,6 +566,7 @@ exitBlock() {
           height: 80,
           decoration: BoxDecoration(
             image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
               image: AssetImage("assets/Image/mapimg.png"),
               fit: BoxFit.cover,
             ),
@@ -610,7 +617,7 @@ scheduleBlock() {
             Container(
               width: double.infinity,
               height: 50,
-              color: const Color.fromARGB(255, 207, 207, 207),
+              color: const Color.fromARGB(255, 25, 25, 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -619,7 +626,7 @@ scheduleBlock() {
                   Text(
                     "Majlis Park",
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 72, 72, 72),
+                      color: const Color.fromARGB(255, 207, 207, 207),
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
@@ -628,7 +635,7 @@ scheduleBlock() {
                   Container(
                     width: 100,
                     height: 60,
-                    color: const Color.fromARGB(255, 25, 25, 25),
+                    color: const Color.fromARGB(255, 207, 207, 207),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -637,14 +644,14 @@ scheduleBlock() {
                           "Every",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                            color: const Color.fromARGB(255, 73, 73, 73),
                           ),
                         ),
                         Text(
                           "15 min",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            color: const Color.fromARGB(255, 182, 182, 182),
+                            color: const Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                       ],
@@ -664,16 +671,16 @@ scheduleBlock() {
             Container(
               width: double.infinity,
               height: 50,
-              color: const Color.fromARGB(255, 207, 207, 207),
+              color: const Color.fromARGB(255, 25, 25, 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(width: 10),
                   Text(
-                    "Majlis Park",
+                    "Mauj Pur",
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 72, 72, 72),
+                      color: const Color.fromARGB(255, 207, 207, 207),
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
@@ -682,7 +689,7 @@ scheduleBlock() {
                   Container(
                     width: 100,
                     height: 60,
-                    color: const Color.fromARGB(255, 25, 25, 25),
+                    color: const Color.fromARGB(255, 207, 207, 207),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -691,14 +698,14 @@ scheduleBlock() {
                           "Every",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            color: Colors.white,
+                            color: const Color.fromARGB(255, 73, 73, 73),
                           ),
                         ),
                         Text(
                           "15 min",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
-                            color: const Color.fromARGB(255, 182, 182, 182),
+                            color: const Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                       ],

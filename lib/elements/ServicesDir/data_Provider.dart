@@ -18,6 +18,12 @@ class DataProvider extends ChangeNotifier {
       _coreTransferStationsDict;
   void updateJustData(Map<String, dynamic> newSearch) async {
     // Deep copy of previous 'just' if it exists
+    //basically what this code does is that it takes the just value and takes it inside a variable prev
+    //after that it check if prev is null or not and if it is not null then it takes the prev value and maps it into a list with help of deepcoyp fucntion that helps in making a deep copy ie the list
+    //after which justnow is defined with the help of deep copy, where the newly inputed value is added as an argument
+    //then _coreTransferStationsDict is updated with the help of justnow and justBefore
+    //sharedpreference saves the data in memory for next launch
+    //TODO: UPDATE THE DEEPCOPY FUNCTION RIGHT NOW IT CHECKS FOR INPUT TYPE TRY TO FIX THE TYPE
     final prev = _coreTransferStationsDict['just'];
     final justBefore =
         prev != null ? prev.map((e) => _deepCopyTransferData(e)).toList() : [];
@@ -68,4 +74,6 @@ class DataProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  //-----------------
 }
