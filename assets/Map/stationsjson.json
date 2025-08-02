@@ -1,0 +1,2074 @@
+[
+  {
+    "Station Code": "DSG",
+    "Name": "Dilshad Garden",
+    "Hindi": "दिलशाद गार्डन",
+    "Line": "1",
+    "Latitude": "28.675991",
+    "Longitude": "77.321495"
+  },
+  {
+    "Station Code": "JLML",
+    "Name": "Jhilmil",
+    "Hindi": "झिलमिल",
+    "Line": "1",
+    "Latitude": "28.675648",
+    "Longitude": "77.312393"
+  },
+  {
+    "Station Code": "MPK",
+    "Name": "Man Sarovar Park",
+    "Hindi": "मानसरोवर पार्क",
+    "Line": "1",
+    "Latitude": "28.675352",
+    "Longitude": "77.301178"
+  },
+  {
+    "Station Code": "SHD",
+    "Name": "Shahdara",
+    "Hindi": "शाहदरा",
+    "Line": "1",
+    "Latitude": "28.673531",
+    "Longitude": "77.28727"
+  },
+  {
+    "Station Code": "WC",
+    "Name": "Welcome",
+    "Hindi": "वेलकम",
+    "Line": "1-7",
+    "Latitude": "28.671986",
+    "Longitude": "77.277931"
+  },
+  {
+    "Station Code": "SLAP",
+    "Name": "Seelampur",
+    "Hindi": "सीलमपुर",
+    "Line": "1",
+    "Latitude": "28.670324",
+    "Longitude": "77.267311"
+  },
+  {
+    "Station Code": "SHPK",
+    "Name": "Shastri Park",
+    "Hindi": "शास्त्री पार्क",
+    "Line": "1",
+    "Latitude": "28.668451",
+    "Longitude": "77.250404"
+  },
+  {
+    "Station Code": "KG-6",
+    "Name": "Kashmere Gate",
+    "Hindi": "कश्मीरी गेट",
+    "Line": "1-2-6",
+    "Latitude": "28.667879",
+    "Longitude": "77.228012"
+  },
+  {
+    "Station Code": "TZI",
+    "Name": "Tis Hazari",
+    "Hindi": "तिस हजारी",
+    "Line": "1",
+    "Latitude": "28.667137",
+    "Longitude": "77.216721"
+  },
+  {
+    "Station Code": "PBGH",
+    "Name": "Pul Bangash",
+    "Hindi": "पुल बंगश",
+    "Line": "1",
+    "Latitude": "28.66571",
+    "Longitude": "77.206329"
+  },
+  {
+    "Station Code": "PRA",
+    "Name": "Pratap Nagar",
+    "Hindi": "प्रताप नगर",
+    "Line": "1",
+    "Latitude": "28.666632",
+    "Longitude": "77.196869"
+  },
+  {
+    "Station Code": "SHT",
+    "Name": "Shastri Nagar",
+    "Hindi": "शास्त्री नगर",
+    "Line": "1",
+    "Latitude": "28.670135",
+    "Longitude": "77.181679"
+  },
+  {
+    "Station Code": "ILOK",
+    "Name": "Inderlok",
+    "Hindi": "इंदरलोक",
+    "Line": "1-5",
+    "Latitude": "28.673452",
+    "Longitude": "77.170235"
+  },
+  {
+    "Station Code": "KN",
+    "Name": "Kanhaiya Nagar",
+    "Hindi": "कन्हैया नगर",
+    "Line": "1",
+    "Latitude": "28.682386",
+    "Longitude": "77.162552"
+  },
+  {
+    "Station Code": "KP",
+    "Name": "Keshav Puram",
+    "Hindi": "केशव पुरम",
+    "Line": "1",
+    "Latitude": "28.688944",
+    "Longitude": "77.161774"
+  },
+  {
+    "Station Code": "NSHP",
+    "Name": "Netaji Subhash Place",
+    "Hindi": "नेताजी सुभाष प्लेस",
+    "Line": "1-7",
+    "Latitude": "28.695637",
+    "Longitude": "77.152428"
+  },
+  {
+    "Station Code": "KE",
+    "Name": "Kohat Enclave",
+    "Hindi": "कोहाट एन्क्लेव",
+    "Line": "1",
+    "Latitude": "28.697943",
+    "Longitude": "77.140465"
+  },
+  {
+    "Station Code": "PTP",
+    "Name": "Pitampura",
+    "Hindi": "पीतमपुरा",
+    "Line": "1",
+    "Latitude": "28.70318",
+    "Longitude": "77.132355"
+  },
+  {
+    "Station Code": "RHE",
+    "Name": "Rohini East",
+    "Hindi": "रोहिणी ईस्ट",
+    "Line": "1",
+    "Latitude": "28.707941",
+    "Longitude": "77.125732"
+  },
+  {
+    "Station Code": "RHW",
+    "Name": "Rohini West",
+    "Hindi": "रोहिणी वेस्ट",
+    "Line": "1",
+    "Latitude": "28.715008",
+    "Longitude": "77.115746"
+  },
+  {
+    "Station Code": "RI",
+    "Name": "Rithala",
+    "Hindi": "रिठाला",
+    "Line": "1",
+    "Latitude": "28.720821",
+    "Longitude": "77.105042"
+  },
+  {
+    "Station Code": "MUDK",
+    "Name": "Mundka",
+    "Hindi": "मुंडका",
+    "Line": "5",
+    "Latitude": "28.682411",
+    "Longitude": "77.028282"
+  },
+  {
+    "Station Code": "RDPK",
+    "Name": "Rajdhani Park",
+    "Hindi": "राजधानी पार्क",
+    "Line": "5",
+    "Latitude": "28.682217",
+    "Longitude": "77.043869"
+  },
+  {
+    "Station Code": "NRSN",
+    "Name": "Nangloi Railway Station",
+    "Hindi": "नांगलोई रेलवे स्टेशन",
+    "Line": "5",
+    "Latitude": "28.682091",
+    "Longitude": "77.05619"
+  },
+  {
+    "Station Code": "NNOI",
+    "Name": "Nangloi",
+    "Hindi": "नांगलोई",
+    "Line": "5",
+    "Latitude": "28.682356",
+    "Longitude": "77.064728"
+  },
+  {
+    "Station Code": "SMSM",
+    "Name": "Maharaja Surajmal Stadium",
+    "Hindi": "महाराजा सूरजमल स्टेडियम",
+    "Line": "5",
+    "Latitude": "28.681833",
+    "Longitude": "77.073891"
+  },
+  {
+    "Station Code": "UNRG",
+    "Name": "Udyog Nagar",
+    "Hindi": "उद्योग नगर",
+    "Line": "5",
+    "Latitude": "28.681047",
+    "Longitude": "77.078674"
+  },
+  {
+    "Station Code": "PAGI",
+    "Name": "Peera Garhi",
+    "Hindi": "पीरागढ़ी",
+    "Line": "5",
+    "Latitude": "28.67972",
+    "Longitude": "77.092491"
+  },
+  {
+    "Station Code": "PVE",
+    "Name": "Paschim Vihar (East)",
+    "Hindi": "पश्चिम विहार (पूर्व)",
+    "Line": "5",
+    "Latitude": "28.677305",
+    "Longitude": "77.112251"
+  },
+  {
+    "Station Code": "PVW",
+    "Name": "Paschim Vihar (West)",
+    "Hindi": "पश्चिम विहार (पश्चिम)",
+    "Line": "5",
+    "Latitude": "28.678539",
+    "Longitude": "77.102119"
+  },
+  {
+    "Station Code": "MAPR",
+    "Name": "Madipur",
+    "Hindi": "मादीपुर",
+    "Line": "5",
+    "Latitude": "28.676418",
+    "Longitude": "77.117294"
+  },
+  {
+    "Station Code": "SHVP",
+    "Name": "Shivaji Park",
+    "Hindi": "शिवाजी पार्क",
+    "Line": "5",
+    "Latitude": "28.674965",
+    "Longitude": "77.128258"
+  },
+  {
+    "Station Code": "PBGA",
+    "Name": "Punjabi Bagh",
+    "Hindi": "पंजाबी बाग",
+    "Line": "5",
+    "Latitude": "28.672943",
+    "Longitude": "77.146011"
+  },
+  {
+    "Station Code": "APMN",
+    "Name": "Ashok Park Main",
+    "Hindi": "अशोक पार्क मेन",
+    "Line": "5-7",
+    "Latitude": "28.671572",
+    "Longitude": "77.155159"
+  },
+  {
+    "Station Code": "SRSM",
+    "Name": "Satguru Ram Singh Marg",
+    "Hindi": "सतगुरु राम सिंह मार्ग",
+    "Line": "5",
+    "Latitude": "28.662188",
+    "Longitude": "77.157829"
+  },
+  {
+    "Station Code": "MIAA",
+    "Name": "Mundka Industrial Area",
+    "Hindi": "मुंडका इंडस्ट्रियल एरिया",
+    "Line": "5",
+    "Latitude": "28.68396",
+    "Longitude": "76.989822"
+  },
+  {
+    "Station Code": "GHEM",
+    "Name": "Ghevra Metro Station",
+    "Hindi": "घेवरा मेट्रो स्टेशन",
+    "Line": "5",
+    "Latitude": "28.685289",
+    "Longitude": "76.993584"
+  },
+  {
+    "Station Code": "TKLM",
+    "Name": "Tikri Kalan",
+    "Hindi": "टिकरी कलां",
+    "Line": "5",
+    "Latitude": "28.686899",
+    "Longitude": "76.977249"
+  },
+  {
+    "Station Code": "TKBR",
+    "Name": "Tikri Border",
+    "Hindi": "टिकरी बॉर्डर",
+    "Line": "5",
+    "Latitude": "28.687876",
+    "Longitude": "76.963783"
+  },
+  {
+    "Station Code": "MIEE",
+    "Name": "Pandit Shree Ram Sharma",
+    "Hindi": "पंडित श्री राम शर्मा",
+    "Line": "5",
+    "Latitude": "28.689213",
+    "Longitude": "76.951088"
+  },
+  {
+    "Station Code": "BUSS",
+    "Name": "Bahadurgarh City",
+    "Hindi": "बहादुरगढ़ सिटी",
+    "Line": "5",
+    "Latitude": "28.690784",
+    "Longitude": "76.935265"
+  },
+  {
+    "Station Code": "CIPK",
+    "Name": "Brigadier Hoshiyar Singh",
+    "Hindi": "ब्रिगेडियर होशियार सिंह",
+    "Line": "5",
+    "Latitude": "28.697428",
+    "Longitude": "76.919128"
+  },
+  {
+    "Station Code": "SPBI",
+    "Name": "Samaypur Badli",
+    "Hindi": "समयपुर बादली",
+    "Line": "2",
+    "Latitude": "28.742872",
+    "Longitude": "77.146545"
+  },
+  {
+    "Station Code": "RISE",
+    "Name": "Rohini Sector 18 19",
+    "Hindi": "रोहिणी सेक्टर 18 19",
+    "Line": "2",
+    "Latitude": "28.740192",
+    "Longitude": "77.135574"
+  },
+  {
+    "Station Code": "BIMR",
+    "Name": "Haiderpur Badli Mor",
+    "Hindi": "हैदरपुर बादली मोड़",
+    "Line": "2",
+    "Latitude": "28.718657",
+    "Longitude": "77.149956"
+  },
+  {
+    "Station Code": "JGPI",
+    "Name": "Jahangirpuri",
+    "Hindi": "जहांगीरपुरी",
+    "Line": "2",
+    "Latitude": "28.72818",
+    "Longitude": "77.16124"
+  },
+  {
+    "Station Code": "AHNR",
+    "Name": "Adarsh Nagar",
+    "Hindi": "आदर्श नगर",
+    "Line": "2",
+    "Latitude": "28.696377",
+    "Longitude": "77.208809"
+  },
+  {
+    "Station Code": "AZU",
+    "Name": "Azadpur",
+    "Hindi": "आजादपुर",
+    "Line": "2-7",
+    "Latitude": "28.707287",
+    "Longitude": "77.179863"
+  },
+  {
+    "Station Code": "MDTW",
+    "Name": "Model Town",
+    "Hindi": "मॉडल टाउन",
+    "Line": "2",
+    "Latitude": "28.702833",
+    "Longitude": "77.193764"
+  },
+  {
+    "Station Code": "GTBR",
+    "Name": "Guru Tegh Bahadur Nagar",
+    "Hindi": "गुरु तेग बहादुर नगर",
+    "Line": "2",
+    "Latitude": "28.698195",
+    "Longitude": "77.206985"
+  },
+  {
+    "Station Code": "VW",
+    "Name": "Vishwavidyalaya",
+    "Hindi": "विश्वविद्यालय",
+    "Line": "2",
+    "Latitude": "28.694765",
+    "Longitude": "77.212418"
+  },
+  {
+    "Station Code": "VS",
+    "Name": "Vidhan Sabha",
+    "Hindi": "विधान सभा",
+    "Line": "2",
+    "Latitude": "28.687845",
+    "Longitude": "77.221626"
+  },
+  {
+    "Station Code": "CL",
+    "Name": "Civil Lines",
+    "Hindi": "सिविल लाइन्स",
+    "Line": "2",
+    "Latitude": "28.676945",
+    "Longitude": "77.224953"
+  },
+  {
+    "Station Code": "CHK",
+    "Name": "Chandni Chowk",
+    "Hindi": "चांदनी चौक",
+    "Line": "2",
+    "Latitude": "28.656443",
+    "Longitude": "77.229218"
+  },
+  {
+    "Station Code": "CWBR",
+    "Name": "Chawri Bazar",
+    "Hindi": "चावड़ी बाजार",
+    "Line": "2",
+    "Latitude": "28.649635",
+    "Longitude": "77.22628"
+  },
+  {
+    "Station Code": "NDI",
+    "Name": "New Delhi",
+    "Hindi": "नई दिल्ली",
+    "Line": "2-10",
+    "Latitude": "28.642944",
+    "Longitude": "77.222351"
+  },
+  {
+    "Station Code": "RCK",
+    "Name": "Rajiv Chowk",
+    "Hindi": "राजीव चौक",
+    "Line": "2-3",
+    "Latitude": "28.632896",
+    "Longitude": "77.219574"
+  },
+  {
+    "Station Code": "PTCK",
+    "Name": "Patel Chowk",
+    "Hindi": "पटेल चौक",
+    "Line": "2",
+    "Latitude": "28.622967",
+    "Longitude": "77.212288"
+  },
+  {
+    "Station Code": "CTST",
+    "Name": "Central Secretariat",
+    "Hindi": "सेंट्रल सेक्रेटेरिएट",
+    "Line": "2-6",
+    "Latitude": "28.614973",
+    "Longitude": "77.212029"
+  },
+  {
+    "Station Code": "UDB",
+    "Name": "Udyog Bhawan",
+    "Hindi": "उद्योग भवन",
+    "Line": "2",
+    "Latitude": "28.611525",
+    "Longitude": "77.210052"
+  },
+  {
+    "Station Code": "RCC",
+    "Name": "Lok Kalyan Marg",
+    "Hindi": "लोक कल्याण मार्ग",
+    "Line": "2",
+    "Latitude": "28.597519",
+    "Longitude": "77.209122"
+  },
+  {
+    "Station Code": "JB",
+    "Name": "Jor Bagh",
+    "Hindi": "जोरबाग",
+    "Line": "2",
+    "Latitude": "28.587234",
+    "Longitude": "77.212662"
+  },
+  {
+    "Station Code": "INA",
+    "Name": "Dilli Haat INA",
+    "Hindi": "दिल्ली हाट आईएनए",
+    "Line": "2-7",
+    "Latitude": "28.575195",
+    "Longitude": "77.209473"
+  },
+  {
+    "Station Code": "AIIM",
+    "Name": "AIIMS",
+    "Hindi": "एम्स",
+    "Line": "2",
+    "Latitude": "28.568199",
+    "Longitude": "77.207947"
+  },
+  {
+    "Station Code": "GNPK",
+    "Name": "Green Park",
+    "Hindi": "ग्रीन पार्क",
+    "Line": "2",
+    "Latitude": "28.559853",
+    "Longitude": "77.206902"
+  },
+  {
+    "Station Code": "HKS",
+    "Name": "Hauz Khas",
+    "Hindi": "हौज खास",
+    "Line": "2-8",
+    "Latitude": "28.543346",
+    "Longitude": "77.206673"
+  },
+  {
+    "Station Code": "MVNR",
+    "Name": "Malviya Nagar",
+    "Hindi": "मालवीय नगर",
+    "Line": "2",
+    "Latitude": "28.52817",
+    "Longitude": "77.205612"
+  },
+  {
+    "Station Code": "SAKT",
+    "Name": "Saket",
+    "Hindi": "साकेत",
+    "Line": "2",
+    "Latitude": "28.520638",
+    "Longitude": "77.199379"
+  },
+  {
+    "Station Code": "QM",
+    "Name": "Qutab Minar",
+    "Hindi": "कुतुब मीनार",
+    "Line": "2",
+    "Latitude": "28.512714",
+    "Longitude": "77.185791"
+  },
+  {
+    "Station Code": "CHTP",
+    "Name": "Chhattarpur",
+    "Hindi": "छत्तरपुर",
+    "Line": "2",
+    "Latitude": "28.506584",
+    "Longitude": "77.174866"
+  },
+  {
+    "Station Code": "SLTP",
+    "Name": "Sultanpur",
+    "Hindi": "सुल्तानपुर",
+    "Line": "2",
+    "Latitude": "28.499214",
+    "Longitude": "77.161362"
+  },
+  {
+    "Station Code": "GTNI",
+    "Name": "Ghitorni",
+    "Hindi": "घिटोरनी",
+    "Line": "2",
+    "Latitude": "28.49383",
+    "Longitude": "77.149071"
+  },
+  {
+    "Station Code": "AJG",
+    "Name": "Arjan Garh",
+    "Hindi": "अर्जनगढ़",
+    "Line": "2",
+    "Latitude": "28.48082",
+    "Longitude": "77.12587"
+  },
+  {
+    "Station Code": "GE",
+    "Name": "Guru Dronacharya",
+    "Hindi": "गुरुद्रोणाचार्य",
+    "Line": "2",
+    "Latitude": "28.482075",
+    "Longitude": "77.102219"
+  },
+  {
+    "Station Code": "SKRP",
+    "Name": "Sikanderpur",
+    "Hindi": "सिकंदरपुर",
+    "Line": "2-15",
+    "Latitude": "28.481352",
+    "Longitude": "77.092995"
+  },
+  {
+    "Station Code": "MGRO",
+    "Name": "MG Road",
+    "Hindi": "एमजी रोड",
+    "Line": "2",
+    "Latitude": "28.47967",
+    "Longitude": "77.080444"
+  },
+  {
+    "Station Code": "IFOC",
+    "Name": "IFFCO Chowk",
+    "Hindi": "आईएफएफसीओ चौक",
+    "Line": "2",
+    "Latitude": "28.472137",
+    "Longitude": "77.072502"
+  },
+  {
+    "Station Code": "HCC",
+    "Name": "Huda City Centre",
+    "Hindi": "हुडा सिटी सेंटर",
+    "Line": "2",
+    "Latitude": "28.459118",
+    "Longitude": "77.072586"
+  },
+  {
+    "Station Code": "VASI",
+    "Name": "Vaishali",
+    "Hindi": "वैशाली",
+    "Line": "4",
+    "Latitude": "28.650059",
+    "Longitude": "77.337608"
+  },
+  {
+    "Station Code": "KASI",
+    "Name": "Kaushambi",
+    "Hindi": "कौशांबी",
+    "Line": "4",
+    "Latitude": "28.645428",
+    "Longitude": "77.322273"
+  },
+  {
+    "Station Code": "AVIT",
+    "Name": "Anand Vihar",
+    "Hindi": "आनंद विहार",
+    "Line": "4-7",
+    "Latitude": "28.647005",
+    "Longitude": "77.316185"
+  },
+  {
+    "Station Code": "KKDA",
+    "Name": "Karkardooma",
+    "Hindi": "कड़कड़डूमा",
+    "Line": "4-7",
+    "Latitude": "28.648653",
+    "Longitude": "77.304581"
+  },
+  {
+    "Station Code": "PTVR",
+    "Name": "Preet Vihar",
+    "Hindi": "प्रीत विहार",
+    "Line": "4",
+    "Latitude": "28.641352",
+    "Longitude": "77.295158"
+  },
+  {
+    "Station Code": "NV",
+    "Name": "Nirman Vihar",
+    "Hindi": "निर्माण विहार",
+    "Line": "4",
+    "Latitude": "28.637049",
+    "Longitude": "77.287872"
+  },
+  {
+    "Station Code": "LN",
+    "Name": "Laxmi Nagar",
+    "Hindi": "लक्ष्मी नगर",
+    "Line": "4",
+    "Latitude": "28.629843",
+    "Longitude": "77.276428"
+  },
+  {
+    "Station Code": "NCC",
+    "Name": "Noida City Centre",
+    "Hindi": "नोएडा सिटी सेंटर",
+    "Line": "3",
+    "Latitude": "28.574593",
+    "Longitude": "77.356117"
+  },
+  {
+    "Station Code": "GEC",
+    "Name": "Golf Course",
+    "Hindi": "गोल्फ कोर्स",
+    "Line": "3",
+    "Latitude": "28.566917",
+    "Longitude": "77.345726"
+  },
+  {
+    "Station Code": "BCGN",
+    "Name": "Botanical Garden",
+    "Hindi": "बोटैनिकल गार्डन",
+    "Line": "3-8",
+    "Latitude": "28.564198",
+    "Longitude": "77.334656"
+  },
+  {
+    "Station Code": "NSET",
+    "Name": "Noida Sector 18",
+    "Hindi": "नोएडा सेक्टर 18",
+    "Line": "3",
+    "Latitude": "28.570843",
+    "Longitude": "77.326088"
+  },
+  {
+    "Station Code": "NSST",
+    "Name": "Noida Sector 16",
+    "Hindi": "नोएडा सेक्टर 16",
+    "Line": "3",
+    "Latitude": "28.577921",
+    "Longitude": "77.318115"
+  },
+  {
+    "Station Code": "NSFT",
+    "Name": "Noida Sector 15",
+    "Hindi": "नोएडा सेक्टर 15",
+    "Line": "3",
+    "Latitude": "28.585018",
+    "Longitude": "77.311584"
+  },
+  {
+    "Station Code": "NAKR",
+    "Name": "New Ashok Nagar",
+    "Hindi": "न्यू अशोक नगर",
+    "Line": "3",
+    "Latitude": "28.58847",
+    "Longitude": "77.30146"
+  },
+  {
+    "Station Code": "MVPE",
+    "Name": "Mayur Vihar Extension",
+    "Hindi": "मयूर विहार एक्सटेंशन",
+    "Line": "3",
+    "Latitude": "28.594124",
+    "Longitude": "77.294495"
+  },
+  {
+    "Station Code": "MVP1",
+    "Name": "Mayur Vihar I",
+    "Hindi": "मयूर विहार I",
+    "Line": "3",
+    "Latitude": "28.604425",
+    "Longitude": "77.289421"
+  },
+  {
+    "Station Code": "ASDM",
+    "Name": "Akshardham",
+    "Hindi": "अक्षरधाम",
+    "Line": "3",
+    "Latitude": "28.618364",
+    "Longitude": "77.279816"
+  },
+  {
+    "Station Code": "YB",
+    "Name": "Yamuna Bank",
+    "Hindi": "यमुना बैंक",
+    "Line": "3-4",
+    "Latitude": "28.623178",
+    "Longitude": "77.267937"
+  },
+  {
+    "Station Code": "IDPT",
+    "Name": "Indraprastha",
+    "Hindi": "इंद्रप्रस्थ",
+    "Line": "3",
+    "Latitude": "28.620272",
+    "Longitude": "77.250076"
+  },
+  {
+    "Station Code": "PTMD",
+    "Name": "Supreme Court",
+    "Hindi": "सुप्रीम कोर्ट",
+    "Line": "3",
+    "Latitude": "28.623438",
+    "Longitude": "77.2425"
+  },
+  {
+    "Station Code": "MDHS",
+    "Name": "Mandi House",
+    "Hindi": "मंडी हाउस",
+    "Line": "3-6",
+    "Latitude": "28.625816",
+    "Longitude": "77.234726"
+  },
+  {
+    "Station Code": "BRKR",
+    "Name": "Barakhamba Road",
+    "Hindi": "बराखंबा",
+    "Line": "3",
+    "Latitude": "28.629662",
+    "Longitude": "77.224876"
+  },
+  {
+    "Station Code": "RKAM",
+    "Name": "R K Ashram Marg",
+    "Hindi": "आरके आश्रम मार्ग",
+    "Line": "3",
+    "Latitude": "28.639217",
+    "Longitude": "77.206291"
+  },
+  {
+    "Station Code": "JW",
+    "Name": "Jhandewalan",
+    "Hindi": "झंडेवालान",
+    "Line": "3",
+    "Latitude": "28.644312",
+    "Longitude": "77.199791"
+  },
+  {
+    "Station Code": "KB",
+    "Name": "Karol Bagh",
+    "Hindi": "करोल बाग",
+    "Line": "3",
+    "Latitude": "28.643925",
+    "Longitude": "77.188416"
+  },
+  {
+    "Station Code": "RP",
+    "Name": "Rajendra Place",
+    "Hindi": "राजेंद्र प्लेस",
+    "Line": "3",
+    "Latitude": "28.64241",
+    "Longitude": "77.191833"
+  },
+  {
+    "Station Code": "SP",
+    "Name": "Shadipur",
+    "Hindi": "शादीपुर",
+    "Line": "3",
+    "Latitude": "28.65143",
+    "Longitude": "77.156021"
+  },
+  {
+    "Station Code": "KNR",
+    "Name": "Kirti Nagar",
+    "Hindi": "कीर्ति नगर",
+    "Line": "3-5",
+    "Latitude": "28.655773",
+    "Longitude": "77.148499"
+  },
+  {
+    "Station Code": "MN",
+    "Name": "Moti Nagar",
+    "Hindi": "मोती नगर",
+    "Line": "3",
+    "Latitude": "28.657803",
+    "Longitude": "77.140488"
+  },
+  {
+    "Station Code": "RN",
+    "Name": "Ramesh Nagar",
+    "Hindi": "रमेश नगर",
+    "Line": "3",
+    "Latitude": "28.652809",
+    "Longitude": "77.131462"
+  },
+  {
+    "Station Code": "RG",
+    "Name": "Rajouri Garden",
+    "Hindi": "राजौरी गार्डन",
+    "Line": "3-5",
+    "Latitude": "28.649157",
+    "Longitude": "77.122749"
+  },
+  {
+    "Station Code": "TG",
+    "Name": "Tagore Garden",
+    "Hindi": "टैगोर गार्डन",
+    "Line": "3",
+    "Latitude": "28.643795",
+    "Longitude": "77.112747"
+  },
+  {
+    "Station Code": "SN",
+    "Name": "Subhash Nagar",
+    "Hindi": "सुभाष नगर",
+    "Line": "3",
+    "Latitude": "28.640381",
+    "Longitude": "77.10273"
+  },
+  {
+    "Station Code": "TN",
+    "Name": "Tilak Nagar",
+    "Hindi": "तिलक नगर",
+    "Line": "3",
+    "Latitude": "28.636568",
+    "Longitude": "77.096336"
+  },
+  {
+    "Station Code": "JPE",
+    "Name": "Janakpuri East",
+    "Hindi": "जनकपुरी ईस्ट",
+    "Line": "3",
+    "Latitude": "28.633121",
+    "Longitude": "77.086578"
+  },
+  {
+    "Station Code": "JPW",
+    "Name": "Janakpuri West",
+    "Hindi": "जनकपुरी वेस्ट",
+    "Line": "3-8",
+    "Latitude": "28.629637",
+    "Longitude": "77.077866"
+  },
+  {
+    "Station Code": "UNE",
+    "Name": "Uttam Nagar East",
+    "Hindi": "उत्तम नगर ईस्ट",
+    "Line": "3",
+    "Latitude": "28.624643",
+    "Longitude": "77.063126"
+  },
+  {
+    "Station Code": "UNW",
+    "Name": "Uttam Nagar West",
+    "Hindi": "उत्तम नगर वेस्ट",
+    "Line": "3",
+    "Latitude": "28.621672",
+    "Longitude": "77.055664"
+  },
+  {
+    "Station Code": "NWD",
+    "Name": "Nawada",
+    "Hindi": "नवादा",
+    "Line": "3",
+    "Latitude": "28.620222",
+    "Longitude": "77.044991"
+  },
+  {
+    "Station Code": "DM",
+    "Name": "Dwarka Mor",
+    "Hindi": "द्वारका मोड़",
+    "Line": "3",
+    "Latitude": "28.619366",
+    "Longitude": "77.033188"
+  },
+  {
+    "Station Code": "DW",
+    "Name": "Dwarka",
+    "Hindi": "द्वारका",
+    "Line": "3-9",
+    "Latitude": "28.614899",
+    "Longitude": "77.022629"
+  },
+  {
+    "Station Code": "DSFN",
+    "Name": "Dwarka Sector 14",
+    "Hindi": "द्वारका सेक्टर 14",
+    "Line": "3",
+    "Latitude": "28.602232",
+    "Longitude": "77.02594"
+  },
+  {
+    "Station Code": "DSTN",
+    "Name": "Dwarka Sector 13",
+    "Hindi": "द्वारका सेक्टर 13",
+    "Line": "3",
+    "Latitude": "28.59705",
+    "Longitude": "77.033043"
+  },
+  {
+    "Station Code": "DSW",
+    "Name": "Dwarka Sector 12",
+    "Hindi": "द्वारका सेक्टर 12",
+    "Line": "3",
+    "Latitude": "28.592234",
+    "Longitude": "77.040558"
+  },
+  {
+    "Station Code": "DSE",
+    "Name": "Dwarka Sector 11",
+    "Hindi": "द्वारका सेक्टर 11",
+    "Line": "3",
+    "Latitude": "28.58642",
+    "Longitude": "77.049255"
+  },
+  {
+    "Station Code": "DST",
+    "Name": "Dwarka Sector 10",
+    "Hindi": "द्वारका सेक्टर 10",
+    "Line": "3",
+    "Latitude": "28.581108",
+    "Longitude": "77.05719"
+  },
+  {
+    "Station Code": "DSN",
+    "Name": "Dwarka Sector 9",
+    "Hindi": "द्वारका सेक्टर 9",
+    "Line": "3",
+    "Latitude": "28.574284",
+    "Longitude": "77.065086"
+  },
+  {
+    "Station Code": "DWET",
+    "Name": "Dwarka Sector 8",
+    "Hindi": "द्वारका सेक्टर 8",
+    "Line": "3",
+    "Latitude": "28.565706",
+    "Longitude": "77.064896"
+  },
+  {
+    "Station Code": "DWTO",
+    "Name": "Dwarka Sector 21",
+    "Hindi": "द्वारका सेक्टर 21",
+    "Line": "3-10",
+    "Latitude": "28.552322",
+    "Longitude": "77.056198"
+  },
+  {
+    "Station Code": "ITO",
+    "Name": "ITO",
+    "Hindi": "आईटीओ",
+    "Line": "6",
+    "Latitude": "28.627205",
+    "Longitude": "77.240952"
+  },
+  {
+    "Station Code": "JANP",
+    "Name": "Janpath",
+    "Hindi": "जनपथ",
+    "Line": "6",
+    "Latitude": "28.627817",
+    "Longitude": "77.218956"
+  },
+  {
+    "Station Code": "KM",
+    "Name": "Khan Market",
+    "Hindi": "खान मार्केट",
+    "Line": "6",
+    "Latitude": "28.602682",
+    "Longitude": "77.228096"
+  },
+  {
+    "Station Code": "JLNS",
+    "Name": "Jawahar Lal Nehru Stadium",
+    "Hindi": "जवाहरलाल नेहरू स्टेडियम",
+    "Line": "6",
+    "Latitude": "28.590475",
+    "Longitude": "77.23307"
+  },
+  {
+    "Station Code": "JGPA",
+    "Name": "Jangpura",
+    "Hindi": "जंगपुरा",
+    "Line": "6",
+    "Latitude": "28.583231",
+    "Longitude": "77.239662"
+  },
+  {
+    "Station Code": "LJPN",
+    "Name": "Lajpat Nagar",
+    "Hindi": "लाजपत नगर",
+    "Line": "6-7",
+    "Latitude": "28.570705",
+    "Longitude": "77.233124"
+  },
+  {
+    "Station Code": "MLCD",
+    "Name": "Moolchand",
+    "Hindi": "मूलचंद",
+    "Line": "6",
+    "Latitude": "28.564629",
+    "Longitude": "77.234222"
+  },
+  {
+    "Station Code": "KHCY",
+    "Name": "Kailash Colony",
+    "Hindi": "कैलाश कॉलोनी",
+    "Line": "6",
+    "Latitude": "28.554617",
+    "Longitude": "77.239738"
+  },
+  {
+    "Station Code": "NP",
+    "Name": "Nehru Place",
+    "Hindi": "नेहरू प्लेस",
+    "Line": "6",
+    "Latitude": "28.551134",
+    "Longitude": "77.251511"
+  },
+  {
+    "Station Code": "KJMD-8",
+    "Name": "Kalkaji Mandir",
+    "Hindi": "कालकाजी मंदिर",
+    "Line": "6-8",
+    "Latitude": "28.549532",
+    "Longitude": "77.258789"
+  },
+  {
+    "Station Code": "GDPI",
+    "Name": "Govind Puri",
+    "Hindi": "गोविंदपुरी",
+    "Line": "6",
+    "Latitude": "28.544413",
+    "Longitude": "77.264259"
+  },
+  {
+    "Station Code": "OK",
+    "Name": "Harkesh Nagar Okhla",
+    "Hindi": "हरकेश नगर ओखला",
+    "Line": "6",
+    "Latitude": "28.543194",
+    "Longitude": "77.275955"
+  },
+  {
+    "Station Code": "JLA",
+    "Name": "Jasola Apollo",
+    "Hindi": "जसोला अपोलो",
+    "Line": "6",
+    "Latitude": "28.538084",
+    "Longitude": "77.285538"
+  },
+  {
+    "Station Code": "STVR",
+    "Name": "Sarita Vihar",
+    "Hindi": "सरिता विहार",
+    "Line": "6",
+    "Latitude": "28.528622",
+    "Longitude": "77.288345"
+  },
+  {
+    "Station Code": "METE",
+    "Name": "Mohan Estate",
+    "Hindi": "मोहन एस्टेट",
+    "Line": "6",
+    "Latitude": "28.51959",
+    "Longitude": "77.294518"
+  },
+  {
+    "Station Code": "TKBD",
+    "Name": "Tughlakabad Station",
+    "Hindi": "तुगलकाबाद स्टेशन",
+    "Line": "6",
+    "Latitude": "28.502232",
+    "Longitude": "77.29866"
+  },
+  {
+    "Station Code": "BAPU",
+    "Name": "Badarpur Border",
+    "Hindi": "बदरपुर बॉर्डर",
+    "Line": "6",
+    "Latitude": "28.4932",
+    "Longitude": "77.30085"
+  },
+  {
+    "Station Code": "SRAI",
+    "Name": "Sarai",
+    "Hindi": "सराय",
+    "Line": "6",
+    "Latitude": "28.47794",
+    "Longitude": "77.304932"
+  },
+  {
+    "Station Code": "NHPC",
+    "Name": "NHPC Chowk",
+    "Hindi": "एनएचपीसी चौक",
+    "Line": "6",
+    "Latitude": "28.462435",
+    "Longitude": "77.305252"
+  },
+  {
+    "Station Code": "NMJR",
+    "Name": "Mewala Maharajpur",
+    "Hindi": "मेवला महाराजपुर",
+    "Line": "6",
+    "Latitude": "28.4485",
+    "Longitude": "77.308098"
+  },
+  {
+    "Station Code": "FTTA",
+    "Name": "Sector 28",
+    "Hindi": "सेक्टर 28",
+    "Line": "6",
+    "Latitude": "28.440586",
+    "Longitude": "77.305992"
+  },
+  {
+    "Station Code": "BKMR",
+    "Name": "Badkal Mor",
+    "Hindi": "बड़कल मोड़",
+    "Line": "6",
+    "Latitude": "28.422707",
+    "Longitude": "77.310234"
+  },
+  {
+    "Station Code": "OFDB",
+    "Name": "Old Faridabad",
+    "Hindi": "ओल्ड फरीदाबाद",
+    "Line": "6",
+    "Latitude": "28.412172",
+    "Longitude": "77.311272"
+  },
+  {
+    "Station Code": "NCAJ",
+    "Name": "Neelam Chowk Ajronda",
+    "Hindi": "नीलम चौक अजरोंडा",
+    "Line": "6",
+    "Latitude": "28.400707",
+    "Longitude": "77.309105"
+  },
+  {
+    "Station Code": "BACH",
+    "Name": "Bata Chowk",
+    "Hindi": "बाटा चौक",
+    "Line": "6",
+    "Latitude": "28.386362",
+    "Longitude": "77.298782"
+  },
+  {
+    "Station Code": "ECMJ",
+    "Name": "Escorts Mujesar",
+    "Hindi": "एस्कॉर्ट्स मुजेसर",
+    "Line": "6",
+    "Latitude": "28.370199",
+    "Longitude": "77.315002"
+  },
+  {
+    "Station Code": "NCBC",
+    "Name": "Sant Surdas (Sihi)",
+    "Hindi": "संत सूरदास (सिही)",
+    "Line": "6",
+    "Latitude": "28.354666",
+    "Longitude": "77.316261"
+  },
+  {
+    "Station Code": "BYHM",
+    "Name": "Raja Nahar Singh",
+    "Hindi": "राजा नाहर सिंह",
+    "Line": "6",
+    "Latitude": "28.339899",
+    "Longitude": "77.331657"
+  },
+  {
+    "Station Code": "MKPR",
+    "Name": "Majlis Park",
+    "Hindi": "मजलिस पार्क",
+    "Line": "7",
+    "Latitude": "28.724157",
+    "Longitude": "77.182068"
+  },
+  {
+    "Station Code": "SMBG",
+    "Name": "Shalimar Bagh",
+    "Hindi": "शालीमार बाग",
+    "Line": "7",
+    "Latitude": "28.70182",
+    "Longitude": "77.165184"
+  },
+  {
+    "Station Code": "SAKP",
+    "Name": "Shakurpur",
+    "Hindi": "शकूरपुर",
+    "Line": "7",
+    "Latitude": "28.685781",
+    "Longitude": "77.149651"
+  },
+  {
+    "Station Code": "PBGW",
+    "Name": "Punjabi Bagh West",
+    "Hindi": "पंजाबी बाग वेस्ट",
+    "Line": "5-7",
+    "Latitude": "28.672747",
+    "Longitude": "77.139183"
+  },
+  {
+    "Station Code": "ESIH",
+    "Name": "ESI Basai Darapur",
+    "Hindi": "ईएसआई बसई दारापुर",
+    "Line": "7",
+    "Latitude": "28.658159",
+    "Longitude": "77.127319"
+  },
+  {
+    "Station Code": "MYPI",
+    "Name": "Mayapuri",
+    "Hindi": "मायापुरी",
+    "Line": "7",
+    "Latitude": "28.637098",
+    "Longitude": "77.129738"
+  },
+  {
+    "Station Code": "NAVR",
+    "Name": "Naraina Vihar",
+    "Hindi": "नारायणा विहार",
+    "Line": "7",
+    "Latitude": "28.624121",
+    "Longitude": "77.136482"
+  },
+  {
+    "Station Code": "DLIC",
+    "Name": "Delhi Cantt.",
+    "Hindi": "दिल्ली कैंट",
+    "Line": "7",
+    "Latitude": "28.608641",
+    "Longitude": "77.140373"
+  },
+  {
+    "Station Code": "DDSC",
+    "Name": "Durgabai Deshmukh South Campus",
+    "Hindi": "दुर्गाबाई देशमुख साउथ कैंपस",
+    "Line": "7",
+    "Latitude": "28.589376",
+    "Longitude": "77.169518"
+  },
+  {
+    "Station Code": "SVMB",
+    "Name": "Sir Vishweshwaraiah Moti Bagh",
+    "Hindi": "सर विश्वेश्वरैया मोती बाग",
+    "Line": "7",
+    "Latitude": "28.578529",
+    "Longitude": "77.175713"
+  },
+  {
+    "Station Code": "BKCP",
+    "Name": "Bhikaji Cama Place",
+    "Hindi": "भीकाजी कामा प्लेस",
+    "Line": "7",
+    "Latitude": "28.570208",
+    "Longitude": "77.187866"
+  },
+  {
+    "Station Code": "SOJI",
+    "Name": "Sarojini Nagar",
+    "Hindi": "सरोजिनी नगर",
+    "Line": "7",
+    "Latitude": "28.570208",
+    "Longitude": "77.187866"
+  },
+  {
+    "Station Code": "SOEN",
+    "Name": "South Extension",
+    "Hindi": "साउथ एक्सटेंशन",
+    "Line": "7",
+    "Latitude": "28.5686",
+    "Longitude": "77.219818"
+  },
+  {
+    "Station Code": "AHRM",
+    "Name": "Ashram",
+    "Hindi": "आश्रम",
+    "Line": "7",
+    "Latitude": "28.576065",
+    "Longitude": "77.25753"
+  },
+  {
+    "Station Code": "VNPR",
+    "Name": "Vinobapuri",
+    "Hindi": "विनोबापुरी",
+    "Line": "7",
+    "Latitude": "28.566179",
+    "Longitude": "77.249367"
+  },
+  {
+    "Station Code": "NIZM",
+    "Name": "Sarai Kale Khan Nizamuddin",
+    "Hindi": "सराय काले खां निजामुद्दीन",
+    "Line": "7",
+    "Latitude": "28.5889",
+    "Longitude": "77.253189"
+  },
+  {
+    "Station Code": "TKPR",
+    "Name": "Trilokpuri Sanjay Lake",
+    "Hindi": "त्रिलोकपुरी संजय लेक",
+    "Line": "7",
+    "Latitude": "28.613506",
+    "Longitude": "77.308678"
+  },
+  {
+    "Station Code": "VENT",
+    "Name": "East Vinod Nagar Mayur Vihar II",
+    "Hindi": "ईस्ट विनोद नगर मयूर विहार II",
+    "Line": "7",
+    "Latitude": "28.620052",
+    "Longitude": "77.305588"
+  },
+  {
+    "Station Code": "VNNR",
+    "Name": "Mandawali West Vinod Nagar",
+    "Hindi": "मंडावली वेस्ट विनोद नगर",
+    "Line": "7",
+    "Latitude": "28.624861",
+    "Longitude": "77.304146"
+  },
+  {
+    "Station Code": "IPE",
+    "Name": "IP Extension",
+    "Hindi": "आईपी एक्सटेंशन",
+    "Line": "7",
+    "Latitude": "28.631599",
+    "Longitude": "77.310898"
+  },
+  {
+    "Station Code": "KKDC",
+    "Name": "Karkardooma Court",
+    "Hindi": "कड़कड़डूमा कोर्ट",
+    "Line": "7",
+    "Latitude": "28.649473",
+    "Longitude": "77.295341"
+  },
+  {
+    "Station Code": "KHNA",
+    "Name": "Krishna Nagar",
+    "Hindi": "कृष्णा नगर",
+    "Line": "7",
+    "Latitude": "28.65782",
+    "Longitude": "77.290306"
+  },
+  {
+    "Station Code": "EANR",
+    "Name": "East Azad Nagar",
+    "Hindi": "ईस्ट आजाद नगर",
+    "Line": "7",
+    "Latitude": "28.665043",
+    "Longitude": "77.284599"
+  },
+  {
+    "Station Code": "JFRB",
+    "Name": "Jafrabad",
+    "Hindi": "जाफराबाद",
+    "Line": "7",
+    "Latitude": "28.682943",
+    "Longitude": "77.27507"
+  },
+  {
+    "Station Code": "MUPR",
+    "Name": "Maujpur Babarpur",
+    "Hindi": "मौजपुर बाबरपुर",
+    "Line": "7",
+    "Latitude": "28.692057",
+    "Longitude": "77.280922"
+  },
+  {
+    "Station Code": "GKPR",
+    "Name": "Gokulpuri",
+    "Hindi": "गोकुलपुरी",
+    "Line": "7",
+    "Latitude": "28.703009",
+    "Longitude": "77.286301"
+  },
+  {
+    "Station Code": "JIEE",
+    "Name": "Johri Enclave",
+    "Hindi": "जोहरी एनक्लेव",
+    "Line": "7",
+    "Latitude": "28.713297",
+    "Longitude": "77.290154"
+  },
+  {
+    "Station Code": "SVVR",
+    "Name": "Shiv Vihar",
+    "Hindi": "शिव विहार",
+    "Line": "7",
+    "Latitude": "28.721863",
+    "Longitude": "77.289635"
+  },
+  {
+    "Station Code": "OBC",
+    "Name": "Okhla Bird Sanctuary",
+    "Hindi": "ओखला बर्ड सैंक्चुरी",
+    "Line": "8",
+    "Latitude": "28.552816",
+    "Longitude": "77.321564"
+  },
+  {
+    "Station Code": "KIKJ",
+    "Name": "Kalindi Kunj",
+    "Hindi": "कालिंदी कुंज",
+    "Line": "8",
+    "Latitude": "28.542835",
+    "Longitude": "77.310173"
+  },
+  {
+    "Station Code": "JLA-8",
+    "Name": "Jasola Vihar Shaheen Bagh",
+    "Hindi": "जसोला विहार शाहीन बाग",
+    "Line": "8",
+    "Latitude": "28.546005",
+    "Longitude": "77.296715"
+  },
+  {
+    "Station Code": "OVA",
+    "Name": "Okhla Vihar",
+    "Hindi": "ओखला विहार",
+    "Line": "8",
+    "Latitude": "28.561255",
+    "Longitude": "77.291916"
+  },
+  {
+    "Station Code": "JANR",
+    "Name": "Jamia Millia Islamia",
+    "Hindi": "जामिया मिलिया इस्लामिया",
+    "Line": "8",
+    "Latitude": "28.562944",
+    "Longitude": "77.286209"
+  },
+  {
+    "Station Code": "IWNR",
+    "Name": "Sukhdev Vihar",
+    "Hindi": "सुखदेव विहार",
+    "Line": "8",
+    "Latitude": "28.559887",
+    "Longitude": "77.275116"
+  },
+  {
+    "Station Code": "OKNS",
+    "Name": "Okhla NSIC",
+    "Hindi": "ओखला एनएसआईसी",
+    "Line": "8",
+    "Latitude": "28.554575",
+    "Longitude": "77.26487"
+  },
+  {
+    "Station Code": "NUEE",
+    "Name": "Nehru Enclave",
+    "Hindi": "नेहरू एन्क्लेव",
+    "Line": "8",
+    "Latitude": "28.545856",
+    "Longitude": "77.25116"
+  },
+  {
+    "Station Code": "GKEI",
+    "Name": "Greater Kailash",
+    "Hindi": "ग्रेटर कैलाश",
+    "Line": "8",
+    "Latitude": "28.541836",
+    "Longitude": "77.238243"
+  },
+  {
+    "Station Code": "CDLI",
+    "Name": "Chirag Delhi",
+    "Hindi": "चिराग दिल्ली",
+    "Line": "8",
+    "Latitude": "28.541229",
+    "Longitude": "77.229385"
+  },
+  {
+    "Station Code": "PSPK",
+    "Name": "Panchsheel Park",
+    "Hindi": "पंचशील पार्क",
+    "Line": "8",
+    "Latitude": "28.542339",
+    "Longitude": "77.220512"
+  },
+  {
+    "Station Code": "IIT",
+    "Name": "IIT",
+    "Hindi": "आईआईटी",
+    "Line": "8",
+    "Latitude": "28.547194",
+    "Longitude": "77.193832"
+  },
+  {
+    "Station Code": "RKPM",
+    "Name": "R K Puram",
+    "Hindi": "आरके पुरम",
+    "Line": "8",
+    "Latitude": "28.550486",
+    "Longitude": "77.184952"
+  },
+  {
+    "Station Code": "MIRK",
+    "Name": "Munirka",
+    "Hindi": "मुनिरका",
+    "Line": "8",
+    "Latitude": "28.557821",
+    "Longitude": "77.174026"
+  },
+  {
+    "Station Code": "VTVR",
+    "Name": "Vasant Vihar",
+    "Hindi": "वसंत विहार",
+    "Line": "8",
+    "Latitude": "28.558378",
+    "Longitude": "77.160774"
+  },
+  {
+    "Station Code": "SKVR",
+    "Name": "Shankar Vihar",
+    "Hindi": "शंकर विहार",
+    "Line": "8",
+    "Latitude": "28.560787",
+    "Longitude": "77.140442"
+  },
+  {
+    "Station Code": "IGDA",
+    "Name": "Terminal 1 IGI Airport",
+    "Hindi": "टर्मिनल 1 आईजीआई एयरपोर्ट",
+    "Line": "8",
+    "Latitude": "28.565275",
+    "Longitude": "77.122391"
+  },
+  {
+    "Station Code": "SABR",
+    "Name": "Sadar Bazar Cantonment",
+    "Hindi": "सदर बाजार छावनी",
+    "Line": "8",
+    "Latitude": "28.577108",
+    "Longitude": "77.111305"
+  },
+  {
+    "Station Code": "PALM",
+    "Name": "Palam",
+    "Hindi": "पालम",
+    "Line": "8",
+    "Latitude": "28.589067",
+    "Longitude": "77.082954"
+  },
+  {
+    "Station Code": "DSHP",
+    "Name": "Dashrath Puri",
+    "Hindi": "दशरथ पुरी",
+    "Line": "8",
+    "Latitude": "28.602333",
+    "Longitude": "77.08255"
+  },
+  {
+    "Station Code": "DBMR",
+    "Name": "Dabri Mor Janakpuri South",
+    "Hindi": "डाबरी मोड़ जनकपुरी साउथ",
+    "Line": "8",
+    "Latitude": "28.615904",
+    "Longitude": "77.085258"
+  },
+  {
+    "Station Code": "NNGI",
+    "Name": "Nangli",
+    "Hindi": "नांगली",
+    "Line": "9",
+    "Latitude": "28.61722",
+    "Longitude": "77.010345"
+  },
+  {
+    "Station Code": "NFGH",
+    "Name": "Najafgarh",
+    "Hindi": "नजफगढ़",
+    "Line": "9",
+    "Latitude": "28.613316",
+    "Longitude": "76.986259"
+  },
+  {
+    "Station Code": "DNBT",
+    "Name": "Dhansa Bus Stand",
+    "Hindi": "ढांसा बस स्टैंड",
+    "Line": "9",
+    "Latitude": "28.611858",
+    "Longitude": "76.975426"
+  },
+  {
+    "Station Code": "APOT",
+    "Name": "IGI Airport",
+    "Hindi": "आईजीआई एयरपोर्ट",
+    "Line": "10",
+    "Latitude": "28.554869",
+    "Longitude": "77.087921"
+  },
+  {
+    "Station Code": "DACY",
+    "Name": "Delhi Aerocity",
+    "Hindi": "दिल्ली एरोसिटी",
+    "Line": "10",
+    "Latitude": "28.548792",
+    "Longitude": "77.120743"
+  },
+  {
+    "Station Code": "DKV",
+    "Name": "Dhaula Kuan",
+    "Hindi": "धौला कुआं",
+    "Line": "10",
+    "Latitude": "28.591776",
+    "Longitude": "77.161545"
+  },
+  {
+    "Station Code": "SJSU",
+    "Name": "Shivaji Stadium",
+    "Hindi": "शिवाजी स्टेडियम",
+    "Line": "10",
+    "Latitude": "28.629007",
+    "Longitude": "77.209213"
+  },
+  {
+    "Station Code": "DLIG",
+    "Name": "Delhi Gate",
+    "Hindi": "दिल्ली गेट",
+    "Line": "6",
+    "Latitude": "28.640488",
+    "Longitude": "77.240303"
+  },
+  {
+    "Station Code": "JAMD",
+    "Name": "Jama Masjid",
+    "Hindi": "जामा मस्जिद",
+    "Line": "6",
+    "Latitude": "28.650393",
+    "Longitude": "77.237556"
+  },
+  {
+    "Station Code": "LLQA",
+    "Name": "Lal Quila",
+    "Hindi": "लाल किला",
+    "Line": "6",
+    "Latitude": "28.657576",
+    "Longitude": "77.236595"
+  },
+  {
+    "Station Code": "Sikanderpur",
+    "Name": "Sikanderpur (Rapid Metro)",
+    "Hindi": "सिकंदरपुर (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.480833",
+    "Longitude": "77.094246"
+  },
+  {
+    "Station Code": "Phase 2",
+    "Name": "Phase 2 (Rapid Metro)",
+    "Hindi": "फेज 2 (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.488371",
+    "Longitude": "77.092865"
+  },
+  {
+    "Station Code": "Belvedere Towers",
+    "Name": "Belvedere Towers (Rapid Metro)",
+    "Hindi": "बेल्वेडियर टावर्स (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.492065",
+    "Longitude": "77.088142"
+  },
+  {
+    "Station Code": "Cyber City",
+    "Name": "Cyber City (Rapid Metro)",
+    "Hindi": "साइबर सिटी (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.498478",
+    "Longitude": "77.089088"
+  },
+  {
+    "Station Code": "Moulsari Avenue",
+    "Name": "Moulsari Avenue (Rapid Metro)",
+    "Hindi": "मौलसरी एवेन्यू (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.501572",
+    "Longitude": "77.094536"
+  },
+  {
+    "Station Code": "Phase 3",
+    "Name": "Phase 3 (Rapid Metro)",
+    "Hindi": "फेज 3 (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.494329",
+    "Longitude": "77.093552"
+  },
+  {
+    "Station Code": "Phase 1",
+    "Name": "Phase 1 (Rapid Metro)",
+    "Hindi": "फेज I (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.471981",
+    "Longitude": "77.094009"
+  },
+  {
+    "Station Code": "Sector 42-43",
+    "Name": "Sector 42-43 (Rapid Metro)",
+    "Hindi": "सेक्टर 42 43 (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.458475",
+    "Longitude": "77.09684"
+  },
+  {
+    "Station Code": "Sector 53-54",
+    "Name": "Sector 53-54 (Rapid Metro)",
+    "Hindi": "सेक्टर 53 54 (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.447533",
+    "Longitude": "77.100487"
+  },
+  {
+    "Station Code": "Sector 54 Chowk",
+    "Name": "Sector 54 Chowk (Rapid Metro)",
+    "Hindi": "सेक्टर 54 चौक (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.434212",
+    "Longitude": "77.104782"
+  },
+  {
+    "Station Code": "Sector 55-56",
+    "Name": "Sector 55-56 (Rapid Metro)",
+    "Hindi": "सेक्टर 55 56 (रैपिड मेट्रो)",
+    "Line": "15",
+    "Latitude": "28.424587",
+    "Longitude": "77.105042"
+  },
+  {
+    "Station Code": "HDNR",
+    "Name": "Hindon River",
+    "Hindi": "हिंडन नदी",
+    "Line": "15",
+    "Latitude": "28.673508",
+    "Longitude": "77.40654"
+  },
+  {
+    "Station Code": "ATHA",
+    "Name": "Arthala",
+    "Hindi": "अर्थला",
+    "Line": "15",
+    "Latitude": "28.6772",
+    "Longitude": "77.391876"
+  },
+  {
+    "Station Code": "MNGM",
+    "Name": "Mohan Nagar",
+    "Hindi": "मोहन नगर",
+    "Line": "15",
+    "Latitude": "28.67856",
+    "Longitude": "77.384209"
+  },
+  {
+    "Station Code": "SMPK",
+    "Name": "Shyam Park",
+    "Hindi": "श्याम पार्क",
+    "Line": "15",
+    "Latitude": "28.678217",
+    "Longitude": "77.370911"
+  },
+  {
+    "Station Code": "RJNM",
+    "Name": "Major Mohit Sharma Rajendra Nagar",
+    "Hindi": "मेजर मोहित शर्मा राजेंद्र नगर",
+    "Line": "15",
+    "Latitude": "28.678095",
+    "Longitude": "77.359528"
+  },
+  {
+    "Station Code": "RJBH",
+    "Name": "Raj Bagh",
+    "Hindi": "राज बाग",
+    "Line": "15",
+    "Latitude": "28.677122",
+    "Longitude": "77.346466"
+  },
+  {
+    "Station Code": "SHDN",
+    "Name": "Shaheed Nagar",
+    "Hindi": "शहीद नगर",
+    "Line": "15",
+    "Latitude": "28.676615",
+    "Longitude": "77.333809"
+  },
+  {
+    "Station Code": "STFN",
+    "Name": "Noida Sector 34",
+    "Hindi": "नोएडा सेक्टर 34",
+    "Line": "20",
+    "Latitude": "28.580229",
+    "Longitude": "77.363518"
+  },
+  {
+    "Station Code": "SFTN",
+    "Name": "Noida Sector 52",
+    "Hindi": "नोएडा सेक्टर 52",
+    "Line": "20",
+    "Latitude": "28.586849",
+    "Longitude": "77.372749"
+  },
+  {
+    "Station Code": "SSON",
+    "Name": "Noida Sector 61",
+    "Hindi": "नोएडा सेक्टर 61",
+    "Line": "20",
+    "Latitude": "28.597677",
+    "Longitude": "77.372368"
+  },
+  {
+    "Station Code": "SFNN",
+    "Name": "Noida Sector 59",
+    "Hindi": "नोएडा सेक्टर 59",
+    "Line": "20",
+    "Latitude": "28.609089",
+    "Longitude": "77.372955"
+  },
+  {
+    "Station Code": "SSTN",
+    "Name": "Noida Sector 62",
+    "Hindi": "नोएडा सेक्टर 62",
+    "Line": "20",
+    "Latitude": "28.616991",
+    "Longitude": "77.373611"
+  },
+  {
+    "Station Code": "NECC",
+    "Name": "Noida Electronic City",
+    "Hindi": "नोएडा इलेक्ट्रॉनिक सिटी",
+    "Line": "20",
+    "Latitude": "28.628685",
+    "Longitude": "77.375229"
+  },
+  {
+    "Station Code": "NSFI",
+    "Name": "Noida Sector 51",
+    "Hindi": "नोएडा सेक्टर 51",
+    "Line": "20",
+    "Latitude": "28.585548",
+    "Longitude": "77.375374"
+  },
+  {
+    "Station Code": "NSOF",
+    "Name": "Noida Sector 50",
+    "Hindi": "नोएडा सेक्टर 50",
+    "Line": "20",
+    "Latitude": "28.574547",
+    "Longitude": "77.378357"
+  },
+  {
+    "Station Code": "NSOS",
+    "Name": "Noida Sector 76",
+    "Hindi": "नोएडा सेक्टर 76",
+    "Line": "20",
+    "Latitude": "28.565445",
+    "Longitude": "77.37973"
+  },
+  {
+    "Station Code": "NSOT",
+    "Name": "Noida Sector 101",
+    "Hindi": "नोएडा सेक्टर 101",
+    "Line": "20",
+    "Latitude": "28.556065",
+    "Longitude": "77.385056"
+  },
+  {
+    "Station Code": "NSOE",
+    "Name": "Noida Sector 81",
+    "Hindi": "नोएडा सेक्टर 81",
+    "Line": "20",
+    "Latitude": "28.549259",
+    "Longitude": "77.390099"
+  },
+  {
+    "Station Code": "NSEZ",
+    "Name": "NSEZ",
+    "Hindi": "एनएसईजेड",
+    "Line": "20",
+    "Latitude": "28.532248",
+    "Longitude": "77.394951"
+  },
+  {
+    "Station Code": "NSOH",
+    "Name": "Noida Sector 83",
+    "Hindi": "नोएडा सेक्टर 83",
+    "Line": "20",
+    "Latitude": "28.522284",
+    "Longitude": "77.396477"
+  },
+  {
+    "Station Code": "NSOD",
+    "Name": "Noida Sector 137",
+    "Hindi": "नोएडा सेक्टर 137",
+    "Line": "20",
+    "Latitude": "28.510817",
+    "Longitude": "77.403625"
+  },
+  {
+    "Station Code": "NSOL",
+    "Name": "Noida Sector 142",
+    "Hindi": "नोएडा सेक्टर 142",
+    "Line": "20",
+    "Latitude": "28.498999",
+    "Longitude": "77.412567"
+  },
+  {
+    "Station Code": "NSOFI",
+    "Name": "Noida Sector 143",
+    "Hindi": "नोएडा सेक्टर 143",
+    "Line": "20",
+    "Latitude": "28.494246",
+    "Longitude": "77.422318"
+  },
+  {
+    "Station Code": "NSOO",
+    "Name": "Noida Sector 144",
+    "Hindi": "नोएडा सेक्टर 144",
+    "Line": "20",
+    "Latitude": "28.486376",
+    "Longitude": "77.432968"
+  },
+  {
+    "Station Code": "NSOFV",
+    "Name": "Noida Sector 145",
+    "Hindi": "नोएडा सेक्टर 145",
+    "Line": "20",
+    "Latitude": "28.47913",
+    "Longitude": "77.442307"
+  },
+  {
+    "Station Code": "NSOSV",
+    "Name": "Noida Sector 146",
+    "Hindi": "नोएडा सेक्टर 146",
+    "Line": "20",
+    "Latitude": "28.468822",
+    "Longitude": "77.455101"
+  },
+  {
+    "Station Code": "NSOFN",
+    "Name": "Noida Sector 147",
+    "Hindi": "नोएडा सेक्टर 147",
+    "Line": "20",
+    "Latitude": "28.4594",
+    "Longitude": "77.465965"
+  },
+  {
+    "Station Code": "NSOFH",
+    "Name": "Noida Sector 148",
+    "Hindi": "नोएडा सेक्टर 148",
+    "Line": "20",
+    "Latitude": "28.448021",
+    "Longitude": "77.476692"
+  },
+  {
+    "Station Code": "KNPK",
+    "Name": "Knowledge Park",
+    "Hindi": "नॉलेज पार्क",
+    "Line": "20",
+    "Latitude": "28.456865",
+    "Longitude": "77.500298"
+  },
+  {
+    "Station Code": "PRCK",
+    "Name": "Pari Chowk",
+    "Hindi": "परी चौक",
+    "Line": "20",
+    "Latitude": "28.463331",
+    "Longitude": "77.508308"
+  },
+  {
+    "Station Code": "ALPH",
+    "Name": "Alpha 1",
+    "Hindi": "अल्फा 1",
+    "Line": "20",
+    "Latitude": "28.470879",
+    "Longitude": "77.512718"
+  },
+  {
+    "Station Code": "DLTO",
+    "Name": "Delta 1",
+    "Hindi": "डेल्टा 1",
+    "Line": "20",
+    "Latitude": "28.478374",
+    "Longitude": "77.525581"
+  },
+  {
+    "Station Code": "GNID",
+    "Name": "GNIDA Office",
+    "Hindi": "जीएनआईडीए कार्यालय",
+    "Line": "20",
+    "Latitude": "28.484531",
+    "Longitude": "77.536621"
+  },
+  {
+    "Station Code": "DPST",
+    "Name": "Depot Station",
+    "Hindi": "डिपो स्टेशन",
+    "Line": "20",
+    "Latitude": "28.488651",
+    "Longitude": "77.544075"
+  }
+]

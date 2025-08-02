@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:provider/provider.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'elements/metro.dart';
 
 void main() async {
@@ -42,6 +43,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Metro App',
       theme: ThemeData(
+        extensions: const [SkeletonizerConfigData.dark()],
+        //settings for theme
         textTheme: TextTheme(
           bodyMedium: TextStyle(
             fontFamily: "Poppins", //poppins default font

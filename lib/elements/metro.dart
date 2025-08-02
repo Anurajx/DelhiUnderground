@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:metroapp/elements/ServicesDir/whatsappURLTransfer.dart';
 
@@ -97,7 +98,7 @@ class InfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LiquidGlass(
-      shape: LiquidRoundedSuperellipse(borderRadius: Radius.circular(10)),
+      shape: LiquidRoundedSuperellipse(borderRadius: Radius.circular(0)),
       blur: 5,
       settings: const LiquidGlassSettings(
         thickness: 10,
@@ -110,7 +111,7 @@ class InfoBar extends StatelessWidget {
       child: Container(
         height: 35,
         decoration: const BoxDecoration(color: Color.fromARGB(0, 8, 8, 8)),
-        width: 150,
+        width: double.infinity,
         child: Marquee(
           //adding marquee effect to text with help of the package
           text:
@@ -182,7 +183,7 @@ suggestions(context) {
       builder: (context, data, child) {
         final data =
             Provider.of<DataProvider>(context).coreTransferStationsDict;
-        print("transfer data is **$data");
+        print("transfer data NOT JSON is **$data");
         //print(data.coreNearestStationsDict);
         var just = data["just"];
         var justBefore = data["justBefore"];
@@ -203,13 +204,13 @@ suggestions(context) {
             children: [
               stationPrimitive(
                 name:
-                    data["just"]?[0]["Source"]?[2]
+                    data["just"]?[0]["Source"]?["Name"]
                         .toString(), //CHECK NOT ERROR SAFE
                 //STILL HAS BUG
               ),
               stationPrimitive(
                 name:
-                    data["justBefore"]?[0]?["Source"]?[2]
+                    data["justBefore"]?[0]?["Source"]?["Name"]
                         .toString(), //CHECK NOT ERROR SAFE
               ),
             ],
@@ -273,11 +274,12 @@ nearYou(context) {
         if (data["Near"] != null && data["NearEnough"] != null) {
           //isNear= !isNear;
           /////////////
-          String lineNE = data["NearEnough"]![0][3].toString();
+          String lineNE = data["NearEnough"]![0]["Line"].toString();
           lineNE = lineNE.replaceAll(RegExp(r'[\[\]]'), '');
           List<String> partsNE = lineNE.split('-');
           List<int> lineNumbersNE = partsNE.map((e) => int.parse(e)).toList();
-          String lineN = data["Near"]![0][3].toString();
+          /////
+          String lineN = data["Near"]![0]["Line"].toString();
           lineN = lineN.replaceAll(RegExp(r'[\[\]]'), '');
           List<String> partsN = lineN.split('-');
           List<int> lineNumbersN = partsN.map((e) => int.parse(e)).toList();
@@ -300,76 +302,107 @@ nearYou(context) {
               // if(isNear){
 
               // },
-              stationNearby(name: data["Near"]?[0][2], line: lineNumbersN),
+              stationNearby(name: data["Near"]?[0]["Name"], line: lineNumbersN),
               //Spacer(),
               stationNearby(
-                name: data["NearEnough"]?[0][2],
+                name: data["NearEnough"]?[0]["Name"],
                 line: lineNumbersNE,
               ),
             ],
           );
         } else {
-          return Container(
-            padding: EdgeInsets.all(10),
-            //height: 10, width: 10,
-            //color: Colors.greenAccent,
-            child: Center(
-              child: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: "Fetching nearby ",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 161, 161, 161),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    TextSpan(
-                      text: "stations ",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-
-                    WidgetSpan(
-                      child: Icon(Icons.location_on, color: Colors.white),
-                    ),
-                    TextSpan(
-                      text: " just a",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 161, 161, 161),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    TextSpan(
-                      text: " moment ",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Icon(Icons.punch_clock, color: Colors.white),
-                    ),
-                    TextSpan(
-                      text: " check GPS if not.",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 161, 161, 161),
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    //WidgetSpan(child: cupertinoprogressindicator),
-                  ],
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "NEAR YOU",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 109, 109, 109),
+                  fontSize: 16, //processedFontheight(context),
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
                 ),
               ),
-            ),
+
+              Skeletonizer(
+                //theme: SkeletonizerTheme.dark,
+                //enableShimmer: true,
+                //enableSwitchAnimation: true,
+                child: ListTile(
+                  title: Text('Item numas title'),
+                  subtitle: const Text('Subtitle here'),
+                  trailing: const Icon(Icons.ac_unit),
+                ),
+                // ListTile(
+                //   title: Text('Bhikaji Cama Place'),
+                //   subtitle: const Text('Dwarka Mor'),
+                //   trailing: const Icon(Icons.ac_unit, size: 20),
+                // ),
+              ),
+            ],
           );
+          // return Container(
+          //   padding: EdgeInsets.all(10),
+          //   //height: 10, width: 10,
+          //   //color: Colors.greenAccent,
+          //   child: Center(
+          //     child: RichText(
+          //       text: TextSpan(
+          //         children: [
+          //           TextSpan(
+          //             text: "Fetching nearby ",
+          //             style: TextStyle(
+          //               color: const Color.fromARGB(255, 161, 161, 161),
+          //               fontSize: 24,
+          //               fontWeight: FontWeight.w500,
+          //             ),
+          //           ),
+          //           TextSpan(
+          //             text: "stations ",
+          //             style: TextStyle(
+          //               color: Colors.white,
+          //               fontSize: 24,
+          //               fontWeight: FontWeight.w500,
+          //             ),
+          //           ),
+
+          //           WidgetSpan(
+          //             child: Icon(Icons.location_on, color: Colors.white),
+          //           ),
+          //           TextSpan(
+          //             text: " just a",
+          //             style: TextStyle(
+          //               color: const Color.fromARGB(255, 161, 161, 161),
+          //               fontSize: 24,
+          //               fontWeight: FontWeight.w500,
+          //             ),
+          //           ),
+          //           TextSpan(
+          //             text: " moment ",
+          //             style: TextStyle(
+          //               color: Colors.white,
+          //               fontSize: 24,
+          //               fontWeight: FontWeight.w500,
+          //             ),
+          //           ),
+          //           WidgetSpan(
+          //             child: Icon(Icons.punch_clock, color: Colors.white),
+          //           ),
+          //           TextSpan(
+          //             text: " check GPS if not.",
+          //             style: TextStyle(
+          //               color: const Color.fromARGB(255, 161, 161, 161),
+          //               fontSize: 24,
+          //               fontWeight: FontWeight.w500,
+          //             ),
+          //           ),
+          //           //WidgetSpan(child: cupertinoprogressindicator),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // );
         }
 
         //return Column(children: [stationNearby(name: data["Near"]![0])]);
@@ -441,6 +474,11 @@ ticketAndExit(context) {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(2)),
               //color: const Color.fromARGB(255, 17, 17, 17),
+              // image: DecorationImage(
+              //   colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
+              //   image: AssetImage('assets/Image/stopinfo.jpeg'),
+              //   fit: BoxFit.cover,
+              // ),
               border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
             ),
             child: GestureDetector(
@@ -586,7 +624,7 @@ appFooter(context) {
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
-            "Delhi\nUnderground",
+            "Delhi\nSubway",
             textAlign: TextAlign.left,
             style: TextStyle(
               color: const Color.fromARGB(255, 175, 175, 175),
@@ -649,7 +687,7 @@ appFooter(context) {
           alignment: Alignment.bottomRight, // ⬅️ change this to desired side
           child: InfoBar(),
         ),
-        SizedBox(height: 5),
+        //SizedBox(height: 5),
       ],
     ),
   );

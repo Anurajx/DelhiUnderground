@@ -1,0 +1,14 @@
+{
+  "Red Line": { "median_travel_time_per_pair_seconds": 150 },
+  "Yellow Line": { "median_travel_time_per_pair_seconds": 145 },
+  "Blue Line 3": { "median_travel_time_per_pair_seconds": 140 },
+  "Blue Line 4": { "median_travel_time_per_pair_seconds": 135 },
+  "Green Line": { "median_travel_time_per_pair_seconds": 149 },
+  "Violet Line": { "median_travel_time_per_pair_seconds": 147 },
+  "Pink Line": { "median_travel_time_per_pair_seconds": 161 },
+  "Magenta Line": { "median_travel_time_per_pair_seconds": 142 },
+  "Orange Line": { "median_travel_time_per_pair_seconds": 312 },
+  "Grey Line": { "median_travel_time_per_pair_seconds": 126 },
+  "Aqua Line": { "median_travel_time_per_pair_seconds": 171 },
+  "Rapid Metro Gurgaon": { "median_travel_time_per_pair_seconds": 312 }
+}

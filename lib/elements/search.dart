@@ -1,5 +1,7 @@
 // import 'dart:ffi';
 // import 'dart:math';
+import 'dart:convert';
+
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
@@ -79,6 +81,7 @@ class _searchBodyState extends State<searchBody> {
       setState(() {
         orignalStations = stations;
         filteredStations = stations;
+        print("JSON STATIONS IS $orignalStations");
       });
     });
   }
@@ -96,6 +99,7 @@ class _searchBodyState extends State<searchBody> {
   //////////////
 
   void filterStationsLogic(String query) {
+    //TODO: MAKE THIS COMPAITABLE WITH JSON
     //Logiv to find the best match
     final lowerQuery = query.toLowerCase();
 
@@ -104,11 +108,15 @@ class _searchBodyState extends State<searchBody> {
         // Create list of entries with scores
         final scoredList =
             orignalStations
-                .where((station) => station.length >= 3)
+                .where(
+                  (station) =>
+                      station["Name"] != null && station["Hindi"] != null,
+                )
+                //print("JSON STATIONS IS $orignalStations")
                 .map((station) {
-                  final name = station[2]?.toString().toLowerCase() ?? "";
-                  final zone = station[1]?.toString().toLowerCase() ?? "";
-
+                  final name = station["Name"]?.toString().toLowerCase() ?? "";
+                  final zone = station["Hindi"]?.toString().toLowerCase() ?? "";
+                  print("JSON ZONE IS $zone");
                   final nameScore = StringSimilarity.compareTwoStrings(
                     name,
                     lowerQuery,
@@ -126,11 +134,11 @@ class _searchBodyState extends State<searchBody> {
                 .where(
                   (entry) =>
                       entry.value > 0.7 || // Similarity threshold
-                      entry.key[2]?.toString().toLowerCase().contains(
+                      entry.key["Name"]?.toString().toLowerCase().contains(
                             lowerQuery,
                           ) ==
-                          true ||
-                      entry.key[1]?.toString().toLowerCase().contains(
+                          true || //checks if the query matches the name or hindi name/common name
+                      entry.key["Hindi"]?.toString().toLowerCase().contains(
                             lowerQuery,
                           ) ==
                           true,
@@ -152,18 +160,25 @@ class _searchBodyState extends State<searchBody> {
     //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
     //fetching data from CSV file logic
     try {
-      final rawData = await rootBundle.loadString(
-        'assets/Map/stops.csv',
-      ); //stops
-      final List<List<dynamic>> rows = await Isolate.run(() {
-        return CsvToListConverter(
-          eol: '\n',
-          fieldDelimiter: ',',
-          textDelimiter: '"',
-          shouldParseNumbers: false,
-        ).convert(rawData);
-      });
-      return rows;
+      // final rawData = await rootBundle.loadString(
+      //   'assets/Map/stops.csv',
+      // ); //stops
+      //TRYING OUT EXPERIMENTAL JSON METHOD
+      final jsonRawData = await rootBundle.loadString(
+        "assets/Map/stationsjson.json",
+      );
+      final List<dynamic> jsonList = jsonDecode(jsonRawData);
+      print("JSON RAW DATA IS $jsonList");
+      return jsonList;
+      // final List<List<dynamic>> rows = await Isolate.run(() {
+      //   return CsvToListConverter(
+      //     eol: '\n',
+      //     fieldDelimiter: ',',
+      //     textDelimiter: '"',
+      //     shouldParseNumbers: false,
+      //   ).convert(rawData);
+      // });
+      // return rows;
     } catch (e) {
       return [];
       //error protection
@@ -358,11 +373,11 @@ Widget fromToIcon() {
   );
 }
 
-Map<String, List<dynamic>> coreTransferStationsDict = {
+Map<String, Map<String, dynamic>> coreTransferStationsDict = {
   //used for transfer screen process, making sure both source and destination are available
   //Dictionary format
-  'Source': [], //adding some defaults
-  'Destination': [],
+  'Source': {}, //adding some defaults
+  'Destination': {},
 };
 
 Widget stationList(
@@ -406,14 +421,18 @@ Widget stationList(
         if (station.length < 3) {
           return const SizedBox(); // or some error placeholder
         }
-        String line = station[3].toString();
+        print("Later JSON station is $station");
+        print("Later JSON station name is ${station["Name"]}");
+        String line = station["Line"];
         line = line.replaceAll(RegExp(r'[\[\]]'), '');
         List<String> parts = line.split('-');
         List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
+        //List<int> lineNumbers = [1, 4];
+        //HARD CODED LINE NUMBERS FOR NOW
         //print("Line numbers: $lineNumbers");
-        String name = station[2].toString(); // Station Name
+        String name = station["Name"]; // Station Name
         String hindiName =
-            station[1].toString(); // not hindiName actually hindi name
+            station["Hindi"]; // not hindiName actually hindi name
 
         return InkWell(
           focusColor: const Color.fromARGB(0, 255, 255, 255),
@@ -425,8 +444,9 @@ Widget stationList(
               //inputs text in the text filed on tap
               controller1.text = name;
               //FocusScope.of(context).requestFocus(focusNode2);
-              coreTransferStationsDict['Source'] =
-                  station; ////-- setting name to be sent to search algorithm
+              print("JSON STATION CODE IS ${station["Station Code"]}");
+              coreTransferStationsDict['Source'] = //TODO: MAKE IT COMAPITABLE WITH TRAFER DICT SO THAT SUGGESTION ON HOMESCREEN ADAPT TO FORMAT
+                  station;
               if (ifDestinationSelected() && ifSourceSelected()) {
                 /////////NEWLY ADDED-------------
                 print("Destination selected ${controller2.text}");
@@ -488,8 +508,8 @@ screenTransferController(context, controller1, controller2) {
       coreTransferStationsDict['Source'] !=
           coreTransferStationsDict['Destination']) {
     //checks for source and destination in dectinory and the text controller text if all are valid only then proceed and destination is not same as source
-    if (coreTransferStationsDict['Source']![2] != source ||
-        coreTransferStationsDict['Destination']![2] != destination) {
+    if (coreTransferStationsDict['Source']!["Name"] != source ||
+        coreTransferStationsDict['Destination']!["Name"] != destination) {
       //confirms user input if there is a mismatch between dictionary and textfield
       showDialog(
         //warns user with that BIG GREEN BOX for mis match

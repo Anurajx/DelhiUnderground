@@ -96,7 +96,7 @@ metroMap() {
       maxScale: 20,
       child: Center(
         child: Image.asset(
-          "assets/Map/DelhiMetroMap.webp",
+          "assets/Map/DelhiMetroMap0.png",
           fit: BoxFit.contain,
           filterQuality: FilterQuality.high,
         ),

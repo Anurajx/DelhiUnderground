@@ -13,7 +13,7 @@ import './ServicesDir/minimetroStationList.dart';
 
 class routeScreen extends StatefulWidget {
   //final Map<String, Map<String, dynamic>> coreTransferStationsDict;
-  final Map<String, List<dynamic>>
+  final Map<String, Map<String, dynamic>>
   coreTransferStationsDict; //temprory, this will have to go though the search alorithm than it will send data here. not directly
   const routeScreen({super.key, required this.coreTransferStationsDict});
 

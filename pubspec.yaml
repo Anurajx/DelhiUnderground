@@ -52,6 +52,7 @@ dependencies:
   liquid_glass_renderer: ^0.1.1-dev.6
   provider: ^6.1.5
   auto_size_text: ^3.0.0
+  skeletonizer: ^2.1.0+1
   #lottie: ^3.3.1
   url_launcher: ^6.3.2
   ############
@@ -113,6 +114,12 @@ flutter:
     - assets/Image/bikeinf.jpeg
     - assets/Image/elevatorinf.jpeg
     - assets/Image/washroominf.jpeg
+    - assets/Image/stopinfo.jpeg
+    - assets/Map/stationsjson.json
+    - assets/Map/gatesjson.json
+    - assets/Map/parkingjson.json
+    - assets/Map/DelhiMetroMap0.png
+    - assets/Map/stoptimediffJson.json
 
   fonts:
     - family: Poppins
