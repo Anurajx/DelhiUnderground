@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
 //import 'package:lottie/lottie.dart';
 
@@ -39,36 +40,38 @@ class stopInfoScreen extends StatelessWidget {
 // }
 ////////////////////
 stationCluster(context, stationDict) {
-  return Container(
-    padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
-    child: Column(
-      children: [
-        topNavBar(context),
-        Expanded(
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              stationLineMarker(stationDict),
-              //SizedBox(height: 100),
-              closeAndOpeningTime(),
-              stationStatus(),
-              SizedBox(height: 2),
-              //toAndFromBlock(),
-              SizedBox(height: 40),
-              exitBlock(),
-              SizedBox(height: 40),
-              //exitBlock(),
-              scheduleBlock(),
-              SizedBox(height: 40),
-              ammenitiesBlock(),
-              SizedBox(height: 40),
-              reportError(),
-              SizedBox(height: 40),
-              companyFooter(),
-            ],
+  return SafeArea(
+    child: Container(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0), //IMPLEMENT ON ALL
+      child: Column(
+        children: [
+          topNavBar(context),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                stationLineMarker(stationDict),
+                //SizedBox(height: 100),
+                closeAndOpeningTime(),
+                stationStatus(),
+                SizedBox(height: 2.h),
+                //toAndFromBlock(),
+                SizedBox(height: 40.h),
+                exitBlock(),
+                SizedBox(height: 40.h),
+                //exitBlock(),
+                scheduleBlock(),
+                SizedBox(height: 40.h),
+                ammenitiesBlock(),
+                SizedBox(height: 40.h),
+                reportError(),
+                SizedBox(height: 40.h),
+                companyFooter(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }
@@ -76,8 +79,8 @@ stationCluster(context, stationDict) {
 topNavBar(context) {
   return Container(
     //color: const Color.fromARGB(0, 8, 8, 8),
-    height: 50,
-    //padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
+    //height: 50,
+    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -98,7 +101,7 @@ topNavBar(context) {
                   color: const Color.fromARGB(255, 47, 130, 255),
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins',
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ],
@@ -118,7 +121,7 @@ stationLineMarker(stationDict) {
   return Container(
     //decoration: BoxDecoration(color: const Color.fromARGB(255, 164, 164, 164)),
     //margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-    height: 230,
+    height: 230.h,
     width: double.infinity,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -131,16 +134,16 @@ stationLineMarker(stationDict) {
             height: 1.2,
             color: const Color.fromARGB(255, 187, 187, 187),
             fontWeight: FontWeight.w500,
-            fontSize: 28,
+            fontSize: 24.sp,
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Text(
           "$stationNameHindiCommon",
           style: TextStyle(
             color: const Color.fromARGB(255, 187, 187, 187),
             fontWeight: FontWeight.w300,
-            fontSize: 20,
+            fontSize: 18.sp,
           ),
         ),
         Container(
@@ -148,17 +151,17 @@ stationLineMarker(stationDict) {
           child: Row(
             children: [
               Container(
-                height: 20,
-                width: 20,
+                height: 20.h,
+                width: 20.w,
                 decoration: BoxDecoration(
                   color: Colors.pinkAccent,
                   borderRadius: BorderRadius.circular(50),
                 ),
               ),
-              SizedBox(width: 5),
+              SizedBox(width: 5.w),
               Container(
-                height: 20,
-                width: 20,
+                height: 20.h,
+                width: 20.w,
                 decoration: BoxDecoration(
                   color: Colors.blueAccent,
                   borderRadius: BorderRadius.circular(50),
@@ -168,7 +171,7 @@ stationLineMarker(stationDict) {
           ),
         ),
         Spacer(),
-        SizedBox(height: 30),
+        SizedBox(height: 30.h),
       ],
     ),
   );
@@ -193,7 +196,7 @@ closeAndOpeningTime() {
 
 stationStatus() {
   return Container(
-    height: 70,
+    height: 80.h,
     width: double.infinity,
 
     //color: Colors.teal,
@@ -201,7 +204,7 @@ stationStatus() {
       children: [
         Container(
           color: const Color.fromARGB(255, 25, 25, 25),
-          width: 90,
+          width: 90.w,
           height: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -212,7 +215,7 @@ stationStatus() {
                 style: TextStyle(
                   color: Colors.green,
                   fontWeight: FontWeight.w500,
-                  fontSize: 15,
+                  fontSize: 15.sp,
                 ),
               ),
               Text(
@@ -220,13 +223,13 @@ stationStatus() {
                 style: TextStyle(
                   color: const Color.fromARGB(255, 108, 108, 108),
                   fontWeight: FontWeight.w500,
-                  fontSize: 15,
+                  fontSize: 15.sp,
                 ),
               ),
             ],
           ),
         ),
-        SizedBox(width: 2),
+        SizedBox(width: 2.w),
         Expanded(
           child: Container(
             padding: EdgeInsets.all(10),
@@ -244,7 +247,7 @@ stationStatus() {
                       style: TextStyle(
                         color: Colors.green,
                         fontWeight: FontWeight.w500,
-                        fontSize: 15,
+                        fontSize: 15.sp,
                       ),
                     ),
                     Spacer(),
@@ -256,7 +259,7 @@ stationStatus() {
                   style: TextStyle(
                     color: const Color.fromARGB(255, 108, 108, 108),
                     fontWeight: FontWeight.w500,
-                    fontSize: 15,
+                    fontSize: 15.sp,
                   ),
                 ),
               ],
@@ -270,7 +273,7 @@ stationStatus() {
 
 toAndFromBlock() {
   return Container(
-    height: 70,
+    height: 70.h,
     width: double.infinity,
     //color: Colors.teal,
     child: Row(
@@ -279,7 +282,7 @@ toAndFromBlock() {
           child: Container(
             padding: EdgeInsets.all(10),
             color: const Color.fromARGB(255, 207, 207, 207),
-            width: 90,
+            width: 90.w,
             height: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -292,7 +295,7 @@ toAndFromBlock() {
                       style: TextStyle(
                         color: const Color.fromARGB(255, 0, 0, 0),
                         fontWeight: FontWeight.w500,
-                        fontSize: 15,
+                        fontSize: 15.sp,
                       ),
                     ),
                     Spacer(),
@@ -308,19 +311,19 @@ toAndFromBlock() {
                   style: TextStyle(
                     color: const Color.fromARGB(255, 108, 108, 108),
                     fontWeight: FontWeight.w500,
-                    fontSize: 15,
+                    fontSize: 15.sp,
                   ),
                 ),
               ],
             ),
           ),
         ),
-        SizedBox(width: 2),
+        SizedBox(width: 2.w),
         Expanded(
           child: Container(
             padding: EdgeInsets.all(10),
             color: const Color.fromARGB(255, 207, 207, 207),
-            width: 90,
+            width: 90.w,
             height: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -333,7 +336,7 @@ toAndFromBlock() {
                       style: TextStyle(
                         color: const Color.fromARGB(255, 0, 0, 0),
                         fontWeight: FontWeight.w500,
-                        fontSize: 15,
+                        fontSize: 15.sp,
                       ),
                     ),
                     Spacer(),
@@ -349,7 +352,7 @@ toAndFromBlock() {
                   style: TextStyle(
                     color: const Color.fromARGB(255, 108, 108, 108),
                     fontWeight: FontWeight.w500,
-                    fontSize: 15,
+                    fontSize: 15.sp,
                   ),
                 ),
               ],
@@ -372,29 +375,29 @@ exitBlock() {
           "EXIT",
           style: TextStyle(
             color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16, //processedFontheight(context),
+            fontSize: 16.sp, //processedFontheight(context),
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Stack(
           alignment: Alignment.centerLeft,
           children: [
             Container(
-              height: 50,
+              height: 60.h,
               width: double.infinity,
               child: Row(
                 children: [
-                  Container(width: 80),
+                  Container(width: 80.w),
                   Expanded(
                     child: Container(
-                      height: 50,
+                      height: 60.h,
                       color: const Color.fromARGB(255, 25, 25, 25),
                       child: Row(
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(width: 12),
+                          SizedBox(width: 12.w),
                           Expanded(
                             child: Text(
                               "Palika Bhawan, RK Puram Sector-13, New Delhi",
@@ -414,8 +417,8 @@ exitBlock() {
               ),
             ),
             Container(
-              height: 50,
-              width: 80,
+              height: 60.h,
+              width: 80.w,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
@@ -428,7 +431,7 @@ exitBlock() {
                   "GATE 1",
                   style: TextStyle(
                     color: const Color.fromARGB(255, 172, 172, 172),
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -438,24 +441,24 @@ exitBlock() {
           ],
         ),
         ////////////////////////////////////////
-        SizedBox(height: 2),
+        SizedBox(height: 2.h),
         Stack(
           alignment: Alignment.centerLeft,
           children: [
             Container(
-              height: 50,
+              height: 60.h,
               width: double.infinity,
               child: Row(
                 children: [
-                  Container(width: 80),
+                  Container(width: 80.w),
                   Expanded(
                     child: Container(
-                      height: 50,
+                      height: 60.h,
                       color: const Color.fromARGB(255, 25, 25, 25),
                       child: Row(
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(width: 12),
+                          SizedBox(width: 12.w),
                           Expanded(
                             child: Text(
                               "DTC Sarojini Nagar Depot",
@@ -475,8 +478,8 @@ exitBlock() {
               ),
             ),
             Container(
-              height: 50,
-              width: 80,
+              height: 60.h,
+              width: 80.w,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
@@ -489,7 +492,7 @@ exitBlock() {
                   "GATE 2",
                   style: TextStyle(
                     color: const Color.fromARGB(255, 172, 172, 172),
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -498,24 +501,24 @@ exitBlock() {
             ),
           ],
         ),
-        SizedBox(height: 2),
+        SizedBox(height: 2.h),
         Stack(
           alignment: Alignment.centerLeft,
           children: [
             Container(
-              height: 50,
+              height: 60.h,
               width: double.infinity,
               child: Row(
                 children: [
-                  Container(width: 80),
+                  Container(width: 80.w),
                   Expanded(
                     child: Container(
-                      height: 50,
+                      height: 60.h,
                       color: const Color.fromARGB(255, 25, 25, 25),
                       child: Row(
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(width: 12),
+                          SizedBox(width: 12.w),
                           Expanded(
                             child: Text(
                               "EIL,Hyatt Regency, Gail India Ltd",
@@ -535,8 +538,8 @@ exitBlock() {
               ),
             ),
             Container(
-              height: 50,
-              width: 80,
+              height: 60.h,
+              width: 80.w,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
@@ -549,7 +552,7 @@ exitBlock() {
                   "GATE 3",
                   style: TextStyle(
                     color: const Color.fromARGB(255, 172, 172, 172),
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -558,12 +561,12 @@ exitBlock() {
             ),
           ],
         ),
-        SizedBox(height: 2),
+        SizedBox(height: 2.h),
         Container(
           //image with visualize of map blocl
           padding: EdgeInsets.all(10),
           width: double.infinity,
-          height: 80,
+          height: 90.h,
           decoration: BoxDecoration(
             image: DecorationImage(
               colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
@@ -605,36 +608,36 @@ scheduleBlock() {
           "SCHEDULE",
           style: TextStyle(
             color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16, //processedFontheight(context),
+            fontSize: 16.sp, //processedFontheight(context),
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Stack(
           alignment: Alignment.topLeft,
           children: [
             Container(
               width: double.infinity,
-              height: 50,
+              height: 60.h,
               color: const Color.fromARGB(255, 25, 25, 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Text(
                     "Majlis Park",
                     style: TextStyle(
                       color: const Color.fromARGB(255, 207, 207, 207),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Spacer(),
                   Container(
-                    width: 100,
-                    height: 60,
+                    width: 100.w,
+                    height: 60.h,
                     color: const Color.fromARGB(255, 207, 207, 207),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -660,35 +663,35 @@ scheduleBlock() {
                 ],
               ),
             ),
-            Container(height: 10, width: 10, color: Colors.blue),
+            Container(height: 10.h, width: 10.w, color: Colors.blue),
           ],
         ),
         /////////
-        SizedBox(height: 2),
+        SizedBox(height: 2.h),
         Stack(
           alignment: Alignment.topLeft,
           children: [
             Container(
               width: double.infinity,
-              height: 50,
+              height: 60.h,
               color: const Color.fromARGB(255, 25, 25, 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Text(
-                    "Mauj Pur",
+                    "Maujpur",
                     style: TextStyle(
                       color: const Color.fromARGB(255, 207, 207, 207),
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Spacer(),
                   Container(
-                    width: 100,
-                    height: 60,
+                    width: 100.w,
+                    height: 60.h,
                     color: const Color.fromARGB(255, 207, 207, 207),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -714,7 +717,7 @@ scheduleBlock() {
                 ],
               ),
             ),
-            Container(height: 10, width: 10, color: Colors.blue),
+            Container(height: 10.h, width: 10.w, color: Colors.blue),
           ],
         ),
       ],
@@ -732,15 +735,15 @@ ammenitiesBlock() {
           "INFORMATION",
           style: TextStyle(
             color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16, //processedFontheight(context),
+            fontSize: 16.sp, //processedFontheight(context),
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Container(
           width: double.infinity,
-          height: 80,
+          //height: 90.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
@@ -755,11 +758,11 @@ ammenitiesBlock() {
                         "car parking",
                         style: TextStyle(
                           color: const Color.fromARGB(255, 182, 182, 182),
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      SizedBox(height: 8.h),
                       Row(
                         children: [
                           Container(
@@ -769,7 +772,7 @@ ammenitiesBlock() {
                               "available",
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 14, 14, 14),
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -781,7 +784,7 @@ ammenitiesBlock() {
                               "30 slots",
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 207, 207, 207),
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -795,17 +798,17 @@ ammenitiesBlock() {
               //Spacer(),
               Image.asset(
                 "assets/Image/carinf.jpeg",
-                height: 80,
-                width: 130,
+                height: 80.h, //prev 80
+                width: 130.w,
                 fit: BoxFit.cover,
               ),
             ],
           ),
         ),
-        SizedBox(height: 2),
+        SizedBox(height: 2.h),
         Container(
           width: double.infinity,
-          height: 80,
+          //height: 80.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
@@ -820,11 +823,11 @@ ammenitiesBlock() {
                         "bike parking",
                         style: TextStyle(
                           color: const Color.fromARGB(255, 182, 182, 182),
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      SizedBox(height: 8.h),
                       Row(
                         children: [
                           Container(
@@ -834,7 +837,7 @@ ammenitiesBlock() {
                               "unavailable",
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 14, 14, 14),
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -846,7 +849,7 @@ ammenitiesBlock() {
                               "0 slots",
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 207, 207, 207),
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
@@ -859,18 +862,18 @@ ammenitiesBlock() {
               ),
               Image.asset(
                 "assets/Image/bikeinf.jpeg",
-                height: 80,
-                width: 130,
+                height: 80.h,
+                width: 130.w,
                 fit: BoxFit.cover,
               ),
             ],
           ),
         ),
-        SizedBox(height: 2),
+        SizedBox(height: 2.h),
         Container(
           padding: EdgeInsets.all(10),
           width: double.infinity,
-          height: 50,
+          height: 50.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
@@ -879,7 +882,7 @@ ammenitiesBlock() {
                 "elevator",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -888,7 +891,7 @@ ammenitiesBlock() {
                 ">",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -897,7 +900,7 @@ ammenitiesBlock() {
                 "available",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -911,11 +914,11 @@ ammenitiesBlock() {
             ],
           ),
         ),
-        SizedBox(height: 2),
+        SizedBox(height: 2.h),
         Container(
           padding: EdgeInsets.all(10),
           width: double.infinity,
-          height: 50,
+          height: 50.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
@@ -924,7 +927,7 @@ ammenitiesBlock() {
                 "washroom",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -933,7 +936,7 @@ ammenitiesBlock() {
                 ">",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -942,7 +945,7 @@ ammenitiesBlock() {
                 "available",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -964,8 +967,8 @@ reportError() {
   return Row(
     children: [
       Container(
-        height: 50,
-        width: 170,
+        height: 50.h,
+        width: 170.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(2)),
           //color: const Color.fromARGB(255, 17, 17, 17),
@@ -982,7 +985,7 @@ reportError() {
               "report error",
               style: TextStyle(
                 color: const Color.fromARGB(255, 187, 187, 187),
-                fontSize: 18, //processedFontheight(context),
+                fontSize: 18.sp, //processedFontheight(context),
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w500,
               ),
@@ -1001,7 +1004,7 @@ companyFooter() {
       //borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     width: double.infinity,
-    height: 50,
+    height: 50.h,
     //color: const Color.fromARGB(255, 57, 57, 57),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -1011,10 +1014,10 @@ companyFooter() {
           "DELHI\nUNDERGROUND",
           textAlign: TextAlign.center,
           style: TextStyle(
-            height: 1,
+            height: 1.h,
             color: const Color.fromARGB(255, 90, 90, 90),
-            fontWeight: FontWeight.w700,
-            fontSize: 14,
+            fontWeight: FontWeight.w800,
+            fontSize: 14.sp,
           ),
         ),
         // Text(

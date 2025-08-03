@@ -4,71 +4,81 @@ import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'elements/metro.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final dataProvider =
-      DataProvider(); //UPDATES MOST RECENT SEARCHES FROM MEMORY
+      DataProvider(); // UPDATES MOST RECENT SEARCHES FROM MEMORY
   await dataProvider.loadTransferDictFromPrefs();
-  //WidgetsFlutterBinding.ensureInitialized(); // Required to set system styles before UI build
 
+  // Set global status bar style
   SystemChrome.setSystemUIOverlayStyle(
-    //telling app what should status bar should look like, later called inside the build
     const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, // Or black
-      statusBarIconBrightness: Brightness.light, // dark icons for light bg
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
     ),
   );
-  //making sure splash screen persisits
+
   runApp(
     ChangeNotifierProvider<DataProvider>.value(
-      value: dataProvider, // ✅ using the one with loaded data
+      value: dataProvider,
       child: const MyApp(),
     ),
-    //ChangeNotifierProvider(
-    //create: (context) => DataProvider(),
-    //child: const MyApp(),
-    //),
   );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  //Future<void> _permissions() async {}
-
   @override
   Widget build(BuildContext context) {
-    //Geolocator.requestPermission(); //requesting permission for location: to be shited to intro screen
-    return MaterialApp(
-      title: 'Metro App',
-      theme: ThemeData(
-        extensions: const [SkeletonizerConfigData.dark()],
-        //settings for theme
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(
-            fontFamily: "Poppins", //poppins default font
-            fontWeight: FontWeight.w300, //default font weight
+    return ScreenUtilInit(
+      // for an responsive design
+      designSize: Size(411, 917), // Based on Samsung M33 5G
+      minTextAdapt: true,
+      useInheritedMediaQuery: true, // ✅ Ensure full media query inheritance
+      builder: (context, child) {
+        // had to use builder because the mediaquery was resulting to bugging of top status bar
+        return MaterialApp(
+          title: 'Metro App',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            extensions: const [SkeletonizerConfigData.dark()],
+            textTheme: TextTheme(
+              bodyMedium: TextStyle(
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            textSelectionTheme: const TextSelectionThemeData(
+              cursorColor: Color.fromARGB(255, 47, 130, 255),
+              selectionColor: Color.fromARGB(150, 47, 130, 255),
+              selectionHandleColor: Color.fromARGB(255, 47, 130, 255),
+            ),
           ),
-        ),
-        textSelectionTheme: TextSelectionThemeData(
-          cursorColor: const Color.fromARGB(255, 47, 130, 255),
-          selectionColor: const Color.fromARGB(150, 47, 130, 255),
-          selectionHandleColor: const Color.fromARGB(255, 47, 130, 255),
-        ),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: AnnotatedRegion<SystemUiOverlayStyle>(
-        //for making sure top status bar is always visible
-        value: SystemUiOverlayStyle(
-          statusBarColor: Colors.black, // Background color of status bar
-          statusBarIconBrightness: Brightness.light, // White icons for dark bg
-        ),
-        child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-          body: SafeArea(child: Page1()),
-        ),
-      ), //added safe area such that it is not cut by any notch or screen cutouts      //
+          home: AnnotatedRegion<SystemUiOverlayStyle>(
+            // for top nav bar
+            value: const SystemUiOverlayStyle(
+              statusBarColor: Colors.black,
+              statusBarIconBrightness: Brightness.light,
+            ),
+            child: Scaffold(
+              backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+              body: const SafeArea(child: Page1()),
+            ),
+          ),
+          builder: (context, widget) {
+            // BUILDER TO Apply textScaler override here safely
+            final mediaQuery = MediaQuery.of(context);
+            return MediaQuery(
+              //if user has set font size to be big or small this resets it
+              data: mediaQuery.copyWith(textScaler: TextScaler.linear(1.0)),
+              child: widget!,
+            );
+          },
+        );
+      },
     );
   }
 }

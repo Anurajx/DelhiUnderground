@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class stationUnit extends StatelessWidget {
   final dynamic name;
@@ -18,7 +19,7 @@ class stationUnit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //height: 60,
-      margin: EdgeInsets.only(top: 20, bottom: 20),
+      margin: EdgeInsets.only(top: 20.h, bottom: 20.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -26,7 +27,7 @@ class stationUnit extends StatelessWidget {
           StationNameAndArrow(name),
           commonName(hindiName),
           SizedBox(
-            height: 5,
+            height: 5.h,
           ), //added to even out the padding from top and bottom
           stationLineBadgeBuilder(lines),
         ],
@@ -44,7 +45,7 @@ commonName(name) {
         style: TextStyle(
           fontFamily: 'Poppins',
           color: const Color.fromARGB(255, 141, 141, 141),
-          fontSize: 12,
+          fontSize: 12.sp,
           fontWeight: FontWeight.w200,
         ),
       ),
@@ -62,7 +63,7 @@ StationNameAndArrow(name) {
         style: TextStyle(
           fontFamily: 'Poppins',
           color: const Color.fromARGB(255, 179, 179, 179),
-          fontSize: 18,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w400,
         ),
       ),
@@ -140,8 +141,8 @@ stationLineBadge(line) {
       //   width: 10,
       // ), // adding to create a bit of space between line indicatot and text
       Container(
-        width: 17,
-        height: 17,
+        width: 17.w,
+        height: 17.h,
         decoration: BoxDecoration(
           color: getColorFromLineNumber(line),
           borderRadius: BorderRadius.all(Radius.circular(50)),
@@ -151,7 +152,7 @@ stationLineBadge(line) {
             "$line",
             style: TextStyle(
               color: Colors.black,
-              fontSize: 12,
+              fontSize: 12.sp,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -184,7 +185,7 @@ class stationPrimitive extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Poppins',
               color: const Color.fromARGB(255, 179, 179, 179),
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w400, //300
             ),
           ),
@@ -269,7 +270,7 @@ class stationNearby extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Poppins',
               color: const Color.fromARGB(255, 179, 179, 179),
-              fontSize: 18, //18
+              fontSize: 18.sp, //18
               fontWeight: FontWeight.w400,
             ),
           ),

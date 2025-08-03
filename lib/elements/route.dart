@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
 import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
@@ -70,9 +71,9 @@ class RouteDisplay extends StatelessWidget {
                 routeCluster(lineColor: "DOES NOT DO ANYTHING"),
                 interchangeInfo(),
                 routeCluster(lineColor: "DOES NOT DO ANYTHING"),
-                SizedBox(height: 40),
+                SizedBox(height: 40.h),
                 reportError(),
-                SizedBox(height: 40),
+                SizedBox(height: 40.h),
                 companyFooter(),
               ],
             ),
@@ -91,7 +92,7 @@ topNavBar(context) {
   return Container(
     //color: Colors.white,
     width: double.infinity,
-    height: 50,
+    height: 50.h,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,7 +114,7 @@ topNavBar(context) {
                   color: const Color.fromARGB(255, 47, 130, 255),
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins',
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ],
@@ -121,7 +122,7 @@ topNavBar(context) {
         ),
         Spacer(),
         Container(
-          width: 200,
+          width: 200.w,
           child: Marquee(
             text: "BHIKAJI CAMA PLACE -> RAJORI GARDEN",
             showFadingOnlyWhenScrolling: true,
@@ -131,7 +132,7 @@ topNavBar(context) {
             style: TextStyle(
               fontFamily: 'Poppins',
               color: Color.fromARGB(255, 202, 202, 202),
-              fontSize: 12,
+              fontSize: 12.sp,
               fontWeight: FontWeight.w200,
             ),
           ),
@@ -179,7 +180,7 @@ class tripSummary extends StatelessWidget {
               text: "Your trip takes ",
               style: TextStyle(
                 color: const Color.fromARGB(255, 109, 109, 109),
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -187,7 +188,7 @@ class tripSummary extends StatelessWidget {
               text: "50 Minutes ", //make these a variable
               style: TextStyle(
                 color: const Color.fromARGB(255, 187, 187, 187),
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -195,7 +196,7 @@ class tripSummary extends StatelessWidget {
               text: "has ",
               style: TextStyle(
                 color: const Color.fromARGB(255, 109, 109, 109),
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -203,7 +204,7 @@ class tripSummary extends StatelessWidget {
               text: "2 interchange ",
               style: TextStyle(
                 color: const Color.fromARGB(255, 187, 187, 187),
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -211,7 +212,7 @@ class tripSummary extends StatelessWidget {
               text: "and costs ",
               style: TextStyle(
                 color: const Color.fromARGB(255, 109, 109, 109),
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -219,7 +220,7 @@ class tripSummary extends StatelessWidget {
               text: "50 Rs. ",
               style: TextStyle(
                 color: const Color.fromARGB(255, 187, 187, 187),
-                fontSize: 20,
+                fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -247,11 +248,11 @@ class _routeClusterState extends State<routeCluster> {
   // combines both line indicator and info indicator
 
   int extraStations = minimetroStations.length;
-  double stationHeight = 25;
+  double stationHeight = 25.h;
   double height =
-      250; //presetting height at one place so that text and line indicator stay at same height
-  double collapsableHeight = 30;
-  double collapsableWidth = 150;
+      250.h; //presetting height at one place so that text and line indicator stay at same height
+  double collapsableHeight = 30.h;
+  double collapsableWidth = 150.w;
   bool isExpanded = false;
   void _containerToggle() {
     setState(() {
@@ -259,12 +260,13 @@ class _routeClusterState extends State<routeCluster> {
       print(isExpanded);
       if (isExpanded) {
         collapsableHeight =
-            20 + extraStations * stationHeight; //collapsed and increased height
-        collapsableWidth = 250; //collapsed and increased width
+            20.h +
+            extraStations * stationHeight; //collapsed and increased height
+        collapsableWidth = 250.w; //collapsed and increased width
         height = height + collapsableHeight;
         //height = height + collapsableHeight;
       } else {
-        collapsableWidth = 150;
+        collapsableWidth = 150.w;
         height = height - collapsableHeight;
         //collapsableHeight = 30;
         //height = height - collapsableHeight;
@@ -313,9 +315,9 @@ class _routeClusterState extends State<routeCluster> {
 // }
 
 class lineIndicator extends StatefulWidget {
-  double height = 250;
+  double height = 250.h;
   int extraStations = 0;
-  double stationHeight = 5;
+  double stationHeight = 5.h;
   dynamic lineColor;
   lineIndicator({
     super.key,
@@ -333,7 +335,7 @@ class _lineIndicatorState extends State<lineIndicator> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 100),
-      width: 7,
+      width: 7.w,
       height: widget.height,
       decoration: BoxDecoration(
         color: Colors.blueAccent, //impllemt line color to change dynamically
@@ -343,16 +345,16 @@ class _lineIndicatorState extends State<lineIndicator> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: 6,
-            height: 6,
+            width: 6.w,
+            height: 6.h,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(50)),
             ),
           ),
           Container(
-            width: 6,
-            height: 6,
+            width: 6.w,
+            height: 6.h,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(50)),
@@ -366,8 +368,8 @@ class _lineIndicatorState extends State<lineIndicator> {
 
 class infoIndicator extends StatefulWidget {
   double height;
-  double collapsableWidth = 150;
-  double collapsableHeight = 30;
+  double collapsableWidth = 150.w;
+  double collapsableHeight = 30.h;
   bool isExpanded;
   infoIndicator({
     super.key,
@@ -398,11 +400,11 @@ class _infoIndicatorState extends State<infoIndicator> {
             "Bhikaji Cama Place", //-------------------HERE--------------------------------------------
             style: TextStyle(
               color: const Color.fromARGB(255, 187, 187, 187),
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Container(
             //train heading info
             child: Row(
@@ -416,28 +418,28 @@ class _infoIndicatorState extends State<infoIndicator> {
                   " Heading towards Majlis Park",
                   style: TextStyle(
                     color: Colors.grey,
-                    fontSize: 15,
+                    fontSize: 15.sp,
                     fontWeight: FontWeight.w300,
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 2),
+          SizedBox(height: 2.h),
           Text(
             "Blue Line",
             style: TextStyle(
               color: Colors.grey,
-              fontSize: 15,
+              fontSize: 15.sp,
               fontWeight: FontWeight.w300,
             ),
           ),
-          SizedBox(height: 2),
+          SizedBox(height: 2.h),
           Text(
             "Every 2 min",
             style: TextStyle(
               color: Colors.grey,
-              fontSize: 15,
+              fontSize: 15.sp,
               fontWeight: FontWeight.w300,
             ),
           ),
@@ -449,9 +451,9 @@ class _infoIndicatorState extends State<infoIndicator> {
                 children: [
                   Text(
                     "6 Stations",
-                    style: TextStyle(color: Colors.grey, fontSize: 15),
+                    style: TextStyle(color: Colors.grey, fontSize: 15.sp),
                   ),
-                  SizedBox(width: 5),
+                  SizedBox(width: 5.w),
                   Icon(CupertinoIcons.sort_down, color: Colors.grey, size: 20),
                 ],
               ),
@@ -461,7 +463,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             "Rajori Garden",
             style: TextStyle(
               color: const Color.fromARGB(255, 187, 187, 187),
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -485,10 +487,10 @@ collapsedExpandedView() {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(Icons.arrow_right_rounded, color: Colors.grey, size: 15),
-                SizedBox(width: 2),
+                SizedBox(width: 2.w),
                 Text(
                   station["name"],
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  style: TextStyle(fontSize: 16.sp, color: Colors.grey),
                 ),
               ],
             ),
@@ -499,7 +501,7 @@ collapsedExpandedView() {
 
 interchangeInfo() {
   return Container(
-    height: 70,
+    height: 70.h,
     margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
     width: double.infinity,
     //decoration: BoxDecoration(color: const Color.fromARGB(255, 54, 54, 54)),
@@ -507,8 +509,8 @@ interchangeInfo() {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          width: 7,
-          height: 100,
+          width: 7.w,
+          height: 100.h,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -532,12 +534,12 @@ interchangeInfo() {
                   "Make transfer",
                   style: TextStyle(
                     color: Colors.grey,
-                    fontSize: 15,
+                    fontSize: 15.sp,
                     fontWeight: FontWeight.w300,
                   ),
                 ),
 
-                SizedBox(height: 2),
+                SizedBox(height: 2.h),
                 Container(
                   child: Row(
                     children: [
@@ -546,7 +548,7 @@ interchangeInfo() {
                         "5 Min",
                         style: TextStyle(
                           color: Colors.grey,
-                          fontSize: 15,
+                          fontSize: 15.sp,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -566,8 +568,8 @@ reportError() {
   return Row(
     children: [
       Container(
-        height: 50,
-        width: 170,
+        height: 50.h,
+        width: 170.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(2)),
           //color: const Color.fromARGB(255, 17, 17, 17),
@@ -584,7 +586,7 @@ reportError() {
               "report error",
               style: TextStyle(
                 color: const Color.fromARGB(255, 187, 187, 187),
-                fontSize: 18, //processedFontheight(context),
+                fontSize: 18.sp, //processedFontheight(context),
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w500,
               ),
@@ -603,7 +605,7 @@ companyFooter() {
       //borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
     width: double.infinity,
-    height: 50,
+    height: 50.h,
     //color: const Color.fromARGB(255, 57, 57, 57),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -613,10 +615,10 @@ companyFooter() {
           "DELHI\nUNDERGROUND",
           textAlign: TextAlign.center,
           style: TextStyle(
-            height: 1,
+            height: 1.h,
             color: const Color.fromARGB(255, 90, 90, 90),
             fontWeight: FontWeight.w700,
-            fontSize: 14,
+            fontSize: 14.sp,
           ),
         ),
         // Text(

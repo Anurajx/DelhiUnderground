@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:provider/provider.dart';
 // import 'package:neopop/neopop.dart';
@@ -178,7 +179,7 @@ class _searchBodyState extends State<searchBody> {
       //     shouldParseNumbers: false,
       //   ).convert(rawData);
       // });
-      // return rows;
+      // return rows;width
     } catch (e) {
       return [];
       //error protection
@@ -219,7 +220,7 @@ class _searchBodyState extends State<searchBody> {
                       borderRadius: BorderRadius.circular(0), //40
                     ),
                     //width: double.infinity,
-                    height: 90,
+                    height: 90.h,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -244,7 +245,7 @@ class _searchBodyState extends State<searchBody> {
                             ),
                             style: TextStyle(
                               color: const Color.fromARGB(225, 15, 15, 15),
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
                             ),
@@ -252,7 +253,7 @@ class _searchBodyState extends State<searchBody> {
                         ),
                         Divider(
                           color: const Color.fromARGB(255, 8, 8, 8),
-                          height: 1,
+                          height: 1.h,
                           thickness: 2,
                         ),
                         Container(
@@ -273,7 +274,7 @@ class _searchBodyState extends State<searchBody> {
                             ),
                             style: TextStyle(
                               color: const Color.fromARGB(225, 15, 15, 15),
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w500,
                             ),
@@ -285,7 +286,7 @@ class _searchBodyState extends State<searchBody> {
                   Divider(
                     color: const Color.fromARGB(255, 130, 130, 130),
                     thickness: 0.2,
-                    height: 1,
+                    height: 1.h,
                   ),
                 ],
               ),
@@ -309,9 +310,10 @@ backBox(BuildContext context, controller1, controller2) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      SizedBox(
+      Container(
         //back button sized box
-        height: 50,
+        padding: EdgeInsets.fromLTRB(0, 20, 15, 20),
+        //height: 50.h,
         child: GestureDetector(
           onTap: () {
             HitTestBehavior.opaque;
@@ -336,7 +338,7 @@ backBox(BuildContext context, controller1, controller2) {
                   color: const Color.fromARGB(255, 47, 130, 255),
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins',
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ],
@@ -355,7 +357,7 @@ screenName() {
       "Plan your trip",
       style: TextStyle(
         color: Color.fromARGB(255, 220, 220, 220),
-        fontSize: 20,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w500,
       ),
     ),

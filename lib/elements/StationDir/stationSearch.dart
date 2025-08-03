@@ -2,6 +2,7 @@
 // import 'dart:math';
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 // import 'package:neopop/neopop.dart';
 import 'stopInfo.dart';
@@ -27,12 +28,10 @@ class stationSearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<stationSearchScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-        body: searchBody(context: context, destination: widget.destination),
-        //resizeToAvoidBottomInset: true,
-      ),
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+      body: searchBody(context: context, destination: widget.destination),
+      //resizeToAvoidBottomInset: true,
     );
   }
 }
@@ -159,89 +158,91 @@ class _searchBodyState extends State<searchBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        children: [
-          backBox(
-            context,
-            _controller1, //_controller2
-          ), //leave as is
-          screenName(), //leave as is
-          Stack(
-            //adding the search cluster here
-            alignment: Alignment.centerLeft,
-            children: [
-              Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: 10, top: 20),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 208, 208, 208),
-                      //color: Color.fromARGB(255, 0, 0, 0),
-                      ////color: const Color.fromARGB(255, 8, 8, 8),
-                      border: Border.all(
-                        color: const Color.fromARGB(255, 234, 234, 234),
-                        width: 1,
+    return SafeArea(
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            backBox(
+              context,
+              _controller1, //_controller2
+            ), //leave as is
+            screenName(), //leave as is
+            Stack(
+              //adding the search cluster here
+              alignment: Alignment.centerLeft,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10, top: 20),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 208, 208, 208),
+                        //color: Color.fromARGB(255, 0, 0, 0),
+                        ////color: const Color.fromARGB(255, 8, 8, 8),
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 234, 234, 234),
+                          width: 1.w,
+                        ),
+                        borderRadius: BorderRadius.circular(0), //40
                       ),
-                      borderRadius: BorderRadius.circular(0), //40
-                    ),
-                    //width: double.infinity,
-                    height: 45,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
-                          child: TextField(
-                            textCapitalization:
-                                TextCapitalization
-                                    .sentences, //makes the keyboard open with caps on for first letter
-                            focusNode: _focusNode1,
-                            cursorOpacityAnimates: true,
-                            controller: _controller1,
-                            onChanged: filterStationsLogic,
-                            decoration: InputDecoration.collapsed(
-                              border: InputBorder.none,
-                              hintText: "Search",
-                              hintStyle: TextStyle(
-                                color: const Color.fromARGB(200, 68, 68, 68),
+                      //width: double.infinity,
+                      height: 45.h,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.fromLTRB(15, 0, 10, 0),
+                            child: TextField(
+                              textCapitalization:
+                                  TextCapitalization
+                                      .sentences, //makes the keyboard open with caps on for first letter
+                              focusNode: _focusNode1,
+                              cursorOpacityAnimates: true,
+                              controller: _controller1,
+                              onChanged: filterStationsLogic,
+                              decoration: InputDecoration.collapsed(
+                                border: InputBorder.none,
+                                hintText: "Search",
+                                hintStyle: TextStyle(
+                                  color: const Color.fromARGB(200, 68, 68, 68),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              style: TextStyle(
+                                color: const Color.fromARGB(225, 15, 15, 15),
+                                fontSize: 18.sp,
+                                fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            style: TextStyle(
-                              color: const Color.fromARGB(225, 15, 15, 15),
-                              fontSize: 18,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
                           ),
-                        ),
-                        //NEOPOP
-                      ],
+                          //NEOPOP
+                        ],
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: const Color.fromARGB(255, 130, 130, 130),
-                    thickness: 0.2,
-                    height: 1,
-                  ),
-                ],
-              ),
-              //fromToIcon(),
-            ], //add flip circle function flipcircle()
-          ),
-          stationList(
-            filteredStations,
-            _controller1,
-            //_controller2,
-            _focusNode1,
-            //_focusNode2,
-          ),
-        ],
+                    Divider(
+                      color: const Color.fromARGB(255, 130, 130, 130),
+                      thickness: 0.2,
+                      height: 1.h,
+                    ),
+                  ],
+                ),
+                //fromToIcon(),
+              ], //add flip circle function flipcircle()
+            ),
+            stationList(
+              filteredStations,
+              _controller1,
+              //_controller2,
+              _focusNode1,
+              //_focusNode2,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -256,7 +257,7 @@ backBox(
     children: [
       SizedBox(
         //back button sized box
-        height: 50,
+        height: 50.h,
         child: GestureDetector(
           onTap: () {
             HitTestBehavior.opaque;
@@ -281,7 +282,7 @@ backBox(
                   color: const Color.fromARGB(255, 47, 130, 255),
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins',
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ],
@@ -299,7 +300,7 @@ screenName() {
       "Enquiry",
       style: TextStyle(
         color: Color.fromARGB(255, 220, 220, 220),
-        fontSize: 20,
+        fontSize: 20.sp,
         fontWeight: FontWeight.w500,
       ),
     ),

@@ -5,6 +5,7 @@ import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'package:metroapp/elements/ServicesDir/whatsappURLTransfer.dart';
 
 import './MapDir/mapMetro.dart';
@@ -109,7 +110,7 @@ class InfoBar extends StatelessWidget {
         //outlineIntensity: 0.5,
       ),
       child: Container(
-        height: 35,
+        height: 35.h,
         decoration: const BoxDecoration(color: Color.fromARGB(0, 8, 8, 8)),
         width: double.infinity,
         child: Marquee(
@@ -120,7 +121,7 @@ class InfoBar extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'Poppins',
             color: Color.fromARGB(255, 198, 198, 198),
-            fontSize: 12,
+            fontSize: 12.sp,
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -143,7 +144,7 @@ searchBar(context) {
     child: Container(
       padding: const EdgeInsets.all(5),
       width: double.infinity,
-      height: processedHeight(context, 0.05, 45, 45),
+      height: 45.h,
       //height: MediaQuery.of(context).size.height * 0.06,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -161,7 +162,7 @@ searchBar(context) {
             style: TextStyle(
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontSize: 18.sp,
               color: const Color.fromARGB(201, 15, 15, 15),
             ),
           ),
@@ -176,7 +177,7 @@ suggestions(context) {
   return Container(
     margin: const EdgeInsets.all(5),
     width: double.infinity,
-    height: processedHeight(context, 0.10, 90, 90),
+    height: 90.h,
     //context, 0.125, 60, 80
     //height: MediaQuery.of(context).size.height * 0.125,
     child: Consumer<DataProvider>(
@@ -263,7 +264,7 @@ nearYou(context) {
   //bool isNear = false;
   return Container(
     width: double.infinity,
-    height: processedHeight(context, 0.15, 125, 125),
+    height: 125.h,
     //height: MediaQuery.of(context).size.height * 0.18,
     margin: EdgeInsets.all(5),
     child: Consumer<DataProvider>(
@@ -293,7 +294,7 @@ nearYou(context) {
                 "NEAR YOU",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 109, 109, 109),
-                  fontSize: 16, //processedFontheight(context),
+                  fontSize: 16.sp, //processedFontheight(context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                 ),
@@ -319,7 +320,7 @@ nearYou(context) {
                 "NEAR YOU",
                 style: TextStyle(
                   color: const Color.fromARGB(255, 109, 109, 109),
-                  fontSize: 16, //processedFontheight(context),
+                  fontSize: 16.sp, //processedFontheight(context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
                 ),
@@ -421,7 +422,7 @@ ticketAndExit(context) {
   // chat gpt
   return Container(
     width: double.infinity,
-    height: 60, //processedHeight(context, 0.1, 50, 70),
+    height: 60.h, //processedHeight(context, 0.1, 50, 70),
     //height: MediaQuery.of(context).size.height * 0.1,
     // decoration: BoxDecoration(
     //   border: Border(
@@ -454,7 +455,7 @@ ticketAndExit(context) {
                   "metro map",
                   style: TextStyle(
                     color: const Color.fromARGB(255, 187, 187, 187),
-                    fontSize: 18, //processedFontheight(context),
+                    fontSize: 18.sp, //processedFontheight(context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                   ),
@@ -465,7 +466,7 @@ ticketAndExit(context) {
         ),
 
         SizedBox(
-          width: 5,
+          width: 5.w,
           // height: 50,
           // child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
         ),
@@ -500,7 +501,7 @@ ticketAndExit(context) {
                   "stop info",
                   style: TextStyle(
                     color: const Color.fromARGB(255, 187, 187, 187),
-                    fontSize: 18, //processedFontheight(context),
+                    fontSize: 18.sp, //processedFontheight(context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                   ),
@@ -629,8 +630,8 @@ appFooter(context) {
             style: TextStyle(
               color: const Color.fromARGB(255, 175, 175, 175),
               //color: const Color.fromARGB(255, 61, 61, 61),
-              height: 1,
-              fontSize: 30,
+              height: 1.h,
+              fontSize: 30.sp,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w700,
             ),
@@ -669,8 +670,8 @@ appFooter(context) {
                     style: TextStyle(
                       color: const Color.fromARGB(255, 175, 175, 175),
                       //color: const Color.fromARGB(255, 61, 61, 61),
-                      height: 1,
-                      fontSize: 16,
+                      height: 1.h,
+                      fontSize: 16.sp,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w500,
                     ),
@@ -678,7 +679,7 @@ appFooter(context) {
                 ),
               ),
             ),
-            SizedBox(width: 5),
+            SizedBox(width: 5.w),
           ],
         ),
 
@@ -693,45 +694,45 @@ appFooter(context) {
   );
 }
 
-double processedHeight(context, factorMax, minSize, prefferedHeight) {
-  //not working in split view, solve that bug
-  try {
-    print("Factor Max is $factorMax");
-    double finalHeight;
-    double height =
-        MediaQuery.of(context).size.height -
-        MediaQuery.of(context).padding.top -
-        MediaQuery.of(context).padding.bottom;
-    double width = MediaQuery.of(context).size.width;
-    print("HEIGHT IS $height");
-    print("WIDTH IS $width ");
-    double maxHeight = height * factorMax;
-    if (maxHeight == double.infinity || maxHeight.isNaN) {
-      maxHeight = prefferedHeight; // or some other default value
-    }
-    double minHeight = minSize.toDouble();
-    if (height < 700) {
-      //checks if phone multiview or normal screen
+// double processedHeight(context, factorMax, minSize, prefferedHeight) {
+//   //not working in split view, solve that bug
+//   try {
+//     print("Factor Max is $factorMax");
+//     double finalHeight;
+//     double height =
+//         MediaQuery.of(context).size.height -
+//         MediaQuery.of(context).padding.top -
+//         MediaQuery.of(context).padding.bottom;
+//     double width = MediaQuery.of(context).size.width;
+//     print("HEIGHT IS $height");
+//     print("WIDTH IS $width ");
+//     double maxHeight = height * factorMax;
+//     if (maxHeight == double.infinity || maxHeight.isNaN) {
+//       maxHeight = prefferedHeight; // or some other default value
+//     }
+//     double minHeight = minSize.toDouble();
+//     if (height < 700) {
+//       //checks if phone multiview or normal screen
 
-      finalHeight =
-          maxHeight
-              .clamp(
-                minHeight,
-                height,
-              ) //bit of scrolling is inevitbale, so let it be
-              .toDouble(); //SOLVED: right now it has a bit of empty space at the bottom on some screens that are large, make it so that everyscreen has height derieved from screen height and preferred heigth is taken only when that cant be applied
-      print("FINAL HEIGHT IS $finalHeight");
-    } else {
-      print("using preffered height");
-      finalHeight = maxHeight = height * factorMax;
-    }
+//       finalHeight =
+//           maxHeight
+//               .clamp(
+//                 minHeight,
+//                 height,
+//               ) //bit of scrolling is inevitbale, so let it be
+//               .toDouble(); //SOLVED: right now it has a bit of empty space at the bottom on some screens that are large, make it so that everyscreen has height derieved from screen height and preferred heigth is taken only when that cant be applied
+//       print("FINAL HEIGHT IS $finalHeight");
+//     } else {
+//       print("using preffered height");
+//       finalHeight = maxHeight = height * factorMax;
+//     }
 
-    return finalHeight;
-  } catch (e) {
-    print("Error processing height: $e ");
-    return prefferedHeight.toDouble();
-  }
-}
+//     return finalHeight;
+//   } catch (e) {
+//     print("Error processing height: $e ");
+//     return prefferedHeight.toDouble();
+//   }
+// }
 
 // double processedFontheight(context) {
 //   double width = MediaQuery.of(context).size.width;

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class mapMetroScreen extends StatefulWidget {
   const mapMetroScreen({super.key});
 
@@ -57,7 +59,7 @@ topNavBar(context) {
                   color: const Color.fromARGB(255, 47, 130, 255),
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Poppins',
-                  fontSize: 18,
+                  fontSize: 18.sp,
                 ),
               ),
             ],
@@ -69,7 +71,7 @@ topNavBar(context) {
           style: TextStyle(
             color: const Color.fromARGB(255, 177, 177, 177),
             fontWeight: FontWeight.w700,
-            fontSize: 14,
+            fontSize: 14.sp,
           ),
         ),
       ],
