@@ -57,10 +57,10 @@ stationCluster(context, stationDict) {
                 SizedBox(height: 2.h),
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
-                exitBlock(),
-                SizedBox(height: 40.h),
                 //exitBlock(),
                 scheduleBlock(),
+                SizedBox(height: 40.h),
+                exitBlock(),
                 SizedBox(height: 40.h),
                 ammenitiesBlock(),
                 SizedBox(height: 40.h),
@@ -116,8 +116,8 @@ topNavBar(context) {
 stationLineMarker(stationDict) {
   dynamic station =
       stationDict["Source"]; //uses station to change the name of station dynamically
-  String stationName = station[2].toString();
-  String stationNameHindiCommon = station[1].toString();
+  String stationName = station["Name"].toString();
+  String stationNameHindiCommon = station["Hindi"].toString();
   return Container(
     //decoration: BoxDecoration(color: const Color.fromARGB(255, 164, 164, 164)),
     //margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
@@ -137,7 +137,7 @@ stationLineMarker(stationDict) {
             fontSize: 24.sp,
           ),
         ),
-        SizedBox(height: 10.h),
+        SizedBox(height: 5.h),
         Text(
           "$stationNameHindiCommon",
           style: TextStyle(
@@ -405,6 +405,7 @@ exitBlock() {
                               softWrap: true,
                               maxLines: 2,
                               style: TextStyle(
+                                fontWeight: FontWeight.w500,
                                 color: const Color.fromARGB(255, 172, 172, 172),
                               ),
                             ),
@@ -466,6 +467,7 @@ exitBlock() {
                               softWrap: true,
                               maxLines: 2,
                               style: TextStyle(
+                                fontWeight: FontWeight.w500,
                                 color: const Color.fromARGB(255, 172, 172, 172),
                               ),
                             ),
@@ -526,6 +528,7 @@ exitBlock() {
                               softWrap: true,
                               maxLines: 2,
                               style: TextStyle(
+                                fontWeight: FontWeight.w500,
                                 color: const Color.fromARGB(255, 172, 172, 172),
                               ),
                             ),

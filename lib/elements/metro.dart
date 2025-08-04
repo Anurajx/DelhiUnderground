@@ -205,13 +205,13 @@ suggestions(context) {
             children: [
               stationPrimitive(
                 name:
-                    data["just"]?[0]["Source"]?["Name"]
+                    data["just"]?[0]["Destination"]?["Name"]
                         .toString(), //CHECK NOT ERROR SAFE
                 //STILL HAS BUG
               ),
               stationPrimitive(
                 name:
-                    data["justBefore"]?[0]?["Source"]?["Name"]
+                    data["justBefore"]?[0]?["Destination"]?["Name"]
                         .toString(), //CHECK NOT ERROR SAFE
               ),
             ],
@@ -243,13 +243,13 @@ suggestions(context) {
             children: [
               stationPrimitive(
                 name:
-                    defaultDataParsed["just"]?[0]["Source"]?[2]
+                    defaultDataParsed["just"]?[0]["Destination"]?[2]
                         .toString(), //CHECK NOT ERROR SAFE
                 //STILL HAS BUG
               ),
               stationPrimitive(
                 name:
-                    defaultDataParsed["justBefore"]?[0]?["Source"]?[2]
+                    defaultDataParsed["justBefore"]?[0]?["Destination"]?[2]
                         .toString(), //CHECK NOT ERROR SAFE
               ),
             ],
