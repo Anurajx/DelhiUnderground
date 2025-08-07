@@ -121,6 +121,8 @@ flutter:
     - assets/Map/parkingjson.json
     - assets/Map/DelhiMetroMap0.png
     - assets/Map/stoptimediffJson.json
+    - assets/Image/appfooter2.webp
+    - assets/Image/horsefooter.jpg
 
   fonts:
     - family: Poppins

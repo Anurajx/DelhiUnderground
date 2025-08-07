@@ -302,3 +302,97 @@ class stationNearby extends StatelessWidget {
     );
   }
 }
+
+///////////////////////
+class bigNameInfo extends StatelessWidget {
+  final dynamic stationName;
+  final dynamic stationNameHindiCommon;
+  final dynamic lineofStation;
+  const bigNameInfo({
+    super.key,
+    required this.stationName,
+    required this.stationNameHindiCommon,
+    required this.lineofStation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //decoration: BoxDecoration(color: const Color.fromARGB(255, 164, 164, 164)),
+      //margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
+      height: 230.h,
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Spacer(),
+          Text(
+            "$stationName",
+            style: TextStyle(
+              height: 1.2,
+              color: const Color.fromARGB(255, 240, 240, 240),
+              fontWeight: FontWeight.w500,
+              fontSize: 24.sp,
+            ),
+          ),
+          SizedBox(height: 5.h),
+          Text(
+            "$stationNameHindiCommon",
+            style: TextStyle(
+              color: const Color.fromARGB(255, 240, 240, 240),
+              fontWeight: FontWeight.w300,
+              fontSize: 18.sp,
+            ),
+          ),
+          SizedBox(height: 5.h),
+          stationLineBadgeBuilderForBIG(lineofStation),
+          Spacer(),
+          SizedBox(height: 30.h),
+        ],
+      ),
+    );
+  }
+}
+
+Widget stationLineBadgeBuilderForBIG(List<dynamic> lines) {
+  return Row(
+    children:
+        lines.map<Widget>((line) {
+          return Padding(
+            padding: const EdgeInsets.only(right: 3),
+            child: stationLineBadgeForBig(line),
+          );
+        }).toList(),
+  );
+}
+
+stationLineBadgeForBig(line) {
+  //int lineNumber = line[0];
+  return Row(
+    children: [
+      // SizedBox(
+      //   width: 10,
+      // ), // adding to create a bit of space between line indicatot and text
+      Container(
+        width: 20.w,
+        height: 20.h,
+        decoration: BoxDecoration(
+          color: getColorFromLineNumber(line),
+          borderRadius: BorderRadius.all(Radius.circular(50)),
+        ),
+        child: Center(
+          child: Text(
+            "$line",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+      ),
+      //SizedBox(width: 10),
+    ],
+  );
+}

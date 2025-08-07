@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
 //import 'package:lottie/lottie.dart';
 
@@ -11,7 +12,7 @@ class stopInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 13, 13, 13),
       body: stationCluster(context, stationDict),
     );
   }
@@ -118,62 +119,14 @@ stationLineMarker(stationDict) {
       stationDict["Source"]; //uses station to change the name of station dynamically
   String stationName = station["Name"].toString();
   String stationNameHindiCommon = station["Hindi"].toString();
-  return Container(
-    //decoration: BoxDecoration(color: const Color.fromARGB(255, 164, 164, 164)),
-    //margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
-    height: 230.h,
-    width: double.infinity,
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Spacer(),
-        Text(
-          "$stationName",
-          style: TextStyle(
-            height: 1.2,
-            color: const Color.fromARGB(255, 187, 187, 187),
-            fontWeight: FontWeight.w500,
-            fontSize: 24.sp,
-          ),
-        ),
-        SizedBox(height: 5.h),
-        Text(
-          "$stationNameHindiCommon",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 187, 187, 187),
-            fontWeight: FontWeight.w300,
-            fontSize: 18.sp,
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-          child: Row(
-            children: [
-              Container(
-                height: 20.h,
-                width: 20.w,
-                decoration: BoxDecoration(
-                  color: Colors.pinkAccent,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-              ),
-              SizedBox(width: 5.w),
-              Container(
-                height: 20.h,
-                width: 20.w,
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Spacer(),
-        SizedBox(height: 30.h),
-      ],
-    ),
+  String line = station["Line"];
+  line = line.replaceAll(RegExp(r'[\[\]]'), '');
+  List<String> parts = line.split('-');
+  List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
+  return bigNameInfo(
+    stationName: stationName,
+    stationNameHindiCommon: stationNameHindiCommon,
+    lineofStation: lineNumbers,
   );
 }
 
@@ -186,7 +139,10 @@ closeAndOpeningTime() {
         //Lottie.asset('assets/Image/radaranim.json', height: 30, width: 35),
         Text(
           "Opens from 06:00 until 23:00",
-          style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+          style: TextStyle(
+            color: const Color.fromARGB(255, 112, 112, 112),
+            fontWeight: FontWeight.w500,
+          ),
         ),
         //Spacer(),
       ],
@@ -406,7 +362,7 @@ exitBlock() {
                               maxLines: 2,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 172, 172, 172),
+                                color: const Color.fromARGB(255, 182, 182, 182),
                               ),
                             ),
                           ),
@@ -421,7 +377,7 @@ exitBlock() {
               height: 60.h,
               width: 80.w,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0),
+                //color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
                   color: const Color.fromARGB(255, 25, 25, 25),
                 ),
@@ -468,7 +424,7 @@ exitBlock() {
                               maxLines: 2,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 172, 172, 172),
+                                color: const Color.fromARGB(255, 182, 182, 182),
                               ),
                             ),
                           ),
@@ -483,7 +439,7 @@ exitBlock() {
               height: 60.h,
               width: 80.w,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0),
+                //color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
                   color: const Color.fromARGB(255, 25, 25, 25),
                 ),
@@ -529,7 +485,7 @@ exitBlock() {
                               maxLines: 2,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 172, 172, 172),
+                                color: const Color.fromARGB(255, 182, 182, 182),
                               ),
                             ),
                           ),
@@ -544,7 +500,7 @@ exitBlock() {
               height: 60.h,
               width: 80.w,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0),
+                //color: Color.fromARGB(255, 0, 0, 0),
                 border: Border.all(
                   color: const Color.fromARGB(255, 25, 25, 25),
                 ),
@@ -641,20 +597,20 @@ scheduleBlock() {
                   Container(
                     width: 100.w,
                     height: 60.h,
-                    color: const Color.fromARGB(255, 207, 207, 207),
+                    color: const Color.fromARGB(255, 245, 245, 245),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Every",
+                          "Next at",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: const Color.fromARGB(255, 73, 73, 73),
                           ),
                         ),
                         Text(
-                          "15 min",
+                          "18:21",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: const Color.fromARGB(255, 0, 0, 0),
@@ -695,20 +651,20 @@ scheduleBlock() {
                   Container(
                     width: 100.w,
                     height: 60.h,
-                    color: const Color.fromARGB(255, 207, 207, 207),
+                    color: const Color.fromARGB(255, 245, 245, 245),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Every",
+                          "Next at",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: const Color.fromARGB(255, 73, 73, 73),
                           ),
                         ),
                         Text(
-                          "15 min",
+                          "18:23",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: const Color.fromARGB(255, 0, 0, 0),
@@ -975,7 +931,7 @@ reportError() {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(2)),
           //color: const Color.fromARGB(255, 17, 17, 17),
-          border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+          border: Border.all(color: const Color.fromARGB(255, 45, 45, 45)),
         ),
         child: GestureDetector(
           behavior:

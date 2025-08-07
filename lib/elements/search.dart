@@ -6,6 +6,7 @@ import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
+import 'package:metroapp/main.dart';
 import 'package:provider/provider.dart';
 // import 'package:neopop/neopop.dart';
 import 'route.dart';
@@ -32,7 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+        backgroundColor: AppColors.background,
         body: searchBody(context: context, destination: widget.destination),
         //resizeToAvoidBottomInset: true,
       ),
@@ -284,7 +285,7 @@ class _searchBodyState extends State<searchBody> {
                     ),
                   ),
                   Divider(
-                    color: const Color.fromARGB(255, 130, 130, 130),
+                    color: AppColors.divider,
                     thickness: 0.2,
                     height: 1.h,
                   ),

@@ -44,12 +44,37 @@ class MyApp extends StatelessWidget {
           title: 'Metro App',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: AppColors.background,
+            cardColor: AppColors.surface,
+            dividerColor: AppColors.divider,
+            primaryColor: AppColors.primaryAccent,
+            colorScheme: ColorScheme.dark(
+              background: AppColors.background,
+              primary: AppColors.primaryAccent,
+              secondary: AppColors.secondaryAccent,
+              error: AppColors.destructive,
+              surface: AppColors.surface,
+              onBackground: AppColors.primaryText,
+              onPrimary: AppColors.whiteAccent,
+              onSecondary: AppColors.primaryText,
+              onSurface: AppColors.primaryText,
+              onError: AppColors.whiteAccent,
+            ),
+            //backgroundColor: AppColors.background,
             extensions: const [SkeletonizerConfigData.dark()],
             textTheme: TextTheme(
+              bodyLarge: TextStyle(color: AppColors.primaryText),
               bodyMedium: TextStyle(
                 fontFamily: "Poppins",
                 fontWeight: FontWeight.w300,
+                color: AppColors.secondaryText,
               ),
+              bodySmall: TextStyle(color: AppColors.tertiaryText),
+              // bodyMedium: TextStyle(
+              //   fontFamily: "Poppins",
+              //   fontWeight: FontWeight.w300,
+              // ),
             ),
             textSelectionTheme: const TextSelectionThemeData(
               cursorColor: Color.fromARGB(255, 47, 130, 255),
@@ -64,7 +89,9 @@ class MyApp extends StatelessWidget {
               statusBarIconBrightness: Brightness.light,
             ),
             child: Scaffold(
-              backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+              backgroundColor: AppColors.background,
+
+              //Color.fromARGB(255, 13, 13, 13),
               body: const SafeArea(child: Page1()),
             ),
           ),
@@ -81,4 +108,33 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+}
+
+class AppColors {
+  // Backgrounds
+  static const background = Color.fromARGB(255, 13, 13, 13); // #0D0D0D
+  static const foreground = Color.fromARGB(255, 26, 26, 26); // #1A1A1A
+  static const surface = Color.fromARGB(255, 30, 30, 30); // #1E1E1E
+  static const inputBackground = Color.fromARGB(255, 42, 42, 42); // #2A2A2A
+  static const inputBorder = Color.fromARGB(255, 58, 58, 58); // #3A3A3A
+  static const divider = Color.fromARGB(255, 44, 44, 44); // #2C2C2C
+
+  // Text
+  static const primaryText = Color.fromARGB(255, 240, 240, 240); // #F0F0F0
+  static const secondaryText = Color.fromARGB(255, 176, 176, 176); // #B0B0B0
+  static const tertiaryText = Color.fromARGB(255, 112, 112, 112); // #707070
+
+  // Accent & Feedback
+  static const primaryAccent = Color.fromARGB(255, 59, 130, 246); // #3B82F6
+  static const secondaryAccent = Color.fromARGB(255, 16, 185, 129); // #10B981
+  static const destructive = Color.fromARGB(255, 239, 68, 68); // #EF4444
+  static const warning = Color.fromARGB(255, 245, 158, 11); // #F59E0B
+  static const info = Color.fromARGB(255, 14, 165, 233); // #0EA5E9
+
+  // Overlay Effects
+  static const hoverOverlay = Color.fromARGB(13, 255, 255, 255); // #FFFFFF0D
+  static const activeOverlay = Color.fromARGB(26, 255, 255, 255); // #FFFFFF1A
+
+  // White Accent
+  static const whiteAccent = Color.fromARGB(255, 245, 245, 245); // #F5F5F5
 }

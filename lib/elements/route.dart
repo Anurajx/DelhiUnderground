@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
 import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
+import 'package:metroapp/main.dart';
 import 'package:neopop/neopop.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +44,7 @@ class _routeScreenState extends State<routeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+        backgroundColor: AppColors.background,
         body: RouteDisplay(), //temprory
       ),
     );

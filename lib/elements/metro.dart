@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
+import 'package:metroapp/main.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -99,7 +100,7 @@ class InfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LiquidGlass(
-      shape: LiquidRoundedSuperellipse(borderRadius: Radius.circular(0)),
+      shape: LiquidRoundedSuperellipse(borderRadius: Radius.circular(50)),
       blur: 5,
       settings: const LiquidGlassSettings(
         thickness: 10,
@@ -110,19 +111,20 @@ class InfoBar extends StatelessWidget {
         //outlineIntensity: 0.5,
       ),
       child: Container(
+        padding: const EdgeInsets.all(0),
         height: 35.h,
         decoration: const BoxDecoration(color: Color.fromARGB(0, 8, 8, 8)),
         width: double.infinity,
         child: Marquee(
           //adding marquee effect to text with help of the package
           text:
-              "DELHI METRO WELCOMES YOU * ALL METRO LINES OPERATING ON SCHEDULE *", //Hard coded text for now, will add an feature to dyanmically change it
+              "DELHI SUBWAY - ALL METRO LINES OPERATING ON SCHEDULE ", //Hard coded text for now, will add an feature to dyanmically change it
           blankSpace: 20,
           style: TextStyle(
             fontFamily: 'Poppins',
-            color: Color.fromARGB(255, 198, 198, 198),
+            color: Color.fromARGB(255, 243, 243, 243),
             fontSize: 12.sp,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -151,7 +153,7 @@ searchBar(context) {
           topLeft: Radius.circular(0),
           topRight: Radius.circular(0), //remove later if not used
         ),
-        color: const Color.fromARGB(255, 208, 208, 208),
+        color: AppColors.whiteAccent,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,10 +165,10 @@ searchBar(context) {
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
               fontSize: 18.sp,
-              color: const Color.fromARGB(201, 15, 15, 15),
+              color: AppColors.background,
             ),
           ),
-          Icon(CupertinoIcons.search),
+          Icon(CupertinoIcons.search, color: AppColors.background),
         ],
       ),
     ),
@@ -293,7 +295,7 @@ nearYou(context) {
               Text(
                 "NEAR YOU",
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 109, 109, 109),
+                  color: AppColors.tertiaryText,
                   fontSize: 16.sp, //processedFontheight(context),
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w500,
@@ -437,8 +439,8 @@ ticketAndExit(context) {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(2)),
-              border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              border: Border.all(color: AppColors.divider),
               //color: const Color.fromARGB(255, 17, 17, 17),
             ),
             child: GestureDetector(
@@ -473,14 +475,14 @@ ticketAndExit(context) {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(2)),
+              borderRadius: BorderRadius.all(Radius.circular(5)),
               //color: const Color.fromARGB(255, 17, 17, 17),
               // image: DecorationImage(
               //   colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
               //   image: AssetImage('assets/Image/stopinfo.jpeg'),
               //   fit: BoxFit.cover,
               // ),
-              border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
+              border: Border.all(color: AppColors.divider),
             ),
             child: GestureDetector(
               behavior:
@@ -613,7 +615,7 @@ appFooter(context) {
       //   ],
       // ),
       image: DecorationImage(
-        image: AssetImage('assets/Image/fluted.jpg'),
+        image: AssetImage('assets/Image/carfooter.jpg'),
         fit: BoxFit.cover,
       ),
     ),
@@ -622,13 +624,14 @@ appFooter(context) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        //Padding(padding: const EdgeInsets.all(8.0), child: InfoBar()),
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
             "Delhi\nSubway",
             textAlign: TextAlign.left,
             style: TextStyle(
-              color: const Color.fromARGB(255, 175, 175, 175),
+              color: const Color.fromARGB(160, 255, 255, 255),
               //color: const Color.fromARGB(255, 61, 61, 61),
               height: 1.h,
               fontSize: 30.sp,
@@ -684,10 +687,10 @@ appFooter(context) {
         ),
 
         SizedBox(height: 5),
-        Align(
-          alignment: Alignment.bottomRight, // ⬅️ change this to desired side
-          child: InfoBar(),
-        ),
+        // Align(
+        //   alignment: Alignment.topRight, // ⬅️ change this to desired side
+        //   child: InfoBar(),
+        // ),
         //SizedBox(height: 5),
       ],
     ),
