@@ -1,6 +1,6 @@
 [
   {
-    "Station Code": "DSG",
+    "StationCode": "DSG",
     "Name": "Dilshad Garden",
     "Hindi": "दिलशाद गार्डन",
     "Line": "1",
@@ -8,7 +8,7 @@
     "Longitude": "77.321495"
   },
   {
-    "Station Code": "JLML",
+    "StationCode": "JLML",
     "Name": "Jhilmil",
     "Hindi": "झिलमिल",
     "Line": "1",
@@ -16,7 +16,7 @@
     "Longitude": "77.312393"
   },
   {
-    "Station Code": "MPK",
+    "StationCode": "MPK",
     "Name": "Man Sarovar Park",
     "Hindi": "मानसरोवर पार्क",
     "Line": "1",
@@ -24,7 +24,7 @@
     "Longitude": "77.301178"
   },
   {
-    "Station Code": "SHD",
+    "StationCode": "SHD",
     "Name": "Shahdara",
     "Hindi": "शाहदरा",
     "Line": "1",
@@ -32,7 +32,7 @@
     "Longitude": "77.28727"
   },
   {
-    "Station Code": "WC",
+    "StationCode": "WC",
     "Name": "Welcome",
     "Hindi": "वेलकम",
     "Line": "1-7",
@@ -40,7 +40,7 @@
     "Longitude": "77.277931"
   },
   {
-    "Station Code": "SLAP",
+    "StationCode": "SLAP",
     "Name": "Seelampur",
     "Hindi": "सीलमपुर",
     "Line": "1",
@@ -48,7 +48,7 @@
     "Longitude": "77.267311"
   },
   {
-    "Station Code": "SHPK",
+    "StationCode": "SHPK",
     "Name": "Shastri Park",
     "Hindi": "शास्त्री पार्क",
     "Line": "1",
@@ -56,7 +56,7 @@
     "Longitude": "77.250404"
   },
   {
-    "Station Code": "KG-6",
+    "StationCode": "KG-6",
     "Name": "Kashmere Gate",
     "Hindi": "कश्मीरी गेट",
     "Line": "1-2-6",
@@ -64,7 +64,7 @@
     "Longitude": "77.228012"
   },
   {
-    "Station Code": "TZI",
+    "StationCode": "TZI",
     "Name": "Tis Hazari",
     "Hindi": "तिस हजारी",
     "Line": "1",
@@ -72,7 +72,7 @@
     "Longitude": "77.216721"
   },
   {
-    "Station Code": "PBGH",
+    "StationCode": "PBGH",
     "Name": "Pul Bangash",
     "Hindi": "पुल बंगश",
     "Line": "1",
@@ -80,7 +80,7 @@
     "Longitude": "77.206329"
   },
   {
-    "Station Code": "PRA",
+    "StationCode": "PRA",
     "Name": "Pratap Nagar",
     "Hindi": "प्रताप नगर",
     "Line": "1",
@@ -88,7 +88,7 @@
     "Longitude": "77.196869"
   },
   {
-    "Station Code": "SHT",
+    "StationCode": "SHT",
     "Name": "Shastri Nagar",
     "Hindi": "शास्त्री नगर",
     "Line": "1",
@@ -96,7 +96,7 @@
     "Longitude": "77.181679"
   },
   {
-    "Station Code": "ILOK",
+    "StationCode": "ILOK",
     "Name": "Inderlok",
     "Hindi": "इंदरलोक",
     "Line": "1-5",
@@ -104,7 +104,7 @@
     "Longitude": "77.170235"
   },
   {
-    "Station Code": "KN",
+    "StationCode": "KN",
     "Name": "Kanhaiya Nagar",
     "Hindi": "कन्हैया नगर",
     "Line": "1",
@@ -112,7 +112,7 @@
     "Longitude": "77.162552"
   },
   {
-    "Station Code": "KP",
+    "StationCode": "KP",
     "Name": "Keshav Puram",
     "Hindi": "केशव पुरम",
     "Line": "1",
@@ -120,7 +120,7 @@
     "Longitude": "77.161774"
   },
   {
-    "Station Code": "NSHP",
+    "StationCode": "NSHP",
     "Name": "Netaji Subhash Place",
     "Hindi": "नेताजी सुभाष प्लेस",
     "Line": "1-7",
@@ -128,7 +128,7 @@
     "Longitude": "77.152428"
   },
   {
-    "Station Code": "KE",
+    "StationCode": "KE",
     "Name": "Kohat Enclave",
     "Hindi": "कोहाट एन्क्लेव",
     "Line": "1",
@@ -136,7 +136,7 @@
     "Longitude": "77.140465"
   },
   {
-    "Station Code": "PTP",
+    "StationCode": "PTP",
     "Name": "Pitampura",
     "Hindi": "पीतमपुरा",
     "Line": "1",
@@ -144,7 +144,7 @@
     "Longitude": "77.132355"
   },
   {
-    "Station Code": "RHE",
+    "StationCode": "RHE",
     "Name": "Rohini East",
     "Hindi": "रोहिणी ईस्ट",
     "Line": "1",
@@ -152,7 +152,7 @@
     "Longitude": "77.125732"
   },
   {
-    "Station Code": "RHW",
+    "StationCode": "RHW",
     "Name": "Rohini West",
     "Hindi": "रोहिणी वेस्ट",
     "Line": "1",
@@ -160,7 +160,7 @@
     "Longitude": "77.115746"
   },
   {
-    "Station Code": "RI",
+    "StationCode": "RI",
     "Name": "Rithala",
     "Hindi": "रिठाला",
     "Line": "1",
@@ -168,7 +168,7 @@
     "Longitude": "77.105042"
   },
   {
-    "Station Code": "MUDK",
+    "StationCode": "MUDK",
     "Name": "Mundka",
     "Hindi": "मुंडका",
     "Line": "5",
@@ -176,7 +176,7 @@
     "Longitude": "77.028282"
   },
   {
-    "Station Code": "RDPK",
+    "StationCode": "RDPK",
     "Name": "Rajdhani Park",
     "Hindi": "राजधानी पार्क",
     "Line": "5",
@@ -184,7 +184,7 @@
     "Longitude": "77.043869"
   },
   {
-    "Station Code": "NRSN",
+    "StationCode": "NRSN",
     "Name": "Nangloi Railway Station",
     "Hindi": "नांगलोई रेलवे स्टेशन",
     "Line": "5",
@@ -192,7 +192,7 @@
     "Longitude": "77.05619"
   },
   {
-    "Station Code": "NNOI",
+    "StationCode": "NNOI",
     "Name": "Nangloi",
     "Hindi": "नांगलोई",
     "Line": "5",
@@ -200,7 +200,7 @@
     "Longitude": "77.064728"
   },
   {
-    "Station Code": "SMSM",
+    "StationCode": "SMSM",
     "Name": "Maharaja Surajmal Stadium",
     "Hindi": "महाराजा सूरजमल स्टेडियम",
     "Line": "5",
@@ -208,7 +208,7 @@
     "Longitude": "77.073891"
   },
   {
-    "Station Code": "UNRG",
+    "StationCode": "UNRG",
     "Name": "Udyog Nagar",
     "Hindi": "उद्योग नगर",
     "Line": "5",
@@ -216,7 +216,7 @@
     "Longitude": "77.078674"
   },
   {
-    "Station Code": "PAGI",
+    "StationCode": "PAGI",
     "Name": "Peera Garhi",
     "Hindi": "पीरागढ़ी",
     "Line": "5",
@@ -224,7 +224,7 @@
     "Longitude": "77.092491"
   },
   {
-    "Station Code": "PVE",
+    "StationCode": "PVE",
     "Name": "Paschim Vihar (East)",
     "Hindi": "पश्चिम विहार (पूर्व)",
     "Line": "5",
@@ -232,7 +232,7 @@
     "Longitude": "77.112251"
   },
   {
-    "Station Code": "PVW",
+    "StationCode": "PVW",
     "Name": "Paschim Vihar (West)",
     "Hindi": "पश्चिम विहार (पश्चिम)",
     "Line": "5",
@@ -240,7 +240,7 @@
     "Longitude": "77.102119"
   },
   {
-    "Station Code": "MAPR",
+    "StationCode": "MAPR",
     "Name": "Madipur",
     "Hindi": "मादीपुर",
     "Line": "5",
@@ -248,7 +248,7 @@
     "Longitude": "77.117294"
   },
   {
-    "Station Code": "SHVP",
+    "StationCode": "SHVP",
     "Name": "Shivaji Park",
     "Hindi": "शिवाजी पार्क",
     "Line": "5",
@@ -256,7 +256,7 @@
     "Longitude": "77.128258"
   },
   {
-    "Station Code": "PBGA",
+    "StationCode": "PBGA",
     "Name": "Punjabi Bagh",
     "Hindi": "पंजाबी बाग",
     "Line": "5",
@@ -264,7 +264,7 @@
     "Longitude": "77.146011"
   },
   {
-    "Station Code": "APMN",
+    "StationCode": "APMN",
     "Name": "Ashok Park Main",
     "Hindi": "अशोक पार्क मेन",
     "Line": "5-7",
@@ -272,7 +272,7 @@
     "Longitude": "77.155159"
   },
   {
-    "Station Code": "SRSM",
+    "StationCode": "SRSM",
     "Name": "Satguru Ram Singh Marg",
     "Hindi": "सतगुरु राम सिंह मार्ग",
     "Line": "5",
@@ -280,7 +280,7 @@
     "Longitude": "77.157829"
   },
   {
-    "Station Code": "MIAA",
+    "StationCode": "MIAA",
     "Name": "Mundka Industrial Area",
     "Hindi": "मुंडका इंडस्ट्रियल एरिया",
     "Line": "5",
@@ -288,7 +288,7 @@
     "Longitude": "76.989822"
   },
   {
-    "Station Code": "GHEM",
+    "StationCode": "GHEM",
     "Name": "Ghevra Metro Station",
     "Hindi": "घेवरा मेट्रो स्टेशन",
     "Line": "5",
@@ -296,7 +296,7 @@
     "Longitude": "76.993584"
   },
   {
-    "Station Code": "TKLM",
+    "StationCode": "TKLM",
     "Name": "Tikri Kalan",
     "Hindi": "टिकरी कलां",
     "Line": "5",
@@ -304,7 +304,7 @@
     "Longitude": "76.977249"
   },
   {
-    "Station Code": "TKBR",
+    "StationCode": "TKBR",
     "Name": "Tikri Border",
     "Hindi": "टिकरी बॉर्डर",
     "Line": "5",
@@ -312,7 +312,7 @@
     "Longitude": "76.963783"
   },
   {
-    "Station Code": "MIEE",
+    "StationCode": "MIEE",
     "Name": "Pandit Shree Ram Sharma",
     "Hindi": "पंडित श्री राम शर्मा",
     "Line": "5",
@@ -320,7 +320,7 @@
     "Longitude": "76.951088"
   },
   {
-    "Station Code": "BUSS",
+    "StationCode": "BUSS",
     "Name": "Bahadurgarh City",
     "Hindi": "बहादुरगढ़ सिटी",
     "Line": "5",
@@ -328,7 +328,7 @@
     "Longitude": "76.935265"
   },
   {
-    "Station Code": "CIPK",
+    "StationCode": "CIPK",
     "Name": "Brigadier Hoshiyar Singh",
     "Hindi": "ब्रिगेडियर होशियार सिंह",
     "Line": "5",
@@ -336,7 +336,7 @@
     "Longitude": "76.919128"
   },
   {
-    "Station Code": "SPBI",
+    "StationCode": "SPBI",
     "Name": "Samaypur Badli",
     "Hindi": "समयपुर बादली",
     "Line": "2",
@@ -344,7 +344,7 @@
     "Longitude": "77.146545"
   },
   {
-    "Station Code": "RISE",
+    "StationCode": "RISE",
     "Name": "Rohini Sector 18 19",
     "Hindi": "रोहिणी सेक्टर 18 19",
     "Line": "2",
@@ -352,7 +352,7 @@
     "Longitude": "77.135574"
   },
   {
-    "Station Code": "BIMR",
+    "StationCode": "BIMR",
     "Name": "Haiderpur Badli Mor",
     "Hindi": "हैदरपुर बादली मोड़",
     "Line": "2",
@@ -360,7 +360,7 @@
     "Longitude": "77.149956"
   },
   {
-    "Station Code": "JGPI",
+    "StationCode": "JGPI",
     "Name": "Jahangirpuri",
     "Hindi": "जहांगीरपुरी",
     "Line": "2",
@@ -368,7 +368,7 @@
     "Longitude": "77.16124"
   },
   {
-    "Station Code": "AHNR",
+    "StationCode": "AHNR",
     "Name": "Adarsh Nagar",
     "Hindi": "आदर्श नगर",
     "Line": "2",
@@ -376,7 +376,7 @@
     "Longitude": "77.208809"
   },
   {
-    "Station Code": "AZU",
+    "StationCode": "AZU",
     "Name": "Azadpur",
     "Hindi": "आजादपुर",
     "Line": "2-7",
@@ -384,7 +384,7 @@
     "Longitude": "77.179863"
   },
   {
-    "Station Code": "MDTW",
+    "StationCode": "MDTW",
     "Name": "Model Town",
     "Hindi": "मॉडल टाउन",
     "Line": "2",
@@ -392,7 +392,7 @@
     "Longitude": "77.193764"
   },
   {
-    "Station Code": "GTBR",
+    "StationCode": "GTBR",
     "Name": "Guru Tegh Bahadur Nagar",
     "Hindi": "गुरु तेग बहादुर नगर",
     "Line": "2",
@@ -400,7 +400,7 @@
     "Longitude": "77.206985"
   },
   {
-    "Station Code": "VW",
+    "StationCode": "VW",
     "Name": "Vishwavidyalaya",
     "Hindi": "विश्वविद्यालय",
     "Line": "2",
@@ -408,7 +408,7 @@
     "Longitude": "77.212418"
   },
   {
-    "Station Code": "VS",
+    "StationCode": "VS",
     "Name": "Vidhan Sabha",
     "Hindi": "विधान सभा",
     "Line": "2",
@@ -416,7 +416,7 @@
     "Longitude": "77.221626"
   },
   {
-    "Station Code": "CL",
+    "StationCode": "CL",
     "Name": "Civil Lines",
     "Hindi": "सिविल लाइन्स",
     "Line": "2",
@@ -424,7 +424,7 @@
     "Longitude": "77.224953"
   },
   {
-    "Station Code": "CHK",
+    "StationCode": "CHK",
     "Name": "Chandni Chowk",
     "Hindi": "चांदनी चौक",
     "Line": "2",
@@ -432,7 +432,7 @@
     "Longitude": "77.229218"
   },
   {
-    "Station Code": "CWBR",
+    "StationCode": "CWBR",
     "Name": "Chawri Bazar",
     "Hindi": "चावड़ी बाजार",
     "Line": "2",
@@ -440,7 +440,7 @@
     "Longitude": "77.22628"
   },
   {
-    "Station Code": "NDI",
+    "StationCode": "NDI",
     "Name": "New Delhi",
     "Hindi": "नई दिल्ली",
     "Line": "2-10",
@@ -448,7 +448,7 @@
     "Longitude": "77.222351"
   },
   {
-    "Station Code": "RCK",
+    "StationCode": "RCK",
     "Name": "Rajiv Chowk",
     "Hindi": "राजीव चौक",
     "Line": "2-3",
@@ -456,7 +456,7 @@
     "Longitude": "77.219574"
   },
   {
-    "Station Code": "PTCK",
+    "StationCode": "PTCK",
     "Name": "Patel Chowk",
     "Hindi": "पटेल चौक",
     "Line": "2",
@@ -464,7 +464,7 @@
     "Longitude": "77.212288"
   },
   {
-    "Station Code": "CTST",
+    "StationCode": "CTST",
     "Name": "Central Secretariat",
     "Hindi": "सेंट्रल सेक्रेटेरिएट",
     "Line": "2-6",
@@ -472,7 +472,7 @@
     "Longitude": "77.212029"
   },
   {
-    "Station Code": "UDB",
+    "StationCode": "UDB",
     "Name": "Udyog Bhawan",
     "Hindi": "उद्योग भवन",
     "Line": "2",
@@ -480,7 +480,7 @@
     "Longitude": "77.210052"
   },
   {
-    "Station Code": "RCC",
+    "StationCode": "RCC",
     "Name": "Lok Kalyan Marg",
     "Hindi": "लोक कल्याण मार्ग",
     "Line": "2",
@@ -488,7 +488,7 @@
     "Longitude": "77.209122"
   },
   {
-    "Station Code": "JB",
+    "StationCode": "JB",
     "Name": "Jor Bagh",
     "Hindi": "जोरबाग",
     "Line": "2",
@@ -496,7 +496,7 @@
     "Longitude": "77.212662"
   },
   {
-    "Station Code": "INA",
+    "StationCode": "INA",
     "Name": "Dilli Haat INA",
     "Hindi": "दिल्ली हाट आईएनए",
     "Line": "2-7",
@@ -504,7 +504,7 @@
     "Longitude": "77.209473"
   },
   {
-    "Station Code": "AIIM",
+    "StationCode": "AIIM",
     "Name": "AIIMS",
     "Hindi": "एम्स",
     "Line": "2",
@@ -512,7 +512,7 @@
     "Longitude": "77.207947"
   },
   {
-    "Station Code": "GNPK",
+    "StationCode": "GNPK",
     "Name": "Green Park",
     "Hindi": "ग्रीन पार्क",
     "Line": "2",
@@ -520,7 +520,7 @@
     "Longitude": "77.206902"
   },
   {
-    "Station Code": "HKS",
+    "StationCode": "HKS",
     "Name": "Hauz Khas",
     "Hindi": "हौज खास",
     "Line": "2-8",
@@ -528,7 +528,7 @@
     "Longitude": "77.206673"
   },
   {
-    "Station Code": "MVNR",
+    "StationCode": "MVNR",
     "Name": "Malviya Nagar",
     "Hindi": "मालवीय नगर",
     "Line": "2",
@@ -536,7 +536,7 @@
     "Longitude": "77.205612"
   },
   {
-    "Station Code": "SAKT",
+    "StationCode": "SAKT",
     "Name": "Saket",
     "Hindi": "साकेत",
     "Line": "2",
@@ -544,7 +544,7 @@
     "Longitude": "77.199379"
   },
   {
-    "Station Code": "QM",
+    "StationCode": "QM",
     "Name": "Qutab Minar",
     "Hindi": "कुतुब मीनार",
     "Line": "2",
@@ -552,7 +552,7 @@
     "Longitude": "77.185791"
   },
   {
-    "Station Code": "CHTP",
+    "StationCode": "CHTP",
     "Name": "Chhattarpur",
     "Hindi": "छत्तरपुर",
     "Line": "2",
@@ -560,7 +560,7 @@
     "Longitude": "77.174866"
   },
   {
-    "Station Code": "SLTP",
+    "StationCode": "SLTP",
     "Name": "Sultanpur",
     "Hindi": "सुल्तानपुर",
     "Line": "2",
@@ -568,7 +568,7 @@
     "Longitude": "77.161362"
   },
   {
-    "Station Code": "GTNI",
+    "StationCode": "GTNI",
     "Name": "Ghitorni",
     "Hindi": "घिटोरनी",
     "Line": "2",
@@ -576,7 +576,7 @@
     "Longitude": "77.149071"
   },
   {
-    "Station Code": "AJG",
+    "StationCode": "AJG",
     "Name": "Arjan Garh",
     "Hindi": "अर्जनगढ़",
     "Line": "2",
@@ -584,7 +584,7 @@
     "Longitude": "77.12587"
   },
   {
-    "Station Code": "GE",
+    "StationCode": "GE",
     "Name": "Guru Dronacharya",
     "Hindi": "गुरुद्रोणाचार्य",
     "Line": "2",
@@ -592,7 +592,7 @@
     "Longitude": "77.102219"
   },
   {
-    "Station Code": "SKRP",
+    "StationCode": "SKRP",
     "Name": "Sikanderpur",
     "Hindi": "सिकंदरपुर",
     "Line": "2-15",
@@ -600,7 +600,7 @@
     "Longitude": "77.092995"
   },
   {
-    "Station Code": "MGRO",
+    "StationCode": "MGRO",
     "Name": "MG Road",
     "Hindi": "एमजी रोड",
     "Line": "2",
@@ -608,7 +608,7 @@
     "Longitude": "77.080444"
   },
   {
-    "Station Code": "IFOC",
+    "StationCode": "IFOC",
     "Name": "IFFCO Chowk",
     "Hindi": "आईएफएफसीओ चौक",
     "Line": "2",
@@ -616,7 +616,7 @@
     "Longitude": "77.072502"
   },
   {
-    "Station Code": "HCC",
+    "StationCode": "HCC",
     "Name": "Huda City Centre",
     "Hindi": "हुडा सिटी सेंटर",
     "Line": "2",
@@ -624,7 +624,7 @@
     "Longitude": "77.072586"
   },
   {
-    "Station Code": "VASI",
+    "StationCode": "VASI",
     "Name": "Vaishali",
     "Hindi": "वैशाली",
     "Line": "4",
@@ -632,7 +632,7 @@
     "Longitude": "77.337608"
   },
   {
-    "Station Code": "KASI",
+    "StationCode": "KASI",
     "Name": "Kaushambi",
     "Hindi": "कौशांबी",
     "Line": "4",
@@ -640,7 +640,7 @@
     "Longitude": "77.322273"
   },
   {
-    "Station Code": "AVIT",
+    "StationCode": "AVIT",
     "Name": "Anand Vihar",
     "Hindi": "आनंद विहार",
     "Line": "4-7",
@@ -648,7 +648,7 @@
     "Longitude": "77.316185"
   },
   {
-    "Station Code": "KKDA",
+    "StationCode": "KKDA",
     "Name": "Karkardooma",
     "Hindi": "कड़कड़डूमा",
     "Line": "4-7",
@@ -656,7 +656,7 @@
     "Longitude": "77.304581"
   },
   {
-    "Station Code": "PTVR",
+    "StationCode": "PTVR",
     "Name": "Preet Vihar",
     "Hindi": "प्रीत विहार",
     "Line": "4",
@@ -664,7 +664,7 @@
     "Longitude": "77.295158"
   },
   {
-    "Station Code": "NV",
+    "StationCode": "NV",
     "Name": "Nirman Vihar",
     "Hindi": "निर्माण विहार",
     "Line": "4",
@@ -672,7 +672,7 @@
     "Longitude": "77.287872"
   },
   {
-    "Station Code": "LN",
+    "StationCode": "LN",
     "Name": "Laxmi Nagar",
     "Hindi": "लक्ष्मी नगर",
     "Line": "4",
@@ -680,7 +680,7 @@
     "Longitude": "77.276428"
   },
   {
-    "Station Code": "NCC",
+    "StationCode": "NCC",
     "Name": "Noida City Centre",
     "Hindi": "नोएडा सिटी सेंटर",
     "Line": "3",
@@ -688,7 +688,7 @@
     "Longitude": "77.356117"
   },
   {
-    "Station Code": "GEC",
+    "StationCode": "GEC",
     "Name": "Golf Course",
     "Hindi": "गोल्फ कोर्स",
     "Line": "3",
@@ -696,7 +696,7 @@
     "Longitude": "77.345726"
   },
   {
-    "Station Code": "BCGN",
+    "StationCode": "BCGN",
     "Name": "Botanical Garden",
     "Hindi": "बोटैनिकल गार्डन",
     "Line": "3-8",
@@ -704,7 +704,7 @@
     "Longitude": "77.334656"
   },
   {
-    "Station Code": "NSET",
+    "StationCode": "NSET",
     "Name": "Noida Sector 18",
     "Hindi": "नोएडा सेक्टर 18",
     "Line": "3",
@@ -712,7 +712,7 @@
     "Longitude": "77.326088"
   },
   {
-    "Station Code": "NSST",
+    "StationCode": "NSST",
     "Name": "Noida Sector 16",
     "Hindi": "नोएडा सेक्टर 16",
     "Line": "3",
@@ -720,7 +720,7 @@
     "Longitude": "77.318115"
   },
   {
-    "Station Code": "NSFT",
+    "StationCode": "NSFT",
     "Name": "Noida Sector 15",
     "Hindi": "नोएडा सेक्टर 15",
     "Line": "3",
@@ -728,7 +728,7 @@
     "Longitude": "77.311584"
   },
   {
-    "Station Code": "NAKR",
+    "StationCode": "NAKR",
     "Name": "New Ashok Nagar",
     "Hindi": "न्यू अशोक नगर",
     "Line": "3",
@@ -736,7 +736,7 @@
     "Longitude": "77.30146"
   },
   {
-    "Station Code": "MVPE",
+    "StationCode": "MVPE",
     "Name": "Mayur Vihar Extension",
     "Hindi": "मयूर विहार एक्सटेंशन",
     "Line": "3",
@@ -744,7 +744,7 @@
     "Longitude": "77.294495"
   },
   {
-    "Station Code": "MVP1",
+    "StationCode": "MVP1",
     "Name": "Mayur Vihar I",
     "Hindi": "मयूर विहार I",
     "Line": "3",
@@ -752,7 +752,7 @@
     "Longitude": "77.289421"
   },
   {
-    "Station Code": "ASDM",
+    "StationCode": "ASDM",
     "Name": "Akshardham",
     "Hindi": "अक्षरधाम",
     "Line": "3",
@@ -760,7 +760,7 @@
     "Longitude": "77.279816"
   },
   {
-    "Station Code": "YB",
+    "StationCode": "YB",
     "Name": "Yamuna Bank",
     "Hindi": "यमुना बैंक",
     "Line": "3-4",
@@ -768,7 +768,7 @@
     "Longitude": "77.267937"
   },
   {
-    "Station Code": "IDPT",
+    "StationCode": "IDPT",
     "Name": "Indraprastha",
     "Hindi": "इंद्रप्रस्थ",
     "Line": "3",
@@ -776,7 +776,7 @@
     "Longitude": "77.250076"
   },
   {
-    "Station Code": "PTMD",
+    "StationCode": "PTMD",
     "Name": "Supreme Court",
     "Hindi": "सुप्रीम कोर्ट",
     "Line": "3",
@@ -784,7 +784,7 @@
     "Longitude": "77.2425"
   },
   {
-    "Station Code": "MDHS",
+    "StationCode": "MDHS",
     "Name": "Mandi House",
     "Hindi": "मंडी हाउस",
     "Line": "3-6",
@@ -792,7 +792,7 @@
     "Longitude": "77.234726"
   },
   {
-    "Station Code": "BRKR",
+    "StationCode": "BRKR",
     "Name": "Barakhamba Road",
     "Hindi": "बराखंबा",
     "Line": "3",
@@ -800,7 +800,7 @@
     "Longitude": "77.224876"
   },
   {
-    "Station Code": "RKAM",
+    "StationCode": "RKAM",
     "Name": "R K Ashram Marg",
     "Hindi": "आरके आश्रम मार्ग",
     "Line": "3",
@@ -808,7 +808,7 @@
     "Longitude": "77.206291"
   },
   {
-    "Station Code": "JW",
+    "StationCode": "JW",
     "Name": "Jhandewalan",
     "Hindi": "झंडेवालान",
     "Line": "3",
@@ -816,7 +816,7 @@
     "Longitude": "77.199791"
   },
   {
-    "Station Code": "KB",
+    "StationCode": "KB",
     "Name": "Karol Bagh",
     "Hindi": "करोल बाग",
     "Line": "3",
@@ -824,7 +824,7 @@
     "Longitude": "77.188416"
   },
   {
-    "Station Code": "RP",
+    "StationCode": "RP",
     "Name": "Rajendra Place",
     "Hindi": "राजेंद्र प्लेस",
     "Line": "3",
@@ -832,7 +832,7 @@
     "Longitude": "77.191833"
   },
   {
-    "Station Code": "SP",
+    "StationCode": "SP",
     "Name": "Shadipur",
     "Hindi": "शादीपुर",
     "Line": "3",
@@ -840,7 +840,7 @@
     "Longitude": "77.156021"
   },
   {
-    "Station Code": "KNR",
+    "StationCode": "KNR",
     "Name": "Kirti Nagar",
     "Hindi": "कीर्ति नगर",
     "Line": "3-5",
@@ -848,7 +848,7 @@
     "Longitude": "77.148499"
   },
   {
-    "Station Code": "MN",
+    "StationCode": "MN",
     "Name": "Moti Nagar",
     "Hindi": "मोती नगर",
     "Line": "3",
@@ -856,7 +856,7 @@
     "Longitude": "77.140488"
   },
   {
-    "Station Code": "RN",
+    "StationCode": "RN",
     "Name": "Ramesh Nagar",
     "Hindi": "रमेश नगर",
     "Line": "3",
@@ -864,7 +864,7 @@
     "Longitude": "77.131462"
   },
   {
-    "Station Code": "RG",
+    "StationCode": "RG",
     "Name": "Rajouri Garden",
     "Hindi": "राजौरी गार्डन",
     "Line": "3-5",
@@ -872,7 +872,7 @@
     "Longitude": "77.122749"
   },
   {
-    "Station Code": "TG",
+    "StationCode": "TG",
     "Name": "Tagore Garden",
     "Hindi": "टैगोर गार्डन",
     "Line": "3",
@@ -880,7 +880,7 @@
     "Longitude": "77.112747"
   },
   {
-    "Station Code": "SN",
+    "StationCode": "SN",
     "Name": "Subhash Nagar",
     "Hindi": "सुभाष नगर",
     "Line": "3",
@@ -888,7 +888,7 @@
     "Longitude": "77.10273"
   },
   {
-    "Station Code": "TN",
+    "StationCode": "TN",
     "Name": "Tilak Nagar",
     "Hindi": "तिलक नगर",
     "Line": "3",
@@ -896,7 +896,7 @@
     "Longitude": "77.096336"
   },
   {
-    "Station Code": "JPE",
+    "StationCode": "JPE",
     "Name": "Janakpuri East",
     "Hindi": "जनकपुरी ईस्ट",
     "Line": "3",
@@ -904,7 +904,7 @@
     "Longitude": "77.086578"
   },
   {
-    "Station Code": "JPW",
+    "StationCode": "JPW",
     "Name": "Janakpuri West",
     "Hindi": "जनकपुरी वेस्ट",
     "Line": "3-8",
@@ -912,7 +912,7 @@
     "Longitude": "77.077866"
   },
   {
-    "Station Code": "UNE",
+    "StationCode": "UNE",
     "Name": "Uttam Nagar East",
     "Hindi": "उत्तम नगर ईस्ट",
     "Line": "3",
@@ -920,7 +920,7 @@
     "Longitude": "77.063126"
   },
   {
-    "Station Code": "UNW",
+    "StationCode": "UNW",
     "Name": "Uttam Nagar West",
     "Hindi": "उत्तम नगर वेस्ट",
     "Line": "3",
@@ -928,7 +928,7 @@
     "Longitude": "77.055664"
   },
   {
-    "Station Code": "NWD",
+    "StationCode": "NWD",
     "Name": "Nawada",
     "Hindi": "नवादा",
     "Line": "3",
@@ -936,7 +936,7 @@
     "Longitude": "77.044991"
   },
   {
-    "Station Code": "DM",
+    "StationCode": "DM",
     "Name": "Dwarka Mor",
     "Hindi": "द्वारका मोड़",
     "Line": "3",
@@ -944,7 +944,7 @@
     "Longitude": "77.033188"
   },
   {
-    "Station Code": "DW",
+    "StationCode": "DW",
     "Name": "Dwarka",
     "Hindi": "द्वारका",
     "Line": "3-9",
@@ -952,7 +952,7 @@
     "Longitude": "77.022629"
   },
   {
-    "Station Code": "DSFN",
+    "StationCode": "DSFN",
     "Name": "Dwarka Sector 14",
     "Hindi": "द्वारका सेक्टर 14",
     "Line": "3",
@@ -960,7 +960,7 @@
     "Longitude": "77.02594"
   },
   {
-    "Station Code": "DSTN",
+    "StationCode": "DSTN",
     "Name": "Dwarka Sector 13",
     "Hindi": "द्वारका सेक्टर 13",
     "Line": "3",
@@ -968,7 +968,7 @@
     "Longitude": "77.033043"
   },
   {
-    "Station Code": "DSW",
+    "StationCode": "DSW",
     "Name": "Dwarka Sector 12",
     "Hindi": "द्वारका सेक्टर 12",
     "Line": "3",
@@ -976,7 +976,7 @@
     "Longitude": "77.040558"
   },
   {
-    "Station Code": "DSE",
+    "StationCode": "DSE",
     "Name": "Dwarka Sector 11",
     "Hindi": "द्वारका सेक्टर 11",
     "Line": "3",
@@ -984,7 +984,7 @@
     "Longitude": "77.049255"
   },
   {
-    "Station Code": "DST",
+    "StationCode": "DST",
     "Name": "Dwarka Sector 10",
     "Hindi": "द्वारका सेक्टर 10",
     "Line": "3",
@@ -992,7 +992,7 @@
     "Longitude": "77.05719"
   },
   {
-    "Station Code": "DSN",
+    "StationCode": "DSN",
     "Name": "Dwarka Sector 9",
     "Hindi": "द्वारका सेक्टर 9",
     "Line": "3",
@@ -1000,7 +1000,7 @@
     "Longitude": "77.065086"
   },
   {
-    "Station Code": "DWET",
+    "StationCode": "DWET",
     "Name": "Dwarka Sector 8",
     "Hindi": "द्वारका सेक्टर 8",
     "Line": "3",
@@ -1008,7 +1008,7 @@
     "Longitude": "77.064896"
   },
   {
-    "Station Code": "DWTO",
+    "StationCode": "DWTO",
     "Name": "Dwarka Sector 21",
     "Hindi": "द्वारका सेक्टर 21",
     "Line": "3-10",
@@ -1016,7 +1016,7 @@
     "Longitude": "77.056198"
   },
   {
-    "Station Code": "ITO",
+    "StationCode": "ITO",
     "Name": "ITO",
     "Hindi": "आईटीओ",
     "Line": "6",
@@ -1024,7 +1024,7 @@
     "Longitude": "77.240952"
   },
   {
-    "Station Code": "JANP",
+    "StationCode": "JANP",
     "Name": "Janpath",
     "Hindi": "जनपथ",
     "Line": "6",
@@ -1032,7 +1032,7 @@
     "Longitude": "77.218956"
   },
   {
-    "Station Code": "KM",
+    "StationCode": "KM",
     "Name": "Khan Market",
     "Hindi": "खान मार्केट",
     "Line": "6",
@@ -1040,7 +1040,7 @@
     "Longitude": "77.228096"
   },
   {
-    "Station Code": "JLNS",
+    "StationCode": "JLNS",
     "Name": "Jawahar Lal Nehru Stadium",
     "Hindi": "जवाहरलाल नेहरू स्टेडियम",
     "Line": "6",
@@ -1048,7 +1048,7 @@
     "Longitude": "77.23307"
   },
   {
-    "Station Code": "JGPA",
+    "StationCode": "JGPA",
     "Name": "Jangpura",
     "Hindi": "जंगपुरा",
     "Line": "6",
@@ -1056,7 +1056,7 @@
     "Longitude": "77.239662"
   },
   {
-    "Station Code": "LJPN",
+    "StationCode": "LJPN",
     "Name": "Lajpat Nagar",
     "Hindi": "लाजपत नगर",
     "Line": "6-7",
@@ -1064,7 +1064,7 @@
     "Longitude": "77.233124"
   },
   {
-    "Station Code": "MLCD",
+    "StationCode": "MLCD",
     "Name": "Moolchand",
     "Hindi": "मूलचंद",
     "Line": "6",
@@ -1072,7 +1072,7 @@
     "Longitude": "77.234222"
   },
   {
-    "Station Code": "KHCY",
+    "StationCode": "KHCY",
     "Name": "Kailash Colony",
     "Hindi": "कैलाश कॉलोनी",
     "Line": "6",
@@ -1080,7 +1080,7 @@
     "Longitude": "77.239738"
   },
   {
-    "Station Code": "NP",
+    "StationCode": "NP",
     "Name": "Nehru Place",
     "Hindi": "नेहरू प्लेस",
     "Line": "6",
@@ -1088,7 +1088,7 @@
     "Longitude": "77.251511"
   },
   {
-    "Station Code": "KJMD-8",
+    "StationCode": "KJMD-8",
     "Name": "Kalkaji Mandir",
     "Hindi": "कालकाजी मंदिर",
     "Line": "6-8",
@@ -1096,7 +1096,7 @@
     "Longitude": "77.258789"
   },
   {
-    "Station Code": "GDPI",
+    "StationCode": "GDPI",
     "Name": "Govind Puri",
     "Hindi": "गोविंदपुरी",
     "Line": "6",
@@ -1104,7 +1104,7 @@
     "Longitude": "77.264259"
   },
   {
-    "Station Code": "OK",
+    "StationCode": "OK",
     "Name": "Harkesh Nagar Okhla",
     "Hindi": "हरकेश नगर ओखला",
     "Line": "6",
@@ -1112,7 +1112,7 @@
     "Longitude": "77.275955"
   },
   {
-    "Station Code": "JLA",
+    "StationCode": "JLA",
     "Name": "Jasola Apollo",
     "Hindi": "जसोला अपोलो",
     "Line": "6",
@@ -1120,7 +1120,7 @@
     "Longitude": "77.285538"
   },
   {
-    "Station Code": "STVR",
+    "StationCode": "STVR",
     "Name": "Sarita Vihar",
     "Hindi": "सरिता विहार",
     "Line": "6",
@@ -1128,7 +1128,7 @@
     "Longitude": "77.288345"
   },
   {
-    "Station Code": "METE",
+    "StationCode": "METE",
     "Name": "Mohan Estate",
     "Hindi": "मोहन एस्टेट",
     "Line": "6",
@@ -1136,7 +1136,7 @@
     "Longitude": "77.294518"
   },
   {
-    "Station Code": "TKBD",
+    "StationCode": "TKBD",
     "Name": "Tughlakabad Station",
     "Hindi": "तुगलकाबाद स्टेशन",
     "Line": "6",
@@ -1144,7 +1144,7 @@
     "Longitude": "77.29866"
   },
   {
-    "Station Code": "BAPU",
+    "StationCode": "BAPU",
     "Name": "Badarpur Border",
     "Hindi": "बदरपुर बॉर्डर",
     "Line": "6",
@@ -1152,7 +1152,7 @@
     "Longitude": "77.30085"
   },
   {
-    "Station Code": "SRAI",
+    "StationCode": "SRAI",
     "Name": "Sarai",
     "Hindi": "सराय",
     "Line": "6",
@@ -1160,7 +1160,7 @@
     "Longitude": "77.304932"
   },
   {
-    "Station Code": "NHPC",
+    "StationCode": "NHPC",
     "Name": "NHPC Chowk",
     "Hindi": "एनएचपीसी चौक",
     "Line": "6",
@@ -1168,7 +1168,7 @@
     "Longitude": "77.305252"
   },
   {
-    "Station Code": "NMJR",
+    "StationCode": "NMJR",
     "Name": "Mewala Maharajpur",
     "Hindi": "मेवला महाराजपुर",
     "Line": "6",
@@ -1176,7 +1176,7 @@
     "Longitude": "77.308098"
   },
   {
-    "Station Code": "FTTA",
+    "StationCode": "FTTA",
     "Name": "Sector 28",
     "Hindi": "सेक्टर 28",
     "Line": "6",
@@ -1184,7 +1184,7 @@
     "Longitude": "77.305992"
   },
   {
-    "Station Code": "BKMR",
+    "StationCode": "BKMR",
     "Name": "Badkal Mor",
     "Hindi": "बड़कल मोड़",
     "Line": "6",
@@ -1192,7 +1192,7 @@
     "Longitude": "77.310234"
   },
   {
-    "Station Code": "OFDB",
+    "StationCode": "OFDB",
     "Name": "Old Faridabad",
     "Hindi": "ओल्ड फरीदाबाद",
     "Line": "6",
@@ -1200,7 +1200,7 @@
     "Longitude": "77.311272"
   },
   {
-    "Station Code": "NCAJ",
+    "StationCode": "NCAJ",
     "Name": "Neelam Chowk Ajronda",
     "Hindi": "नीलम चौक अजरोंडा",
     "Line": "6",
@@ -1208,7 +1208,7 @@
     "Longitude": "77.309105"
   },
   {
-    "Station Code": "BACH",
+    "StationCode": "BACH",
     "Name": "Bata Chowk",
     "Hindi": "बाटा चौक",
     "Line": "6",
@@ -1216,7 +1216,7 @@
     "Longitude": "77.298782"
   },
   {
-    "Station Code": "ECMJ",
+    "StationCode": "ECMJ",
     "Name": "Escorts Mujesar",
     "Hindi": "एस्कॉर्ट्स मुजेसर",
     "Line": "6",
@@ -1224,7 +1224,7 @@
     "Longitude": "77.315002"
   },
   {
-    "Station Code": "NCBC",
+    "StationCode": "NCBC",
     "Name": "Sant Surdas (Sihi)",
     "Hindi": "संत सूरदास (सिही)",
     "Line": "6",
@@ -1232,7 +1232,7 @@
     "Longitude": "77.316261"
   },
   {
-    "Station Code": "BYHM",
+    "StationCode": "BYHM",
     "Name": "Raja Nahar Singh",
     "Hindi": "राजा नाहर सिंह",
     "Line": "6",
@@ -1240,7 +1240,7 @@
     "Longitude": "77.331657"
   },
   {
-    "Station Code": "MKPR",
+    "StationCode": "MKPR",
     "Name": "Majlis Park",
     "Hindi": "मजलिस पार्क",
     "Line": "7",
@@ -1248,7 +1248,7 @@
     "Longitude": "77.182068"
   },
   {
-    "Station Code": "SMBG",
+    "StationCode": "SMBG",
     "Name": "Shalimar Bagh",
     "Hindi": "शालीमार बाग",
     "Line": "7",
@@ -1256,7 +1256,7 @@
     "Longitude": "77.165184"
   },
   {
-    "Station Code": "SAKP",
+    "StationCode": "SAKP",
     "Name": "Shakurpur",
     "Hindi": "शकूरपुर",
     "Line": "7",
@@ -1264,7 +1264,7 @@
     "Longitude": "77.149651"
   },
   {
-    "Station Code": "PBGW",
+    "StationCode": "PBGW",
     "Name": "Punjabi Bagh West",
     "Hindi": "पंजाबी बाग वेस्ट",
     "Line": "5-7",
@@ -1272,7 +1272,7 @@
     "Longitude": "77.139183"
   },
   {
-    "Station Code": "ESIH",
+    "StationCode": "ESIH",
     "Name": "ESI Basai Darapur",
     "Hindi": "ईएसआई बसई दारापुर",
     "Line": "7",
@@ -1280,7 +1280,7 @@
     "Longitude": "77.127319"
   },
   {
-    "Station Code": "MYPI",
+    "StationCode": "MYPI",
     "Name": "Mayapuri",
     "Hindi": "मायापुरी",
     "Line": "7",
@@ -1288,7 +1288,7 @@
     "Longitude": "77.129738"
   },
   {
-    "Station Code": "NAVR",
+    "StationCode": "NAVR",
     "Name": "Naraina Vihar",
     "Hindi": "नारायणा विहार",
     "Line": "7",
@@ -1296,7 +1296,7 @@
     "Longitude": "77.136482"
   },
   {
-    "Station Code": "DLIC",
+    "StationCode": "DLIC",
     "Name": "Delhi Cantt.",
     "Hindi": "दिल्ली कैंट",
     "Line": "7",
@@ -1304,7 +1304,7 @@
     "Longitude": "77.140373"
   },
   {
-    "Station Code": "DDSC",
+    "StationCode": "DDSC",
     "Name": "Durgabai Deshmukh South Campus",
     "Hindi": "दुर्गाबाई देशमुख साउथ कैंपस",
     "Line": "7",
@@ -1312,7 +1312,7 @@
     "Longitude": "77.169518"
   },
   {
-    "Station Code": "SVMB",
+    "StationCode": "SVMB",
     "Name": "Sir Vishweshwaraiah Moti Bagh",
     "Hindi": "सर विश्वेश्वरैया मोती बाग",
     "Line": "7",
@@ -1320,7 +1320,7 @@
     "Longitude": "77.175713"
   },
   {
-    "Station Code": "BKCP",
+    "StationCode": "BKCP",
     "Name": "Bhikaji Cama Place",
     "Hindi": "भीकाजी कामा प्लेस",
     "Line": "7",
@@ -1328,7 +1328,7 @@
     "Longitude": "77.187866"
   },
   {
-    "Station Code": "SOJI",
+    "StationCode": "SOJI",
     "Name": "Sarojini Nagar",
     "Hindi": "सरोजिनी नगर",
     "Line": "7",
@@ -1336,7 +1336,7 @@
     "Longitude": "77.187866"
   },
   {
-    "Station Code": "SOEN",
+    "StationCode": "SOEN",
     "Name": "South Extension",
     "Hindi": "साउथ एक्सटेंशन",
     "Line": "7",
@@ -1344,7 +1344,7 @@
     "Longitude": "77.219818"
   },
   {
-    "Station Code": "AHRM",
+    "StationCode": "AHRM",
     "Name": "Ashram",
     "Hindi": "आश्रम",
     "Line": "7",
@@ -1352,7 +1352,7 @@
     "Longitude": "77.25753"
   },
   {
-    "Station Code": "VNPR",
+    "StationCode": "VNPR",
     "Name": "Vinobapuri",
     "Hindi": "विनोबापुरी",
     "Line": "7",
@@ -1360,7 +1360,7 @@
     "Longitude": "77.249367"
   },
   {
-    "Station Code": "NIZM",
+    "StationCode": "NIZM",
     "Name": "Sarai Kale Khan Nizamuddin",
     "Hindi": "सराय काले खां निजामुद्दीन",
     "Line": "7",
@@ -1368,7 +1368,7 @@
     "Longitude": "77.253189"
   },
   {
-    "Station Code": "TKPR",
+    "StationCode": "TKPR",
     "Name": "Trilokpuri Sanjay Lake",
     "Hindi": "त्रिलोकपुरी संजय लेक",
     "Line": "7",
@@ -1376,7 +1376,7 @@
     "Longitude": "77.308678"
   },
   {
-    "Station Code": "VENT",
+    "StationCode": "VENT",
     "Name": "East Vinod Nagar Mayur Vihar II",
     "Hindi": "ईस्ट विनोद नगर मयूर विहार II",
     "Line": "7",
@@ -1384,7 +1384,7 @@
     "Longitude": "77.305588"
   },
   {
-    "Station Code": "VNNR",
+    "StationCode": "VNNR",
     "Name": "Mandawali West Vinod Nagar",
     "Hindi": "मंडावली वेस्ट विनोद नगर",
     "Line": "7",
@@ -1392,7 +1392,7 @@
     "Longitude": "77.304146"
   },
   {
-    "Station Code": "IPE",
+    "StationCode": "IPE",
     "Name": "IP Extension",
     "Hindi": "आईपी एक्सटेंशन",
     "Line": "7",
@@ -1400,7 +1400,7 @@
     "Longitude": "77.310898"
   },
   {
-    "Station Code": "KKDC",
+    "StationCode": "KKDC",
     "Name": "Karkardooma Court",
     "Hindi": "कड़कड़डूमा कोर्ट",
     "Line": "7",
@@ -1408,7 +1408,7 @@
     "Longitude": "77.295341"
   },
   {
-    "Station Code": "KHNA",
+    "StationCode": "KHNA",
     "Name": "Krishna Nagar",
     "Hindi": "कृष्णा नगर",
     "Line": "7",
@@ -1416,7 +1416,7 @@
     "Longitude": "77.290306"
   },
   {
-    "Station Code": "EANR",
+    "StationCode": "EANR",
     "Name": "East Azad Nagar",
     "Hindi": "ईस्ट आजाद नगर",
     "Line": "7",
@@ -1424,7 +1424,7 @@
     "Longitude": "77.284599"
   },
   {
-    "Station Code": "JFRB",
+    "StationCode": "JFRB",
     "Name": "Jafrabad",
     "Hindi": "जाफराबाद",
     "Line": "7",
@@ -1432,7 +1432,7 @@
     "Longitude": "77.27507"
   },
   {
-    "Station Code": "MUPR",
+    "StationCode": "MUPR",
     "Name": "Maujpur Babarpur",
     "Hindi": "मौजपुर बाबरपुर",
     "Line": "7",
@@ -1440,7 +1440,7 @@
     "Longitude": "77.280922"
   },
   {
-    "Station Code": "GKPR",
+    "StationCode": "GKPR",
     "Name": "Gokulpuri",
     "Hindi": "गोकुलपुरी",
     "Line": "7",
@@ -1448,7 +1448,7 @@
     "Longitude": "77.286301"
   },
   {
-    "Station Code": "JIEE",
+    "StationCode": "JIEE",
     "Name": "Johri Enclave",
     "Hindi": "जोहरी एनक्लेव",
     "Line": "7",
@@ -1456,7 +1456,7 @@
     "Longitude": "77.290154"
   },
   {
-    "Station Code": "SVVR",
+    "StationCode": "SVVR",
     "Name": "Shiv Vihar",
     "Hindi": "शिव विहार",
     "Line": "7",
@@ -1464,7 +1464,7 @@
     "Longitude": "77.289635"
   },
   {
-    "Station Code": "OBC",
+    "StationCode": "OBC",
     "Name": "Okhla Bird Sanctuary",
     "Hindi": "ओखला बर्ड सैंक्चुरी",
     "Line": "8",
@@ -1472,7 +1472,7 @@
     "Longitude": "77.321564"
   },
   {
-    "Station Code": "KIKJ",
+    "StationCode": "KIKJ",
     "Name": "Kalindi Kunj",
     "Hindi": "कालिंदी कुंज",
     "Line": "8",
@@ -1480,7 +1480,7 @@
     "Longitude": "77.310173"
   },
   {
-    "Station Code": "JLA-8",
+    "StationCode": "JLA-8",
     "Name": "Jasola Vihar Shaheen Bagh",
     "Hindi": "जसोला विहार शाहीन बाग",
     "Line": "8",
@@ -1488,7 +1488,7 @@
     "Longitude": "77.296715"
   },
   {
-    "Station Code": "OVA",
+    "StationCode": "OVA",
     "Name": "Okhla Vihar",
     "Hindi": "ओखला विहार",
     "Line": "8",
@@ -1496,7 +1496,7 @@
     "Longitude": "77.291916"
   },
   {
-    "Station Code": "JANR",
+    "StationCode": "JANR",
     "Name": "Jamia Millia Islamia",
     "Hindi": "जामिया मिलिया इस्लामिया",
     "Line": "8",
@@ -1504,7 +1504,7 @@
     "Longitude": "77.286209"
   },
   {
-    "Station Code": "IWNR",
+    "StationCode": "IWNR",
     "Name": "Sukhdev Vihar",
     "Hindi": "सुखदेव विहार",
     "Line": "8",
@@ -1512,7 +1512,7 @@
     "Longitude": "77.275116"
   },
   {
-    "Station Code": "OKNS",
+    "StationCode": "OKNS",
     "Name": "Okhla NSIC",
     "Hindi": "ओखला एनएसआईसी",
     "Line": "8",
@@ -1520,7 +1520,7 @@
     "Longitude": "77.26487"
   },
   {
-    "Station Code": "NUEE",
+    "StationCode": "NUEE",
     "Name": "Nehru Enclave",
     "Hindi": "नेहरू एन्क्लेव",
     "Line": "8",
@@ -1528,7 +1528,7 @@
     "Longitude": "77.25116"
   },
   {
-    "Station Code": "GKEI",
+    "StationCode": "GKEI",
     "Name": "Greater Kailash",
     "Hindi": "ग्रेटर कैलाश",
     "Line": "8",
@@ -1536,7 +1536,7 @@
     "Longitude": "77.238243"
   },
   {
-    "Station Code": "CDLI",
+    "StationCode": "CDLI",
     "Name": "Chirag Delhi",
     "Hindi": "चिराग दिल्ली",
     "Line": "8",
@@ -1544,7 +1544,7 @@
     "Longitude": "77.229385"
   },
   {
-    "Station Code": "PSPK",
+    "StationCode": "PSPK",
     "Name": "Panchsheel Park",
     "Hindi": "पंचशील पार्क",
     "Line": "8",
@@ -1552,7 +1552,7 @@
     "Longitude": "77.220512"
   },
   {
-    "Station Code": "IIT",
+    "StationCode": "IIT",
     "Name": "IIT",
     "Hindi": "आईआईटी",
     "Line": "8",
@@ -1560,7 +1560,7 @@
     "Longitude": "77.193832"
   },
   {
-    "Station Code": "RKPM",
+    "StationCode": "RKPM",
     "Name": "R K Puram",
     "Hindi": "आरके पुरम",
     "Line": "8",
@@ -1568,7 +1568,7 @@
     "Longitude": "77.184952"
   },
   {
-    "Station Code": "MIRK",
+    "StationCode": "MIRK",
     "Name": "Munirka",
     "Hindi": "मुनिरका",
     "Line": "8",
@@ -1576,7 +1576,7 @@
     "Longitude": "77.174026"
   },
   {
-    "Station Code": "VTVR",
+    "StationCode": "VTVR",
     "Name": "Vasant Vihar",
     "Hindi": "वसंत विहार",
     "Line": "8",
@@ -1584,7 +1584,7 @@
     "Longitude": "77.160774"
   },
   {
-    "Station Code": "SKVR",
+    "StationCode": "SKVR",
     "Name": "Shankar Vihar",
     "Hindi": "शंकर विहार",
     "Line": "8",
@@ -1592,7 +1592,7 @@
     "Longitude": "77.140442"
   },
   {
-    "Station Code": "IGDA",
+    "StationCode": "IGDA",
     "Name": "Terminal 1 IGI Airport",
     "Hindi": "टर्मिनल 1 आईजीआई एयरपोर्ट",
     "Line": "8",
@@ -1600,7 +1600,7 @@
     "Longitude": "77.122391"
   },
   {
-    "Station Code": "SABR",
+    "StationCode": "SABR",
     "Name": "Sadar Bazar Cantonment",
     "Hindi": "सदर बाजार छावनी",
     "Line": "8",
@@ -1608,7 +1608,7 @@
     "Longitude": "77.111305"
   },
   {
-    "Station Code": "PALM",
+    "StationCode": "PALM",
     "Name": "Palam",
     "Hindi": "पालम",
     "Line": "8",
@@ -1616,7 +1616,7 @@
     "Longitude": "77.082954"
   },
   {
-    "Station Code": "DSHP",
+    "StationCode": "DSHP",
     "Name": "Dashrath Puri",
     "Hindi": "दशरथ पुरी",
     "Line": "8",
@@ -1624,7 +1624,7 @@
     "Longitude": "77.08255"
   },
   {
-    "Station Code": "DBMR",
+    "StationCode": "DBMR",
     "Name": "Dabri Mor Janakpuri South",
     "Hindi": "डाबरी मोड़ जनकपुरी साउथ",
     "Line": "8",
@@ -1632,7 +1632,7 @@
     "Longitude": "77.085258"
   },
   {
-    "Station Code": "NNGI",
+    "StationCode": "NNGI",
     "Name": "Nangli",
     "Hindi": "नांगली",
     "Line": "9",
@@ -1640,7 +1640,7 @@
     "Longitude": "77.010345"
   },
   {
-    "Station Code": "NFGH",
+    "StationCode": "NFGH",
     "Name": "Najafgarh",
     "Hindi": "नजफगढ़",
     "Line": "9",
@@ -1648,7 +1648,7 @@
     "Longitude": "76.986259"
   },
   {
-    "Station Code": "DNBT",
+    "StationCode": "DNBT",
     "Name": "Dhansa Bus Stand",
     "Hindi": "ढांसा बस स्टैंड",
     "Line": "9",
@@ -1656,7 +1656,7 @@
     "Longitude": "76.975426"
   },
   {
-    "Station Code": "APOT",
+    "StationCode": "APOT",
     "Name": "IGI Airport",
     "Hindi": "आईजीआई एयरपोर्ट",
     "Line": "10",
@@ -1664,7 +1664,7 @@
     "Longitude": "77.087921"
   },
   {
-    "Station Code": "DACY",
+    "StationCode": "DACY",
     "Name": "Delhi Aerocity",
     "Hindi": "दिल्ली एरोसिटी",
     "Line": "10",
@@ -1672,7 +1672,7 @@
     "Longitude": "77.120743"
   },
   {
-    "Station Code": "DKV",
+    "StationCode": "DKV",
     "Name": "Dhaula Kuan",
     "Hindi": "धौला कुआं",
     "Line": "10",
@@ -1680,7 +1680,7 @@
     "Longitude": "77.161545"
   },
   {
-    "Station Code": "SJSU",
+    "StationCode": "SJSU",
     "Name": "Shivaji Stadium",
     "Hindi": "शिवाजी स्टेडियम",
     "Line": "10",
@@ -1688,7 +1688,7 @@
     "Longitude": "77.209213"
   },
   {
-    "Station Code": "DLIG",
+    "StationCode": "DLIG",
     "Name": "Delhi Gate",
     "Hindi": "दिल्ली गेट",
     "Line": "6",
@@ -1696,7 +1696,7 @@
     "Longitude": "77.240303"
   },
   {
-    "Station Code": "JAMD",
+    "StationCode": "JAMD",
     "Name": "Jama Masjid",
     "Hindi": "जामा मस्जिद",
     "Line": "6",
@@ -1704,7 +1704,7 @@
     "Longitude": "77.237556"
   },
   {
-    "Station Code": "LLQA",
+    "StationCode": "LLQA",
     "Name": "Lal Quila",
     "Hindi": "लाल किला",
     "Line": "6",
@@ -1712,7 +1712,7 @@
     "Longitude": "77.236595"
   },
   {
-    "Station Code": "Sikanderpur",
+    "StationCode": "Sikanderpur",
     "Name": "Sikanderpur (Rapid Metro)",
     "Hindi": "सिकंदरपुर (रैपिड मेट्रो)",
     "Line": "15",
@@ -1720,7 +1720,7 @@
     "Longitude": "77.094246"
   },
   {
-    "Station Code": "Phase 2",
+    "StationCode": "Phase 2",
     "Name": "Phase 2 (Rapid Metro)",
     "Hindi": "फेज 2 (रैपिड मेट्रो)",
     "Line": "15",
@@ -1728,7 +1728,7 @@
     "Longitude": "77.092865"
   },
   {
-    "Station Code": "Belvedere Towers",
+    "StationCode": "Belvedere Towers",
     "Name": "Belvedere Towers (Rapid Metro)",
     "Hindi": "बेल्वेडियर टावर्स (रैपिड मेट्रो)",
     "Line": "15",
@@ -1736,7 +1736,7 @@
     "Longitude": "77.088142"
   },
   {
-    "Station Code": "Cyber City",
+    "StationCode": "Cyber City",
     "Name": "Cyber City (Rapid Metro)",
     "Hindi": "साइबर सिटी (रैपिड मेट्रो)",
     "Line": "15",
@@ -1744,7 +1744,7 @@
     "Longitude": "77.089088"
   },
   {
-    "Station Code": "Moulsari Avenue",
+    "StationCode": "Moulsari Avenue",
     "Name": "Moulsari Avenue (Rapid Metro)",
     "Hindi": "मौलसरी एवेन्यू (रैपिड मेट्रो)",
     "Line": "15",
@@ -1752,7 +1752,7 @@
     "Longitude": "77.094536"
   },
   {
-    "Station Code": "Phase 3",
+    "StationCode": "Phase 3",
     "Name": "Phase 3 (Rapid Metro)",
     "Hindi": "फेज 3 (रैपिड मेट्रो)",
     "Line": "15",
@@ -1760,7 +1760,7 @@
     "Longitude": "77.093552"
   },
   {
-    "Station Code": "Phase 1",
+    "StationCode": "Phase 1",
     "Name": "Phase 1 (Rapid Metro)",
     "Hindi": "फेज I (रैपिड मेट्रो)",
     "Line": "15",
@@ -1768,7 +1768,7 @@
     "Longitude": "77.094009"
   },
   {
-    "Station Code": "Sector 42-43",
+    "StationCode": "Sector 42-43",
     "Name": "Sector 42-43 (Rapid Metro)",
     "Hindi": "सेक्टर 42 43 (रैपिड मेट्रो)",
     "Line": "15",
@@ -1776,7 +1776,7 @@
     "Longitude": "77.09684"
   },
   {
-    "Station Code": "Sector 53-54",
+    "StationCode": "Sector 53-54",
     "Name": "Sector 53-54 (Rapid Metro)",
     "Hindi": "सेक्टर 53 54 (रैपिड मेट्रो)",
     "Line": "15",
@@ -1784,7 +1784,7 @@
     "Longitude": "77.100487"
   },
   {
-    "Station Code": "Sector 54 Chowk",
+    "StationCode": "Sector 54 Chowk",
     "Name": "Sector 54 Chowk (Rapid Metro)",
     "Hindi": "सेक्टर 54 चौक (रैपिड मेट्रो)",
     "Line": "15",
@@ -1792,7 +1792,7 @@
     "Longitude": "77.104782"
   },
   {
-    "Station Code": "Sector 55-56",
+    "StationCode": "Sector 55-56",
     "Name": "Sector 55-56 (Rapid Metro)",
     "Hindi": "सेक्टर 55 56 (रैपिड मेट्रो)",
     "Line": "15",
@@ -1800,7 +1800,7 @@
     "Longitude": "77.105042"
   },
   {
-    "Station Code": "HDNR",
+    "StationCode": "HDNR",
     "Name": "Hindon River",
     "Hindi": "हिंडन नदी",
     "Line": "15",
@@ -1808,7 +1808,7 @@
     "Longitude": "77.40654"
   },
   {
-    "Station Code": "ATHA",
+    "StationCode": "ATHA",
     "Name": "Arthala",
     "Hindi": "अर्थला",
     "Line": "15",
@@ -1816,7 +1816,7 @@
     "Longitude": "77.391876"
   },
   {
-    "Station Code": "MNGM",
+    "StationCode": "MNGM",
     "Name": "Mohan Nagar",
     "Hindi": "मोहन नगर",
     "Line": "15",
@@ -1824,7 +1824,7 @@
     "Longitude": "77.384209"
   },
   {
-    "Station Code": "SMPK",
+    "StationCode": "SMPK",
     "Name": "Shyam Park",
     "Hindi": "श्याम पार्क",
     "Line": "15",
@@ -1832,7 +1832,7 @@
     "Longitude": "77.370911"
   },
   {
-    "Station Code": "RJNM",
+    "StationCode": "RJNM",
     "Name": "Major Mohit Sharma Rajendra Nagar",
     "Hindi": "मेजर मोहित शर्मा राजेंद्र नगर",
     "Line": "15",
@@ -1840,7 +1840,7 @@
     "Longitude": "77.359528"
   },
   {
-    "Station Code": "RJBH",
+    "StationCode": "RJBH",
     "Name": "Raj Bagh",
     "Hindi": "राज बाग",
     "Line": "15",
@@ -1848,7 +1848,7 @@
     "Longitude": "77.346466"
   },
   {
-    "Station Code": "SHDN",
+    "StationCode": "SHDN",
     "Name": "Shaheed Nagar",
     "Hindi": "शहीद नगर",
     "Line": "15",
@@ -1856,7 +1856,7 @@
     "Longitude": "77.333809"
   },
   {
-    "Station Code": "STFN",
+    "StationCode": "STFN",
     "Name": "Noida Sector 34",
     "Hindi": "नोएडा सेक्टर 34",
     "Line": "20",
@@ -1864,7 +1864,7 @@
     "Longitude": "77.363518"
   },
   {
-    "Station Code": "SFTN",
+    "StationCode": "SFTN",
     "Name": "Noida Sector 52",
     "Hindi": "नोएडा सेक्टर 52",
     "Line": "20",
@@ -1872,7 +1872,7 @@
     "Longitude": "77.372749"
   },
   {
-    "Station Code": "SSON",
+    "StationCode": "SSON",
     "Name": "Noida Sector 61",
     "Hindi": "नोएडा सेक्टर 61",
     "Line": "20",
@@ -1880,7 +1880,7 @@
     "Longitude": "77.372368"
   },
   {
-    "Station Code": "SFNN",
+    "StationCode": "SFNN",
     "Name": "Noida Sector 59",
     "Hindi": "नोएडा सेक्टर 59",
     "Line": "20",
@@ -1888,7 +1888,7 @@
     "Longitude": "77.372955"
   },
   {
-    "Station Code": "SSTN",
+    "StationCode": "SSTN",
     "Name": "Noida Sector 62",
     "Hindi": "नोएडा सेक्टर 62",
     "Line": "20",
@@ -1896,7 +1896,7 @@
     "Longitude": "77.373611"
   },
   {
-    "Station Code": "NECC",
+    "StationCode": "NECC",
     "Name": "Noida Electronic City",
     "Hindi": "नोएडा इलेक्ट्रॉनिक सिटी",
     "Line": "20",
@@ -1904,7 +1904,7 @@
     "Longitude": "77.375229"
   },
   {
-    "Station Code": "NSFI",
+    "StationCode": "NSFI",
     "Name": "Noida Sector 51",
     "Hindi": "नोएडा सेक्टर 51",
     "Line": "20",
@@ -1912,7 +1912,7 @@
     "Longitude": "77.375374"
   },
   {
-    "Station Code": "NSOF",
+    "StationCode": "NSOF",
     "Name": "Noida Sector 50",
     "Hindi": "नोएडा सेक्टर 50",
     "Line": "20",
@@ -1920,7 +1920,7 @@
     "Longitude": "77.378357"
   },
   {
-    "Station Code": "NSOS",
+    "StationCode": "NSOS",
     "Name": "Noida Sector 76",
     "Hindi": "नोएडा सेक्टर 76",
     "Line": "20",
@@ -1928,7 +1928,7 @@
     "Longitude": "77.37973"
   },
   {
-    "Station Code": "NSOT",
+    "StationCode": "NSOT",
     "Name": "Noida Sector 101",
     "Hindi": "नोएडा सेक्टर 101",
     "Line": "20",
@@ -1936,7 +1936,7 @@
     "Longitude": "77.385056"
   },
   {
-    "Station Code": "NSOE",
+    "StationCode": "NSOE",
     "Name": "Noida Sector 81",
     "Hindi": "नोएडा सेक्टर 81",
     "Line": "20",
@@ -1944,7 +1944,7 @@
     "Longitude": "77.390099"
   },
   {
-    "Station Code": "NSEZ",
+    "StationCode": "NSEZ",
     "Name": "NSEZ",
     "Hindi": "एनएसईजेड",
     "Line": "20",
@@ -1952,7 +1952,7 @@
     "Longitude": "77.394951"
   },
   {
-    "Station Code": "NSOH",
+    "StationCode": "NSOH",
     "Name": "Noida Sector 83",
     "Hindi": "नोएडा सेक्टर 83",
     "Line": "20",
@@ -1960,7 +1960,7 @@
     "Longitude": "77.396477"
   },
   {
-    "Station Code": "NSOD",
+    "StationCode": "NSOD",
     "Name": "Noida Sector 137",
     "Hindi": "नोएडा सेक्टर 137",
     "Line": "20",
@@ -1968,7 +1968,7 @@
     "Longitude": "77.403625"
   },
   {
-    "Station Code": "NSOL",
+    "StationCode": "NSOL",
     "Name": "Noida Sector 142",
     "Hindi": "नोएडा सेक्टर 142",
     "Line": "20",
@@ -1976,7 +1976,7 @@
     "Longitude": "77.412567"
   },
   {
-    "Station Code": "NSOFI",
+    "StationCode": "NSOFI",
     "Name": "Noida Sector 143",
     "Hindi": "नोएडा सेक्टर 143",
     "Line": "20",
@@ -1984,7 +1984,7 @@
     "Longitude": "77.422318"
   },
   {
-    "Station Code": "NSOO",
+    "StationCode": "NSOO",
     "Name": "Noida Sector 144",
     "Hindi": "नोएडा सेक्टर 144",
     "Line": "20",
@@ -1992,7 +1992,7 @@
     "Longitude": "77.432968"
   },
   {
-    "Station Code": "NSOFV",
+    "StationCode": "NSOFV",
     "Name": "Noida Sector 145",
     "Hindi": "नोएडा सेक्टर 145",
     "Line": "20",
@@ -2000,7 +2000,7 @@
     "Longitude": "77.442307"
   },
   {
-    "Station Code": "NSOSV",
+    "StationCode": "NSOSV",
     "Name": "Noida Sector 146",
     "Hindi": "नोएडा सेक्टर 146",
     "Line": "20",
@@ -2008,7 +2008,7 @@
     "Longitude": "77.455101"
   },
   {
-    "Station Code": "NSOFN",
+    "StationCode": "NSOFN",
     "Name": "Noida Sector 147",
     "Hindi": "नोएडा सेक्टर 147",
     "Line": "20",
@@ -2016,7 +2016,7 @@
     "Longitude": "77.465965"
   },
   {
-    "Station Code": "NSOFH",
+    "StationCode": "NSOFH",
     "Name": "Noida Sector 148",
     "Hindi": "नोएडा सेक्टर 148",
     "Line": "20",
@@ -2024,7 +2024,7 @@
     "Longitude": "77.476692"
   },
   {
-    "Station Code": "KNPK",
+    "StationCode": "KNPK",
     "Name": "Knowledge Park",
     "Hindi": "नॉलेज पार्क",
     "Line": "20",
@@ -2032,7 +2032,7 @@
     "Longitude": "77.500298"
   },
   {
-    "Station Code": "PRCK",
+    "StationCode": "PRCK",
     "Name": "Pari Chowk",
     "Hindi": "परी चौक",
     "Line": "20",
@@ -2040,7 +2040,7 @@
     "Longitude": "77.508308"
   },
   {
-    "Station Code": "ALPH",
+    "StationCode": "ALPH",
     "Name": "Alpha 1",
     "Hindi": "अल्फा 1",
     "Line": "20",
@@ -2048,7 +2048,7 @@
     "Longitude": "77.512718"
   },
   {
-    "Station Code": "DLTO",
+    "StationCode": "DLTO",
     "Name": "Delta 1",
     "Hindi": "डेल्टा 1",
     "Line": "20",
@@ -2056,7 +2056,7 @@
     "Longitude": "77.525581"
   },
   {
-    "Station Code": "GNID",
+    "StationCode": "GNID",
     "Name": "GNIDA Office",
     "Hindi": "जीएनआईडीए कार्यालय",
     "Line": "20",
@@ -2064,7 +2064,7 @@
     "Longitude": "77.536621"
   },
   {
-    "Station Code": "DPST",
+    "StationCode": "DPST",
     "Name": "Depot Station",
     "Hindi": "डिपो स्टेशन",
     "Line": "20",

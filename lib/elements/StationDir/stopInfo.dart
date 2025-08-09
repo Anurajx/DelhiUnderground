@@ -42,6 +42,7 @@ class stopInfoScreen extends StatelessWidget {
 // }
 ////////////////////
 stationCluster(context, stationDict) {
+  print("TRIAL1 THE STATION CODE IS - ${stationDict}");
   return SafeArea(
     child: Container(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 0), //IMPLEMENT ON ALL
@@ -57,15 +58,13 @@ stationCluster(context, stationDict) {
                 closeAndOpeningTime(),
                 stationStatus(),
                 SizedBox(height: 2.h),
-
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
 
-                gatesElement(stationCode: stationDict["Station Code"]),
                 scheduleBlock(),
                 SizedBox(height: 40.h),
-
-                exitBlock(),
+                gatesElement(stationJson: stationDict["Source"]["StationCode"]),
+                //exitBlock(),
                 SizedBox(height: 40.h),
                 ammenitiesBlock(),
                 SizedBox(height: 40.h),

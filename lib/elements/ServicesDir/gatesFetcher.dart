@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/StationDir/stopInfo.dart';
 
 class gatesElement extends StatefulWidget {
-  final stationCode;
-  const gatesElement({super.key, required this.stationCode});
+  final stationJson;
+  const gatesElement({super.key, required this.stationJson});
 
   @override
   State<gatesElement> createState() => _gatesElementState();
@@ -29,11 +29,29 @@ class _gatesElementState extends State<gatesElement> {
 
   @override
   Widget build(BuildContext context) {
+    // print(
+    //   "TRIAL1 THE STATION CODE IS /// ${widget.stationJson["Source"]["StationCode"]}",
+    // );
     return Container(
-      //height: 20,
-      color: Colors.white,
-      child: stationList(gatesJson, widget.stationCode),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            "EXIT",
+            style: TextStyle(
+              color: const Color.fromARGB(255, 109, 109, 109),
+              fontSize: 16.sp, //processedFontheight(context),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          SizedBox(height: 10.h),
+          stationLineBadgeBuilder(gatesJson, widget.stationJson),
+        ],
+      ),
     );
+    //stationLineBadgeBuilder(gatesJson, widget.stationCode);
     // stationList(gatesJson);
   }
 }
@@ -46,7 +64,7 @@ Future<List> loadStationsFromCSV() async {
       "assets/Map/gatesjson.json",
     );
     final List<dynamic> jsonList = jsonDecode(jsonRawData);
-    print("JSON RAW DATA IS $jsonList");
+    print("JSON TRIAL1 RAW DATA IS $jsonList");
     return jsonList;
   } catch (e) {
     return [];
@@ -54,60 +72,87 @@ Future<List> loadStationsFromCSV() async {
   }
 }
 
-Widget stationList(
-  // widget that is expanded and scrollable of stations at bottom
-  List<dynamic> stations,
-  stationCode,
-) {
-  //final localStationCode = widget.stationCode;
-  if (stations.isEmpty) {
-    return const Center(
-      child: Column(
-        children: [
-          SizedBox(height: 30),
-          //CupertinoActivityIndicator(color: Colors.white, radius: 15),
-          Icon(
-            CupertinoIcons.exclamationmark_circle_fill,
-            color: Color.fromARGB(255, 255, 145, 145),
-          ),
-          Text(
-            "no gates found",
-            style: TextStyle(
-              color: Color.fromARGB(255, 255, 145, 145),
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+// Widget stationList(
+//   // widget that is expanded and scrollable of stations at bottom
+//   List<dynamic> stations,
+//   stationCode,
+// ) {
+//   //final localStationCode = widget.stationCode;
+//   if (stations.isEmpty) {
+//     print("JSON TRIAL1 RAW DATA IS EMPTY $stations");
+//     return const Center(
+//       child: Column(
+//         children: [
+//           SizedBox(height: 30),
+//           //CupertinoActivityIndicator(color: Colors.white, radius: 15),
+//           Icon(
+//             CupertinoIcons.exclamationmark_circle_fill,
+//             color: Color.fromARGB(255, 255, 145, 145),
+//           ),
+//           Text(
+//             "no gates found",
+//             style: TextStyle(
+//               color: Color.fromARGB(255, 255, 145, 145),
+//               fontSize: 20,
+//               fontWeight: FontWeight.w500,
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
 
-  return Expanded(
-    child: ListView.separated(
-      itemCount: stations.length,
-      itemBuilder: (context, index) {
-        var station = stations[index];
+//   return Expanded(
+//     child: ListView.separated(
+//       itemCount: stations.length,
+//       itemBuilder: (context, index) {
+//         var station = stations[index];
 
-        // Defensive check
-        if (stationCode == station["Station Code"]) {
-          return const SizedBox(); // or some error placeholder
-        }
-        print("Later JSON station is $station");
-        print("Later JSON station name is ${station["Name"]}");
+//         // Defensive check
+//         if (station["StationCode"]) {
+//           //return const SizedBox();
+//           String name = station["Name"]; // Station Name
+//           String hindiName = station["Hindi"];
+//           return exitBlock(name, hindiName); // or some error placeholder
+//         }
+//         print("Later JSON station is $station");
+//         print("Later JSON station name is ${station["Name"]}");
 
-        //List<int> lineNumbers = [1, 4];
-        //HARD CODED LINE NUMBERS FOR NOW
-        //print("Line numbers: $lineNumbers");
-        String name = station["Name"]; // Station Name
-        String hindiName =
-            station["Hindi"]; // not hindiName actually hindi name
-        return exitBlock(name, hindiName);
-      },
-      separatorBuilder: (context, index) {
-        return const Divider(color: Color.fromARGB(255, 27, 27, 27), height: 1);
-      },
-    ),
+//         //List<int> lineNumbers = [1, 4];
+//         //HARD CODED LINE NUMBERS FOR NOW
+//         //print("Line numbers: $lineNumbers");
+//         String name = station["Name"]; // Station Name
+//         String hindiName =
+//             station["Hindi"]; // not hindiName actually hindi name
+//         return null;
+//       },
+//       separatorBuilder: (context, index) {
+//         return const Divider(color: Color.fromARGB(255, 27, 27, 27), height: 1);
+//       },
+//     ),
+//   );
+// }
+
+Widget stationLineBadgeBuilder(List<dynamic> gates, stationCode) {
+  return Column(
+    children:
+        gates.map<Widget>((line) {
+          print(
+            "Line TRIAL1 is ${line["Station Code Name"]} AND the station code is $stationCode",
+          );
+          if (line["Station Code Name"] == stationCode) {
+            print("Fcukkkkk yeah");
+            return exitBlock(line["Gate Name"], line["Location"]);
+          } else {
+            print(" Fcukkkkk yeahhellll naahhh");
+            print("Line TRIAL1 is NOT APPROVED");
+            return SizedBox();
+          }
+          // return Padding(
+          //   padding: const EdgeInsets.only(right: 3),
+          //   child: exitBlock("GATE", "NEW DOG"),
+          // );
+        }).toList(),
   );
 }
 
@@ -118,16 +163,6 @@ exitBlock(gateNo, gateName) {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          "EXIT",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16.sp, //processedFontheight(context),
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        SizedBox(height: 10.h),
         Stack(
           alignment: Alignment.centerLeft,
           children: [
@@ -177,6 +212,8 @@ exitBlock(gateNo, gateName) {
               child: Center(
                 child: Text(
                   "$gateNo",
+                  overflow: TextOverflow.fade,
+                  softWrap: false,
                   style: TextStyle(
                     color: const Color.fromARGB(255, 172, 172, 172),
                     fontSize: 16.sp,
