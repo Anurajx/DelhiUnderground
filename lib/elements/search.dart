@@ -162,31 +162,16 @@ class _searchBodyState extends State<searchBody> {
     //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
     //fetching data from CSV file logic
     try {
-      // final rawData = await rootBundle.loadString(
-      //   'assets/Map/stops.csv',
-      // ); //stops
-      //TRYING OUT EXPERIMENTAL JSON METHOD
       final jsonRawData = await rootBundle.loadString(
         "assets/Map/stationsjson.json",
       );
       final List<dynamic> jsonList = jsonDecode(jsonRawData);
       print("JSON RAW DATA IS $jsonList");
       return jsonList;
-      // final List<List<dynamic>> rows = await Isolate.run(() {
-      //   return CsvToListConverter(
-      //     eol: '\n',
-      //     fieldDelimiter: ',',
-      //     textDelimiter: '"',
-      //     shouldParseNumbers: false,
-      //   ).convert(rawData);
-      // });
-      // return rows;width
     } catch (e) {
       return [];
       //error protection
     }
-    //print("Total rows parsed: ${rows}");
-    //return rows;
   }
 
   @override

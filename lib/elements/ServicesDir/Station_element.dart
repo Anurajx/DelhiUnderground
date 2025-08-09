@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:metroapp/main.dart';
 
 class stationUnit extends StatelessWidget {
   final dynamic name;
@@ -62,7 +63,7 @@ StationNameAndArrow(name) {
         '$name',
         style: TextStyle(
           fontFamily: 'Poppins',
-          color: const Color.fromARGB(255, 179, 179, 179),
+          color: AppColors.primaryText,
           fontSize: 18.sp,
           fontWeight: FontWeight.w400,
         ),
@@ -184,7 +185,7 @@ class stationPrimitive extends StatelessWidget {
             // maxFontSize: 18,
             style: TextStyle(
               fontFamily: 'Poppins',
-              color: const Color.fromARGB(255, 179, 179, 179),
+              color: AppColors.primaryText,
               fontSize: 18.sp,
               fontWeight: FontWeight.w400, //300
             ),
@@ -244,10 +245,7 @@ class stationPrimitive extends StatelessWidget {
         // ),
         //Spacer(),
         //right: 0,
-        Icon(
-          CupertinoIcons.arrow_right,
-          color: const Color.fromARGB(255, 179, 179, 179),
-        ),
+        Icon(CupertinoIcons.arrow_right, color: AppColors.primaryText),
       ],
     );
   }
@@ -269,7 +267,7 @@ class stationNearby extends StatelessWidget {
             '$name',
             style: TextStyle(
               fontFamily: 'Poppins',
-              color: const Color.fromARGB(255, 179, 179, 179),
+              color: AppColors.primaryText,
               fontSize: 18.sp, //18
               fontWeight: FontWeight.w400,
             ),
@@ -278,10 +276,7 @@ class stationNearby extends StatelessWidget {
         //SizedBox(width: 10),
         //stationLineBadgeBuilder(line),
         // Spacer(),
-        Icon(
-          Icons.info_outline_rounded,
-          color: const Color.fromARGB(255, 179, 179, 179),
-        ),
+        Icon(Icons.info_outline_rounded, color: AppColors.primaryText),
         // Container(
         //   // height: 20,
         //   // width: 50,

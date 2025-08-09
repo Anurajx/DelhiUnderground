@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/Station_element.dart';
+import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
 //import 'package:lottie/lottie.dart';
 
@@ -56,11 +57,14 @@ stationCluster(context, stationDict) {
                 closeAndOpeningTime(),
                 stationStatus(),
                 SizedBox(height: 2.h),
+
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
-                //exitBlock(),
+
+                gatesElement(stationCode: stationDict["Station Code"]),
                 scheduleBlock(),
                 SizedBox(height: 40.h),
+
                 exitBlock(),
                 SizedBox(height: 40.h),
                 ammenitiesBlock(),
@@ -602,18 +606,34 @@ scheduleBlock() {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "Next at",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: const Color.fromARGB(255, 73, 73, 73),
+                        Expanded(
+                          child: Container(
+                            color: Colors.white,
+                            child: Center(
+                              child: Text(
+                                "10:01",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        Text(
-                          "18:21",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                        Expanded(
+                          child: Container(
+                            color: Colors.grey,
+                            child: Center(
+                              child: Text(
+                                "10:15",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -656,18 +676,34 @@ scheduleBlock() {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          "Next at",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: const Color.fromARGB(255, 73, 73, 73),
+                        Expanded(
+                          child: Container(
+                            color: Colors.white,
+                            child: Center(
+                              child: Text(
+                                "NOW",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        Text(
-                          "18:23",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: const Color.fromARGB(255, 0, 0, 0),
+                        Expanded(
+                          child: Container(
+                            color: Colors.grey,
+                            child: Center(
+                              child: Text(
+                                "10:00",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],

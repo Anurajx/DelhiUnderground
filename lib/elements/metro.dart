@@ -298,17 +298,20 @@ nearYou(context) {
                   color: AppColors.tertiaryText,
                   fontSize: 16.sp, //processedFontheight(context),
                   fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w800,
                 ),
               ),
 
               // if(isNear){
 
               // },
-              stationNearby(name: data["Near"]?[0]["Name"], line: lineNumbersN),
-              //Spacer(),
               stationNearby(
                 name: data["NearEnough"]?[0]["Name"],
+                line: lineNumbersN,
+              ),
+              //Spacer(),
+              stationNearby(
+                name: data["Near"]?[0]["Name"],
                 line: lineNumbersNE,
               ),
             ],
@@ -439,30 +442,57 @@ ticketAndExit(context) {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              border: Border.all(color: AppColors.divider),
+              //borderRadius: BorderRadius.all(Radius.circular(5)),
+              //border: Border.all(color: AppColors.divider),
               //color: const Color.fromARGB(255, 17, 17, 17),
             ),
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => mapMetroScreen()),
-                );
-              },
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "metro map",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 187, 187, 187),
-                    fontSize: 18.sp, //processedFontheight(context),
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+            child: Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      final whatsappUrl = Uri.parse(
+                        'https://wa.me/+919650855800?text=Hi',
+                      ); //add ?text=hi
+                      await launchUrl(whatsappUrl);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.inputBackground,
+                        borderRadius: BorderRadius.all(Radius.circular(80)),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          CupertinoIcons.tickets,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(width: 5.w),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => mapMetroScreen(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.inputBackground,
+                        borderRadius: BorderRadius.all(Radius.circular(80)),
+                      ),
+                      child: Center(
+                        child: Icon(CupertinoIcons.map, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -475,14 +505,8 @@ ticketAndExit(context) {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              //color: const Color.fromARGB(255, 17, 17, 17),
-              // image: DecorationImage(
-              //   colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
-              //   image: AssetImage('assets/Image/stopinfo.jpeg'),
-              //   fit: BoxFit.cover,
-              // ),
-              border: Border.all(color: AppColors.divider),
+              color: AppColors.inputBackground,
+              borderRadius: BorderRadius.all(Radius.circular(80)),
             ),
             child: GestureDetector(
               behavior:
@@ -502,7 +526,7 @@ ticketAndExit(context) {
                 child: Text(
                   "stop info",
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 187, 187, 187),
+                    color: const Color.fromARGB(255, 255, 255, 255),
                     fontSize: 18.sp, //processedFontheight(context),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
@@ -640,53 +664,53 @@ appFooter(context) {
             ),
           ),
         ),
-        Spacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            //Spacer(),
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () async {
-                final whatsappUrl = Uri.parse(
-                  'https://wa.me/+919650855800?text=Hi',
-                ); //add ?text=hi
-                await launchUrl(whatsappUrl);
-              },
-              child: LiquidGlass(
-                blur: 5,
-                shape: LiquidRoundedSuperellipse(
-                  borderRadius: Radius.circular(10),
-                ),
-                settings: const LiquidGlassSettings(
-                  thickness: 10,
-                  glassColor: Color(0x1AFFFFFF), // A subtle white tint
-                  lightIntensity: 1.5,
-                  blend: 40,
-                  //outlineIntensity: 0.5,
-                ),
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  child: Text(
-                    "buy tickets",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 175, 175, 175),
-                      //color: const Color.fromARGB(255, 61, 61, 61),
-                      height: 1.h,
-                      fontSize: 16.sp,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 5.w),
-          ],
-        ),
+        // Spacer(),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.end,
+        //   children: [
+        //     //Spacer(),
+        //     GestureDetector(
+        //       behavior: HitTestBehavior.opaque,
+        //       onTap: () async {
+        //         final whatsappUrl = Uri.parse(
+        //           'https://wa.me/+919650855800?text=Hi',
+        //         ); //add ?text=hi
+        //         await launchUrl(whatsappUrl);
+        //       },
+        //       child: LiquidGlass(
+        //         blur: 5,
+        //         shape: LiquidRoundedSuperellipse(
+        //           borderRadius: Radius.circular(10),
+        //         ),
+        //         settings: const LiquidGlassSettings(
+        //           thickness: 10,
+        //           glassColor: Color(0x1AFFFFFF), // A subtle white tint
+        //           lightIntensity: 1.5,
+        //           blend: 40,
+        //           //outlineIntensity: 0.5,
+        //         ),
+        //         child: Container(
+        //           padding: EdgeInsets.all(20),
+        //           child: Text(
+        //             "buy tickets",
+        //             textAlign: TextAlign.left,
+        //             style: TextStyle(
+        //               color: const Color.fromARGB(255, 175, 175, 175),
+        //               //color: const Color.fromARGB(255, 61, 61, 61),
+        //               height: 1.h,
+        //               fontSize: 16.sp,
+        //               fontFamily: 'Poppins',
+        //               fontWeight: FontWeight.w500,
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //     SizedBox(width: 5.w),
+        //   ],
+        // ),
 
-        SizedBox(height: 5),
+        // SizedBox(height: 5),
         // Align(
         //   alignment: Alignment.topRight, // ⬅️ change this to desired side
         //   child: InfoBar(),
