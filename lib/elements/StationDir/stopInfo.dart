@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
+import 'package:metroapp/elements/ServicesDir/stopInfoFetcher.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
 //import 'package:lottie/lottie.dart';
 
@@ -63,10 +64,13 @@ stationCluster(context, stationDict) {
 
                 scheduleBlock(),
                 SizedBox(height: 40.h),
-                gatesElement(stationJson: stationDict["Source"]["StationCode"]),
+                gatesElement(stationCode: stationDict["Source"]["StationCode"]),
                 //exitBlock(),
                 SizedBox(height: 40.h),
-                ammenitiesBlock(),
+                ammenitiesElemenets(
+                  stationCode: stationDict["Source"]["StationCode"],
+                ),
+                //ammenitiesBlock(),
                 SizedBox(height: 40.h),
                 reportError(),
                 SizedBox(height: 40.h),

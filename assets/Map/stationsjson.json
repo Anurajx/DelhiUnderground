@@ -56,7 +56,7 @@
     "Longitude": "77.250404"
   },
   {
-    "StationCode": "KG-6",
+    "StationCode": "KG",
     "Name": "Kashmere Gate",
     "Hindi": "कश्मीरी गेट",
     "Line": "1-2-6",
@@ -1088,7 +1088,7 @@
     "Longitude": "77.251511"
   },
   {
-    "StationCode": "KJMD-8",
+    "StationCode": "KJMD8",
     "Name": "Kalkaji Mandir",
     "Hindi": "कालकाजी मंदिर",
     "Line": "6-8",
@@ -1480,7 +1480,7 @@
     "Longitude": "77.310173"
   },
   {
-    "StationCode": "JLA-8",
+    "StationCode": "JLA8",
     "Name": "Jasola Vihar Shaheen Bagh",
     "Hindi": "जसोला विहार शाहीन बाग",
     "Line": "8",

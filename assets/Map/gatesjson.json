@@ -1,1211 +1,1211 @@
 [
   {
     "Station Code Name": "SPBI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Badli Railway Station",
     "Latitude of Gate": "28.7445508N",
     "Longitude of Gate": "77.1378509E"
   },
   {
     "Station Code Name": "SPBI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "FOB badli Railway Station",
     "Latitude of Gate": "28.7464751N",
     "Longitude of Gate": "77.1375615E"
   },
   {
     "Station Code Name": "RISE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Divyajyoti Appartmemts",
     "Latitude of Gate": "28.738501N",
     "Longitude of Gate": "77.140497E"
   },
   {
     "Station Code Name": "RISE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Paradise Appartments",
     "Latitude of Gate": "28.738535N",
     "Longitude of Gate": "77.140291E"
   },
   {
     "Station Code Name": "BIMR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Adarsh Nagar Railway Station,Badli Village",
     "Latitude of Gate": "28.729665N",
     "Longitude of Gate": "77.149083E"
   },
   {
     "Station Code Name": "BIMR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Kanishka Apartments",
     "Latitude of Gate": "28.72997N",
     "Longitude of Gate": "77.149707E"
   },
   {
     "Station Code Name": "BIMR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Max Hospital,Shalimar Bagh",
     "Latitude of Gate": "28.730615N",
     "Longitude of Gate": "77.150155E"
   },
   {
     "Station Code Name": "JGPI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "JAHANGIR PURI RAM GARH &  DDA FLAT, A BLOCK",
     "Latitude of Gate": "28.7262774N",
     "Longitude of Gate": "77.16.26178E"
   },
   {
     "Station Code Name": "JGPI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "JAHANGIR PURI MAHENDRA PARK &  DDA FLAT, A BLOCK",
     "Latitude of Gate": "28.7257907N",
     "Longitude of Gate": "77.1631185E"
   },
   {
     "Station Code Name": "JGPI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "RAJASTHAN UDAYOG NAGAR",
     "Latitude of Gate": "28.7256535N",
     "Longitude of Gate": "77.1627647E"
   },
   {
     "Station Code Name": "JGPI",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "JAHANGIRPURI INDUSTRIAL AREA",
     "Latitude of Gate": "28.7261368N",
     "Longitude of Gate": "77.162324E"
   },
   {
     "Station Code Name": "AHNR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "RAJAN BABU ROAD , ADARSH NAGAR",
     "Latitude of Gate": "28.716833N",
     "Longitude of Gate": "77.170298E"
   },
   {
     "Station Code Name": "AHNR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MOOLCHAND COLONY",
     "Latitude of Gate": "28.716398N",
     "Longitude of Gate": "77.170715E"
   },
   {
     "Station Code Name": "AHNR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "BHROLA VILLAGE",
     "Latitude of Gate": "28.716364N",
     "Longitude of Gate": "77.170448E"
   },
   {
     "Station Code Name": "AHNR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "SARAI PIPAL THALA",
     "Latitude of Gate": "28.716732N",
     "Longitude of Gate": "77.170026E"
   },
   {
     "Station Code Name": "AZU",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MCD Flats",
     "Latitude of Gate": "28.422550456N",
     "Longitude of Gate": "77.104990224E"
   },
   {
     "Station Code Name": "AZU",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Bus terminal",
     "Latitude of Gate": "28.422568132N",
     "Longitude of Gate": "77.104909116E"
   },
   {
-    "Station Code Name": "AZU-7",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "AZU",
+    "Gate Name": "GATE 3",
     "Location": "LAL BAGH, GT KARNAL ROAD",
     "Latitude of Gate": "28.421584792N",
     "Longitude of Gate": "77.104990728E"
   },
   {
-    "Station Code Name": "AZU-7",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "AZU",
+    "Gate Name": "GATE 4",
     "Location": "MODEL TOWN 3",
     "Latitude of Gate": "28.422278584N",
     "Longitude of Gate": "77.10569946E"
   },
   {
     "Station Code Name": "MDTW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ALPANA CINEMA",
     "Latitude of Gate": "28.703072N",
     "Longitude of Gate": "77.192827E"
   },
   {
     "Station Code Name": "MDTW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "TAGOR PARK",
     "Latitude of Gate": "28.703072N",
     "Longitude of Gate": "77.192827E"
   },
   {
     "Station Code Name": "MDTW",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "KIRPAL BAGH",
     "Latitude of Gate": "28.703072N",
     "Longitude of Gate": "77.192827E"
   },
   {
     "Station Code Name": "MDTW",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "GUJRAWALAN TOWN",
     "Latitude of Gate": "28.703072N",
     "Longitude of Gate": "77.192827E"
   },
   {
     "Station Code Name": "GTBR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Outram Lane",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "GTBR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Batra Cinema",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "GTBR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Hudson Lane",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "GTBR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Camp Chowk",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "GTBR",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "New Police Line",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "VW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Rivera appartment",
     "Latitude of Gate": "28.6953479N",
     "Longitude of Gate": "77.214315E"
   },
   {
     "Station Code Name": "VW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Timarpur",
     "Latitude of Gate": "28.6951902N",
     "Longitude of Gate": "77.2151429E"
   },
   {
     "Station Code Name": "VW",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "University Side",
     "Latitude of Gate": "28.6947861N",
     "Longitude of Gate": "77.2149761E"
   },
   {
     "Station Code Name": "VW",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "University Side",
     "Latitude of Gate": "28.6947385N",
     "Longitude of Gate": "77.2147189E"
   },
   {
     "Station Code Name": "VS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "BHEEMRAO AMBEDKAR MEMORIAL",
     "Latitude of Gate": "28.6993237N",
     "Longitude of Gate": "77.2004542E"
   },
   {
     "Station Code Name": "VS",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "CIVIL LINES THANA",
     "Latitude of Gate": "28.6877632N",
     "Longitude of Gate": "77.2215085E"
   },
   {
     "Station Code Name": "VS",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "MCD OFFICE",
     "Latitude of Gate": "28.701046N",
     "Longitude of Gate": "77.2214975E"
   },
   {
     "Station Code Name": "CL",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SANT PARMANAND HOSPITAL",
     "Latitude of Gate": "28.6770394N",
     "Longitude of Gate": "77.2250377E"
   },
   {
     "Station Code Name": "CL",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "IP COLLEGE",
     "Latitude of Gate": "28.6780335N",
     "Longitude of Gate": "77.2242623E"
   },
   {
     "Station Code Name": "CL",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "PNB BANK",
     "Latitude of Gate": "28.6765714N",
     "Longitude of Gate": "77.2260178E"
   },
   {
     "Station Code Name": "KG",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Towards Mori Gate",
     "Latitude of Gate": "28.401N",
     "Longitude of Gate": "77.1344E"
   },
   {
     "Station Code Name": "KG",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Lala Hardev Sahai Marg",
     "Latitude of Gate": "28.405N",
     "Longitude of Gate": "77.1336E"
   },
   {
     "Station Code Name": "KG",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Lala Hardev Sahai Marg",
     "Latitude of Gate": "28.401N",
     "Longitude of Gate": "77.134E"
   },
   {
     "Station Code Name": "KG",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Lala Hardev Sahai Marg",
     "Latitude of Gate": "28.4011N",
     "Longitude of Gate": "77.1342E"
   },
   {
     "Station Code Name": "KG",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "Lala Hardev Sahai Marg",
     "Latitude of Gate": "28.408N",
     "Longitude of Gate": "77.1343E"
   },
   {
     "Station Code Name": "KG",
-    "Gate Name": "Gate 7",
+    "Gate Name": "GATE 7",
     "Location": "Near ISBT",
     "Latitude of Gate": "28.405N",
     "Longitude of Gate": "77.1348E"
   },
   {
     "Station Code Name": "KG",
-    "Gate Name": "Gate 8",
+    "Gate Name": "GATE 8",
     "Location": "Near ISBT",
     "Latitude of Gate": "28.409N",
     "Longitude of Gate": "77.134E"
   },
   {
     "Station Code Name": "CHK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TownHall",
     "Latitude of Gate": "28.392844N",
     "Longitude of Gate": "77.1355344E"
   },
   {
     "Station Code Name": "CHK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Delhi Public Library, S P Mukharji Marg",
     "Latitude of Gate": "28.392844N",
     "Longitude of Gate": "77.1355344E"
   },
   {
     "Station Code Name": "CHK",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Delhi Railway Station",
     "Latitude of Gate": "28.392844N",
     "Longitude of Gate": "77.1355344E"
   },
   {
     "Station Code Name": "CHK",
-    "Gate Name": "Gate NO.5",
+    "Gate Name": "GATE5",
     "Location": "Gurudwara Sisganj Sahib, Parathe wali Gali, Khari Baoli, Sadar Bazar",
     "Latitude of Gate": "28.392844N",
     "Longitude of Gate": "77.1355344E"
   },
   {
     "Station Code Name": "CWBR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Ajmeri Gate",
     "Latitude of Gate": "28.649238N",
     "Longitude of Gate": "77.226718E"
   },
   {
     "Station Code Name": "CWBR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Nai Sadak",
     "Latitude of Gate": "28.649431N",
     "Longitude of Gate": "77.226839E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Radial road-3/Panchkuian Road , B-block",
     "Latitude of Gate": "28.633780N",
     "Longitude of Gate": "77.2187266E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "PVR Plaza, B Block",
     "Latitude of Gate": "28.634038N",
     "Longitude of Gate": "77.2193438E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Carnival(Odean),D block",
     "Latitude of Gate": "28.633624N",
     "Longitude of Gate": "77.2208116E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "E Block",
     "Latitude of Gate": "28.633114N",
     "Longitude of Gate": "77.221109E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Radial road-1/ Janpath road, F block",
     "Latitude of Gate": "28.6316041N",
     "Longitude of Gate": "77.2201545E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "Radial road-1/ Janpath road,Palika bazar",
     "Latitude of Gate": "28.6315969N",
     "Longitude of Gate": "77.2192907E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 7",
+    "Gate Name": "GATE 7",
     "Location": "Radial road -2 / Baba kharak singh marg , A Block",
     "Latitude of Gate": "28.6323521N",
     "Longitude of Gate": "77.2184044E"
   },
   {
     "Station Code Name": "RCK",
-    "Gate Name": "Gate 8",
+    "Gate Name": "GATE 8",
     "Location": "Radial road-3/Panchkuian Road , A-block",
     "Latitude of Gate": "28.6329178N",
     "Longitude of Gate": "77.218337E"
   },
   {
     "Station Code Name": "PTCK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Jeevan Tara building",
     "Latitude of Gate": "28.623967N",
     "Longitude of Gate": "77.216562E"
   },
   {
     "Station Code Name": "PTCK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Jantar Mantar, SBI",
     "Latitude of Gate": "28.624201N",
     "Longitude of Gate": "77.215695E"
   },
   {
     "Station Code Name": "PTCK",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "Dak bhawan, Sanchar bhawan,NITI ayog",
     "Latitude of Gate": "28.622603N",
     "Longitude of Gate": "77.213352E"
   },
   {
-    "Station Code Name": "CTST-2",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "CTST",
+    "Gate Name": "GATE 1",
     "Location": "RED CROSS BUILDING",
     "Latitude of Gate": "28.617431N",
     "Longitude of Gate": "77.211309E"
   },
   {
-    "Station Code Name": "CTST-2",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "CTST",
+    "Gate Name": "GATE 2",
     "Location": "KRISHI BHAWAN",
     "Latitude of Gate": "28.616763N",
     "Longitude of Gate": "77.213136E"
   },
   {
-    "Station Code Name": "CTST-2",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "CTST",
+    "Gate Name": "GATE 4",
     "Location": "INDIA GATE",
     "Latitude of Gate": "28.614969N",
     "Longitude of Gate": "77.212234E"
   },
   {
-    "Station Code Name": "CTST-2",
-    "Gate Name": "Gate 5",
+    "Station Code Name": "CTST",
+    "Gate Name": "GATE 5",
     "Location": "RAIL BHAWAN",
     "Latitude of Gate": "28.616731N",
     "Longitude of Gate": "77.211802E"
   },
   {
-    "Station Code Name": "CTST-6",
-    "Gate Name": "GATE No.3",
+    "Station Code Name": "CTST",
+    "Gate Name": "GATE3",
     "Location": "Boat Club",
     "Latitude of Gate": "28.615119N",
     "Longitude of Gate": "77.212565E"
   },
   {
     "Station Code Name": "KNR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Furniture Market, Moments Mall",
     "Latitude of Gate": "28.655701N",
     "Longitude of Gate": "77.150612E"
   },
   {
     "Station Code Name": "ILOK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Bigbazar Entry",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "ILOK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Service Road",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "ILOK",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Bigbazar Exit",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "ILOK",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Cooler Market",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "ILOK",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Nirankari Bhawan",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "ILOK",
-    "Gate Name": "Gate No.6",
+    "Gate Name": "GATE6",
     "Location": "Cisf Dog Training Area",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "SRSM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Patel Nagar Railway Station",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "APMN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Manohar Park",
     "Latitude of Gate": "28.671603N",
     "Longitude of Gate": "77.155011E"
   },
   {
     "Station Code Name": "APMN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Ashok Park Sdm Office",
     "Latitude of Gate": "28.672601N",
     "Longitude of Gate": "77.153711E"
   },
   {
     "Station Code Name": "PBGA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Punjabi Bagh Railway Colony",
     "Latitude of Gate": "28.672936N",
     "Longitude of Gate": "77.145972E"
   },
   {
     "Station Code Name": "PBGA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Punjabi Bagh Transport Nagar",
     "Latitude of Gate": "28.672918N",
     "Longitude of Gate": "77.146102E"
   },
   {
     "Station Code Name": "SHVP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Maharaja Aggersain Hospital",
     "Latitude of Gate": "28.675012N",
     "Longitude of Gate": "77.128633E"
   },
   {
     "Station Code Name": "SHVP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Sakur Basti Railway Satation",
     "Latitude of Gate": "28.675552N",
     "Longitude of Gate": "77.1215436E"
   },
   {
     "Station Code Name": "MAPR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Railways Reservation Counter",
     "Latitude of Gate": "28.676116N",
     "Longitude of Gate": "77.119673E"
   },
   {
     "Station Code Name": "MAPR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Madipur Village",
     "Latitude of Gate": "28.676552N",
     "Longitude of Gate": "77.119663E"
   },
   {
     "Station Code Name": "PVE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Bharti Vidyapeeth College",
     "Latitude of Gate": "28.677044N",
     "Longitude of Gate": "77.112716E"
   },
   {
     "Station Code Name": "PVE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Ordinance Depot",
     "Latitude of Gate": "28.677608N",
     "Longitude of Gate": "77.11245E"
   },
   {
     "Station Code Name": "PVW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Shanti Kunj Apartment",
     "Latitude of Gate": "28.6782N",
     "Longitude of Gate": "77.1016E"
   },
   {
     "Station Code Name": "PVW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Pwd Office",
     "Latitude of Gate": "28.678N",
     "Longitude of Gate": "77.1028E"
   },
   {
     "Station Code Name": "PAGI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Ekta Enclave",
     "Latitude of Gate": "28.679361N",
     "Longitude of Gate": "77.093268E"
   },
   {
     "Station Code Name": "PAGI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Udyog Nagar",
     "Latitude of Gate": "28.680136N",
     "Longitude of Gate": "77.092864E"
   },
   {
     "Station Code Name": "UNRG",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Jwala Puri /Inder Enclave",
     "Latitude of Gate": "28.680565N",
     "Longitude of Gate": "77.081085E"
   },
   {
     "Station Code Name": "UNRG",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Udyog Nagar Industrial Area",
     "Latitude of Gate": "28.680565N",
     "Longitude of Gate": "77.081085E"
   },
   {
     "Station Code Name": "SMSM",
-    "Gate Name": "GATE No.-1",
+    "Gate Name": "GATE-1",
     "Location": "Rail Neer Plant",
     "Latitude of Gate": "28.681604N",
     "Longitude of Gate": "77.0739E"
   },
   {
     "Station Code Name": "SMSM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Maharaja Surajmal Stadium",
     "Latitude of Gate": "28.682049N",
     "Longitude of Gate": "77.074483E"
   },
   {
     "Station Code Name": "NNOI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Kirari Mor, Delhi Police Staff Quarter",
     "Latitude of Gate": "28.68263N",
     "Longitude of Gate": "77.06458E"
   },
   {
     "Station Code Name": "NNOI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Govt. Sarvodya Bal, Kanya Vidhalaya Nangloi, Govt Girls Sr. Sec School Nangloi",
     "Latitude of Gate": "28.68256N",
     "Longitude of Gate": "77.06505E"
   },
   {
     "Station Code Name": "NRSN",
-    "Gate Name": "GATE No.-1",
+    "Gate Name": "GATE-1",
     "Location": "Blooming Dales School",
     "Latitude of Gate": "28.68192N",
     "Longitude of Gate": "77.05628E"
   },
   {
     "Station Code Name": "NRSN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Nangloi Railway Station Of Indian Railway",
     "Latitude of Gate": "28.68236N",
     "Longitude of Gate": "77.05624E"
   },
   {
     "Station Code Name": "RDPK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Timber Market",
     "Latitude of Gate": "28.4055N",
     "Longitude of Gate": "77.0239E"
   },
   {
     "Station Code Name": "RDPK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Eklavya Exam Center",
     "Latitude of Gate": "28.4057N",
     "Longitude of Gate": "77.0239E"
   },
   {
     "Station Code Name": "MUDK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Rohtak Road",
     "Latitude of Gate": "28.40551N",
     "Longitude of Gate": "77.14894E"
   },
   {
     "Station Code Name": "MUDK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Metro Parking",
     "Latitude of Gate": "28.405775N",
     "Longitude of Gate": "77.15252E"
   },
   {
     "Station Code Name": "MIAA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Bakkarwala",
     "Latitude of Gate": "28.6833N",
     "Longitude of Gate": "77.01674E"
   },
   {
     "Station Code Name": "MIAA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Bakkarwala",
     "Latitude of Gate": "28.68311N",
     "Longitude of Gate": "77.0173E"
   },
   {
     "Station Code Name": "MIAA",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Mundka Depot",
     "Latitude of Gate": "28.68365N",
     "Longitude of Gate": "77.01739E"
   },
   {
     "Station Code Name": "GHEM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Shri Vaishno Devi Mandir, Neelwal Gaon",
     "Latitude of Gate": "28.685054N",
     "Longitude of Gate": "76.995641E"
   },
   {
     "Station Code Name": "GHEM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Ghevra Railway Station, Sawda Colony",
     "Latitude of Gate": "28.685425N",
     "Longitude of Gate": "76.995702E"
   },
   {
     "Station Code Name": "TKLM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Tikri Kalan Village , Shirdi Sai Temple, Prince Public School",
     "Latitude of Gate": "28.686556N",
     "Longitude of Gate": "76.977373E"
   },
   {
     "Station Code Name": "TKLM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Hp Delhi Terminal And Receiving Station , Azad Hind Gram",
     "Latitude of Gate": "28.68712N",
     "Longitude of Gate": "76.976929E"
   },
   {
     "Station Code Name": "TKBR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Govt. Sarvodaya Kanya Vidayla",
     "Latitude of Gate": "28.687865N",
     "Longitude of Gate": "76.964527E"
   },
   {
     "Station Code Name": "TKBR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Tikri Border Toll Tax",
     "Latitude of Gate": "28.688145N",
     "Longitude of Gate": "76.964537E"
   },
   {
     "Station Code Name": "MIEE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Mie Part A",
     "Latitude of Gate": "28.689045N",
     "Longitude of Gate": "76.950799E"
   },
   {
     "Station Code Name": "MIEE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Mie Part B",
     "Latitude of Gate": "28.689471N",
     "Longitude of Gate": "76.95109E"
   },
   {
     "Station Code Name": "BUSS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Bus Stand",
     "Latitude of Gate": "28.690676N",
     "Longitude of Gate": "76.936024E"
   },
   {
     "Station Code Name": "BUSS",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Parnala Road",
     "Latitude of Gate": "28.69036N",
     "Longitude of Gate": "76.93551E"
   },
   {
     "Station Code Name": "CIPK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Ch. Devilal Park",
     "Latitude of Gate": "28.697027N",
     "Longitude of Gate": "76.918862E"
   },
   {
     "Station Code Name": "CIPK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Iocl Petrol Pump",
     "Latitude of Gate": "28.697822N",
     "Longitude of Gate": "76.919116E"
   },
   {
-    "Station Code Name": "BCGN L-8",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "BCGN",
+    "Gate Name": "GATE 2",
     "Location": "Capt. Vijyant thapar Marg",
     "Latitude of Gate": "28.56305556N",
     "Longitude of Gate": "77.33361111E"
   },
   {
-    "Station Code Name": "BCGN L-8",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "BCGN",
+    "Gate Name": "GATE 3",
     "Location": "Capt. Vijyant thapar Marg",
     "Latitude of Gate": "28.56305556N",
     "Longitude of Gate": "77.33361111E"
   },
   {
-    "Station Code Name": "BCGN L-8",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "BCGN",
+    "Gate Name": "GATE 4",
     "Location": "Multilevel parking",
     "Latitude of Gate": "28.56305556N",
     "Longitude of Gate": "77.33361111E"
   },
   {
-    "Station Code Name": "BCGN-3",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "BCGN",
+    "Gate Name": "GATE 1",
     "Location": "Captain Vijayat Thapar Marg",
     "Latitude of Gate": "28.5630556N",
     "Longitude of Gate": "77.33361111E"
   },
   {
     "Station Code Name": "OKBS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Okhla Bird Sanctuary",
     "Latitude of Gate": "28.552716N",
     "Longitude of Gate": "77.321049E"
   },
   {
     "Station Code Name": "OKBS",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Supertech Supernova",
     "Latitude of Gate": "28.552502N",
     "Longitude of Gate": "77.321411E"
   },
   {
     "Station Code Name": "OKBS",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Mahamaya Flyover",
     "Latitude of Gate": "28.553333N",
     "Longitude of Gate": "77.321926E"
   },
   {
     "Station Code Name": "KIKJ",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "South-West side towards kalindi kunj mithapur road",
     "Latitude of Gate": "28.54281N",
     "Longitude of Gate": "77.30968E"
   },
   {
     "Station Code Name": "JLA8",
-    "Gate Name": "Gate No.1",
+    "Gate Name": "GATE1",
     "Location": "Working Women's Hostel(YWCA), Good Samaritan School, HIG Flats, Sec-9A, Jasola Vihar(DDA), DDA Marriage Hall, Govt. Boys/Girls Senior Secondary School(Shaheen Bagh/ Jasola), Sanjeevni Hospital, Jasola Village, Shaheen Bagh Police station, Abdul Fazal Enclave Part-1& Part-2",
     "Latitude of Gate": "28.5471395N",
     "Longitude of Gate": "77.2980274E"
   },
   {
     "Station Code Name": "JLA8",
-    "Gate Name": "Gate No.2",
+    "Gate Name": "GATE2",
     "Location": "Shaheen Bagh Police station,Grave Yard, Okhla Vihar",
     "Latitude of Gate": "28.5481901N",
     "Longitude of Gate": "77.2977855E"
   },
   {
     "Station Code Name": "JLA8",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "Choudhary Charan Singh Udyan, Delhi Rides, Sarita Vihar,Madanpur Khadar",
     "Latitude of Gate": "28.5457851N",
     "Longitude of Gate": "77.2964926E"
   },
   {
     "Station Code Name": "JLA8",
-    "Gate Name": "Gate No.4",
+    "Gate Name": "GATE4",
     "Location": "DAV School, Living Style Mall, SFS Flats, Sector 7 & 8, Jasola Vihar DDA, Jasola Pocket 1 & 2",
     "Latitude of Gate": "28.5453566N",
     "Longitude of Gate": "77.2967853E"
   },
   {
     "Station Code Name": "JLA8",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "FOB Shaheen Bagh, Allama Shibli Nomani Marg",
     "Latitude of Gate": "28.545989N",
     "Longitude of Gate": "77.2962855E"
   },
   {
     "Station Code Name": "OVA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Jamia Nagar Police station,Okhla Head",
     "Latitude of Gate": "28.5611111N",
     "Longitude of Gate": "77.292222E"
   },
   {
     "Station Code Name": "OVA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Okhla Head,Canal Colony",
     "Latitude of Gate": "28.4516666N",
     "Longitude of Gate": "77.919444E"
   },
   {
     "Station Code Name": "OVA",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Abul Fazal Enclave,Hari Kothi Road",
     "Latitude of Gate": "28.5597222N",
     "Longitude of Gate": "77.919444E"
   },
   {
     "Station Code Name": "JANR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "JAMIA  MILLIA ISLAMIA UNIVERSITY",
     "Latitude of Gate": "28.5452N",
     "Longitude of Gate": "77.296E"
   },
   {
     "Station Code Name": "JANR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BATLA HOUSE",
     "Latitude of Gate": "28.5637N",
     "Longitude of Gate": "77.286E"
   },
   {
     "Station Code Name": "JANR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "TIKONA PARK",
     "Latitude of Gate": "28.5629N",
     "Longitude of Gate": "77.2863E"
   },
   {
     "Station Code Name": "IWNR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Fortis Escort Hospital IPD",
     "Latitude of Gate": "28.55979N",
     "Longitude of Gate": "77.27471E"
   },
   {
     "Station Code Name": "IWNR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Fortis Escort Hospital OPD",
     "Latitude of Gate": "28.55958N",
     "Longitude of Gate": "77.27495E"
   },
   {
     "Station Code Name": "IWNR",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "ARDEE SCHOOL",
     "Latitude of Gate": "28.56009N",
     "Longitude of Gate": "77.27522E"
   },
   {
     "Station Code Name": "IWNR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "DON BOSCO SCHOOL",
     "Latitude of Gate": "28.55984N",
     "Longitude of Gate": "77.27525E"
   },
   {
     "Station Code Name": "OKNS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NSIC, Okhla Phase-3, Okhla Railway Station, Shambhu Dayal Bagh, Captain Gaur Marg",
     "Latitude of Gate": "28.555332N",
     "Longitude of Gate": "77.265183E"
   },
   {
     "Station Code Name": "OKNS",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NSIC Exhibition Complex, Lotus Temple, Kalkaji Mandir",
     "Latitude of Gate": "28.553988N",
     "Longitude of Gate": "77.264726E"
   },
   {
     "Station Code Name": "OKNS",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "NSIC, Okhla Phase-3, Okhla Railway Station, Shambhu Dayal Bagh, Captain Gaur Marg",
     "Latitude of Gate": "28.555332N",
     "Longitude of Gate": "77.265183E"
   },
   {
     "Station Code Name": "KJMD8",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "LOTUS TEMPLE, KALKAJI MAMDIR",
     "Latitude of Gate": "28.333N",
     "Longitude of Gate": "77.1524E"
   },
   {
     "Station Code Name": "KJMD8",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "MTNL BUILDING",
     "Latitude of Gate": "28.332N",
     "Longitude of Gate": "77.1521E"
   },
   {
     "Station Code Name": "KJMD8",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "BHAIRAV MANDIR",
     "Latitude of Gate": "28.3254N",
     "Longitude of Gate": "77.1521E"
   },
   {
-    "Station Code Name": "KJMD-6",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "KJMD8",
+    "Gate Name": "GATE 1",
     "Location": "BLOCK 9,KALKAJI ,NEW DELHI,DELHI-110019",
     "Latitude of Gate": "28.325716N",
     "Longitude of Gate": "77.153254E"
   },
   {
     "Station Code Name": "NUEE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Chirag Enclave, pamposh Enclave, Eros Intercontinental, Devika Tower, Fortis C-DAC Hospital",
     "Latitude of Gate": "28.546492N",
     "Longitude of Gate": "77.249908E"
   },
   {
     "Station Code Name": "NUEE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Paras Cinema, Nehru Place Market, Modi Tower, International Trade Tower, Paharpur Business Centre",
     "Latitude of Gate": "28.54698N",
     "Longitude of Gate": "77.252055E"
   },
   {
     "Station Code Name": "NUEE",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Kalkaji Extention, JIMS Kalkaji, Bhairav Mandir, Kalkaji Police Station",
     "Latitude of Gate": "28.545997N",
     "Longitude of Gate": "77.251685E"
   },
   {
     "Station Code Name": "NUEE",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Kalkaji , Veer Savarkar Govt. Sarvodaya Kanya Vidyalaya, CR Park, Deshbandhu College, Ramanujan College, Apollo Cradle Royale Hospital",
     "Latitude of Gate": "28.545385N",
     "Longitude of Gate": "77.250959E"
   },
   {
     "Station Code Name": "NUEE",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Kalkaji , Veer Savarkar Govt. Sarvodaya Kanya Vidyalaya, CR Park, Deshbandhu College, Ramanujan College, Apollo Cradle Royale Hospital",
     "Latitude of Gate": "28.545083N",
     "Longitude of Gate": "77.250562E"
   },
   {
     "Station Code Name": "GKEI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Masjid Moth, DDA Flats, BSES Office",
     "Latitude of Gate": "28.541601N",
     "Longitude of Gate": "77.237359E"
   },
   {
     "Station Code Name": "GKEI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Pumposh Enclave, TCIL Building, Greater Kailash Enclave 1",
     "Latitude of Gate": "28.542201N",
     "Longitude of Gate": "77.239584E"
   },
   {
     "Station Code Name": "GKEI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "CR Park, Greater Kailash Enclave 2, Savitri Cinema Complex",
     "Latitude of Gate": "28.541975N",
     "Longitude of Gate": "77.240045E"
   },
   {
     "Station Code Name": "CDLI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Chirag Delhi Village",
     "Latitude of Gate": "28.539792N",
     "Longitude of Gate": "77.234666E"
   },
   {
     "Station Code Name": "CDLI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Rockland hotel",
     "Latitude of Gate": "28.539859N",
     "Longitude of Gate": "77.234524E"
   },
   {
     "Station Code Name": "CDLI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "DDA flats Masjid Moth(Ph-1&2)",
     "Latitude of Gate": "28.541385N",
     "Longitude of Gate": "77.233335E"
   },
   {
     "Station Code Name": "CDLI",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Ambedkar nagar, Khanpur",
     "Latitude of Gate": "28.541134N",
     "Longitude of Gate": "77.23278E"
   },
   {
     "Station Code Name": "CDLI",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Chirag Delhi Village,Jahapanah city forest",
     "Latitude of Gate": "28.541415N",
     "Longitude of Gate": "77.233304E"
   },
   {
     "Station Code Name": "PSPK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "PANCHSHEEL PARK S-BLOCK",
     "Latitude of Gate": "28.5421175N",
     "Longitude of Gate": "77.2200975E"
   },
   {
     "Station Code Name": "PSPK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "PANCHSHEEL ENCLAVE",
     "Latitude of Gate": "28.5428656N",
     "Longitude of Gate": "77.2213061E"
   },
   {
     "Station Code Name": "PSPK",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "SOAMI NAGAR (SOUTH)",
     "Latitude of Gate": "28.5422306N",
     "Longitude of Gate": "77.2218288E"
   },
   {
     "Station Code Name": "IIT",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ROSE GARDEN",
     "Latitude of Gate": "28.547095N",
     "Longitude of Gate": "77.194162E"
   },
   {
     "Station Code Name": "IIT",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SDA MARKET",
     "Latitude of Gate": "28.546595N",
     "Longitude of Gate": "77.195464E"
   },
   {
     "Station Code Name": "IIT",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "IIT INSTITUTE",
     "Latitude of Gate": "28.546142N",
     "Longitude of Gate": "77.1952E"
   },
   {
     "Station Code Name": "RKPM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ENTRY/EXIT FOR R .K.PURAM SEC. 3, & R K KHANNA TENNIS STATDIUM",
     "Latitude of Gate": "28.551621N",
     "Longitude of Gate": "77.184408E"
   },
   {
     "Station Code Name": "RKPM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "ENTRY/EXIT FOR R .K.PURAM SEC. 3, & R K KHANNA TENNIS STATDIUM",
     "Latitude of Gate": "28.551248N",
     "Longitude of Gate": "77.184705E"
   },
   {
     "Station Code Name": "RKPM",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "ENTRY/EXIT FOR DDA SPORTS COMPLEX GROUND",
     "Latitude of Gate": "28.550264N",
     "Longitude of Gate": "77.185366E"
   },
   {
     "Station Code Name": "RKPM",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "ENTRY/EXIT FOR ROSE GARDEN & IIT",
     "Latitude of Gate": "28.549771N",
     "Longitude of Gate": "77.186607E"
   },
   {
     "Station Code Name": "RKPM",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "ENTRY/EXIT FOR IIT HOSTEL,BER SARAI,CENTRAL SOIL & MATERIAL RESEARCH STATION,INSTITUTE OF SECRITARIAT TRAINING AND MANAGEMENT",
     "Latitude of Gate": "28.549068N",
     "Longitude of Gate": "77.186517E"
   },
   {
     "Station Code Name": "MIRK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "CPWD COLONY,VIVEKANAND MARG",
     "Latitude of Gate": "28.557799N",
     "Longitude of Gate": "77.173648E"
   },
   {
     "Station Code Name": "MIRK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "CPWD COLONY, JAIN MANDIR",
     "Latitude of Gate": "28.556523N",
     "Longitude of Gate": "77.175313E"
   },
   {
     "Station Code Name": "MIRK",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "MUNIRKA MARKET, CAPITAL COURT, DDA MARKET, VASANT VIHAR POLICE STATION",
     "Latitude of Gate": "28.556649N",
     "Longitude of Gate": "77.174129E"
@@ -1219,77 +1219,77 @@
   },
   {
     "Station Code Name": "VTVR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Gurudwara",
     "Latitude of Gate": "28.558468N",
     "Longitude of Gate": "77.162749E"
   },
   {
     "Station Code Name": "VTVR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Munirka Marg",
     "Latitude of Gate": "28.558374N",
     "Longitude of Gate": "77.163147E"
   },
   {
     "Station Code Name": "VTVR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Embassy of Togo, Vasant  lok Market",
     "Latitude of Gate": "28.558021N",
     "Longitude of Gate": "77.16272E"
   },
   {
     "Station Code Name": "VTVR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Jharkhand Bhawan Embassy of EL Salvador",
     "Latitude of Gate": "28.557925N",
     "Longitude of Gate": "77.161244E"
   },
   {
     "Station Code Name": "SKVR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Army Public School",
     "Latitude of Gate": "28.560535N",
     "Longitude of Gate": "77.140888E"
   },
   {
     "Station Code Name": "SKVR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Army Residential Area",
     "Latitude of Gate": "28.560537N",
     "Longitude of Gate": "77.140889E"
   },
   {
     "Station Code Name": "IGDA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MEHRAM NAGAR WEST , DHAULA KUAN",
     "Latitude of Gate": "28.566277N",
     "Longitude of Gate": "77.122791E"
   },
   {
     "Station Code Name": "IGDA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "T-1 PARKING, MEHRAM NAGAR EAST, DOMESTIC DEPARTURES, DR. BHIMRAO AMBEDKAR SCHOOL",
     "Latitude of Gate": "28.578511N",
     "Longitude of Gate": "77.110381E"
   },
   {
     "Station Code Name": "IGDA",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "DOMESTIC ARRIVALS, DOMESTIC AIRPORT POLICE STATION, G-5 BUILDING",
     "Latitude of Gate": "28.564284N",
     "Longitude of Gate": "77.122469E"
   },
   {
     "Station Code Name": "SABR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "PRAHALAD PUR VILLAGE",
     "Latitude of Gate": "28.57676N",
     "Longitude of Gate": "77.110535E"
   },
   {
     "Station Code Name": "SABR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DHRUV AUDITORIUM",
     "Latitude of Gate": "28.57677N",
     "Longitude of Gate": "77.110536E"
@@ -1302,14 +1302,14 @@
     "Longitude of Gate": "77.083133E"
   },
   {
-    "Station Code Name": "",
+    "Station Code Name": "PALM",
     "Gate Name": "GATE 2",
     "Location": "PALAM COLONY",
     "Latitude of Gate": "28.588349N",
     "Longitude of Gate": "77.083874E"
   },
   {
-    "Station Code Name": "",
+    "Station Code Name": "PALM",
     "Gate Name": "GATE 3",
     "Location": "PALAM VILLAGE",
     "Latitude of Gate": "28.588167N",
@@ -1323,35 +1323,35 @@
     "Longitude of Gate": "77.082721E"
   },
   {
-    "Station Code Name": "",
+    "Station Code Name": "DSHP",
     "Gate Name": "GATE 2",
     "Location": "SULABH INTERNATIONAL",
     "Latitude of Gate": "28.601731N",
     "Longitude of Gate": "77.082401E"
   },
   {
-    "Station Code Name": "",
+    "Station Code Name": "DSHP",
     "Gate Name": "GATE 3",
     "Location": "VIJAY ENCLAVE",
     "Latitude of Gate": "28.601788N",
     "Longitude of Gate": "77.082154E"
   },
   {
-    "Station Code Name": "DBMR-JPS",
+    "Station Code Name": "DBMR",
     "Gate Name": "GATE 1",
     "Location": "PANKHA ROAD",
     "Latitude of Gate": "28.614801N",
     "Longitude of Gate": "77.08469E"
   },
   {
-    "Station Code Name": "",
+    "Station Code Name": "DBMR",
     "Gate Name": "GATE 2",
     "Location": "JANAKPURI C-2",
     "Latitude of Gate": "28.613986N",
     "Longitude of Gate": "77.085055E"
   },
   {
-    "Station Code Name": "",
+    "Station Code Name": "DBMR",
     "Gate Name": "GATE 3",
     "Location": "DABRI VILLAGE",
     "Latitude of Gate": "28.617177N",
@@ -1359,532 +1359,532 @@
   },
   {
     "Station Code Name": "MKPR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ENTRY",
     "Latitude of Gate": "28.722551N",
     "Longitude of Gate": "77.177453E"
   },
   {
     "Station Code Name": "MKPR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "EXIT",
     "Latitude of Gate": "28.722551N",
     "Longitude of Gate": "77.177453E"
   },
   {
     "Station Code Name": "SMBG",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "AG BLOCK SHALIMAR BAGH",
     "Latitude of Gate": "28.7019732N",
     "Longitude of Gate": "77.1642263E"
   },
   {
     "Station Code Name": "SMBG",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "AG BLOCK SHALIMAR BAGH",
     "Latitude of Gate": "28.7022045N",
     "Longitude of Gate": "77.1644531E"
   },
   {
     "Station Code Name": "SMBG",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "ASHOK VIHAR",
     "Latitude of Gate": "28.7016178N",
     "Longitude of Gate": "77.1663251E"
   },
   {
     "Station Code Name": "SMBG",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "COMPUTER MARKET",
     "Latitude of Gate": "28.7016179N",
     "Longitude of Gate": "77.1663256E"
   },
   {
     "Station Code Name": "SMBG",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "EPFO OFFICE",
     "Latitude of Gate": "28.7022022N",
     "Longitude of Gate": "77.1664035E"
   },
   {
     "Station Code Name": "SAKP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SHAKURPUR DISTRICT PARK, SHAKURPUR COLONY & LAWRENCE ROAD COLONY",
     "Latitude of Gate": "28.6858N",
     "Longitude of Gate": "77.1496E"
   },
   {
     "Station Code Name": "SAKP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "JJ COLONY SHAKURPUR, SHAKURPUR VILLAGE & BRITANIA CHOWK",
     "Latitude of Gate": "28.6702N",
     "Longitude of Gate": "77.1481E"
   },
   {
     "Station Code Name": "PBGW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Punjabi bagh Club,Traffic training park,Jaidev Park,Karampura,Iskon Punjabi Bagh,Gurudwara Tikana Sahib",
     "Latitude of Gate": "28.6723835N",
     "Longitude of Gate": "77.1387591E"
   },
   {
     "Station Code Name": "PBGW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Rohtak Road,Punjabi bagh chauk, Maharaja agarsen Hospital, Shi Hans Satsang bhawan",
     "Latitude of Gate": "28.6723835N",
     "Longitude of Gate": "77.1387591E"
   },
   {
     "Station Code Name": "ESIH",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Rajdhani college,Shivaji college,Basaidarapur,Rajauri garden,Tagore garden EXT.,Director Gen. of Home guards",
     "Latitude of Gate": "28.65755N",
     "Longitude of Gate": "77.127078E"
   },
   {
     "Station Code Name": "ESIH",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "ESI Hospital,Iskon Punjabi bagh,Sudarshan park,Bali nagar,ESI colony,Punjabi bagh club",
     "Latitude of Gate": "28.6568582N",
     "Longitude of Gate": "77.1274831E"
   },
   {
     "Station Code Name": "MYPI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "PRIYADARSHNI PARK",
     "Latitude of Gate": "28.638061N",
     "Longitude of Gate": "77.129467E"
   },
   {
     "Station Code Name": "MYPI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DTC MAYAPURI DEPOT",
     "Latitude of Gate": "28.636767N",
     "Longitude of Gate": "77.129089E"
   },
   {
     "Station Code Name": "NAVR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "RING ROAD",
     "Latitude of Gate": "28.624563N",
     "Longitude of Gate": "77.136406E"
   },
   {
     "Station Code Name": "NAVR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NARAINA VILLAGE",
     "Latitude of Gate": "28.622912N",
     "Longitude of Gate": "77.137015E"
   },
   {
     "Station Code Name": "DLIC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Army Medical College",
     "Latitude of Gate": "28.60951N",
     "Longitude of Gate": "77.141865E"
   },
   {
     "Station Code Name": "DLIC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Brar Square, Air Force Station, Naraina",
     "Latitude of Gate": "28.608809N",
     "Longitude of Gate": "77.140582E"
   },
   {
     "Station Code Name": "DDSC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Sh Venkateswar College, satya Niketan",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "DDSC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Smriti vatika, San Martin park, Northern railway eco park",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "SVMB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SECTOR 12 RK PURAM",
     "Latitude of Gate": "28.57783N",
     "Longitude of Gate": "77.17599E"
   },
   {
     "Station Code Name": "SVMB",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SECTOR -3 SHANTI NIKETAN",
     "Latitude of Gate": "28.57789N",
     "Longitude of Gate": "77.1768E"
   },
   {
     "Station Code Name": "SVMB",
-    "Gate Name": "SUBWAY(GATE-1 )",
+    "Gate Name": "1-SUBWAY",
     "Location": "ARADHNA ENCLAVE",
     "Latitude of Gate": "28.57907N",
     "Longitude of Gate": "77.17545E"
   },
   {
     "Station Code Name": "BKCP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "PALIKA BHAWAN",
     "Latitude of Gate": "28.57595N",
     "Longitude of Gate": "77.17227E"
   },
   {
     "Station Code Name": "BKCP",
-    "Gate Name": "Gate No-1 Subway",
+    "Gate Name": "1-Subway",
     "Location": "SUBWAY TOWARDS GAIL INDIA",
     "Latitude of Gate": "28.57595N",
     "Longitude of Gate": "77.17227E"
   },
   {
     "Station Code Name": "BKCP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DTC SAROJINI NAGAR DEPOT",
     "Latitude of Gate": "28.57004N",
     "Longitude of Gate": "77.18861E"
   },
   {
     "Station Code Name": "BKCP",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "EIL OFFICE",
     "Latitude of Gate": "28.56921N",
     "Longitude of Gate": "77.18853E"
   },
   {
     "Station Code Name": "SOJI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Sarojini Nagar Market",
     "Latitude of Gate": "28.343252N",
     "Longitude of Gate": "77.1151774E"
   },
   {
     "Station Code Name": "SOJI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Pilanji Gaon",
     "Latitude of Gate": "28.34334092N",
     "Longitude of Gate": "77.11593808E"
   },
   {
     "Station Code Name": "SOEN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "South Extention 1",
     "Latitude of Gate": "28.56893N",
     "Longitude of Gate": "77.21891E"
   },
   {
     "Station Code Name": "SOEN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "South Extention 1",
     "Latitude of Gate": "28.56933N",
     "Longitude of Gate": "77.22024E"
   },
   {
     "Station Code Name": "SOEN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "South Extention 2",
     "Latitude of Gate": "28.56841N",
     "Longitude of Gate": "77.22044E"
   },
   {
     "Station Code Name": "SOEN",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "South Extention 2",
     "Latitude of Gate": "28.56848N",
     "Longitude of Gate": "77.21996E"
   },
   {
     "Station Code Name": "VNPR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Lajpat Nagar - II",
     "Latitude of Gate": "28.335743N",
     "Longitude of Gate": "77.145435E"
   },
   {
     "Station Code Name": "VNPR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Sriniwas Puri",
     "Latitude of Gate": "28.33576N",
     "Longitude of Gate": "77.150326E"
   },
   {
     "Station Code Name": "AHRM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Harinagar Ashram",
     "Latitude of Gate": "28.572025N",
     "Longitude of Gate": "77.258119E"
   },
   {
     "Station Code Name": "AHRM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NEFED",
     "Latitude of Gate": "28.573284N",
     "Longitude of Gate": "77.258643E"
   },
   {
     "Station Code Name": "AHRM",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Maharani Bagh",
     "Latitude of Gate": "28.572055N",
     "Longitude of Gate": "77.258849E"
   },
   {
     "Station Code Name": "NIZM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SARAI KALE KHAN BUS STAND",
     "Latitude of Gate": "28.588834N",
     "Longitude of Gate": "77.256623E"
   },
   {
     "Station Code Name": "NIZM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "HAZRAT NIZAMUDDIN RAILWAY STATION",
     "Latitude of Gate": "28.588906N",
     "Longitude of Gate": "77.256597E"
   },
   {
     "Station Code Name": "NIZM",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "HAZRAT NIZAMUDDIN RAILWAY STATION",
     "Latitude of Gate": "28.589487N",
     "Longitude of Gate": "77.256795E"
   },
   {
     "Station Code Name": "MVPO",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MAYUR VIHAR POCKET1&2",
     "Latitude of Gate": "28.60576N",
     "Longitude of Gate": "77.29766E"
   },
   {
     "Station Code Name": "MVPO",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MAYUR VIHAR POCKET3&4",
     "Latitude of Gate": "28.60544N",
     "Longitude of Gate": "77.29808E"
   },
   {
     "Station Code Name": "TKPR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "CHAND CINEMA",
     "Latitude of Gate": "28.6152419N",
     "Longitude of Gate": "77.3105225E"
   },
   {
     "Station Code Name": "TKPR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "CHAND CINEMA",
     "Latitude of Gate": "28.6129888N",
     "Longitude of Gate": "77.3094654E"
   },
   {
     "Station Code Name": "VENT",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "POCKET C, EAST VINOD NAGAR",
     "Latitude of Gate": "28.3713N",
     "Longitude of Gate": "77.1818E"
   },
   {
     "Station Code Name": "VENT",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Sports Complex, EAST VINOD NAGAR",
     "Latitude of Gate": "28.3713N",
     "Longitude of Gate": "77.1818E"
   },
   {
     "Station Code Name": "VNNR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "DELHI JAL BOARD",
     "Latitude of Gate": "28.373N",
     "Longitude of Gate": "77.1816E"
   },
   {
     "Station Code Name": "IPE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Max Hospital",
     "Latitude of Gate": "28.3755N",
     "Longitude of Gate": "77.1836E"
   },
   {
     "Station Code Name": "IPE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "National  Victor Public School",
     "Latitude of Gate": "28.3755N",
     "Longitude of Gate": "77.1836E"
   },
   {
     "Station Code Name": "KKDC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Garg hospital",
     "Latitude of Gate": "28.6546N",
     "Longitude of Gate": "77.2952E"
   },
   {
     "Station Code Name": "KKDC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Towards Karkarduma Court",
     "Latitude of Gate": "28.6546N",
     "Longitude of Gate": "77.2952E"
   },
   {
     "Station Code Name": "KHNA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Krishna Nagar market",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "KHNA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Vishwas Nagar",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "EANR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "EAST AZAD NAGAR",
     "Latitude of Gate": "28.66361N",
     "Longitude of Gate": "77.28256E"
   },
   {
     "Station Code Name": "EANR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BHOLA NATH NAGAR",
     "Latitude of Gate": "28.66361N",
     "Longitude of Gate": "77.28256E"
   },
   {
     "Station Code Name": "JFRB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Zeenat Mahal School,Jafrabad",
     "Latitude of Gate": "28.6826727N",
     "Longitude of Gate": "77.2747271E"
   },
   {
     "Station Code Name": "JFRB",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Janta Colony,BSES Office",
     "Latitude of Gate": "28.6826727N",
     "Longitude of Gate": "77.2747271E"
   },
   {
     "Station Code Name": "MUPR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Mujpur Chowk,Ghonda",
     "Latitude of Gate": "28.6919626N",
     "Longitude of Gate": "77.2796368E"
   },
   {
     "Station Code Name": "MUPR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Vijay Park,Yamuna Vihar",
     "Latitude of Gate": "28.6919626N",
     "Longitude of Gate": "77.2796368E"
   },
   {
     "Station Code Name": "MUPR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Kabir Nagar ,Kardam Puri",
     "Latitude of Gate": "28.6919626N",
     "Longitude of Gate": "77.2796368E"
   },
   {
     "Station Code Name": "MUPR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Babarpur, Jyoti Colony, Durgapuri",
     "Latitude of Gate": "28.6919626N",
     "Longitude of Gate": "77.2796368E"
   },
   {
     "Station Code Name": "MUPR",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Babarpur, Jyoti Colony, Durgapuri",
     "Latitude of Gate": "28.6919626N",
     "Longitude of Gate": "77.2796368E"
   },
   {
     "Station Code Name": "GKPR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Ganga vihar, Gokulpuri village",
     "Latitude of Gate": "28.7025597N",
     "Longitude of Gate": "77.286039E"
   },
   {
     "Station Code Name": "GKPR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Ambedkar College,Dayalpur police station.",
     "Latitude of Gate": "28.7025597N",
     "Longitude of Gate": "77.286039E"
   },
   {
     "Station Code Name": "JIEE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Near Arora Restaurant on Loni Road",
     "Latitude of Gate": "28.7131575N",
     "Longitude of Gate": "77.2900844E"
   },
   {
     "Station Code Name": "JIEE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Near Samrat TVS Show room on Loni Road",
     "Latitude of Gate": "28.7131575N",
     "Longitude of Gate": "77.2900844E"
   },
   {
     "Station Code Name": "SVVR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "on Loni Road",
     "Latitude of Gate": "28.7220621N",
     "Longitude of Gate": "77.2894249E"
   },
   {
     "Station Code Name": "SVVR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "on Loni Road",
     "Latitude of Gate": "28.7220621N",
     "Longitude of Gate": "77.2894249E"
   },
   {
     "Station Code Name": "SJSU",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "BABA KHARAK SINGH MARG (Back side)",
     "Latitude of Gate": "28.628302N",
     "Longitude of Gate": "77.211707E"
   },
   {
     "Station Code Name": "SJSU",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BABA KHARAK SINGH MARG (Main Road Side)",
     "Latitude of Gate": "28.628302N",
     "Longitude of Gate": "77.211707"
   },
   {
     "Station Code Name": "DKV",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NH-8 Side",
     "Latitude of Gate": "27.2046° N",
     "Longitude of Gate": "77.4977° E"
   },
   {
     "Station Code Name": "DKV",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Jheel Side",
     "Latitude of Gate": "27.2046° N",
     "Longitude of Gate": "77.4977° E"
   },
   {
     "Station Code Name": "DACY",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Mahipalpur Side",
     "Latitude of Gate": "28.548572N",
     "Longitude of Gate": "77.12104"
   },
   {
     "Station Code Name": "DACY",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Aerocity Side",
     "Latitude of Gate": "28.548585N",
     "Longitude of Gate": "77.121101"
@@ -1898,2457 +1898,2450 @@
   },
   {
     "Station Code Name": "DSTO",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "DWRKA SECTOR 21 PICK & DROP AREA",
     "Latitude of Gate": "28.552425N",
     "Longitude of Gate": "77.057869"
   },
   {
     "Station Code Name": "DSTO",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "DWRKA SECTOR 21 PICK & DROP AREA",
     "Latitude of Gate": "28.552425N",
     "Longitude of Gate": "77.057869"
   },
   {
     "Station Code Name": "DSTO",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "DWRKA SECTOR 21 PICK & DROP AREA",
     "Latitude of Gate": "28.552425N",
     "Longitude of Gate": "77.057869"
   },
   {
     "Station Code Name": "DWTO",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "DWRKA SECTOR 21 PICK & DROP AREA",
     "Latitude of Gate": "28.552425N",
     "Longitude of Gate": "77.057869"
   },
   {
     "Station Code Name": "DWTO",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DWRKA SECTOR 21 PICK & DROP AREA",
     "Latitude of Gate": "28.552425N",
     "Longitude of Gate": "77.057869"
   },
   {
     "Station Code Name": "NDRU",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Bhavbhuti Marg",
     "Latitude of Gate": "28.6419993N",
     "Longitude of Gate": "77.2241164"
   },
   {
     "Station Code Name": "NDRU",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "New Delhi Railway Station  Road",
     "Latitude of Gate": "28.6433119N",
     "Longitude of Gate": "77.2235106"
   },
   {
     "Station Code Name": "NDRU",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "Pathway connecting to New Delhi Railway Station",
     "Latitude of Gate": "28.6433119N",
     "Longitude of Gate": "77.2235106"
   },
   {
     "Station Code Name": "NDI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "New Delhi Railway Station",
     "Latitude of Gate": "28˚38'33''N",
     "Longitude of Gate": "77˚13'20''"
   },
   {
     "Station Code Name": "NDI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "New Delhi Railway Station",
     "Latitude of Gate": "28˚38'38''N",
     "Longitude of Gate": "77˚13'18''"
   },
   {
     "Station Code Name": "NDI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Kamla Market",
     "Latitude of Gate": "28˚38'41''N",
     "Longitude of Gate": "77˚13'24''"
   },
   {
     "Station Code Name": "NDI",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Airport line , Civic center",
     "Latitude of Gate": "28˚38'37''N",
     "Longitude of Gate": "77˚13'25''"
   },
   {
     "Station Code Name": "VASI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Towards Mohan Nagar Anand Vihar Road",
     "Latitude of Gate": "28.643318N",
     "Longitude of Gate": "77.338189E"
   },
   {
     "Station Code Name": "VASI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Towards Vaishali Sector 3,4",
     "Latitude of Gate": "28.643318N",
     "Longitude of Gate": "77.338189E"
   },
   {
     "Station Code Name": "VASI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Todards FOB",
     "Latitude of Gate": "28.643318N",
     "Longitude of Gate": "77.338189E"
   },
   {
     "Station Code Name": "KSHI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Towards Mohan Nagar Anand Vihar Road",
     "Latitude of Gate": "28.6433889N",
     "Longitude of Gate": "77.32238E"
   },
   {
     "Station Code Name": "KSHI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Towards Yashoda Hospital and wave cinema",
     "Latitude of Gate": "28.6433889N",
     "Longitude of Gate": "77.32238E"
   },
   {
     "Station Code Name": "KSHI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Todards FOB",
     "Latitude of Gate": "28.6433889N",
     "Longitude of Gate": "77.32238E"
   },
   {
     "Station Code Name": "AVIT",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TOWARDS ANAND VIHAR ISBT",
     "Latitude of Gate": "28.6466381N",
     "Longitude of Gate": "77.316264E"
   },
   {
     "Station Code Name": "AVIT",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "IN FRONT OF ANAND VIHAR ISBT",
     "Latitude of Gate": "28.646657N",
     "Longitude of Gate": "77.31524E"
   },
   {
     "Station Code Name": "AVIT",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "TOWARDS ANAND VIHAR ISBT",
     "Latitude of Gate": "28.647377N",
     "Longitude of Gate": "77.315397E"
   },
   {
-    "Station Code Name": "KKDA-4",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "KKDA",
+    "Gate Name": "GATE 1",
     "Location": "KARKARDOOMA VILLAGE",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
-    "Station Code Name": "KKDA-7",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "KKDA",
+    "Gate Name": "GATE 2",
     "Location": "SHANTI MUKUND",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
-    "Station Code Name": "KKDA-7",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "KKDA",
+    "Gate Name": "GATE 3",
     "Location": "TOWARDS KARKARDOOMA VILLAGE",
     "Latitude of Gate": "27.2046 N",
     "Longitude of Gate": "77.4977 E"
   },
   {
-    "Station Code Name": "KKDA-7",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "KKDA",
+    "Gate Name": "GATE 4",
     "Location": "TOWARDS KARKARDOOMA VILLAGE",
     "Latitude of Gate": "27.2046 N",
     "Longitude of Gate": "77.4977 E"
   },
   {
     "Station Code Name": "PTVR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TOWARDS SHARP SIGHT CENTRE",
     "Latitude of Gate": "28.6364 N",
     "Longitude of Gate": "77.2928 E"
   },
   {
     "Station Code Name": "PTVR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "TOWARDS CENTRE FOR SIGHT",
     "Latitude of Gate": "28.6364 N",
     "Longitude of Gate": "77.2928 E"
   },
   {
     "Station Code Name": "PTVR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "TOWARDS SBI BANK",
     "Latitude of Gate": "28.6364 N",
     "Longitude of Gate": "77.2928 E"
   },
   {
     "Station Code Name": "PTVR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "TOWARDS PNB BANK",
     "Latitude of Gate": "28.6364 N",
     "Longitude of Gate": "77.2928 E"
   },
   {
     "Station Code Name": "NV",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "V3S MALL",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NV",
-    "Gate Name": "Gate No.2",
+    "Gate Name": "GATE2",
     "Location": "TOWARDS MANDAWLI",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NV",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "NIRMAN VIHAR COLONY GATE",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NV",
-    "Gate Name": "Gate No.4",
+    "Gate Name": "GATE4",
     "Location": "NIRMAN VIHAR COLONY GATE",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NV",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "V3S MALL",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "LN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NEAR CGHS DISPENSERY",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "LN",
-    "Gate Name": "Gate No.2",
+    "Gate Name": "GATE2",
     "Location": "NEAR GANESH KACHUARI RED LIGHT",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "LN",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "NEAR PATEL HOSPITAL",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "LN",
-    "Gate Name": "Gate No.4",
+    "Gate Name": "GATE4",
     "Location": "NEAR PATEL HOSPITAL",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "LN",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "NEAR INDUSIND BANK ATM",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NECC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Near DMRC Parking",
     "Latitude of Gate": "28.630863°N",
     "Longitude of Gate": "77.375475°E"
   },
   {
     "Station Code Name": "NECC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Sect-63,H-block Noida, SBI,PNB,HDFC BANK,Haldiram restaurant, Ginjer Hotel, Domino's",
     "Latitude of Gate": "28.630863°N",
     "Longitude of Gate": "77.375475°E"
   },
   {
     "Station Code Name": "NECC",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Highway Tower, I-Thumb Tower,Graphics Tower,Gol Chakkar sect-62",
     "Latitude of Gate": "28.630863°N",
     "Longitude of Gate": "77.375475°E"
   },
   {
     "Station Code Name": "SSTN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Towards Fortis Hospital",
     "Latitude of Gate": "28.617020N",
     "Longitude of Gate": "77.373611E"
   },
   {
     "Station Code Name": "SSTN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Towards Noida Sec-63",
     "Latitude of Gate": "28.617020N",
     "Longitude of Gate": "77.373611E"
   },
   {
     "Station Code Name": "SFNN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "UFLEX",
     "Latitude of Gate": "28.606364N",
     "Longitude of Gate": "77.372809E"
   },
   {
     "Station Code Name": "SFNN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MAMURA VILLAGE",
     "Latitude of Gate": "28.606364N",
     "Longitude of Gate": "77.372809E"
   },
   {
     "Station Code Name": "SSON",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "PARK VIEW APARTMENT",
     "Latitude of Gate": "28.59747N",
     "Longitude of Gate": "77.372273E"
   },
   {
     "Station Code Name": "SSON",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "TOWARDS SEC 71 THANA",
     "Latitude of Gate": "28.59747N",
     "Longitude of Gate": "77.372273E"
   },
   {
     "Station Code Name": "SFTN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "52 TH Avenue Mall",
     "Latitude of Gate": "28.586762N",
     "Longitude of Gate": "77.372901E"
   },
   {
     "Station Code Name": "SFTN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Noida Sector 51",
     "Latitude of Gate": "28.586762N",
     "Longitude of Gate": "77.372901E"
   },
   {
     "Station Code Name": "SFTN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "hosiyaar pur , VDS Market, Sector 52",
     "Latitude of Gate": "28.586762N",
     "Longitude of Gate": "77.372901E"
   },
   {
-    "Station Code Name": "STFN",
-    "Gate Name": "Gate 1",
-    "Location": "WEST SIDE",
-    "Latitude of Gate": "28 DEG N",
-    "Longitude of Gate": "77 DEG E"
-  },
-  {
-    "Station Code Name": "STFN",
-    "Gate Name": "Gate 2",
-    "Location": "EAST SIDE",
-    "Latitude of Gate": "28 DEG N",
-    "Longitude of Gate": "77 DEG E"
-  },
-  {
     "Station Code Name": "NCC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Dmrc parking side",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NCC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "sector 39.41,50 & 51",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NCC",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Logix mall side",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NCC",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "sector 39.41,50 & 51",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "GEC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Arun Vihar Sector 37",
     "Latitude of Gate": "28.5669477N",
     "Longitude of Gate": "77.345467E"
   },
   {
     "Station Code Name": "GEC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Noida golf Course",
     "Latitude of Gate": "28.5669477N",
     "Longitude of Gate": "77.345467E"
   },
   {
     "Station Code Name": "NSET",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ATTA MARKET",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NSET",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "GIP ,DLF MALL",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "NSST",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "RAJNIGANDHA FACTORY",
     "Latitude of Gate": "28.578081N",
     "Longitude of Gate": "77.3177778E"
   },
   {
     "Station Code Name": "NSST",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "WTT",
     "Latitude of Gate": "28.578081N",
     "Longitude of Gate": "77.3177778E"
   },
   {
     "Station Code Name": "NSST",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "HCL",
     "Latitude of Gate": "28.578081N",
     "Longitude of Gate": "77.3177778E"
   },
   {
     "Station Code Name": "NSST",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "DOMINOS",
     "Latitude of Gate": "28.578081N",
     "Longitude of Gate": "77.3177778E"
   },
   {
     "Station Code Name": "NSFT",
-    "Gate Name": "GATE NO-1",
+    "Gate Name": "GATE1",
     "Location": "INDIAN OIL OFFICE",
     "Latitude of Gate": "28.5852018N",
     "Longitude of Gate": "77.3111687E"
   },
   {
     "Station Code Name": "NSFT",
-    "Gate Name": "GATE NO-2",
+    "Gate Name": "GATE2",
     "Location": "TRAFFIC POLICE AUTHORITY",
     "Latitude of Gate": "28.5852018N",
     "Longitude of Gate": "77.3111687E"
   },
   {
     "Station Code Name": "NSFT",
-    "Gate Name": "GATE NO-3",
+    "Gate Name": "GATE3",
     "Location": "noida sec-2/4/6",
     "Latitude of Gate": "28.5852018N",
     "Longitude of Gate": "77.3111687E"
   },
   {
     "Station Code Name": "NSFT",
-    "Gate Name": "GATE NO-4",
+    "Gate Name": "GATE4",
     "Location": "nya bans,noida sec-14/15",
     "Latitude of Gate": "28.5852018N",
     "Longitude of Gate": "77.3111687E"
   },
   {
     "Station Code Name": "NAGR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "East End Appartment, Chilla Gaon, Nagarjun Appartment",
     "Latitude of Gate": "28.578108N",
     "Longitude of Gate": "77.305524E"
   },
   {
     "Station Code Name": "MVE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "BIG BAZAR ROAD",
     "Latitude of Gate": "28.594283N",
     "Longitude of Gate": "77.29444E"
   },
   {
     "Station Code Name": "MVE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "CLUB AVENUE ROAD",
     "Latitude of Gate": "28.594283N",
     "Longitude of Gate": "77.29444E"
   },
   {
     "Station Code Name": "MVP1",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MVP1 RESIDENTIAL AREA",
     "Latitude of Gate": "27.2046N",
     "Longitude of Gate": "77.4977E"
   },
   {
-    "Station Code Name": "MVP1-7",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "MVP1",
+    "Gate Name": "GATE 2",
     "Location": "NOIDA LINK ROAD",
     "Latitude of Gate": "28.603540N",
     "Longitude of Gate": "77.289998E"
   },
   {
-    "Station Code Name": "MVP1-7",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "MVP1",
+    "Gate Name": "GATE 3",
     "Location": "MAYUR VIHAR PHASE 1 INFRONT OF GATE NO 02",
     "Latitude of Gate": "28.6033408N",
     "Longitude of Gate": "77.2905705E"
   },
   {
-    "Station Code Name": "MVP1-7",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "MVP1",
+    "Gate Name": "GATE 4",
     "Location": "ARYA SAMAJ MANDIR",
     "Latitude of Gate": "28.6038992N",
     "Longitude of Gate": "77.2919244E"
   },
   {
     "Station Code Name": "ASDM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "EAST APROACH ROAD",
     "Latitude of Gate": "28.37 N",
     "Longitude of Gate": "77.16 E"
   },
   {
     "Station Code Name": "ASDM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "PARKING SIDE",
     "Latitude of Gate": "28.37 N",
     "Longitude of Gate": "77.16 E"
   },
   {
     "Station Code Name": "ASDM",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "FOOT OVER BRIDGE",
     "Latitude of Gate": "28.37 N",
     "Longitude of Gate": "77.16 E"
   },
   {
     "Station Code Name": "YB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "STATION APPROCH ROAD",
     "Latitude of Gate": "28.37.15N",
     "Longitude of Gate": "77.15.37E"
   },
   {
     "Station Code Name": "IDPT",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Mahatma Gandhi Marg, IP Estate",
     "Latitude of Gate": "28.6205N",
     "Longitude of Gate": "77.25E"
   },
   {
+    "Station Code Name": "IDPT",
+    "Gate Name": "GATE 2",
+    "Location": "DTC headquarter",
+    "Latitude of Gate": "28.6205N",
+    "Longitude of Gate": "77.25E"
+  },
+  {
     "Station Code Name": "PTMD",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SUPREME COURT",
     "Latitude of Gate": "28.632661N",
     "Longitude of Gate": "77.252008E"
   },
   {
     "Station Code Name": "PTMD",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MATHURA ROAD",
     "Latitude of Gate": "28.63368N",
     "Longitude of Gate": "77.273929E"
   },
   {
     "Station Code Name": "PTMD",
-    "Gate Name": "Gate 3",
-    "Location": "ITPO GATE NO-10",
+    "Gate Name": "GATE 3",
+    "Location": "ITPO GATE10",
     "Latitude of Gate": "28.63047N",
     "Longitude of Gate": "77.303903E"
   },
   {
     "Station Code Name": "PTMD",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "SKYWALK",
     "Latitude of Gate": "28.63368N",
     "Longitude of Gate": "77.273929E"
   },
   {
     "Station Code Name": "MDHS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "HIMACHAL BHAWAN",
     "Latitude of Gate": "28.3733N",
     "Longitude of Gate": "77.1405E"
   },
   {
     "Station Code Name": "MDHS",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SIKANDARA ROAD",
     "Latitude of Gate": "28.3733N",
     "Longitude of Gate": "77.1405E"
   },
   {
     "Station Code Name": "MDHS",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "NATIONAL SCHOOL OF DRAMA",
     "Latitude of Gate": "28.3733N",
     "Longitude of Gate": "77.1405E"
   },
   {
     "Station Code Name": "MDHS",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "NATIONAL SCHOOL OF DRAMA",
     "Latitude of Gate": "28.3733N",
     "Longitude of Gate": "77.1405E"
   },
   {
     "Station Code Name": "BRKR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Nirmal Tower",
     "Latitude of Gate": "28.630857N",
     "Longitude of Gate": "77.223579E"
   },
   {
     "Station Code Name": "BRKR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "KunchanJangha Building",
     "Latitude of Gate": "28.630221N",
     "Longitude of Gate": "77.224694E"
   },
   {
     "Station Code Name": "BRKR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "DCM/ HDFC Building",
     "Latitude of Gate": "28.629579N",
     "Longitude of Gate": "77.225808E"
   },
   {
     "Station Code Name": "BRKR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Indra Prakash Building",
     "Latitude of Gate": "28.629667N",
     "Longitude of Gate": "77.224592E"
   },
   {
     "Station Code Name": "BRKR",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Narayan Manzil",
     "Latitude of Gate": "28.629862N",
     "Longitude of Gate": "77.224323E"
   },
   {
     "Station Code Name": "BRKR",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "New Delhi House",
     "Latitude of Gate": "28.630436N",
     "Longitude of Gate": "77.223289E"
   },
   {
     "Station Code Name": "RKAM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Panchkuian Road",
     "Latitude of Gate": "28.6393N",
     "Longitude of Gate": "77.2085E"
   },
   {
     "Station Code Name": "RKAM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "RAMA KRISHAN MISSION",
     "Latitude of Gate": "28.6393N",
     "Longitude of Gate": "77.2085E"
   },
   {
     "Station Code Name": "RKAM",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "GOAL MARKET",
     "Latitude of Gate": "28.6393N",
     "Longitude of Gate": "77.2085E"
   },
   {
     "Station Code Name": "RKAM",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "LADY HARDING HOSPITAL",
     "Latitude of Gate": "28.6393N",
     "Longitude of Gate": "77.2085E"
   },
   {
     "Station Code Name": "JW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "JHANDEWALAN DEVI MANDIR",
     "Latitude of Gate": "28.6443N",
     "Longitude of Gate": "77.1999E"
   },
   {
     "Station Code Name": "JW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "VIDEOCON TOWER",
     "Latitude of Gate": "28.6443N",
     "Longitude of Gate": "77.1999E"
   },
   {
     "Station Code Name": "JW",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "BABA LAL MANDIR",
     "Latitude of Gate": "28.6443N",
     "Longitude of Gate": "77.1999E"
   },
   {
     "Station Code Name": "JW",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "MEGHD00T BHAWAN",
     "Latitude of Gate": "28.6443N",
     "Longitude of Gate": "77.1999E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "AJMAK KHAN ROAD",
     "Latitude of Gate": "28.6443655N",
     "Longitude of Gate": "77.1883838E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "PUSA ROAD",
     "Latitude of Gate": "28.644002N",
     "Longitude of Gate": "77.1881291E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "PUSA ROAD",
     "Latitude of Gate": "28.6443183N",
     "Longitude of Gate": "77.188337E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "PUSA ROAD",
     "Latitude of Gate": "28.644315N",
     "Longitude of Gate": "77.1885583E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "PUSA ROAD",
     "Latitude of Gate": "28.6439433N",
     "Longitude of Gate": "77.1889738E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "PUSA ROAD",
     "Latitude of Gate": "28.6439379N",
     "Longitude of Gate": "77.1885752E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 7",
+    "Gate Name": "GATE 7",
     "Location": "RAENDER NAGAR BLOCK-C",
     "Latitude of Gate": "28.6433234N",
     "Longitude of Gate": "77.18853E"
   },
   {
     "Station Code Name": "KB",
-    "Gate Name": "Gate 8",
+    "Gate Name": "GATE 8",
     "Location": "PUSA ROAD",
     "Latitude of Gate": "28.6438319N",
     "Longitude of Gate": "77.1885922E"
   },
   {
     "Station Code Name": "RP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "RAJENDRA BHAWAN",
     "Latitude of Gate": "28.642813N",
     "Longitude of Gate": "77.177842E"
   },
   {
     "Station Code Name": "RP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BLK HOSPITAL",
     "Latitude of Gate": "28.642722N",
     "Longitude of Gate": "77.178635E"
   },
   {
     "Station Code Name": "RP",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "OLD RAJENDER NAGAR",
     "Latitude of Gate": "28.642148N",
     "Longitude of Gate": "77.178543E"
   },
   {
     "Station Code Name": "RP",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "KRISHI KUNJ",
     "Latitude of Gate": "28.642176N",
     "Longitude of Gate": "77.178008E"
   },
   {
     "Station Code Name": "PN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "IDFC FIRST BANK",
     "Latitude of Gate": "28.644864N",
     "Longitude of Gate": "77.169737E"
   },
   {
     "Station Code Name": "PN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MAIN ROAD",
     "Latitude of Gate": "28.644864N",
     "Longitude of Gate": "77.169737E"
   },
   {
     "Station Code Name": "PN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "DOMINOS",
     "Latitude of Gate": "28.644864N",
     "Longitude of Gate": "77.169737E"
   },
   {
     "Station Code Name": "PN",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "MAIN ROAD",
     "Latitude of Gate": "28.644864N",
     "Longitude of Gate": "77.169737E"
   },
   {
     "Station Code Name": "PN",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "NEAR PARKING",
     "Latitude of Gate": "28.644864N",
     "Longitude of Gate": "77.169737E"
   },
   {
     "Station Code Name": "PN",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "KAILASH NURSING HOME",
     "Latitude of Gate": "28.644864N",
     "Longitude of Gate": "77.169737E"
   },
   {
     "Station Code Name": "SP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Towards Milk  & DTC bus depot",
     "Latitude of Gate": "28.658357N",
     "Longitude of Gate": "77.139348E"
   },
   {
     "Station Code Name": "SP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BALJEET NAGAR",
     "Latitude of Gate": "28.658357N",
     "Longitude of Gate": "77.139348E"
   },
   {
     "Station Code Name": "SP",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "PATEL NAGAR POLICE STATION",
     "Latitude of Gate": "28.658357N",
     "Longitude of Gate": "77.139348E"
   },
   {
     "Station Code Name": "SP",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "TOWARDS PATEL NAGAR",
     "Latitude of Gate": "28.658357N",
     "Longitude of Gate": "77.139348E"
   },
   {
     "Station Code Name": "SP",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "TOWARDS RANJEET NAGAR",
     "Latitude of Gate": "28.658357N",
     "Longitude of Gate": "77.139348E"
   },
   {
     "Station Code Name": "SP",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "TOWARDS  PANDAV NAGAR",
     "Latitude of Gate": "28.658357N",
     "Longitude of Gate": "77.139348E"
   },
   {
     "Station Code Name": "SP",
-    "Gate Name": "Gate 7",
+    "Gate Name": "GATE 7",
     "Location": "TOWARDS PARKING",
     "Latitude of Gate": "28.658357N",
     "Longitude of Gate": "77.139348E"
   },
   {
     "Station Code Name": "MN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NORTH SIDE",
     "Latitude of Gate": "28.6581N",
     "Longitude of Gate": "77.1426E"
   },
   {
     "Station Code Name": "MN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NORTH SIDE",
     "Latitude of Gate": "28.6581N",
     "Longitude of Gate": "77.1426E"
   },
   {
     "Station Code Name": "MN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "SOUTH SIDE",
     "Latitude of Gate": "28.6581N",
     "Longitude of Gate": "77.1426E"
   },
   {
     "Station Code Name": "MN",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "SOUTH SIDE",
     "Latitude of Gate": "28.6581N",
     "Longitude of Gate": "77.1426E"
   },
   {
     "Station Code Name": "RN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NORTH SIDE",
     "Latitude of Gate": "28.6527N",
     "Longitude of Gate": "77.1316E"
   },
   {
     "Station Code Name": "RN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NORTH SIDE",
     "Latitude of Gate": "28.6527N",
     "Longitude of Gate": "77.1316E"
   },
   {
     "Station Code Name": "RN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "SOUTH SIDE",
     "Latitude of Gate": "28.6527N",
     "Longitude of Gate": "77.1316E"
   },
   {
     "Station Code Name": "RN",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "SOUTH SIDE",
     "Latitude of Gate": "28.6527N",
     "Longitude of Gate": "77.1316E"
   },
   {
     "Station Code Name": "RN",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "SOUTH SIDE",
     "Latitude of Gate": "28.6527N",
     "Longitude of Gate": "77.1316E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 1",
     "Location": "RING ROAD",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 2",
     "Location": "DC OFFICE",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 3",
     "Location": "PARKING",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 4",
     "Location": "TDI MALL",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 5",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 5",
     "Location": "NAZAFGARH ROAD",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 6",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 6",
     "Location": "NAZAFGARH ROAD",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 7",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 7",
     "Location": "NAZAFGARH ROAD",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-3",
-    "Gate Name": "Gate 8",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 8",
     "Location": "JANTA MARKET, RAJOURI",
     "Latitude of Gate": "28.6417N",
     "Longitude of Gate": "77.1225E"
   },
   {
-    "Station Code Name": "RG-7",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 1",
     "Location": "RAJOURI GARDEN",
     "Latitude of Gate": "28.6417`N",
     "Longitude of Gate": "77.1225`E"
   },
   {
-    "Station Code Name": "RG-7",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "RG",
+    "Gate Name": "GATE 2",
     "Location": "RAJOURI GARDEN",
     "Latitude of Gate": "28.6417`N",
     "Longitude of Gate": "77.1225`E"
   },
   {
     "Station Code Name": "TG",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "KENDRIYA VIDYALAYA , KHYALA",
     "Latitude of Gate": "28.643679N",
     "Longitude of Gate": "77.112236E"
   },
   {
     "Station Code Name": "TG",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "GURU GOVIND SINGH HOSPITAL",
     "Latitude of Gate": "28.644215N",
     "Longitude of Gate": "77.112944E"
   },
   {
     "Station Code Name": "TG",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "CAMBRIDGE SCHOOL,DDA FLATS",
     "Latitude of Gate": "28.643471N",
     "Longitude of Gate": "77.112744E"
   },
   {
     "Station Code Name": "TG",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "J-BLOCK RAJORI GARDEN,GREEN FLATS",
     "Latitude of Gate": "28.643757N",
     "Longitude of Gate": "77.113274E"
   },
   {
     "Station Code Name": "SN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SBI,TILAK NAGAR",
     "Latitude of Gate": "28.64055N",
     "Longitude of Gate": "77.10454E"
   },
   {
     "Station Code Name": "SN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "PACIFIC MALL",
     "Latitude of Gate": "28.64061N",
     "Longitude of Gate": "77.10498E"
   },
   {
     "Station Code Name": "SN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "MEENAKSHI GARDEN",
     "Latitude of Gate": "28.64011N",
     "Longitude of Gate": "77.10544E"
   },
   {
     "Station Code Name": "SN",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "POLICE STATION, TILAK NAGAR",
     "Latitude of Gate": "28.64007N",
     "Longitude of Gate": "77.10484E"
   },
   {
     "Station Code Name": "TN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Central Market",
     "Latitude of Gate": "28.636792N",
     "Longitude of Gate": "77.095811E"
   },
   {
     "Station Code Name": "TN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Saatmanjila Temple",
     "Latitude of Gate": "28.63718N",
     "Longitude of Gate": "77.096411E"
   },
   {
     "Station Code Name": "TN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Ashok Nagar, Fateh Nagar, Jail Road",
     "Latitude of Gate": "28.636539N",
     "Longitude of Gate": "77.097263E"
   },
   {
     "Station Code Name": "TN",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Prem Nagar, DMRC Parking",
     "Latitude of Gate": "28.63612N",
     "Longitude of Gate": "77.096346E"
   },
   {
     "Station Code Name": "JPE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Mahaveer Nagar and Vikas puri",
     "Latitude of Gate": "28.633055N",
     "Longitude of Gate": "77.08665E"
   },
   {
     "Station Code Name": "JPE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Amarleela hospital and Bharti college",
     "Latitude of Gate": "28.630943N",
     "Longitude of Gate": "77.087084E"
   },
   {
     "Station Code Name": "JPE",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Village nangli jalib and janakpuri B1,B2 Block",
     "Latitude of Gate": "28.632849N",
     "Longitude of Gate": "77.086649E"
   },
   {
     "Station Code Name": "JPW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "VIKASPURI",
     "Latitude of Gate": "28.63013N",
     "Longitude of Gate": "77.077631E"
   },
   {
-    "Station Code Name": "JPW8",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "JPW",
+    "Gate Name": "GATE 2",
     "Location": "Shivaji Marg,Najafgarh Road",
     "Latitude of Gate": "28.629428N",
     "Longitude of Gate": "77.077657E"
   },
   {
-    "Station Code Name": "JPW8",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "JPW",
+    "Gate Name": "GATE 3",
     "Location": "District Center,Auto Licencing office",
     "Latitude of Gate": "28.62.8171N",
     "Longitude of Gate": "77.078899E"
   },
   {
     "Station Code Name": "UNE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TOWARDS DTC BUS TERMINAL",
     "Latitude of Gate": "26.6248N",
     "Longitude of Gate": "77.0653E"
   },
   {
     "Station Code Name": "UNE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "PANKHA ROAD",
     "Latitude of Gate": "26.6248N",
     "Longitude of Gate": "77.0653E"
   },
   {
     "Station Code Name": "UNE",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "PANKHA ROAD",
     "Latitude of Gate": "26.6248N",
     "Longitude of Gate": "77.0653E"
   },
   {
     "Station Code Name": "UNW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "DAL MIL ROAD",
     "Latitude of Gate": "77.32073N",
     "Longitude of Gate": "28.37177E"
   },
   {
     "Station Code Name": "UNW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DAL MIL ROAD",
     "Latitude of Gate": "77.32073N",
     "Longitude of Gate": "28.37177E"
   },
   {
     "Station Code Name": "UNW",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "DYALSAR ROAD",
     "Latitude of Gate": "77.32073N",
     "Longitude of Gate": "28.37177E"
   },
   {
     "Station Code Name": "UNW",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "AARYA SAMAJ",
     "Latitude of Gate": "77.32073N",
     "Longitude of Gate": "28.37177E"
   },
   {
     "Station Code Name": "NWD",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SHYAM PARK",
     "Latitude of Gate": "28.6193N",
     "Longitude of Gate": "77.045997E"
   },
   {
     "Station Code Name": "NWD",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NAWADA GAON",
     "Latitude of Gate": "28.6193N",
     "Longitude of Gate": "77.045997E"
   },
   {
     "Station Code Name": "NWD",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "KIRAN GARDEN",
     "Latitude of Gate": "28.6193N",
     "Longitude of Gate": "77.045997E"
   },
   {
     "Station Code Name": "NWD",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "MATIYALA GAON",
     "Latitude of Gate": "28.6193N",
     "Longitude of Gate": "77.045997E"
   },
   {
     "Station Code Name": "NWD",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "MATIYALA GAON",
     "Latitude of Gate": "28.6193N",
     "Longitude of Gate": "77.045997E"
   },
   {
     "Station Code Name": "DM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Rama Park side",
     "Latitude of Gate": "28.61933N",
     "Longitude of Gate": "77.03348E"
   },
   {
     "Station Code Name": "DM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Sewak Park side",
     "Latitude of Gate": "28.61933N",
     "Longitude of Gate": "77.03348E"
   },
   {
-    "Station Code Name": "DW-09",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "DW",
+    "Gate Name": "GATE 3",
     "Location": "CRPF QUARTERS,VIPIN GARDEN, NAND VIHAR",
     "Latitude of Gate": "28.617075N",
     "Longitude of Gate": "77.022958E"
   },
   {
-    "Station Code Name": "DW-09",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "DW",
+    "Gate Name": "GATE 4",
     "Location": "CRPF QUARTERS,VIPIN GARDEN, NAND VIHAR",
     "Latitude of Gate": "28.616367N",
     "Longitude of Gate": "77.022364E"
   },
   {
     "Station Code Name": "DW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NAND VIHAR",
     "Latitude of Gate": "28.616257N",
     "Longitude of Gate": "77.022422E"
   },
   {
     "Station Code Name": "DW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NAND VIHAR",
     "Latitude of Gate": "28.615024N",
     "Longitude of Gate": "77.022916E"
   },
   {
     "Station Code Name": "DSFN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NATIONAL LAW UNIVERSITY, IP UNIVERSITY",
     "Latitude of Gate": "28.602474N",
     "Longitude of Gate": "77.025491E"
   },
   {
     "Station Code Name": "DSFN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BHARAT VIHAR",
     "Latitude of Gate": "28.602481N",
     "Longitude of Gate": "77.025474E"
   },
   {
     "Station Code Name": "DSTN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ABHINAV GLOBEL SCHOOL",
     "Latitude of Gate": "28*35'52\"N",
     "Longitude of Gate": "77*01'57\"E"
   },
   {
     "Station Code Name": "DSTN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "RELIENCE SHOPPING MALL",
     "Latitude of Gate": "28*35'52\"N",
     "Longitude of Gate": "77*01'57\"E"
   },
   {
     "Station Code Name": "DSW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SERVICE ROAD",
     "Latitude of Gate": "28*53'51\"N",
     "Longitude of Gate": "77*03'21\"E"
   },
   {
     "Station Code Name": "DSW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "CITY CENTRE MALL",
     "Latitude of Gate": "28*53'26\"N",
     "Longitude of Gate": "77*04'15\"E"
   },
   {
     "Station Code Name": "DSE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Ambrahi Village",
     "Latitude of Gate": "28*35'52\"N",
     "Longitude of Gate": "77*01'57\"E"
   },
   {
     "Station Code Name": "DSE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "St. Gregorious School",
     "Latitude of Gate": "28*35'52\"N",
     "Longitude of Gate": "77*01'57\"E"
   },
   {
     "Station Code Name": "DST",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Welcome Hotel, PNB Corporate Office",
     "Latitude of Gate": "28.5811755N",
     "Longitude of Gate": "77.0572854E"
   },
   {
     "Station Code Name": "DST",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Dwarka Court",
     "Latitude of Gate": "28.5813584N",
     "Longitude of Gate": "77.0571646E"
   },
   {
     "Station Code Name": "DSN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Delhi Police Training School,  E.P.F. Office",
     "Latitude of Gate": "28.34'27.69\"N",
     "Longitude of Gate": "77.3'54.72'E"
   },
   {
     "Station Code Name": "DSN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Sector - 23 Marble Market, MCD Office",
     "Latitude of Gate": "28.34'27.69\"N",
     "Longitude of Gate": "77.3'54.72'E"
   },
   {
     "Station Code Name": "DSET",
-    "Gate Name": "Gate 1",
-    "Location": "Salaria Officer Quarter Gate 3",
+    "Gate Name": "GATE 1",
+    "Location": "Salaria Officer Quarter GATE 3",
     "Latitude of Gate": "28.5660952N",
     "Longitude of Gate": "77.0666541E"
   },
   {
     "Station Code Name": "NNGI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ARJUN PARK, INDIRA PARK, ANAND VIHAR, NANGLI SAKRAWATI",
     "Latitude of Gate": "28.617264N",
     "Longitude of Gate": "77.010512E"
   },
   {
     "Station Code Name": "NNGI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "RANAJI ENCLAVE, SAINIK ENCLAVE",
     "Latitude of Gate": "28.617264N",
     "Longitude of Gate": "77.010512E"
   },
   {
     "Station Code Name": "NFGH",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Near OPD Primary Health Care",
     "Latitude of Gate": "28.6126 N",
     "Longitude of Gate": "76.9863 E"
   },
   {
     "Station Code Name": "NFGH",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Govt Boys Sr. Sec School",
     "Latitude of Gate": "28.6126 N",
     "Longitude of Gate": "76.9863 E"
   },
   {
     "Station Code Name": "NFGH",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Jyoti Memorial Hospital",
     "Latitude of Gate": "28.6126 N",
     "Longitude of Gate": "76.9863 E"
   },
   {
     "Station Code Name": "LLQA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NETAJI SUBHASH MARG,GAURI SHANKAR MANDIR",
     "Latitude of Gate": "28.656484N",
     "Longitude of Gate": "77.236704E"
   },
   {
     "Station Code Name": "LLQA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "OLD LAJPAT RAI MARKET",
     "Latitude of Gate": "28.658224N",
     "Longitude of Gate": "77.236768E"
   },
   {
     "Station Code Name": "LLQA",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "NETAJI SUBHASH MARG,YAMUNA BAZAR",
     "Latitude of Gate": "28.658631N",
     "Longitude of Gate": "77.236672E"
   },
   {
     "Station Code Name": "LLQA",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "RED FORT",
     "Latitude of Gate": "28.657328N",
     "Longitude of Gate": "77.236865E"
   },
   {
     "Station Code Name": "JAMD",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "KASTURBA HOSPITAL",
     "Latitude of Gate": "26.51946N",
     "Longitude of Gate": "77.237103E"
   },
   {
     "Station Code Name": "JAMD",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "JAMA MSJID",
     "Latitude of Gate": "28.651366N",
     "Longitude of Gate": "77.238539E"
   },
   {
     "Station Code Name": "JAMD",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "LAAL QUILA",
     "Latitude of Gate": "28.650581N",
     "Longitude of Gate": "77.237821E"
   },
   {
     "Station Code Name": "JAMD",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "SUBHASH MARG",
     "Latitude of Gate": "28.651366N",
     "Longitude of Gate": "77.238539E"
   },
   {
     "Station Code Name": "DLIG",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Mulana Azad Medical College",
     "Latitude of Gate": "28⁰35'15'' N",
     "Longitude of Gate": "77⁰14'29'' E"
   },
   {
     "Station Code Name": "DLIG",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "G.B.Pant Hospital",
     "Latitude of Gate": "28⁰38'26'' N",
     "Longitude of Gate": "77⁰14'23'' E"
   },
   {
     "Station Code Name": "DLIG",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Daryaganj",
     "Latitude of Gate": "28⁰38'23'' N",
     "Longitude of Gate": "77⁰14'20'' E"
   },
   {
     "Station Code Name": "DLIG",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Ambedkar stadium",
     "Latitude of Gate": "28⁰38'17'' N",
     "Longitude of Gate": "77⁰14'18'' E"
   },
   {
     "Station Code Name": "DLIG",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Arun Jaitley Stadium",
     "Latitude of Gate": "28⁰38'16'' N",
     "Longitude of Gate": "77⁰14'25'' E"
   },
   {
     "Station Code Name": "ITO",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ANDHARA  SCHOOL,GANDHI PEACE FOUNDATION",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "ITO",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MATA SUNDARI COLLEGE",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "ITO",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "UGC,FOREIGN POST OFFICE",
     "Latitude of Gate": "28.6297222N",
     "Longitude of Gate": "77.2413889E"
   },
   {
     "Station Code Name": "ITO",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "PASSPORT OFFICE",
     "Latitude of Gate": "28.6302778N",
     "Longitude of Gate": "77.2413889E"
   },
   {
     "Station Code Name": "ITO",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "POLICE HEAD QUARTER",
     "Latitude of Gate": "28.6280556N",
     "Longitude of Gate": "77.2419444E"
   },
   {
     "Station Code Name": "ITO",
-    "Gate Name": "Gate 6",
+    "Gate Name": "GATE 6",
     "Location": "CR BUILDING",
     "Latitude of Gate": "28.6280556N",
     "Longitude of Gate": "77.2419444E"
   },
   {
     "Station Code Name": "JNPH",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "WESTERN COURT",
     "Latitude of Gate": "28⁰37'28.80444'' N",
     "Longitude of Gate": "77⁰13'9.60204'' E"
   },
   {
     "Station Code Name": "JNPH",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "JANPATH MARKET",
     "Latitude of Gate": "28⁰37'33.5118'' N",
     "Longitude of Gate": "77⁰13'9.60204'' E"
   },
   {
     "Station Code Name": "JNPH",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "COTTAGE EMPORIUM, KG MARG",
     "Latitude of Gate": "28⁰37'31.73088'' N",
     "Longitude of Gate": "77⁰13'10.11756'' E"
   },
   {
     "Station Code Name": "JNPH",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "EASTERN COURT",
     "Latitude of Gate": "28⁰37'27.69816'' N",
     "Longitude of Gate": "77⁰13'10.01172'' E"
   },
   {
     "Station Code Name": "KM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "R.S. Junior Modern School, Shahjahan Road",
     "Latitude of Gate": "28.602048N",
     "Longitude of Gate": "77.2292857E"
   },
   {
     "Station Code Name": "KM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Pandara Road, Golf Link",
     "Latitude of Gate": "28.602544N",
     "Longitude of Gate": "77.2291704E"
   },
   {
     "Station Code Name": "KM",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "The Ambassador Hotel",
     "Latitude of Gate": "28.60226N",
     "Longitude of Gate": "77.22904E"
   },
   {
     "Station Code Name": "KM",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Lok Nayak Bhawan",
     "Latitude of Gate": "28.6024645N",
     "Longitude of Gate": "77.2278333E"
   },
   {
     "Station Code Name": "JLNS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Delhi Transco Office",
     "Latitude of Gate": "28.590574N",
     "Longitude of Gate": "77.2336514E"
   },
   {
     "Station Code Name": "JLNS",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "CGO Complex",
     "Latitude of Gate": "28.5890675N",
     "Longitude of Gate": "77.2337878E"
   },
   {
     "Station Code Name": "JLNS",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "JLN Stadium gate.no 02",
     "Latitude of Gate": "28.5880063N",
     "Longitude of Gate": "77.2338901E"
   },
   {
     "Station Code Name": "JLNS",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "Lodhi road, NBCC",
     "Latitude of Gate": "28.5885927N",
     "Longitude of Gate": "77.233071E"
   },
   {
     "Station Code Name": "JLNS",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "Dayal singh college",
     "Latitude of Gate": "28.590597N",
     "Longitude of Gate": "77.233056E"
   },
   {
     "Station Code Name": "JGPA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ELECTRONIC NIKETAN,SCOPE COMPLEX,SOOCHNA BHAWAN,MTNL BUILDING,JLN STADIUM",
     "Latitude of Gate": "28.584468N",
     "Longitude of Gate": "77.239307E"
   },
   {
     "Station Code Name": "JGPA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "JANGPURA EXTENSTION,BHOGAL,NIZAMUDDIN RAILWAY STATION,PANT NAGAR,EROS",
     "Latitude of Gate": "28.583294N",
     "Longitude of Gate": "77.239767E"
   },
   {
     "Station Code Name": "JGPA",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "ELECTRONIC NIKETAN,SCOPE COMPLEX,SOOCHNA BHAWAN,MTNL BUILDING,JLN STADIUM",
     "Latitude of Gate": "28.584183N",
     "Longitude of Gate": "77.238326E"
   },
   {
     "Station Code Name": "LJPN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Parking side-Lajpat Nagar Market",
     "Latitude of Gate": "28.5708993N",
     "Longitude of Gate": "77.2367595E"
   },
   {
     "Station Code Name": "LJPN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Lajpat Nagar Market",
     "Latitude of Gate": "28.570173N",
     "Longitude of Gate": "77.2367238E"
   },
   {
     "Station Code Name": "LJPN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Defence Colony",
     "Latitude of Gate": "28.5706359N",
     "Longitude of Gate": "77.2358231E"
   },
   {
     "Station Code Name": "LJPN7",
-    "Gate Name": "Gate 5",
+    "Gate Name": "GATE 5",
     "Location": "BLOCK 1 LAJPAT NAGAR III",
     "Latitude of Gate": "28.56941N",
     "Longitude of Gate": "77.23988E"
   },
   {
     "Station Code Name": "LJPN7",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "BLOCK 1 LAJPAT NAGAR III",
     "Latitude of Gate": "27.2046N",
     "Longitude of Gate": "77.4977E"
   },
   {
     "Station Code Name": "MLCD",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MOOLCHAND HOSPITAL,ANDREW GANJ",
     "Latitude of Gate": "28.5705N",
     "Longitude of Gate": "77.2364E"
   },
   {
     "Station Code Name": "KHCY",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "BESIDE CAFÉ COFFEE DAY",
     "Latitude of Gate": "28.555076N",
     "Longitude of Gate": "77.242006E"
   },
   {
     "Station Code Name": "KHCY",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BESIDE LAL PATH LAB",
     "Latitude of Gate": "28.555467N",
     "Longitude of Gate": "77.24198E"
   },
   {
     "Station Code Name": "NP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TDI NEHRU PLACE",
     "Latitude of Gate": "28.25N",
     "Longitude of Gate": "77.21E"
   },
   {
     "Station Code Name": "NP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NEHRU PLACE MARKET, EROS CORPORATE TOWER",
     "Latitude of Gate": "28.25N",
     "Longitude of Gate": "77.21E"
   },
   {
     "Station Code Name": "GDPI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "B D CHANDIWALA",
     "Latitude of Gate": "28.540656N",
     "Longitude of Gate": "77.264513E"
   },
   {
     "Station Code Name": "GDPI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MASJID",
     "Latitude of Gate": "28.544507N",
     "Longitude of Gate": "77.263972E"
   },
   {
     "Station Code Name": "HNOK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "PARK/Shamshaan ghat",
     "Latitude of Gate": "28.542892N",
     "Longitude of Gate": "77.274554E"
   },
   {
     "Station Code Name": "HNOK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Leading to Main road/ Harkesh nagar Village",
     "Latitude of Gate": "28.543127N",
     "Longitude of Gate": "77.274868E"
   },
   {
     "Station Code Name": "HNOK",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "Leading to Main road/ Harkesh nagar Village",
     "Latitude of Gate": "28.543178N",
     "Longitude of Gate": "77.275768E"
   },
   {
     "Station Code Name": "HNOK",
-    "Gate Name": "Gate No.4",
+    "Gate Name": "GATE4",
     "Location": "Leading to Main road/ Harkesh nagar Village",
     "Latitude of Gate": "28.542734N",
     "Longitude of Gate": "77.275077E"
   },
   {
     "Station Code Name": "JLA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Mathura Road/ Indraprasta Apollo Hospital",
     "Latitude of Gate": "28.588966N",
     "Longitude of Gate": "77.288684E"
   },
   {
     "Station Code Name": "JLA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Mathura Road",
     "Latitude of Gate": "28.587984N",
     "Longitude of Gate": "77.283098E"
   },
   {
     "Station Code Name": "STVR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Vodafone Office",
     "Latitude of Gate": "28.527227N",
     "Longitude of Gate": "77.288951E"
   },
   {
     "Station Code Name": "STVR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Sarita Vihar Residential Area",
     "Latitude of Gate": "28.527227N",
     "Longitude of Gate": "77.288951E"
   },
   {
     "Station Code Name": "METE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Haldiram",
     "Latitude of Gate": "28.519644N",
     "Longitude of Gate": "77.2946E"
   },
   {
     "Station Code Name": "METE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DMRC Staff Qtr",
     "Latitude of Gate": "28.519644N",
     "Longitude of Gate": "77.2946E"
   },
   {
     "Station Code Name": "TKDS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Tughlakabad Railway Station",
     "Latitude of Gate": "28.50237N",
     "Longitude of Gate": "77.299314E"
   },
   {
     "Station Code Name": "BAPB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TOLL PLAZA , MOLARBAND TAJPUR ROAD",
     "Latitude of Gate": "28.493241NN",
     "Longitude of Gate": "77.302492EE"
   },
   {
     "Station Code Name": "BAPB",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "IIHM BADARPUR, MOHAN COOPRATIVE",
     "Latitude of Gate": "28.493241NN",
     "Longitude of Gate": "77.302492EE"
   },
   {
     "Station Code Name": "SRAI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Vatika towers",
     "Latitude of Gate": "28.478064N",
     "Longitude of Gate": "77.304859E"
   },
   {
     "Station Code Name": "SRAI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "L&T",
     "Latitude of Gate": "28.478064N",
     "Longitude of Gate": "77.304859E"
   },
   {
     "Station Code Name": "SRAI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Near Crown building at delhi to faridabad highway.",
     "Latitude of Gate": "28.478064N",
     "Longitude of Gate": "77.304859E"
   },
   {
     "Station Code Name": "NHPC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "KIA MOTORS",
     "Latitude of Gate": "28.4783N",
     "Longitude of Gate": "77.3049E"
   },
   {
     "Station Code Name": "NHPC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "JIYA AYURVEDA",
     "Latitude of Gate": "28.4783N",
     "Longitude of Gate": "77.3049E"
   },
   {
     "Station Code Name": "NHPC",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "MOTR 1 ( LUXURY AUTOMOTIVE WORKSHOP )",
     "Latitude of Gate": "28.4783N",
     "Longitude of Gate": "77.3049E"
   },
   {
     "Station Code Name": "MMJR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Havels chowk,sec-30,sec-31,spring field colony",
     "Latitude of Gate": "28.26N",
     "Longitude of Gate": "77.1829E"
   },
   {
     "Station Code Name": "MMJR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "S.R.S.I.T.Park",
     "Latitude of Gate": "28.26N",
     "Longitude of Gate": "77.1829E"
   },
   {
     "Station Code Name": "MMJR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "sec-43,44,45,46,47,48",
     "Latitude of Gate": "28.26N",
     "Longitude of Gate": "77.1829E"
   },
   {
     "Station Code Name": "STTA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Sector-28, Sector-30 Police Line",
     "Latitude of Gate": "30.717N",
     "Longitude of Gate": "76.80404E"
   },
   {
     "Station Code Name": "STTA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Maruti Workshop, Tarang Orchid Apartments",
     "Latitude of Gate": "30.717N",
     "Longitude of Gate": "76.80404E"
   },
   {
     "Station Code Name": "STTA",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Sector-27, Escorts Corp. Centre",
     "Latitude of Gate": "30.717N",
     "Longitude of Gate": "76.80404E"
   },
   {
     "Station Code Name": "BKMR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MATHURA ROAD",
     "Latitude of Gate": "27.2046N",
     "Longitude of Gate": "77.4977E"
   },
   {
     "Station Code Name": "BKMR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MATHURA ROAD",
     "Latitude of Gate": "27.2046N",
     "Longitude of Gate": "77.4977E"
   },
   {
     "Station Code Name": "BKMR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "MATHURA ROAD",
     "Latitude of Gate": "27.2046N",
     "Longitude of Gate": "77.4977E"
   },
   {
     "Station Code Name": "OFDB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SECTOR 16 FARIDABAD",
     "Latitude of Gate": "28.409859N",
     "Longitude of Gate": "77.311298E"
   },
   {
     "Station Code Name": "OFDB",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MAIN MATHURA ROAD",
     "Latitude of Gate": "28.411553N",
     "Longitude of Gate": "77.311221E"
   },
   {
     "Station Code Name": "OFDB",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "EF3 MALL",
     "Latitude of Gate": "28.4098N",
     "Longitude of Gate": "77.310596E"
   },
   {
     "Station Code Name": "NCAJ",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "LAKHANI ARMAAN, NELAM CHOWK  AJRAONDA, MATHURA ROAD",
     "Latitude of Gate": "28.39835N",
     "Longitude of Gate": "77.31233E"
   },
   {
     "Station Code Name": "NCAJ",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "LG04, CROWN PLAZE MALL, AZAD COLONY",
     "Latitude of Gate": "28.3972N",
     "Longitude of Gate": "77.31247E"
   },
   {
     "Station Code Name": "NCAJ",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "18/1, MATHURA ROAD, OPPOSITE NEELAM CHOWK AJRONDA",
     "Latitude of Gate": "28.39794N",
     "Longitude of Gate": "77.31131E"
   },
   {
     "Station Code Name": "BACH",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ELDECO MALL",
     "Latitude of Gate": "28.39835N",
     "Longitude of Gate": "77.31233E"
   },
   {
     "Station Code Name": "BACH",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SILVERCITY MALL",
     "Latitude of Gate": "28.3972N",
     "Longitude of Gate": "77.31247E"
   },
   {
     "Station Code Name": "BACH",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "REDISSON BLUE HOTEL",
     "Latitude of Gate": "28.39794N",
     "Longitude of Gate": "77.31131E"
   },
   {
     "Station Code Name": "ECMJ",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NORTH SIDE",
     "Latitude of Gate": "28.22N",
     "Longitude of Gate": "77.18E"
   },
   {
     "Station Code Name": "ECMJ",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SOUTH SIDE",
     "Latitude of Gate": "28.22N",
     "Longitude of Gate": "77.18E"
   },
   {
     "Station Code Name": "ECMJ",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "WEST SIDE",
     "Latitude of Gate": "28.22N",
     "Longitude of Gate": "77.18E"
   },
   {
     "Station Code Name": "NCBC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NORTH SIDE",
     "Latitude of Gate": "28.3531118N",
     "Longitude of Gate": "77.3164681E"
   },
   {
     "Station Code Name": "NCBC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SOUTH SIDE",
     "Latitude of Gate": "28.3531118N",
     "Longitude of Gate": "77.3164681E"
   },
   {
     "Station Code Name": "NCBC",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "WEST SIDE",
     "Latitude of Gate": "28.3553525N",
     "Longitude of Gate": "77.3146751E"
   },
   {
     "Station Code Name": "BVHM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "BALLABGARH BUS STAND",
     "Latitude of Gate": "28.339995N",
     "Longitude of Gate": "77.316432E"
   },
   {
     "Station Code Name": "BVHM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "GOVT. HOSPITAL",
     "Latitude of Gate": "28.339661N",
     "Longitude of Gate": "77.318342E"
   },
   {
     "Station Code Name": "BVHM",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "RAILWAY STATION",
     "Latitude of Gate": "28.340952N",
     "Longitude of Gate": "77.315765E"
   },
   {
     "Station Code Name": "UDB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "RAFI MARG ADJACENT TO UDYOG BHAWAN",
     "Latitude of Gate": "28.611999N",
     "Longitude of Gate": "77.211922E"
   },
   {
     "Station Code Name": "UDB",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MAULANA AZAD ROAD",
     "Latitude of Gate": "28.61105N",
     "Longitude of Gate": "77.21272E"
   },
   {
     "Station Code Name": "UDB",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "K KAMRAJ MARG",
     "Latitude of Gate": "28.61369N",
     "Longitude of Gate": "77.214493E"
   },
   {
     "Station Code Name": "UDB",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "K KAMRAJ MARG",
     "Latitude of Gate": "28.609874N",
     "Longitude of Gate": "77.210019"
   },
   {
-    "Station Code Name": "LKM/RCC",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "RCC",
+    "Gate Name": "GATE 1",
     "Location": "NAGALAND HOUSE",
     "Latitude of Gate": "28.35.52.6\"N",
     "Longitude of Gate": "77.12.42.0\"E"
   },
   {
-    "Station Code Name": "LKM/RCC",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "RCC",
+    "Gate Name": "GATE 2",
     "Location": "APJ ABDUL KALAM ROAD",
     "Latitude of Gate": "28.35.50.7\"N",
     "Longitude of Gate": "77.12.39.4\"E"
   },
   {
     "Station Code Name": "JB",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "JOR BAGH",
     "Latitude of Gate": "28.58575N",
     "Longitude of Gate": "77.21271E"
   },
   {
     "Station Code Name": "JB",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "RAJIV GANDHI BHAWAN",
     "Latitude of Gate": "28.58612N",
     "Longitude of Gate": "77.21233E"
   },
   {
     "Station Code Name": "JB",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "AAI OFFICE",
     "Latitude of Gate": "28.58511N",
     "Longitude of Gate": "77.21202E"
   },
   {
     "Station Code Name": "INA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TOWARDS DELHI HAAT",
     "Latitude of Gate": "28.57406N",
     "Longitude of Gate": "77.20924E"
   },
   {
     "Station Code Name": "INA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "TOWARDS INA MARKET",
     "Latitude of Gate": "28.57381N",
     "Longitude of Gate": "77.21029E"
   },
   {
     "Station Code Name": "INA",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "TOWARDS WEST KIDWAI NAGAR",
     "Latitude of Gate": "28.57472N",
     "Longitude of Gate": "77.20986E"
   },
   {
-    "Station Code Name": "INA 7",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "INA",
+    "Gate Name": "GATE 4",
     "Location": "TOWARDS LAXMIBAI NAGAR,SANJAY LAKE",
     "Latitude of Gate": "28.57375N",
     "Longitude of Gate": "77.20791E"
   },
   {
-    "Station Code Name": "INA  7",
-    "Gate Name": "Gate 5",
+    "Station Code Name": "INA",
+    "Gate Name": "GATE 5",
     "Location": "TOWARDS  DILLI HAAT",
     "Latitude of Gate": "28.57345N",
     "Longitude of Gate": "77.20896E"
   },
   {
-    "Station Code Name": "INA  7",
-    "Gate Name": "Gate 6",
+    "Station Code Name": "INA",
+    "Gate Name": "GATE 6",
     "Location": "TOWARDS INA MARKET",
     "Latitude of Gate": "28.57359N",
     "Longitude of Gate": "77.20973E"
   },
   {
     "Station Code Name": "AIIMS",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "AIIMS HOSPITAL/KIDWAI NAGAR",
     "Latitude of Gate": "28.568368N",
     "Longitude of Gate": "77.207771E"
   },
   {
     "Station Code Name": "AIIMS",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "AIIMS HOSPITAL/ ANSARI NAGAR EAST/ YUSUF SARAI",
     "Latitude of Gate": "28.567149N",
     "Longitude of Gate": "77.208126E"
   },
   {
     "Station Code Name": "AIIMS",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "ANSARI NAGAR WEST/ POST OFFICE/ VARDHMAN MAHAVIR MEDICAL COLLEGE & SAFDURJUNG HOSPITAL",
     "Latitude of Gate": "28.567227N",
     "Longitude of Gate": "77.207616E"
   },
   {
     "Station Code Name": "AIIMS",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "NAUROJI NAGAR/ MOTI BAGH/ RING ROAD/ VARDHMAN MAHAVIR MEDICAL COLLEGE & SAFDURJUNG HOSPITAL/ AIIMS TRAUMA CENTRE",
     "Latitude of Gate": "28.56876N",
     "Longitude of Gate": "77.20765E"
   },
   {
     "Station Code Name": "GNPK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "YUSUF SARAI,INDIAN OIL BUILDING",
     "Latitude of Gate": "28.561284N",
     "Longitude of Gate": "77.207282E"
   },
   {
     "Station Code Name": "GNPK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SIRIFORT AUDITORIUM,NIFT,HAUZ KHAS MARKET,GULMOHAR ENCLAVE,INDIAN OIL BUILDING",
     "Latitude of Gate": "28.556523N",
     "Longitude of Gate": "77.206415E"
   },
   {
     "Station Code Name": "GNPK",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "DEER PARK,HAUZ KHAS VILLAGE,UPHAR CINEMA,GURUDWARA,GREEN PARK EXTENSION",
     "Latitude of Gate": "28.559055N",
     "Longitude of Gate": "77.206776E"
   },
   {
     "Station Code Name": "GNPK",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "SAFDARGANJ ENCLAVE,GURUDWARA,ARJUN NAGAR,GREEN PARK EXTENSION",
     "Latitude of Gate": "28.523152N",
     "Longitude of Gate": "77.194704E"
   },
   {
-    "Station Code Name": "HKS-2",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "HKS",
+    "Gate Name": "GATE 3",
     "Location": "SHRI KRISHNA CHAITANYA MAHAPRABHU PARG",
     "Latitude of Gate": "28.545198N",
     "Longitude of Gate": "77.20715E"
   },
   {
-    "Station Code Name": "HKS-8",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "HKS",
+    "Gate Name": "GATE 1",
     "Location": "OUTER RING ROAD TOWARDS IIT",
     "Latitude of Gate": "28.543459N",
     "Longitude of Gate": "77.206134E"
   },
   {
-    "Station Code Name": "HKS-8",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "HKS",
+    "Gate Name": "GATE 2",
     "Location": "LAXMAN PUBLIC SCHOOL",
     "Latitude of Gate": "28.543855N",
     "Longitude of Gate": "77.205811E"
   },
   {
-    "Station Code Name": "HKS-8",
-    "Gate Name": "Gate 4",
+    "Station Code Name": "HKS",
+    "Gate Name": "GATE 4",
     "Location": "KALU SARAI",
     "Latitude of Gate": "28.543335N",
     "Longitude of Gate": "77.203877E"
   },
   {
     "Station Code Name": "MVNR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MVNR PS,GEETANJALI ENCLAVE",
     "Latitude of Gate": "28.529513N",
     "Longitude of Gate": "77.204188E"
   },
   {
     "Station Code Name": "MVNR",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "SELECT CITY WALK MALL,MAX HOSPITAL,SAKET COURT",
     "Latitude of Gate": "28.528159N",
     "Longitude of Gate": "77.205898E"
   },
   {
     "Station Code Name": "MVNR",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "PVR ANUPAM SAKET",
     "Latitude of Gate": "28.527745N",
     "Longitude of Gate": "77.205553E"
   },
   {
     "Station Code Name": "SAKT",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "VIDYA NIKETAN",
     "Latitude of Gate": "28.520555N",
     "Longitude of Gate": "77.203343E"
   },
   {
     "Station Code Name": "SAKT",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "GARDEN OF FIVE SENSES",
     "Latitude of Gate": "28.519804N",
     "Longitude of Gate": "77.201407E"
   },
   {
     "Station Code Name": "SAKT",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "CISF CAMP,SAKET D BLOCK",
     "Latitude of Gate": "28.522197N",
     "Longitude of Gate": "77.203251E"
   },
   {
     "Station Code Name": "QM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ANUVART MARG",
     "Latitude of Gate": "28.513189N",
     "Longitude of Gate": "77.185837E"
   },
   {
     "Station Code Name": "QM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "ANUVART MARG",
     "Latitude of Gate": "28.513189N",
     "Longitude of Gate": "77.185837E"
   },
   {
     "Station Code Name": "SLTP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SULTANPUR",
     "Latitude of Gate": "28.2957N",
     "Longitude of Gate": "77.0941E"
   },
   {
     "Station Code Name": "SLTP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MG ROAD",
     "Latitude of Gate": "28.2957N",
     "Longitude of Gate": "77.0941E"
   },
   {
     "Station Code Name": "CHTP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MG ROAD",
     "Latitude of Gate": "28.5068N",
     "Longitude of Gate": "77.175E"
   },
   {
     "Station Code Name": "CHTP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SOUTH WEST DELHI",
     "Latitude of Gate": "28.5066N",
     "Longitude of Gate": "77.1744E"
   },
   {
     "Station Code Name": "CHTP",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "MG ROAD",
     "Latitude of Gate": "28.5068N",
     "Longitude of Gate": "77.175E"
   },
   {
     "Station Code Name": "GTNI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "GADAIPUR,DLF FARMS",
     "Latitude of Gate": "28.63'14\"N",
     "Longitude of Gate": "77.21'92\" E"
   },
   {
     "Station Code Name": "GTNI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "GHITORNI VILLAGE",
     "Latitude of Gate": "28.63'14\"N",
     "Longitude of Gate": "77.21'92\" E"
   },
   {
     "Station Code Name": "AJG",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "MEHRAULI GURUGRAM ROAD AYA- NAGAR",
     "Latitude of Gate": "28.4804101N",
     "Longitude of Gate": "77.1256817E"
   },
   {
     "Station Code Name": "AJG",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "GURUGRAM MEHRAULI ROAD INDIAN METROLOGICAL DEPARTMENT",
     "Latitude of Gate": "28.4809692N",
     "Longitude of Gate": "77.1260837E"
   },
   {
     "Station Code Name": "GE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "GLOBAL BUSINESS PARK",
     "Latitude of Gate": "28.481N",
     "Longitude of Gate": "77.102E"
   },
   {
     "Station Code Name": "GE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "HP PETROL PUMP",
     "Latitude of Gate": "28.481N",
     "Longitude of Gate": "77.102E"
   },
   {
     "Station Code Name": "SKRP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SAHARA MALL,BRISTAL HOTEL",
     "Latitude of Gate": "28.483431N",
     "Longitude of Gate": "77.094398E"
   },
   {
     "Station Code Name": "SKRP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DLF CITY COURT",
     "Latitude of Gate": "28.483431N",
     "Longitude of Gate": "77.094398E"
   },
   {
     "Station Code Name": "MGRO",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "DT CITY CENTRE MALL",
     "Latitude of Gate": "28.479255N",
     "Longitude of Gate": "77.080002E"
   },
   {
     "Station Code Name": "MGRO",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "MGF METROPOLITON MALL",
     "Latitude of Gate": "28.480071N",
     "Longitude of Gate": "77.080286E"
   },
   {
     "Station Code Name": "IFOC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "BUS STAND TOWARDS M.G. ROAD",
     "Latitude of Gate": "28.4723N",
     "Longitude of Gate": "77.072745E"
   },
   {
     "Station Code Name": "IFOC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "IFFCO TOWER",
     "Latitude of Gate": "28.471676N",
     "Longitude of Gate": "77.072303E"
   },
   {
     "Station Code Name": "IFOC",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "UMKAL HOSPITAL",
     "Latitude of Gate": "28.472047N",
     "Longitude of Gate": "77.072746E"
   },
   {
     "Station Code Name": "HCC",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "FORTIS HOSPITAL",
     "Latitude of Gate": "28.458712N",
     "Longitude of Gate": "77.072761E"
   },
   {
     "Station Code Name": "HCC",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "FORTIS HOSPITAL",
     "Latitude of Gate": "28.459048N",
     "Longitude of Gate": "77.073167E"
   },
   {
     "Station Code Name": "HCC",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "UNITECH BUISINESS PARK",
     "Latitude of Gate": "28.458565N",
     "Longitude of Gate": "77.071701E"
   },
   {
     "Station Code Name": "HCC",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "MAX HOSPITAL",
     "Latitude of Gate": "28.459606N",
     "Longitude of Gate": "77.073789E"
@@ -4369,441 +4362,441 @@
   },
   {
     "Station Code Name": "NBAA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Meerut Mod, Pelican Hotel, Dewan Diagnostics",
     "Latitude of Gate": "28.6767843N",
     "Longitude of Gate": "77.3923211E"
   },
   {
     "Station Code Name": "NBAA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Red Mall, GT Road towards Moahan Nagar",
     "Latitude of Gate": "28.6767843N",
     "Longitude of Gate": "77.3923211E"
   },
   {
     "Station Code Name": "HDNR",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "HINDON VIHAR/NANDGRAM",
     "Latitude of Gate": "28.673312N",
     "Longitude of Gate": "77.40645E"
   },
   {
     "Station Code Name": "HDNR",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SAI UPVAN TEMPLE/HINDON GHAT",
     "Latitude of Gate": "28.67272N",
     "Longitude of Gate": "77.40632E"
   },
   {
     "Station Code Name": "ATHA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "PARSVNATH EXOTICA, ARTHALA PEER, COMMERCIAL TAX OFFICE",
     "Latitude of Gate": "28.6767843N",
     "Longitude of Gate": "77.3923211E"
   },
   {
     "Station Code Name": "ATHA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "ITS COLLEGE , ARTHALA VILLAGE",
     "Latitude of Gate": "28.6767843N",
     "Longitude of Gate": "77.3923211E"
   },
   {
-    "Station Code Name": "Mngm",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "MNGM",
+    "Gate Name": "GATE 1",
     "Location": "Narendra Mohan Hospital,WORLD SQUAR MALL",
     "Latitude of Gate": "28.4045N",
     "Longitude of Gate": "77.2305E"
   },
   {
-    "Station Code Name": "Mngm",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "MNGM",
+    "Gate Name": "GATE 2",
     "Location": "ITS COLLEGE",
     "Latitude of Gate": "28.4025N",
     "Longitude of Gate": "77.2256E"
   },
   {
     "Station Code Name": "SMPK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "AMBEY HOSPITAL,L.R COLLAGE,ESI HOSPITAL",
     "Latitude of Gate": "28.4055N",
     "Longitude of Gate": "77.2212E"
   },
   {
     "Station Code Name": "SMPK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SHAHIBABAD POLICE STATION",
     "Latitude of Gate": "28.4055N",
     "Longitude of Gate": "77.2212E"
   },
   {
     "Station Code Name": "RJNM",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "NEAR BIKANER WALA",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "RJNM",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NEAR DURGE INDUSTRIAL PARK",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "RJBH",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SHALIMAR GARDEN, EAST INDIA UDYOG LIMITED",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "RJBH",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "PIPE MARKET",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "SHDN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "OPP SHANI DEO MINDIR",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "SHDN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "NEAR SHANI DEO MINDIR",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "DSG",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "G T ROAD",
     "Latitude of Gate": "28.6228 N",
     "Longitude of Gate": "77.3121 E"
   },
   {
     "Station Code Name": "DSG",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "DILSHAD COLONY",
     "Latitude of Gate": "28.6228 N",
     "Longitude of Gate": "77.3121 E"
   },
   {
     "Station Code Name": "JLML",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "JLML INDUSTRIAL AREA",
     "Latitude of Gate": "28.6758N",
     "Longitude of Gate": "77.3125E"
   },
   {
     "Station Code Name": "JLML",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "G T ROAD",
     "Latitude of Gate": "28.6758N",
     "Longitude of Gate": "77.3125E"
   },
   {
     "Station Code Name": "MPK",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "JHILMIL INDRUSTRIAL AREA",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "MPK",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "GT ROAD FLYOVER,SWAMI  DAYANAND HOSPITAL, IHBAS, GTB HOSPITAL",
     "Latitude of Gate": "28.676945N",
     "Longitude of Gate": "77.346783E"
   },
   {
     "Station Code Name": "SHD",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "WEST END (FACING GT ROAD)",
     "Latitude of Gate": "28.673317N",
     "Longitude of Gate": "77.28998E"
   },
   {
     "Station Code Name": "SHD",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "EAST END (INDIAN RAILWAY SIDE)",
     "Latitude of Gate": "29.673317N",
     "Longitude of Gate": "78.28998E"
   },
   {
-    "Station Code Name": "WC 1",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "WC",
+    "Gate Name": "GATE 1",
     "Location": "GT ROAD",
     "Latitude of Gate": "28.401938N",
     "Longitude of Gate": "77.164056E"
   },
   {
-    "Station Code Name": "WC-7",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "WC",
+    "Gate Name": "GATE 2",
     "Location": "G T ROAD",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "SLAP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "GT ROAD, NORTH EAST DELHI",
     "Latitude of Gate": "28.6659264N",
     "Longitude of Gate": "77.2621047E"
   },
   {
     "Station Code Name": "SHPK",
-    "Gate Name": "Gate 1",
-    "Location": "GT ROAD",
+    "Gate Name": "GATE 1",
+    "Location": "Towards Gandhi Nagar Market",
     "Latitude of Gate": "28.6683 N",
     "Longitude of Gate": "77.2503E"
   },
   {
     "Station Code Name": "SHPK",
-    "Gate Name": "Gate 2",
-    "Location": "G T ROAD",
-    "Latitude of Gate": "28.6683 N",
-    "Longitude of Gate": "77.2503E"
+    "Gate Name": "GATE 2",
+    "Location": "IT Park",
+    "Latitude of Gate": "28.66841 N",
+    "Longitude of Gate": "77.25059 E"
   },
   {
     "Station Code Name": "TZI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "St. Stephen Hospital , Tis Hazari Court, Sadar bazar, Dept. of animal Husbandary",
     "Latitude of Gate": "28.40'02\"N",
     "Longitude of Gate": "77.12'59\"E"
   },
   {
     "Station Code Name": "TZI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Metro parking, Lt. Governor Secretariat, Aruna Asaf Ali Hospital, RajPur Road, St. Stephen Hospital , Tis Hazari Court, Sadar bazar",
     "Latitude of Gate": "28.40'02\"N",
     "Longitude of Gate": "77.12'59\"E"
   },
   {
     "Station Code Name": "TZI",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "Metro parking, Lt. Governor Secretariat, Aruna Asaf Ali Hospital, RajPur Road, Boulevered Road",
     "Latitude of Gate": "28.40'02\"N",
     "Longitude of Gate": "77.12'59\"E"
   },
   {
     "Station Code Name": "PBGH",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "ROSHAN ARA ROAD",
     "Latitude of Gate": "28.39.59N",
     "Longitude of Gate": "77.12.24E"
   },
   {
     "Station Code Name": "PRA",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "KISHANGANJ RAILWAY",
     "Latitude of Gate": "28.6666 N",
     "Longitude of Gate": "77.1989E"
   },
   {
     "Station Code Name": "PRA",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SABZI MANDI RAILWAY",
     "Latitude of Gate": "28.6666 N",
     "Longitude of Gate": "77.1989E"
   },
   {
     "Station Code Name": "SHT",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SUBHADRA COLONY",
     "Latitude of Gate": "28.4013N",
     "Longitude of Gate": "77.1054E"
   },
   {
     "Station Code Name": "SHT",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SHASTRI NAGAR MARKET",
     "Latitude of Gate": "28.4013N",
     "Longitude of Gate": "77.1054E"
   },
   {
     "Station Code Name": "KN",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TOTA RAM BAZAAR",
     "Latitude of Gate": "28°40'57\" N",
     "Longitude of Gate": "77 °9'52\" E"
   },
   {
     "Station Code Name": "KN",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "TRI NAGAR",
     "Latitude of Gate": "28°40'58\" N",
     "Longitude of Gate": "77 °9'52\" E"
   },
   {
     "Station Code Name": "KN",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "JJ COLONY",
     "Latitude of Gate": "28°40'58\" N",
     "Longitude of Gate": "77 °9'54\" E"
   },
   {
     "Station Code Name": "KN",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "MDC COMPLEX",
     "Latitude of Gate": "28°40'58\" N",
     "Longitude of Gate": "77 °9'53\" E"
   },
   {
     "Station Code Name": "KP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "TOWARDS DISPENSARY",
     "Latitude of Gate": "28.41'19.96116N",
     "Longitude of Gate": "77.9'41.30856E"
   },
   {
     "Station Code Name": "KP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "CHOTU RAM DHARMSHALA",
     "Latitude of Gate": "28.41'20.09616N",
     "Longitude of Gate": "77.9'41.30748E"
   },
   {
-    "Station Code Name": "NSHP-1",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "NSHP",
+    "Gate Name": "GATE 1",
     "Location": "towards lots entry",
     "Latitude of Gate": "28.6273928N",
     "Longitude of Gate": "77.1716954E"
   },
   {
-    "Station Code Name": "NSHP-1",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "NSHP",
+    "Gate Name": "GATE 2",
     "Location": "towards service road",
     "Latitude of Gate": "28.6995123N",
     "Longitude of Gate": "77.1301047E"
   },
   {
-    "Station Code Name": "NSHP-7",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "NSHP",
+    "Gate Name": "GATE 1",
     "Location": "PUNJAB KESARI, RING ROAD",
     "Latitude of Gate": "28.695203N",
     "Longitude of Gate": "77.154515E"
   },
   {
-    "Station Code Name": "NSHP-7",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "NSHP",
+    "Gate Name": "GATE 2",
     "Location": "D-MALL",
     "Latitude of Gate": "28.69366N",
     "Longitude of Gate": "77.153194E"
   },
   {
-    "Station Code Name": "K.E.",
-    "Gate Name": "Gate 1",
+    "Station Code Name": "KE",
+    "Gate Name": "GATE 1",
     "Location": "MORYA ENCLAVE",
     "Latitude of Gate": "28.698018N",
     "Longitude of Gate": "77.141319E"
   },
   {
-    "Station Code Name": "K.E.",
-    "Gate Name": "Gate 2",
+    "Station Code Name": "KE",
+    "Gate Name": "GATE 2",
     "Location": "KAPIL VIHAR",
     "Latitude of Gate": "28.697233N",
     "Longitude of Gate": "77.141862E"
   },
   {
-    "Station Code Name": "K.E.",
-    "Gate Name": "Gate 3",
+    "Station Code Name": "KE",
+    "Gate Name": "GATE 3",
     "Location": "KOHAT ENCLAVE",
     "Latitude of Gate": "28.697805N",
     "Longitude of Gate": "77.140568E"
   },
   {
     "Station Code Name": "PTP",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "Towards Madhuban apartment",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "PTP",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "Towards Shiva market",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "PTP",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "south pitampura",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "PTP",
-    "Gate Name": "Gate 4",
+    "Gate Name": "GATE 4",
     "Location": "rohini court",
     "Latitude of Gate": "28.6314394N",
     "Longitude of Gate": "77.2192377E"
   },
   {
     "Station Code Name": "RHE",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SEC.7 & 8 ROHINI",
     "Latitude of Gate": "28.707275N",
     "Longitude of Gate": "77.126121E"
   },
   {
     "Station Code Name": "RHE",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "SEC.7 & 8 ROHINI",
     "Latitude of Gate": "28.707457N",
     "Longitude of Gate": "77.125945E"
   },
   {
     "Station Code Name": "RHE",
-    "Gate Name": "Gate 3",
+    "Gate Name": "GATE 3",
     "Location": "SEC.9, ROHINI COURT , FIRE STATION",
     "Latitude of Gate": "28.707816N",
     "Longitude of Gate": "77.126132E"
   },
   {
     "Station Code Name": "RHW",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "SEC-6  ROHINI",
     "Latitude of Gate": "28.7148188N",
     "Longitude of Gate": "77.1153844E"
   },
   {
     "Station Code Name": "RHW",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "BR AMBEDKAR Hospital",
     "Latitude of Gate": "28.71455N",
     "Longitude of Gate": "77.1154943E"
   },
   {
     "Station Code Name": "RHW",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "Unity Mall",
     "Latitude of Gate": "28.714964N",
     "Longitude of Gate": "77.11555E"
   },
   {
     "Station Code Name": "RI",
-    "Gate Name": "Gate 1",
+    "Gate Name": "GATE 1",
     "Location": "towards SEC-5  ROHINI",
     "Latitude of Gate": "28.7209N",
     "Longitude of Gate": "77.1073E"
   },
   {
     "Station Code Name": "RI",
-    "Gate Name": "Gate 2",
+    "Gate Name": "GATE 2",
     "Location": "towards SEC-24  ROHINI",
     "Latitude of Gate": "28.7211N",
     "Longitude of Gate": "77.1074E"
   },
   {
     "Station Code Name": "RI",
-    "Gate Name": "Gate No.3",
+    "Gate Name": "GATE3",
     "Location": "towards SEC-11  ROHINI",
     "Latitude of Gate": "28.7213N",
     "Longitude of Gate": "77.1075E"
