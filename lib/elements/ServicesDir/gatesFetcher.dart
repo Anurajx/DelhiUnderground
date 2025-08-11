@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/StationDir/stopInfo.dart';
 
 class gatesElement extends StatefulWidget {
-  final stationCode;
-  const gatesElement({super.key, required this.stationCode});
+  final station;
+  const gatesElement({super.key, required this.station});
 
   @override
   State<gatesElement> createState() => _gatesElementState();
@@ -20,17 +20,19 @@ class _gatesElementState extends State<gatesElement> {
   void initState() {
     super.initState();
     loadStationsFromCSV().then((stations) {
-      setState(() {
-        gatesJson = stations;
-        print("JSON OF GATES IS $gatesJson");
-      });
+      if (mounted) {
+        setState(() {
+          gatesJson = stations;
+          print("JSON OF GATES IS $gatesJson");
+        });
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     // print(
-    //   "TRIAL1 THE STATION CODE IS /// ${widget.stationCode["Source"]["StationCode"]}",
+    //   "TRIAL1 THE STATION CODE IS /// ${widget.station["Source"]["StationCode"]}",
     // );
     return Container(
       child: Column(
@@ -47,7 +49,7 @@ class _gatesElementState extends State<gatesElement> {
             ),
           ),
           SizedBox(height: 10.h),
-          stationLineBadgeBuilder(gatesJson, widget.stationCode),
+          stationLineBadgeBuilder(gatesJson, widget.station),
         ],
       ),
     );

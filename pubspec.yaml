@@ -56,6 +56,7 @@ dependencies:
   #lottie: ^3.3.1
   url_launcher: ^6.3.2
   flutter_screenutil: ^5.9.3
+  animated_text_kit: ^4.2.3
   ############
   sqflite: ^2.4.2
   path: ^1.9.1
@@ -63,6 +64,7 @@ dependencies:
   #csv: ^5.1.1
   archive: ^4.0.7
   graphs: ^2.3.2
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -123,6 +125,7 @@ flutter:
     - assets/Map/stoptimediffJson.json
     - assets/Image/appfooter2.webp
     - assets/Image/horsefooter.jpg
+    - assets/01111100_r_rd_mon-fri.csv
 
   fonts:
     - family: Poppins

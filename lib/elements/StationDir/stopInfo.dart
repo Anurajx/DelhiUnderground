@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
+import 'package:metroapp/elements/ServicesDir/scheduleService.dart';
 import 'package:metroapp/elements/ServicesDir/stopInfoFetcher.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
 //import 'package:lottie/lottie.dart';
@@ -14,7 +15,7 @@ class stopInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 13, 13, 13),
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: stationCluster(context, stationDict),
     );
   }
@@ -61,10 +62,10 @@ stationCluster(context, stationDict) {
                 SizedBox(height: 2.h),
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
-
+                //MetroTimetableScreen(),
                 scheduleBlock(),
                 SizedBox(height: 40.h),
-                gatesElement(stationCode: stationDict["Source"]["StationCode"]),
+                gatesElement(station: stationDict["Source"]["StationCode"]),
                 //exitBlock(),
                 SizedBox(height: 40.h),
                 ammenitiesElemenets(
@@ -614,7 +615,7 @@ scheduleBlock() {
                             color: Colors.white,
                             child: Center(
                               child: Text(
-                                "10:01",
+                                "Next",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14.sp,
@@ -626,12 +627,17 @@ scheduleBlock() {
                         ),
                         Expanded(
                           child: Container(
-                            color: Colors.grey,
+                            color: const Color.fromARGB(255, 0, 0, 0),
                             child: Center(
                               child: Text(
                                 "10:15",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: const Color.fromARGB(
+                                    255,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -684,7 +690,7 @@ scheduleBlock() {
                             color: Colors.white,
                             child: Center(
                               child: Text(
-                                "NOW",
+                                "Next",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 14.sp,
@@ -696,12 +702,17 @@ scheduleBlock() {
                         ),
                         Expanded(
                           child: Container(
-                            color: Colors.grey,
+                            color: const Color.fromARGB(255, 0, 0, 0),
                             child: Center(
                               child: Text(
                                 "10:00",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: const Color.fromARGB(
+                                    255,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w500,
                                 ),

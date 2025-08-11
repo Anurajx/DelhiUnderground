@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'dart:ui';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
+import 'package:metroapp/elements/StationDir/stopInfo.dart';
 import 'package:metroapp/main.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'package:metroapp/elements/ServicesDir/whatsappURLTransfer.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import './MapDir/mapMetro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -205,16 +206,38 @@ suggestions(context) {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              stationPrimitive(
-                name:
-                    data["just"]?[0]["Destination"]?["Name"]
-                        .toString(), //CHECK NOT ERROR SAFE
-                //STILL HAS BUG
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+                child: stationPrimitive(
+                  name:
+                      data["just"]?[0]["Destination"]?["Name"]
+                          .toString(), //CHECK NOT ERROR SAFE
+                  //STILL HAS BUG
+                ),
               ),
-              stationPrimitive(
-                name:
-                    data["justBefore"]?[0]?["Destination"]?["Name"]
-                        .toString(), //CHECK NOT ERROR SAFE
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+                child: stationPrimitive(
+                  name:
+                      data["justBefore"]?[0]?["Destination"]?["Name"]
+                          .toString(), //CHECK NOT ERROR SAFE
+                ),
               ),
             ],
           );
@@ -243,16 +266,38 @@ suggestions(context) {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              stationPrimitive(
-                name:
-                    defaultDataParsed["just"]?[0]["Destination"]?[2]
-                        .toString(), //CHECK NOT ERROR SAFE
-                //STILL HAS BUG
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+                child: stationPrimitive(
+                  name:
+                      defaultDataParsed["just"]?[0]["Destination"]?[2]
+                          .toString(), //CHECK NOT ERROR SAFE
+                  //STILL HAS BUG
+                ),
               ),
-              stationPrimitive(
-                name:
-                    defaultDataParsed["justBefore"]?[0]?["Destination"]?[2]
-                        .toString(), //CHECK NOT ERROR SAFE
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+                child: stationPrimitive(
+                  name:
+                      defaultDataParsed["justBefore"]?[0]?["Destination"]?[2]
+                          .toString(), //CHECK NOT ERROR SAFE
+                ),
               ),
             ],
           );
@@ -261,6 +306,9 @@ suggestions(context) {
     ),
   );
 }
+
+Map<String, Map<String, dynamic>> coreTransferStationsDictNE = {'Source': {}};
+Map<String, Map<String, dynamic>> coreTransferStationsDictN = {'Source': {}};
 
 nearYou(context) {
   //bool isNear = false;
@@ -277,11 +325,15 @@ nearYou(context) {
         if (data["Near"] != null && data["NearEnough"] != null) {
           //isNear= !isNear;
           /////////////
+          coreTransferStationsDictNE['Source'] =
+              data["NearEnough"]![0]; //handles forwording of screen
           String lineNE = data["NearEnough"]![0]["Line"].toString();
           lineNE = lineNE.replaceAll(RegExp(r'[\[\]]'), '');
           List<String> partsNE = lineNE.split('-');
           List<int> lineNumbersNE = partsNE.map((e) => int.parse(e)).toList();
           /////
+          coreTransferStationsDictN['Source'] =
+              data["Near"]![0]; //handles forwording of screen
           String lineN = data["Near"]![0]["Line"].toString();
           lineN = lineN.replaceAll(RegExp(r'[\[\]]'), '');
           List<String> partsN = lineN.split('-');
@@ -298,21 +350,51 @@ nearYou(context) {
                   color: AppColors.tertiaryText,
                   fontSize: 16.sp, //processedFontheight(context),
                   fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
 
               // if(isNear){
 
               // },
-              stationNearby(
-                name: data["NearEnough"]?[0]["Name"],
-                line: lineNumbersN,
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  print("NEAR ENOUGH TRIAL69 ${coreTransferStationsDictNE}");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => stopInfoScreen(
+                            stationDict: coreTransferStationsDictNE,
+                          ),
+                    ),
+                  );
+                },
+                child: stationNearby(
+                  name: data["NearEnough"]?[0]["Name"],
+                  line: lineNumbersN,
+                ),
               ),
               //Spacer(),
-              stationNearby(
-                name: data["Near"]?[0]["Name"],
-                line: lineNumbersNE,
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  print("NEAR ENOUGH TRIAL69 ${coreTransferStationsDictN}");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => stopInfoScreen(
+                            stationDict: coreTransferStationsDictN,
+                          ),
+                    ),
+                  );
+                },
+                child: stationNearby(
+                  name: data["Near"]?[0]["Name"],
+                  line: lineNumbersNE,
+                ),
               ),
             ],
           );
@@ -450,6 +532,7 @@ ticketAndExit(context) {
               children: [
                 Expanded(
                   child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
                     onTap: () async {
                       final whatsappUrl = Uri.parse(
                         'https://wa.me/+919650855800?text=Hi',
@@ -473,6 +556,7 @@ ticketAndExit(context) {
                 SizedBox(width: 5.w),
                 Expanded(
                   child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -521,16 +605,50 @@ ticketAndExit(context) {
                   ),
                 );
               },
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "stop info",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 18.sp, //processedFontheight(context),
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                  ),
+              child: Center(
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.fromLTRB(25, 0, 5, 0),
+                      child: Text(
+                        "Stop",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 227, 227, 227),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    DefaultTextStyle(
+                      style: const TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: 'poppins',
+                        fontWeight: FontWeight.w300,
+                      ),
+                      child: AnimatedTextKit(
+                        //pause = const Duration(milliseconds: 1000),
+                        repeatForever: true,
+                        animatedTexts: [
+                          RotateAnimatedText('Information'),
+                          RotateAnimatedText('Exit Gates'),
+                          RotateAnimatedText('Schedule'),
+                          RotateAnimatedText('Status'),
+                        ],
+                        onTap: () {
+                          HitTestBehavior.opaque;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => stationSearchScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

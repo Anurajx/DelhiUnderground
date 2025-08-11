@@ -33,7 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         body: searchBody(context: context, destination: widget.destination),
         //resizeToAvoidBottomInset: true,
       ),

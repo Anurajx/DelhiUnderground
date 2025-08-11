@@ -20,10 +20,12 @@ class _ammenitiesElemenetsState extends State<ammenitiesElemenets> {
   void initState() {
     super.initState();
     loadStationsFromCSV().then((stations) {
-      setState(() {
-        gatesJson = stations;
-        print("JSON OF GATES IS $gatesJson");
-      });
+      if (mounted) {
+        setState(() {
+          gatesJson = stations;
+          print("JSON OF GATES IS $gatesJson");
+        });
+      }
     });
   }
 
@@ -206,7 +208,7 @@ ammenitiesBlock(carSlots, bikeSlots, elevated, washroom) {
                             color: Colors.black,
                             padding: EdgeInsets.all(5),
                             child: Text(
-                              "$carSlots",
+                              "$carSlots slots",
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 207, 207, 207),
                                 fontSize: 14.sp,
@@ -271,7 +273,7 @@ ammenitiesBlock(carSlots, bikeSlots, elevated, washroom) {
                             color: Colors.black,
                             padding: EdgeInsets.all(5),
                             child: Text(
-                              "$bikeSlots",
+                              "$bikeSlots slots",
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 207, 207, 207),
                                 fontSize: 14.sp,

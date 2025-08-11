@@ -44,7 +44,7 @@ class _routeScreenState extends State<routeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         body: RouteDisplay(), //temprory
       ),
     );

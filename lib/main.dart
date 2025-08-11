@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
               statusBarIconBrightness: Brightness.light,
             ),
             child: Scaffold(
-              backgroundColor: AppColors.background,
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
 
               //Color.fromARGB(255, 13, 13, 13),
               body: const SafeArea(child: Page1()),

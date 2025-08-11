@@ -397,9 +397,12 @@ Widget stationList(
               //inputs text in the text filed on tap
               controller1.text = name;
               //FocusScope.of(context).requestFocus(focusNode2);
-              print("JSON STATION CODE IS ${station["Station Code"]}");
+              print("JSON TRIAL69 STATION CODE IS ${station}");
               coreTransferStationsDict['Source'] = //TODO: MAKE IT COMAPITABLE WITH TRAFER DICT SO THAT SUGGESTION ON HOMESCREEN ADAPT TO FORMAT
                   station;
+              print(
+                "JSON TRIAL69 STATION CODE coretransferdict IS ${coreTransferStationsDict}",
+              );
               if (ifSourceSelected()) {
                 screenTransferController(
                   context,
