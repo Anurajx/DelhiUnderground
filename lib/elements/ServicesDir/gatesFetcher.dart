@@ -184,13 +184,14 @@ exitBlock(gateNo, gateName) {
                           SizedBox(width: 12.w),
                           Expanded(
                             child: Text(
-                              "$gateName",
+                              "${gateName.toString().toLowerCase()}",
                               overflow: TextOverflow.ellipsis,
                               softWrap: true,
                               maxLines: 2,
                               style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 182, 182, 182),
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w300,
+                                color: const Color.fromARGB(255, 232, 232, 232),
                               ),
                             ),
                           ),
@@ -217,7 +218,7 @@ exitBlock(gateNo, gateName) {
                   overflow: TextOverflow.fade,
                   softWrap: false,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 172, 172, 172),
+                    color: const Color.fromARGB(255, 233, 233, 233),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),

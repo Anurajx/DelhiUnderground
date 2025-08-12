@@ -508,7 +508,7 @@ screenTransferController(context, controller1, controller2) {
               title: Text(
                 "${coreTransferStationsDict['Source']![2]} to ${coreTransferStationsDict['Destination']![2]}",
                 style: TextStyle(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w800,
                   fontFamily: "Poppins",
                 ),
               ),

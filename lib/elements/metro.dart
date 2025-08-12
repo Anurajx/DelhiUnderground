@@ -626,7 +626,8 @@ ticketAndExit(context) {
                       style: const TextStyle(
                         fontSize: 15.0,
                         fontFamily: 'poppins',
-                        fontWeight: FontWeight.w300,
+                        color: Color.fromARGB(255, 138, 138, 138),
+                        fontWeight: FontWeight.w500,
                       ),
                       child: AnimatedTextKit(
                         //pause = const Duration(milliseconds: 1000),
@@ -773,7 +774,7 @@ appFooter(context) {
             "Delhi\nSubway",
             textAlign: TextAlign.left,
             style: TextStyle(
-              color: const Color.fromARGB(160, 255, 255, 255),
+              color: const Color.fromARGB(255, 255, 255, 255),
               //color: const Color.fromARGB(255, 61, 61, 61),
               height: 1.h,
               fontSize: 30.sp,

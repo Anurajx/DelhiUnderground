@@ -6,6 +6,8 @@ import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
 import 'package:metroapp/elements/ServicesDir/scheduleService.dart';
 import 'package:metroapp/elements/ServicesDir/stopInfoFetcher.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
+import 'package:metroapp/elements/route.dart';
+import 'package:path/path.dart';
 //import 'package:lottie/lottie.dart';
 
 class stopInfoScreen extends StatelessWidget {
@@ -58,11 +60,11 @@ stationCluster(context, stationDict) {
                 stationLineMarker(stationDict),
                 //SizedBox(height: 100),
                 closeAndOpeningTime(),
-                stationStatus(),
+                stationStatus(context),
                 SizedBox(height: 2.h),
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
-                //MetroTimetableScreen(),
+                schedulePage(),
                 scheduleBlock(),
                 SizedBox(height: 40.h),
                 gatesElement(station: stationDict["Source"]["StationCode"]),
@@ -148,7 +150,7 @@ closeAndOpeningTime() {
         Text(
           "Opens from 06:00 until 23:00",
           style: TextStyle(
-            color: const Color.fromARGB(255, 112, 112, 112),
+            color: const Color.fromARGB(255, 184, 184, 184),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -158,7 +160,7 @@ closeAndOpeningTime() {
   );
 }
 
-stationStatus() {
+stationStatus(BuildContext context) {
   return Container(
     height: 80.h,
     width: double.infinity,
@@ -185,7 +187,7 @@ stationStatus() {
               Text(
                 "crowd",
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 108, 108, 108),
+                  color: const Color.fromARGB(255, 184, 184, 184),
                   fontWeight: FontWeight.w500,
                   fontSize: 15.sp,
                 ),
@@ -195,38 +197,120 @@ stationStatus() {
         ),
         SizedBox(width: 2.w),
         Expanded(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            color: const Color.fromARGB(255, 25, 25, 25),
-            //width: 90,
-            height: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "NO DISRUPTION",
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15.sp,
+          child: GestureDetector(
+            onTap: () {
+              showDialog(
+                //warns user with that BIG GREEN BOX for mis match
+                context: context,
+                builder:
+                    (context) => AlertDialog(
+                      backgroundColor: const Color.fromARGB(255, 31, 200, 127),
+                      title: Text(
+                        "No disruption found on this route",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontFamily: "Poppins",
+                          color: Colors.black,
+                        ),
                       ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                      content: Text(
+                        'at this time',
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                          color: Colors.black,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      actions: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            foregroundColor: const Color.fromARGB(
+                              255,
+                              255,
+                              255,
+                              255,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(
+                              context,
+                            ); //reset just so user does not gets even more confused
+                            // controller1.text = ''; //reset
+                            // controller2.text = ''; //reset
+                          },
+                          child: Text(
+                            'Okay',
+                            style: TextStyle(fontFamily: "Poppins"),
+                          ),
+                        ),
+                        // TextButton(
+                        //   style: TextButton.styleFrom(
+                        //     backgroundColor: Colors.black,
+                        //     foregroundColor: const Color.fromARGB(
+                        //       255,
+                        //       255,
+                        //       255,
+                        //       255,
+                        //     ),
+                        //   ),
+                        //   onPressed: () {
+                        //     Navigator.push(
+                        //       context,
+                        //       CupertinoPageRoute(
+                        //         builder:
+                        //             (context) => routeScreen(
+                        //               coreTransferStationsDict:
+                        //                   coreTransferStationsDict,
+                        //             ),
+                        //       ),
+                        //     );
+                        //   },
+                        //   child: Text(
+                        //     'Continue',
+                        //     style: TextStyle(fontFamily: "Poppins"),
+                        //   ),
+                        // ),
+                      ],
                     ),
-                    Spacer(),
-                    Icon(Icons.arrow_forward, color: Colors.green, size: 20),
-                  ],
-                ),
-                Text(
-                  "check details",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 108, 108, 108),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15.sp,
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              color: const Color.fromARGB(255, 25, 25, 25),
+              //width: 90,
+              height: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "NO DISRUPTION",
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15.sp,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(Icons.arrow_forward, color: Colors.green, size: 20),
+                    ],
                   ),
-                ),
-              ],
+                  Text(
+                    "check details",
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 184, 184, 184),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15.sp,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -370,7 +454,7 @@ exitBlock() {
                               maxLines: 2,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 182, 182, 182),
+                                color: const Color.fromARGB(255, 232, 232, 232),
                               ),
                             ),
                           ),

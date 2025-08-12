@@ -1,122 +1,125 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:csv/csv.dart'; // Keep the CSV package
 
-class MetroTimetableScreen extends StatefulWidget {
+class schedulePage extends StatelessWidget {
+  const schedulePage({super.key});
+
   @override
-  _MetroTimetableScreenState createState() => _MetroTimetableScreenState();
+  Widget build(BuildContext context) {
+    return MetroHome();
+  }
 }
 
-class _MetroTimetableScreenState extends State<MetroTimetableScreen> {
-  // --- All the data loading and logic stays the same ---
-  Map<String, List<String>> _stationTimes = {};
-  String _nextMetroMessage = 'Loading timetable...';
-  bool _isLoading = true;
+class Trip {
+  final Map<String, String> stationTimes;
+  Trip(this.stationTimes);
+
+  factory Trip.fromJson(Map<String, dynamic> json) {
+    final map = <String, String>{};
+    json.forEach((key, value) {
+      if (key != 'ID' && value != null) {
+        map[key] = value.toString();
+      }
+    });
+    return Trip(map);
+  }
+}
+
+class MetroHome extends StatefulWidget {
+  const MetroHome({super.key});
+
+  @override
+  State<MetroHome> createState() => _MetroHomeState();
+}
+
+class _MetroHomeState extends State<MetroHome> {
+  List<Trip> trips = [];
+  List<String> stations = [];
+  String? selectedStation;
 
   @override
   void initState() {
     super.initState();
-    _loadTimetableDataFromCsv();
+    loadData();
   }
 
-  Future<void> _loadTimetableDataFromCsv() async {
-    try {
-      final rawCsvData = await rootBundle.loadString(
-        "assets/01111100_r_rd_mon-fri.csv",
-      );
-      List<List<dynamic>> csvTable = CsvToListConverter().convert(rawCsvData);
+  Future<void> loadData() async {
+    final raw = await rootBundle.loadString('assets/newTimeTable.json');
+    final List list = jsonDecode(raw);
+    trips =
+        list.map((e) => Trip.fromJson(Map<String, dynamic>.from(e))).toList();
 
-      if (csvTable.isNotEmpty) {
-        List<dynamic> headers = csvTable[0];
-        Map<String, List<String>> tempStationTimes = {};
-
-        for (int i = 1; i < headers.length; i++) {
-          tempStationTimes[headers[i].toString()] = [];
-        }
-        for (int i = 1; i < csvTable.length; i++) {
-          List<dynamic> row = csvTable[i];
-          for (int j = 1; j < row.length; j++) {
-            String stationName = headers[j].toString();
-            String time = row[j].toString();
-            if (time.isNotEmpty) {
-              tempStationTimes[stationName]?.add(time);
-            }
-          }
-        }
-
-        final timeFormat = DateFormat("h:mma");
-        tempStationTimes.forEach((station, times) {
-          times.sort(
-            (a, b) => timeFormat.parse(a).compareTo(timeFormat.parse(b)),
-          );
-        });
-
-        setState(() {
-          _stationTimes = tempStationTimes;
-          _isLoading = false;
-          // For testing, let's find the next metro from the first station
-          _findNextMetroForTest("Inderlok");
-        });
-      }
-    } catch (e) {
-      setState(() {
-        _nextMetroMessage = "Error: Could not load timetable from CSV.";
-        _isLoading = false;
-      });
+    final stationSet = <String>{};
+    for (var trip in trips) {
+      stationSet.addAll(trip.stationTimes.keys);
     }
+    stations = stationSet.toList()..sort();
+    selectedStation = stations.first;
+
+    setState(() {});
   }
 
-  // A simplified function for testing a single hardcoded station
-  void _findNextMetroForTest(String stationName) {
-    final List<String>? schedule = _stationTimes[stationName];
-    if (schedule == null || schedule.isEmpty) {
-      setState(() {
-        _nextMetroMessage = 'No schedule found for $stationName.';
-      });
-      return;
-    }
-    final DateTime now = DateTime.now();
-    final DateFormat timeFormat = DateFormat("h:mma");
-    String? nextTrainTime;
-    for (final timeStr in schedule) {
-      final DateTime trainTime = timeFormat.parse(timeStr);
-      final DateTime todayTrainDateTime = DateTime(
-        now.year,
-        now.month,
-        now.day,
-        trainTime.hour,
-        trainTime.minute,
-      );
-      if (todayTrainDateTime.isAfter(now)) {
-        nextTrainTime = timeStr;
-        break;
+  String? getNextTrain(String station) {
+    final now = DateTime.now();
+    final fmt = DateFormat('h:mma'); // we’ll normalize times before parsing
+    final times = <DateTime>[];
+
+    for (var trip in trips) {
+      final timeStr = trip.stationTimes[station];
+      if (timeStr == null) continue;
+      try {
+        // Normalize: remove spaces, make AM/PM uppercase
+        final normalized = timeStr.trim().toUpperCase().replaceAll(' ', '');
+        final parsed = fmt.parse(normalized);
+        final dt = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          parsed.hour,
+          parsed.minute,
+        );
+        if (dt.isAfter(now)) times.add(dt);
+      } catch (_) {
+        // ignore any bad time
       }
     }
-    setState(() {
-      if (nextTrainTime != null) {
-        _nextMetroMessage = 'Next from Rithala: $nextTrainTime';
-      } else {
-        _nextMetroMessage = 'No more metros from Rithala today.';
-      }
-    });
+
+    if (times.isEmpty) return null;
+    times.sort();
+    final next = times.first;
+    final mins = next.difference(now).inMinutes;
+    return '${fmt.format(next)}  (${mins} min)';
   }
 
-  //
-  // --- THE NEW, ULTRA-SIMPLE BUILD METHOD ---
-  //
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child:
-          _isLoading
-              ? CircularProgressIndicator() // Show a loader while processing
-              : Text(
-                _nextMetroMessage, // Display the result directly
-                //style: Theme.of(context).textTheme.headline5,
-                textAlign: TextAlign.center,
+    return trips.isEmpty
+        ? const Center(child: CupertinoActivityIndicator())
+        : Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              DropdownButton<String>(
+                value: selectedStation,
+                items:
+                    stations
+                        .map((s) => DropdownMenuItem(value: s, child: Text(s)))
+                        .toList(),
+                onChanged: (v) => setState(() => selectedStation = v),
               ),
-    );
+              const SizedBox(height: 20),
+              Text(
+                selectedStation == null
+                    ? 'Select station'
+                    : (getNextTrain(selectedStation!) ??
+                        'No more trains today'),
+                style: const TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        );
   }
 }

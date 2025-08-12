@@ -126,6 +126,7 @@ flutter:
     - assets/Image/appfooter2.webp
     - assets/Image/horsefooter.jpg
     - assets/01111100_r_rd_mon-fri.csv
+    - assets/newTimeTable.json
 
   fonts:
     - family: Poppins

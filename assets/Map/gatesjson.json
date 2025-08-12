@@ -1212,7 +1212,7 @@
   },
   {
     "Station Code Name": "MIRK",
-    "Gate Name": "SUBWAY",
+    "Gate Name": "Subway",
     "Location": "MUNIRKA VILLAGE,MUNIRKA MARKET, CAPITAL COURT, DDA MARKET, VASANT VIHAR POLICE STATION,DTC DEPOT VASANT VIHAR",
     "Latitude of Gate": "28.557955N",
     "Longitude of Gate": "77.173447E"
@@ -1520,7 +1520,7 @@
   },
   {
     "Station Code Name": "SVMB",
-    "Gate Name": "1-SUBWAY",
+    "Gate Name": "Subway",
     "Location": "ARADHNA ENCLAVE",
     "Latitude of Gate": "28.57907N",
     "Longitude of Gate": "77.17545E"
@@ -1534,7 +1534,7 @@
   },
   {
     "Station Code Name": "BKCP",
-    "Gate Name": "1-Subway",
+    "Gate Name": "Subway",
     "Location": "SUBWAY TOWARDS GAIL INDIA",
     "Latitude of Gate": "28.57595N",
     "Longitude of Gate": "77.17227E"
