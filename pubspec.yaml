@@ -115,6 +115,7 @@ flutter:
     - assets/Image/radaranim.json
     - assets/Image/carinf.jpeg
     - assets/Image/bikeinf.jpeg
+    - assets/Image/cycleinf.jpeg
     - assets/Image/elevatorinf.jpeg
     - assets/Image/washroominf.jpeg
     - assets/Image/stopinfo.jpeg
@@ -127,6 +128,7 @@ flutter:
     - assets/Image/horsefooter.jpg
     - assets/01111100_r_rd_mon-fri.csv
     - assets/newTimeTable.json
+    - assets/Map/stationOpenClose.json
 
   fonts:
     - family: Poppins

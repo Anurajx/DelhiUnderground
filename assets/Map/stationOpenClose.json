@@ -1,0 +1,1103 @@
+{
+  "DSG": {
+    "opens": "05:30",
+    "closes": "23:20",
+    "weekend_opens": "08:20"
+  },
+  "JLML": {
+    "opens": "05:32",
+    "closes": "23:22",
+    "weekend_opens": "08:22"
+  },
+  "MPK": {
+    "opens": "05:35",
+    "closes": "23:25",
+    "weekend_opens": "08:25"
+  },
+  "SHD": {
+    "opens": "05:37",
+    "closes": "23:27",
+    "weekend_opens": "08:27"
+  },
+  "WC": {
+    "opens": "05:40",
+    "closes": "23:34",
+    "weekend_opens": "08:30"
+  },
+  "SLAP": {
+    "opens": "05:42",
+    "closes": "23:36",
+    "weekend_opens": "08:32"
+  },
+  "SHPK": {
+    "opens": "05:45",
+    "closes": "23:39",
+    "weekend_opens": "08:35"
+  },
+  "KG": {
+    "opens": "05:47",
+    "closes": "23:59",
+    "weekend_opens": "08:37"
+  },
+  "TZI": {
+    "opens": "05:45",
+    "closes": "23:45",
+    "weekend_opens": "08:40"
+  },
+  "PBGH": {
+    "opens": "05:42",
+    "closes": "23:42",
+    "weekend_opens": "08:42"
+  },
+  "PRA": {
+    "opens": "05:40",
+    "closes": "23:40",
+    "weekend_opens": "08:45"
+  },
+  "SHT": {
+    "opens": "05:37",
+    "closes": "23:37",
+    "weekend_opens": "08:47"
+  },
+  "ILOK": {
+    "opens": "05:35",
+    "closes": "23:43",
+    "weekend_opens": "08:50"
+  },
+  "KN": {
+    "opens": "05:32",
+    "closes": "23:32",
+    "weekend_opens": "08:52"
+  },
+  "KP": {
+    "opens": "05:30",
+    "closes": "23:30",
+    "weekend_opens": "08:55"
+  },
+  "NSHP": {
+    "opens": "05:27",
+    "closes": "23:49",
+    "weekend_opens": "08:57"
+  },
+  "KE": {
+    "opens": "05:25",
+    "closes": "23:25",
+    "weekend_opens": "09:00"
+  },
+  "PTP": {
+    "opens": "05:32",
+    "closes": "23:22",
+    "weekend_opens": "09:02"
+  },
+  "RHE": {
+    "opens": "05:30",
+    "closes": "23:20",
+    "weekend_opens": "09:05"
+  },
+  "RHW": {
+    "opens": "05:27",
+    "closes": "23:57",
+    "weekend_opens": "09:07"
+  },
+  "RI": {
+    "opens": "05:25",
+    "closes": "23:00"
+  },
+  "MUDK": {
+    "opens": "05:25",
+    "closes": "23:00",
+    "weekend_opens": "08:24"
+  },
+  "RDPK": {
+    "opens": "05:22",
+    "closes": "22:57",
+    "weekend_opens": "08:26"
+  },
+  "NRSN": {
+    "opens": "05:20",
+    "closes": "22:55",
+    "weekend_opens": "08:29"
+  },
+  "NNOI": {
+    "opens": "05:17",
+    "closes": "22:52",
+    "weekend_opens": "08:31"
+  },
+  "SMSM": {
+    "opens": "05:15",
+    "closes": "22:50",
+    "weekend_opens": "08:34"
+  },
+  "UNRG": {
+    "opens": "05:12",
+    "closes": "22:47",
+    "weekend_opens": "08:36"
+  },
+  "PAGI": {
+    "opens": "05:10",
+    "closes": "22:45",
+    "weekend_opens": "08:39"
+  },
+  "PVW": {
+    "opens": "06:00",
+    "closes": "22:40",
+    "weekend_opens": "08:00"
+  },
+  "PVE": {
+    "opens": "06:02",
+    "closes": "23:02",
+    "weekend_opens": "07:32"
+  },
+  "MAPR": {
+    "opens": "06:00",
+    "closes": "23:00",
+    "weekend_opens": "07:30"
+  },
+  "SHVP": {
+    "opens": "06:02",
+    "closes": "23:02",
+    "weekend_opens": "07:49"
+  },
+  "PBGA": {
+    "opens": "06:05",
+    "closes": "23:05",
+    "weekend_opens": "07:51"
+  },
+  "APMN": {
+    "opens": "06:07",
+    "closes": "23:07",
+    "weekend_opens": "07:54"
+  },
+  "SRSM": {
+    "opens": "06:10",
+    "closes": "23:10",
+    "weekend_opens": "07:56"
+  },
+  "MIAA": {
+    "opens": "06:12",
+    "closes": "23:12",
+    "weekend_opens": "07:59"
+  },
+  "GHEM": {
+    "opens": "06:15",
+    "closes": "23:15",
+    "weekend_opens": "08:01"
+  },
+  "TKLM": {
+    "opens": "06:17",
+    "closes": "23:17",
+    "weekend_opens": "08:04"
+  },
+  "TKBR": {
+    "opens": "06:20",
+    "closes": "23:20",
+    "weekend_opens": "08:06"
+  },
+  "MIEE": {
+    "opens": "06:22",
+    "closes": "23:22",
+    "weekend_opens": "08:09"
+  },
+  "BUSS": {
+    "opens": "06:25",
+    "closes": "23:25",
+    "weekend_opens": "08:11"
+  },
+  "CIPK": {
+    "opens": "06:00",
+    "closes": "22:40",
+    "weekend_opens": "08:00"
+  },
+  "SPBI": {
+    "opens": "05:50",
+    "closes": "23:00"
+  },
+  "RISE": {
+    "opens": "05:52",
+    "closes": "23:02"
+  },
+  "BIMR": {
+    "opens": "05:55",
+    "closes": "23:05"
+  },
+  "JGPI": {
+    "opens": "05:57",
+    "closes": "23:07"
+  },
+  "AHNR": {
+    "opens": "06:00",
+    "closes": "23:10"
+  },
+  "AZU": {
+    "opens": "06:02",
+    "closes": "23:12"
+  },
+  "MDTW": {
+    "opens": "06:05",
+    "closes": "23:15"
+  },
+  "GTBR": {
+    "opens": "06:07",
+    "closes": "23:17"
+  },
+  "VW": {
+    "opens": "05:00",
+    "closes": "23:20"
+  },
+  "VS": {
+    "opens": "05:02",
+    "closes": "23:22"
+  },
+  "CL": {
+    "opens": "05:05",
+    "closes": "23:25"
+  },
+  "CHK": {
+    "opens": "05:10",
+    "closes": "23:57"
+  },
+  "CWBR": {
+    "opens": "05:12",
+    "closes": "23:55"
+  },
+  "NDI": {
+    "opens": "05:15",
+    "closes": "23:53"
+  },
+  "RCK": {
+    "opens": "05:17",
+    "closes": "23:51"
+  },
+  "PTCK": {
+    "opens": "05:20",
+    "closes": "23:49"
+  },
+  "CTST": {
+    "opens": "05:22",
+    "closes": "23:47"
+  },
+  "UDB": {
+    "opens": "05:25",
+    "closes": "23:45"
+  },
+  "RCC": {
+    "opens": "05:27",
+    "closes": "23:43"
+  },
+  "JB": {
+    "opens": "05:30",
+    "closes": "23:40"
+  },
+  "INA": {
+    "opens": "05:32",
+    "closes": "23:38"
+  },
+  "AIIM": {
+    "opens": "05:35",
+    "closes": "23:35"
+  },
+  "GNPK": {
+    "opens": "05:37",
+    "closes": "23:33"
+  },
+  "HKS": {
+    "opens": "05:40",
+    "closes": "23:31"
+  },
+  "MVNR": {
+    "opens": "05:42",
+    "closes": "23:28"
+  },
+  "SAKT": {
+    "opens": "05:45",
+    "closes": "23:25"
+  },
+  "QM": {
+    "opens": "05:47",
+    "closes": "23:23"
+  },
+  "CHTP": {
+    "opens": "05:50",
+    "closes": "23:20"
+  },
+  "SLTP": {
+    "opens": "05:52",
+    "closes": "23:18"
+  },
+  "GTNI": {
+    "opens": "05:55",
+    "closes": "23:15"
+  },
+  "AJG": {
+    "opens": "05:57",
+    "closes": "23:12"
+  },
+  "GE": {
+    "opens": "06:00",
+    "closes": "23:10"
+  },
+  "SKRP": {
+    "opens": "06:02",
+    "closes": "23:08"
+  },
+  "MGRO": {
+    "opens": "06:05",
+    "closes": "23:05"
+  },
+  "IFOC": {
+    "opens": "06:07",
+    "closes": "23:02"
+  },
+  "HCC": {
+    "opens": "05:45",
+    "closes": "23:00"
+  },
+  "VASI": {
+    "opens": "06:00",
+    "closes": "23:00"
+  },
+  "KASI": {
+    "opens": "06:02",
+    "closes": "23:02"
+  },
+  "AVIT": {
+    "opens": "06:05",
+    "closes": "23:05"
+  },
+  "KKDA": {
+    "opens": "06:07",
+    "closes": "23:07"
+  },
+  "PTVR": {
+    "opens": "06:10",
+    "closes": "23:10"
+  },
+  "NV": {
+    "opens": "06:12",
+    "closes": "23:12"
+  },
+  "LN": {
+    "opens": "06:15",
+    "closes": "23:15"
+  },
+  "NCC": {
+    "opens": "07:55",
+    "closes": "23:42",
+    "weekend_opens": "08:25"
+  },
+  "GEC": {
+    "opens": "07:57",
+    "closes": "23:40",
+    "weekend_opens": "08:27"
+  },
+  "BCGN": {
+    "opens": "08:00",
+    "closes": "23:37",
+    "weekend_opens": "08:30"
+  },
+  "NSET": {
+    "opens": "07:37",
+    "closes": "00:00",
+    "weekend_opens": "08:07"
+  },
+  "NSST": {
+    "opens": "07:40",
+    "closes": "23:58",
+    "weekend_opens": "08:10"
+  },
+  "NSFT": {
+    "opens": "07:42",
+    "closes": "23:55",
+    "weekend_opens": "08:12"
+  },
+  "NAKR": {
+    "opens": "07:45",
+    "closes": "23:53",
+    "weekend_opens": "08:15"
+  },
+  "MVPE": {
+    "opens": "07:47",
+    "closes": "23:50",
+    "weekend_opens": "08:17"
+  },
+  "MVP1": {
+    "opens": "07:50",
+    "closes": "23:48",
+    "weekend_opens": "08:20"
+  },
+  "ASDM": {
+    "opens": "07:52",
+    "closes": "00:16",
+    "weekend_opens": "08:22"
+  },
+  "YB": {
+    "opens": "07:35",
+    "closes": "00:03",
+    "weekend_opens": "08:05"
+  },
+  "IDPT": {
+    "opens": "07:32",
+    "closes": "00:05",
+    "weekend_opens": "08:02"
+  },
+  "PTMD": {
+    "opens": "07:30",
+    "closes": "00:08",
+    "weekend_opens": "08:00"
+  },
+  "MDHS": {
+    "opens": "07:27",
+    "closes": "00:17",
+    "weekend_opens": "07:57"
+  },
+  "BRKR": {
+    "opens": "07:25",
+    "closes": "00:15",
+    "weekend_opens": "07:55"
+  },
+  "RKAM": {
+    "opens": "07:20",
+    "closes": "00:10",
+    "weekend_opens": "07:50"
+  },
+  "JW": {
+    "opens": "07:17",
+    "closes": "00:07",
+    "weekend_opens": "07:47"
+  },
+  "KB": {
+    "opens": "07:15",
+    "closes": "00:05",
+    "weekend_opens": "07:45"
+  },
+  "RP": {
+    "opens": "07:12",
+    "closes": "00:02",
+    "weekend_opens": "07:42"
+  },
+  "SP": {
+    "opens": "07:07",
+    "closes": "23:57",
+    "weekend_opens": "07:37"
+  },
+  "KNR": {
+    "opens": "07:05",
+    "closes": "23:55",
+    "weekend_opens": "07:35"
+  },
+  "MN": {
+    "opens": "07:02",
+    "closes": "23:52",
+    "weekend_opens": "07:32"
+  },
+  "RN": {
+    "opens": "07:00",
+    "closes": "23:50",
+    "weekend_opens": "07:30"
+  },
+  "RG": {
+    "opens": "06:57",
+    "closes": "23:47",
+    "weekend_opens": "07:27"
+  },
+  "TG": {
+    "opens": "06:55",
+    "closes": "23:45",
+    "weekend_opens": "07:25"
+  },
+  "SN": {
+    "opens": "06:52",
+    "closes": "23:42",
+    "weekend_opens": "07:22"
+  },
+  "TN": {
+    "opens": "06:50",
+    "closes": "23:40",
+    "weekend_opens": "07:20"
+  },
+  "JPE": {
+    "opens": "06:47",
+    "closes": "23:37",
+    "weekend_opens": "07:17"
+  },
+  "JPW": {
+    "opens": "06:45",
+    "closes": "23:35",
+    "weekend_opens": "07:15"
+  },
+  "UNE": {
+    "opens": "06:42",
+    "closes": "23:32",
+    "weekend_opens": "07:12"
+  },
+  "UNW": {
+    "opens": "06:40",
+    "closes": "23:30",
+    "weekend_opens": "07:10"
+  },
+  "NWD": {
+    "opens": "06:37",
+    "closes": "23:27",
+    "weekend_opens": "07:07"
+  },
+  "DM": {
+    "opens": "06:35",
+    "closes": "23:25",
+    "weekend_opens": "07:05"
+  },
+  "DW": {
+    "opens": "06:32",
+    "closes": "23:22",
+    "weekend_opens": "07:02"
+  },
+  "DSFN": {
+    "opens": "06:30",
+    "closes": "23:20",
+    "weekend_opens": "07:00"
+  },
+  "DSTN": {
+    "opens": "06:27",
+    "closes": "23:17",
+    "weekend_opens": "06:57"
+  },
+  "DSW": {
+    "opens": "06:25",
+    "closes": "23:15",
+    "weekend_opens": "06:55"
+  },
+  "DSE": {
+    "opens": "06:22",
+    "closes": "23:12",
+    "weekend_opens": "06:52"
+  },
+  "DST": {
+    "opens": "06:20",
+    "closes": "23:10",
+    "weekend_opens": "06:50"
+  },
+  "DSN": {
+    "opens": "06:17",
+    "closes": "23:07",
+    "weekend_opens": "06:47"
+  },
+  "DWET": {
+    "opens": "06:15",
+    "closes": "23:05",
+    "weekend_opens": "06:45"
+  },
+  "DWTO": {
+    "opens": "06:00",
+    "closes": "22:50",
+    "weekend_opens": "06:30"
+  },
+  "ITO": {
+    "opens": "06:10",
+    "closes": "23:08"
+  },
+  "JANP": {
+    "opens": "06:12",
+    "closes": "23:10"
+  },
+  "KM": {
+    "opens": "06:15",
+    "closes": "23:12"
+  },
+  "JLNS": {
+    "opens": "06:17",
+    "closes": "23:15"
+  },
+  "JGPA": {
+    "opens": "06:20",
+    "closes": "23:18"
+  },
+  "LJPN": {
+    "opens": "06:22",
+    "closes": "23:21"
+  },
+  "MLCD": {
+    "opens": "06:25",
+    "closes": "23:23"
+  },
+  "KHCY": {
+    "opens": "06:27",
+    "closes": "23:25"
+  },
+  "NP": {
+    "opens": "06:30",
+    "closes": "23:28"
+  },
+  "KJMD8": {
+    "opens": "06:32",
+    "closes": "23:30"
+  },
+  "GDPI": {
+    "opens": "06:35",
+    "closes": "23:32"
+  },
+  "OK": {
+    "opens": "06:37",
+    "closes": "23:34"
+  },
+  "JLA": {
+    "opens": "06:40",
+    "closes": "23:37"
+  },
+  "STVR": {
+    "opens": "06:42",
+    "closes": "23:39"
+  },
+  "METE": {
+    "opens": "06:45",
+    "closes": "23:42"
+  },
+  "TKBD": {
+    "opens": "06:47",
+    "closes": "23:44"
+  },
+  "BAPU": {
+    "opens": "06:50",
+    "closes": "23:47"
+  },
+  "SRAI": {
+    "opens": "06:52",
+    "closes": "23:39"
+  },
+  "NHPC": {
+    "opens": "06:55",
+    "closes": "23:52"
+  },
+  "NMJR": {
+    "opens": "06:57",
+    "closes": "23:54"
+  },
+  "FTTA": {
+    "opens": "07:00",
+    "closes": "23:57"
+  },
+  "BKMR": {
+    "opens": "07:02",
+    "closes": "23:59"
+  },
+  "OFDB": {
+    "opens": "07:05",
+    "closes": "00:02"
+  },
+  "NCAJ": {
+    "opens": "07:07",
+    "closes": "00:04"
+  },
+  "BACH": {
+    "opens": "07:10",
+    "closes": "00:07"
+  },
+  "ECMJ": {
+    "opens": "07:12",
+    "closes": "00:09"
+  },
+  "NCBC": {
+    "opens": "07:15",
+    "closes": "00:12"
+  },
+  "BYHM": {
+    "opens": "05:40",
+    "closes": "23:00"
+  },
+  "MKPR": {
+    "opens": "06:00",
+    "closes": "23:00",
+    "weekend_opens": "08:00"
+  },
+  "SMBG": {
+    "opens": "06:05",
+    "closes": "23:05",
+    "weekend_opens": "08:05"
+  },
+  "SAKP": {
+    "opens": "06:07",
+    "closes": "23:07",
+    "weekend_opens": "08:07"
+  },
+  "PBGW": {
+    "opens": "06:10",
+    "closes": "23:10",
+    "weekend_opens": "08:10"
+  },
+  "ESIH": {
+    "opens": "06:12",
+    "closes": "23:12",
+    "weekend_opens": "08:12"
+  },
+  "MYPI": {
+    "opens": "06:15",
+    "closes": "23:15",
+    "weekend_opens": "08:15"
+  },
+  "NAVR": {
+    "opens": "06:17",
+    "closes": "23:17",
+    "weekend_opens": "08:17"
+  },
+  "DLIC": {
+    "opens": "06:20",
+    "closes": "23:20",
+    "weekend_opens": "08:20"
+  },
+  "DDSC": {
+    "opens": "06:22",
+    "closes": "23:22",
+    "weekend_opens": "08:22"
+  },
+  "SVMB": {
+    "opens": "06:25",
+    "closes": "23:25",
+    "weekend_opens": "08:25"
+  },
+  "BKCP": {
+    "opens": "06:27",
+    "closes": "23:27",
+    "weekend_opens": "08:27"
+  },
+  "SOJI": {
+    "opens": "06:30",
+    "closes": "23:30",
+    "weekend_opens": "08:30"
+  },
+  "SOEN": {
+    "opens": "06:32",
+    "closes": "23:32",
+    "weekend_opens": "08:32"
+  },
+  "AHRM": {
+    "opens": "06:37",
+    "closes": "23:37",
+    "weekend_opens": "08:37"
+  },
+  "VNPR": {
+    "opens": "06:40",
+    "closes": "23:40",
+    "weekend_opens": "08:40"
+  },
+  "NIZM": {
+    "opens": "06:42",
+    "closes": "23:42",
+    "weekend_opens": "08:42"
+  },
+  "TKPR": {
+    "opens": "06:47",
+    "closes": "23:47",
+    "weekend_opens": "08:47"
+  },
+  "VENT": {
+    "opens": "06:50",
+    "closes": "23:50",
+    "weekend_opens": "08:50"
+  },
+  "VNNR": {
+    "opens": "06:52",
+    "closes": "23:52",
+    "weekend_opens": "08:52"
+  },
+  "IPE": {
+    "opens": "06:55",
+    "closes": "23:55",
+    "weekend_opens": "08:55"
+  },
+  "KKDC": {
+    "opens": "07:00",
+    "closes": "23:59",
+    "weekend_opens": "09:00"
+  },
+  "KHNA": {
+    "opens": "07:02",
+    "closes": "00:02",
+    "weekend_opens": "09:02"
+  },
+  "EANR": {
+    "opens": "07:05",
+    "closes": "00:05",
+    "weekend_opens": "09:05"
+  },
+  "JFRB": {
+    "opens": "07:10",
+    "closes": "00:10",
+    "weekend_opens": "09:10"
+  },
+  "MUPR": {
+    "opens": "07:12",
+    "closes": "00:12",
+    "weekend_opens": "09:12"
+  },
+  "GKPR": {
+    "opens": "07:15",
+    "closes": "00:15",
+    "weekend_opens": "09:15"
+  },
+  "JIEE": {
+    "opens": "07:17",
+    "closes": "00:17",
+    "weekend_opens": "09:17"
+  },
+  "SVVR": {
+    "opens": "06:00",
+    "closes": "23:00",
+    "weekend_opens": "08:00"
+  },
+  "OBC": {
+    "opens": "06:37",
+    "closes": "00:37",
+    "weekend_opens": "08:57"
+  },
+  "KIKJ": {
+    "opens": "06:35",
+    "closes": "00:35",
+    "weekend_opens": "08:55"
+  },
+  "JLA8": {
+    "opens": "06:32",
+    "closes": "00:32",
+    "weekend_opens": "08:52"
+  },
+  "OVA": {
+    "opens": "06:30",
+    "closes": "00:30",
+    "weekend_opens": "08:50"
+  },
+  "JANR": {
+    "opens": "06:27",
+    "closes": "00:27",
+    "weekend_opens": "08:47"
+  },
+  "IWNR": {
+    "opens": "06:25",
+    "closes": "00:25",
+    "weekend_opens": "08:45"
+  },
+  "OKNS": {
+    "opens": "06:22",
+    "closes": "00:22",
+    "weekend_opens": "08:42"
+  },
+  "NUEE": {
+    "opens": "06:20",
+    "closes": "00:20",
+    "weekend_opens": "08:40"
+  },
+  "GKEI": {
+    "opens": "06:17",
+    "closes": "00:17",
+    "weekend_opens": "08:37"
+  },
+  "CDLI": {
+    "opens": "06:15",
+    "closes": "00:15",
+    "weekend_opens": "08:35"
+  },
+  "PSPK": {
+    "opens": "06:12",
+    "closes": "00:12",
+    "weekend_opens": "08:32"
+  },
+  "IIT": {
+    "opens": "06:10",
+    "closes": "00:10",
+    "weekend_opens": "08:30"
+  },
+  "RKPM": {
+    "opens": "06:07",
+    "closes": "00:07",
+    "weekend_opens": "08:27"
+  },
+  "MIRK": {
+    "opens": "06:05",
+    "closes": "00:05",
+    "weekend_opens": "08:25"
+  },
+  "VTVR": {
+    "opens": "06:02",
+    "closes": "00:02",
+    "weekend_opens": "08:22"
+  },
+  "SKVR": {
+    "opens": "06:00",
+    "closes": "23:59",
+    "weekend_opens": "08:20"
+  },
+  "IGDA": {
+    "opens": "05:57",
+    "closes": "23:57",
+    "weekend_opens": "08:17"
+  },
+  "SABR": {
+    "opens": "05:55",
+    "closes": "23:55",
+    "weekend_opens": "08:15"
+  },
+  "PALM": {
+    "opens": "05:52",
+    "closes": "23:52",
+    "weekend_opens": "08:12"
+  },
+  "DSHP": {
+    "opens": "05:50",
+    "closes": "23:50",
+    "weekend_opens": "08:10"
+  },
+  "DBMR": {
+    "opens": "05:47",
+    "closes": "23:47",
+    "weekend_opens": "08:07"
+  },
+  "NNGI": {
+    "opens": "06:02",
+    "closes": "23:02",
+    "weekend_opens": "08:02"
+  },
+  "NFGH": {
+    "opens": "06:05",
+    "closes": "23:05",
+    "weekend_opens": "08:05"
+  },
+  "DNBT": {
+    "opens": "06:00",
+    "closes": "23:00",
+    "weekend_opens": "08:00"
+  },
+  "APOT": {
+    "opens": "05:06",
+    "closes": "23:51"
+  },
+  "DACY": {
+    "opens": "04:56",
+    "closes": "23:41"
+  },
+  "DKV": {
+    "opens": "04:49",
+    "closes": "23:34"
+  },
+  "SJSU": {
+    "opens": "04:45",
+    "closes": "23:30"
+  },
+  "DLIG": {
+    "opens": "06:07",
+    "closes": "23:06"
+  },
+  "JAMD": {
+    "opens": "06:05",
+    "closes": "23:04"
+  },
+  "LLQA": {
+    "opens": "06:02",
+    "closes": "23:02"
+  },
+  "NECC": {
+    "opens": "05:45",
+    "closes": "23:00",
+    "weekend_opens": "08:10"
+  },
+  "NSFI": {
+    "opens": "06:00",
+    "closes": "22:45",
+    "weekend_opens": "08:00"
+  },
+  "NSOF": {
+    "opens": "06:02",
+    "closes": "22:43",
+    "weekend_opens": "08:02"
+  },
+  "NSOS": {
+    "opens": "06:04",
+    "closes": "22:41",
+    "weekend_opens": "08:04"
+  },
+  "NSOT": {
+    "opens": "06:07",
+    "closes": "22:39",
+    "weekend_opens": "08:07"
+  },
+  "NSOE": {
+    "opens": "06:09",
+    "closes": "22:35",
+    "weekend_opens": "08:09"
+  },
+  "NSEZ": {
+    "opens": "06:12",
+    "closes": "22:33",
+    "weekend_opens": "08:12"
+  },
+  "NSOH": {
+    "opens": "06:15",
+    "closes": "22:31",
+    "weekend_opens": "08:15"
+  },
+  "NSOD": {
+    "opens": "06:05",
+    "closes": "22:28",
+    "weekend_opens": "08:05"
+  },
+  "NSOL": {
+    "opens": "06:02",
+    "closes": "22:26",
+    "weekend_opens": "08:02"
+  },
+  "NSOFI": {
+    "opens": "06:00",
+    "closes": "22:24",
+    "weekend_opens": "08:00"
+  },
+  "NSOO": {
+    "opens": "06:02",
+    "closes": "22:21",
+    "weekend_opens": "08:02"
+  },
+  "NSOFV": {
+    "opens": "06:05",
+    "closes": "22:19",
+    "weekend_opens": "08:05"
+  },
+  "NSOSV": {
+    "opens": "06:08",
+    "closes": "22:16",
+    "weekend_opens": "08:08"
+  },
+  "NSOFN": {
+    "opens": "06:12",
+    "closes": "22:14",
+    "weekend_opens": "08:12"
+  },
+  "NSOFH": {
+    "opens": "06:14",
+    "closes": "22:10",
+    "weekend_opens": "08:14"
+  },
+  "KNPK": {
+    "opens": "06:17",
+    "closes": "22:08",
+    "weekend_opens": "08:17"
+  },
+  "PRCK": {
+    "opens": "06:21",
+    "closes": "22:06",
+    "weekend_opens": "08:21"
+  },
+  "ALPH": {
+    "opens": "06:24",
+    "closes": "22:03",
+    "weekend_opens": "08:24"
+  },
+  "DLTO": {
+    "opens": "06:27",
+    "closes": "22:01",
+    "weekend_opens": "08:27"
+  },
+  "GNID": {
+    "opens": "06:29",
+    "closes": "22:00",
+    "weekend_opens": "08:29"
+  },
+  "DPST": {
+    "opens": "06:00",
+    "closes": "22:00",
+    "weekend_opens": "08:00"
+  }
+}

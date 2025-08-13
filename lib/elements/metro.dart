@@ -779,7 +779,7 @@ appFooter(context) {
               height: 1.h,
               fontSize: 30.sp,
               fontFamily: 'Poppins',
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w800,
             ),
           ),
         ),

@@ -26,7 +26,7 @@ class _SvgMapState extends State<SvgMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: Stack(
         children: [
           InteractiveViewer(

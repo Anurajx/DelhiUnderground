@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
+import 'package:metroapp/elements/ServicesDir/openingClosingFetcher.dart';
 import 'package:metroapp/elements/ServicesDir/scheduleService.dart';
 import 'package:metroapp/elements/ServicesDir/stopInfoFetcher.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
@@ -59,11 +60,15 @@ stationCluster(context, stationDict) {
               children: [
                 stationLineMarker(stationDict),
                 //SizedBox(height: 100),
-                closeAndOpeningTime(),
-                stationStatus(context),
+                StationTimesWidget(
+                  stationCode: stationDict["Source"]["StationCode"],
+                ),
+                //closeAndOpeningTime(),
+                stationStatus(context, stationDict["Source"]["Name"]),
                 SizedBox(height: 2.h),
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
+                //newScheduleBlock(),
                 schedulePage(),
                 scheduleBlock(),
                 SizedBox(height: 40.h),
@@ -150,7 +155,7 @@ closeAndOpeningTime() {
         Text(
           "Opens from 06:00 until 23:00",
           style: TextStyle(
-            color: const Color.fromARGB(255, 184, 184, 184),
+            color: const Color.fromARGB(255, 130, 130, 130),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -160,7 +165,7 @@ closeAndOpeningTime() {
   );
 }
 
-stationStatus(BuildContext context) {
+stationStatus(BuildContext context, stationName) {
   return Container(
     height: 80.h,
     width: double.infinity,
@@ -187,7 +192,7 @@ stationStatus(BuildContext context) {
               Text(
                 "crowd",
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 184, 184, 184),
+                  color: const Color.fromARGB(255, 130, 130, 130),
                   fontWeight: FontWeight.w500,
                   fontSize: 15.sp,
                 ),
@@ -217,7 +222,7 @@ stationStatus(BuildContext context) {
                         borderRadius: BorderRadius.circular(2),
                       ),
                       content: Text(
-                        'at this time',
+                        '$stationName',
                         style: TextStyle(
                           fontFamily: "Poppins",
                           color: Colors.black,
@@ -304,7 +309,7 @@ stationStatus(BuildContext context) {
                   Text(
                     "check details",
                     style: TextStyle(
-                      color: const Color.fromARGB(255, 184, 184, 184),
+                      color: const Color.fromARGB(255, 130, 130, 130),
                       fontWeight: FontWeight.w500,
                       fontSize: 15.sp,
                     ),
@@ -648,6 +653,90 @@ exitBlock() {
   );
 }
 
+newScheduleBuilder() {
+  return Container(
+    child: Row(
+      children: [newScheduleBlock(), SizedBox(width: 2.w), newScheduleBlock()],
+    ),
+  );
+}
+
+newScheduleBlock() {
+  return Expanded(
+    child: Container(
+      //height: 150.h,
+      color: const Color.fromARGB(255, 255, 255, 255),
+      child: Column(
+        children: [
+          Stack(
+            alignment: Alignment.topLeft,
+            children: [
+              Container(
+                padding: EdgeInsets.all(15.sp),
+                color: const Color.fromARGB(255, 33, 33, 33),
+                width: double.infinity,
+                child: Text(
+                  "Majlis Park",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Container(color: Colors.pinkAccent, height: 10.h, width: 10.w),
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all(15.sp),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "10:00 AM",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      "5 Min",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "10:00 AM",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      "5 Min",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 scheduleBlock() {
   //schedule
   return Container(
@@ -665,154 +754,155 @@ scheduleBlock() {
           ),
         ),
         SizedBox(height: 10.h),
-        Stack(
-          alignment: Alignment.topLeft,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 60.h,
-              color: const Color.fromARGB(255, 25, 25, 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(width: 10.w),
-                  Text(
-                    "Majlis Park",
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 207, 207, 207),
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Spacer(),
-                  Container(
-                    width: 100.w,
-                    height: 60.h,
-                    color: const Color.fromARGB(255, 245, 245, 245),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.white,
-                            child: Center(
-                              child: Text(
-                                "Next",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            child: Center(
-                              child: Text(
-                                "10:15",
-                                style: TextStyle(
-                                  color: const Color.fromARGB(
-                                    255,
-                                    255,
-                                    255,
-                                    255,
-                                  ),
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(height: 10.h, width: 10.w, color: Colors.blue),
-          ],
-        ),
-        /////////
-        SizedBox(height: 2.h),
-        Stack(
-          alignment: Alignment.topLeft,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 60.h,
-              color: const Color.fromARGB(255, 25, 25, 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(width: 10.w),
-                  Text(
-                    "Maujpur",
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 207, 207, 207),
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Spacer(),
-                  Container(
-                    width: 100.w,
-                    height: 60.h,
-                    color: const Color.fromARGB(255, 245, 245, 245),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.white,
-                            child: Center(
-                              child: Text(
-                                "Next",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            child: Center(
-                              child: Text(
-                                "10:00",
-                                style: TextStyle(
-                                  color: const Color.fromARGB(
-                                    255,
-                                    255,
-                                    255,
-                                    255,
-                                  ),
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(height: 10.h, width: 10.w, color: Colors.blue),
-          ],
-        ),
+        newScheduleBuilder(),
+        // Stack(
+        //   alignment: Alignment.topLeft,
+        //   children: [
+        //     Container(
+        //       width: double.infinity,
+        //       height: 60.h,
+        //       color: const Color.fromARGB(255, 25, 25, 25),
+        //       child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         children: [
+        //           SizedBox(width: 10.w),
+        //           Text(
+        //             "Majlis Park",
+        //             style: TextStyle(
+        //               color: const Color.fromARGB(255, 207, 207, 207),
+        //               fontSize: 16.sp,
+        //               fontWeight: FontWeight.w500,
+        //             ),
+        //           ),
+        //           Spacer(),
+        //           Container(
+        //             width: 100.w,
+        //             height: 60.h,
+        //             color: const Color.fromARGB(255, 245, 245, 245),
+        //             child: Column(
+        //               mainAxisAlignment: MainAxisAlignment.center,
+        //               crossAxisAlignment: CrossAxisAlignment.center,
+        //               children: [
+        //                 Expanded(
+        //                   child: Container(
+        //                     color: Colors.white,
+        //                     child: Center(
+        //                       child: Text(
+        //                         "Next",
+        //                         style: TextStyle(
+        //                           color: Colors.black,
+        //                           fontSize: 14.sp,
+        //                           fontWeight: FontWeight.w500,
+        //                         ),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 ),
+        //                 Expanded(
+        //                   child: Container(
+        //                     color: const Color.fromARGB(255, 0, 0, 0),
+        //                     child: Center(
+        //                       child: Text(
+        //                         "10:15",
+        //                         style: TextStyle(
+        //                           color: const Color.fromARGB(
+        //                             255,
+        //                             255,
+        //                             255,
+        //                             255,
+        //                           ),
+        //                           fontSize: 14.sp,
+        //                           fontWeight: FontWeight.w500,
+        //                         ),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 ),
+        //               ],
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //     Container(height: 10.h, width: 10.w, color: Colors.blue),
+        //   ],
+        // ),
+        // /////////
+        // SizedBox(height: 2.h),
+        // Stack(
+        //   alignment: Alignment.topLeft,
+        //   children: [
+        //     Container(
+        //       width: double.infinity,
+        //       height: 60.h,
+        //       color: const Color.fromARGB(255, 25, 25, 25),
+        //       child: Row(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         crossAxisAlignment: CrossAxisAlignment.center,
+        //         children: [
+        //           SizedBox(width: 10.w),
+        //           Text(
+        //             "Maujpur",
+        //             style: TextStyle(
+        //               color: const Color.fromARGB(255, 207, 207, 207),
+        //               fontSize: 16.sp,
+        //               fontWeight: FontWeight.w500,
+        //             ),
+        //           ),
+        //           Spacer(),
+        //           Container(
+        //             width: 100.w,
+        //             height: 60.h,
+        //             color: const Color.fromARGB(255, 245, 245, 245),
+        //             child: Column(
+        //               mainAxisAlignment: MainAxisAlignment.center,
+        //               crossAxisAlignment: CrossAxisAlignment.center,
+        //               children: [
+        //                 Expanded(
+        //                   child: Container(
+        //                     color: Colors.white,
+        //                     child: Center(
+        //                       child: Text(
+        //                         "Next",
+        //                         style: TextStyle(
+        //                           color: Colors.black,
+        //                           fontSize: 14.sp,
+        //                           fontWeight: FontWeight.w500,
+        //                         ),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 ),
+        //                 Expanded(
+        //                   child: Container(
+        //                     color: const Color.fromARGB(255, 0, 0, 0),
+        //                     child: Center(
+        //                       child: Text(
+        //                         "10:00",
+        //                         style: TextStyle(
+        //                           color: const Color.fromARGB(
+        //                             255,
+        //                             255,
+        //                             255,
+        //                             255,
+        //                           ),
+        //                           fontSize: 14.sp,
+        //                           fontWeight: FontWeight.w500,
+        //                         ),
+        //                       ),
+        //                     ),
+        //                   ),
+        //                 ),
+        //               ],
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //     Container(height: 10.h, width: 10.w, color: Colors.blue),
+        //   ],
+        // ),
       ],
     ),
   );

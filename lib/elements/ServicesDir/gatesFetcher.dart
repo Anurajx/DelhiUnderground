@@ -189,7 +189,7 @@ exitBlock(gateNo, gateName) {
                               softWrap: true,
                               maxLines: 2,
                               style: TextStyle(
-                                fontSize: 16.sp,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w300,
                                 color: const Color.fromARGB(255, 232, 232, 232),
                               ),

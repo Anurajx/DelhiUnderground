@@ -146,6 +146,7 @@ Widget stationLineBadgeBuilder(List<dynamic> gates, stationCode) {
             return ammenitiesBlock(
               line["parking_car"],
               line["parking_motorcycle"],
+              line["parking_cycle"],
               line["elevated"],
               line["toilet"],
             );
@@ -161,7 +162,7 @@ Widget stationLineBadgeBuilder(List<dynamic> gates, stationCode) {
   );
 }
 
-ammenitiesBlock(carSlots, bikeSlots, elevated, washroom) {
+ammenitiesBlock(carSlots, bikeSlots, cycleSlots, elevated, washroom) {
   return Container(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -289,6 +290,70 @@ ammenitiesBlock(carSlots, bikeSlots, elevated, washroom) {
               ),
               Image.asset(
                 "assets/Image/bikeinf.jpeg",
+                height: 80.h,
+                width: 130.w,
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 2.h),
+        Container(
+          width: double.infinity,
+          //height: 80.h,
+          color: const Color.fromARGB(255, 25, 25, 25),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "cycle parking",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 182, 182, 182),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: 8.h),
+                      Row(
+                        children: [
+                          Container(
+                            color: const Color.fromARGB(255, 207, 207, 207),
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              "available",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 14, 14, 14),
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            color: Colors.black,
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              "$cycleSlots slots",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 207, 207, 207),
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Image.asset(
+                "assets/Image/cycleinf.jpeg",
                 height: 80.h,
                 width: 130.w,
                 fit: BoxFit.cover,
