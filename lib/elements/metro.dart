@@ -616,7 +616,7 @@ ticketAndExit(context) {
                       child: Text(
                         "Stop",
                         style: TextStyle(
-                          color: const Color.fromARGB(255, 227, 227, 227),
+                          color: const Color.fromARGB(255, 244, 244, 244),
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
@@ -626,7 +626,7 @@ ticketAndExit(context) {
                       style: const TextStyle(
                         fontSize: 15.0,
                         fontFamily: 'poppins',
-                        color: Color.fromARGB(255, 138, 138, 138),
+                        color: Color.fromARGB(255, 194, 194, 194),
                         fontWeight: FontWeight.w500,
                       ),
                       child: AnimatedTextKit(

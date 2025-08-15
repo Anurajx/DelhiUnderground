@@ -139,16 +139,16 @@ Widget stationLineBadgeBuilder(List<dynamic> gates, stationCode) {
   return Column(
     children:
         gates.map<Widget>((line) {
-          print(
-            "Line TRIAL1 is ${line["Station Code Name"]} AND the station code is $stationCode",
-          );
+          // print(
+          //   "Line TRIAL1 is ${line["Station Code Name"]} AND the station code is $stationCode",
+          // );
           if (line["Station Code Name"] == stationCode) {
-            print("Fcukkkkk yeah");
+            //print("Fcukkkkk yeah");
             return exitBlock(line["Gate Name"], line["Location"]);
           } else {
-            print(" Fcukkkkk yeahhellll naahhh");
-            print("Line TRIAL1 is NOT APPROVED");
-            return SizedBox();
+            //print(" Fcukkkkk yeahhellll naahhh");
+            //print("Line TRIAL1 is NOT APPROVED");
+            return SizedBox.shrink();
           }
           // return Padding(
           //   padding: const EdgeInsets.only(right: 3),

@@ -1803,7 +1803,7 @@
     "StationCode": "HDNR",
     "Name": "Hindon River",
     "Hindi": "हिंडन नदी",
-    "Line": "15",
+    "Line": "1",
     "Latitude": "28.673508",
     "Longitude": "77.40654"
   },
@@ -1811,7 +1811,7 @@
     "StationCode": "ATHA",
     "Name": "Arthala",
     "Hindi": "अर्थला",
-    "Line": "15",
+    "Line": "1",
     "Latitude": "28.6772",
     "Longitude": "77.391876"
   },
@@ -1819,7 +1819,7 @@
     "StationCode": "MNGM",
     "Name": "Mohan Nagar",
     "Hindi": "मोहन नगर",
-    "Line": "15",
+    "Line": "1",
     "Latitude": "28.67856",
     "Longitude": "77.384209"
   },
@@ -1827,7 +1827,7 @@
     "StationCode": "SMPK",
     "Name": "Shyam Park",
     "Hindi": "श्याम पार्क",
-    "Line": "15",
+    "Line": "1",
     "Latitude": "28.678217",
     "Longitude": "77.370911"
   },
@@ -1835,7 +1835,7 @@
     "StationCode": "RJNM",
     "Name": "Major Mohit Sharma Rajendra Nagar",
     "Hindi": "मेजर मोहित शर्मा राजेंद्र नगर",
-    "Line": "15",
+    "Line": "1",
     "Latitude": "28.678095",
     "Longitude": "77.359528"
   },
@@ -1843,7 +1843,7 @@
     "StationCode": "RJBH",
     "Name": "Raj Bagh",
     "Hindi": "राज बाग",
-    "Line": "15",
+    "Line": "1",
     "Latitude": "28.677122",
     "Longitude": "77.346466"
   },
@@ -1851,7 +1851,7 @@
     "StationCode": "SHDN",
     "Name": "Shaheed Nagar",
     "Hindi": "शहीद नगर",
-    "Line": "15",
+    "Line": "1",
     "Latitude": "28.676615",
     "Longitude": "77.333809"
   },
@@ -1899,7 +1899,7 @@
     "StationCode": "NECC",
     "Name": "Noida Electronic City",
     "Hindi": "नोएडा इलेक्ट्रॉनिक सिटी",
-    "Line": "20",
+    "Line": "3",
     "Latitude": "28.628685",
     "Longitude": "77.375229"
   },
@@ -2070,5 +2070,29 @@
     "Line": "20",
     "Latitude": "28.488651",
     "Longitude": "77.544075"
+  },
+  {
+    "StationCode": "PN",
+    "Name": "Patel Nagar",
+    "Hindi": "पटेल नगर",
+    "Line": "3",
+    "Latitude": "28.645037",
+    "Longitude": "77.167046"
+  },
+  {
+    "StationCode": "MVPO",
+    "Name": "Mayur Vihar Pocket 1",
+    "Hindi": "मयूर विहार पॉकेट 1",
+    "Line": "7",
+    "Latitude": "28.606598",
+    "Longitude": "77.296326"
+  },
+  {
+    "StationCode": "NBAA",
+    "Name": "Shaheed Sthal (New Bus Adda)",
+    "Hindi": "शहीद स्थल",
+    "Line": "1",
+    "Latitude": "28.670177",
+    "Longitude": "77.416031"
   }
 ]

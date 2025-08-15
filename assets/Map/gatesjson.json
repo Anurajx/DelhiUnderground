@@ -4800,5 +4800,26 @@
     "Location": "towards SEC-11  ROHINI",
     "Latitude of Gate": "28.7213N",
     "Longitude of Gate": "77.1075E"
+  },
+  {
+    "Station Code Name": "DNBT",
+    "Gate Name": "Gate 1",
+    "Location": "Fire Station",
+    "Latitude of Gate": "",
+    "Longitude of Gate": ""
+  },
+  {
+    "Station Code Name": "DNBT",
+    "Gate Name": "Gate 2",
+    "Location": "MCD Office",
+    "Latitude of Gate": "",
+    "Longitude of Gate": ""
+  },
+  {
+    "Station Code Name": "DNBT",
+    "Gate Name": "Gate 3",
+    "Location": "Dhansa Bus Stop",
+    "Latitude of Gate": "",
+    "Longitude of Gate": ""
   }
 ]
