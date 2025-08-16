@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:metroapp/main.dart';
 
 class StationTimesWidget extends StatelessWidget {
   final stationCode;
@@ -36,8 +37,8 @@ class StationTimesWidget extends StatelessWidget {
               Text(
                 "Opens from ${mpk['opens']} until ${mpk['closes']}",
                 style: TextStyle(
-                  color: const Color.fromARGB(255, 130, 130, 130),
-                  fontWeight: FontWeight.w500,
+                  color: AppColors.secondaryText,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               //const SizedBox(height: 20),

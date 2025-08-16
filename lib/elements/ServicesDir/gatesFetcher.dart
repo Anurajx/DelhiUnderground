@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/StationDir/stopInfo.dart';
+import 'package:metroapp/main.dart';
 
 class gatesElement extends StatefulWidget {
   final station;
@@ -190,8 +191,8 @@ exitBlock(gateNo, gateName) {
                               maxLines: 2,
                               style: TextStyle(
                                 fontSize: 14.sp,
-                                fontWeight: FontWeight.w300,
-                                color: const Color.fromARGB(255, 232, 232, 232),
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.primaryText,
                               ),
                             ),
                           ),
@@ -218,7 +219,7 @@ exitBlock(gateNo, gateName) {
                   overflow: TextOverflow.fade,
                   softWrap: false,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 233, 233, 233),
+                    color: AppColors.primaryText,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),

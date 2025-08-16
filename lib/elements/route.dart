@@ -180,7 +180,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "Your trip takes ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 109, 109, 109),
+                color: AppColors.tertiaryText,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -188,7 +188,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "50 Minutes ", //make these a variable
               style: TextStyle(
-                color: const Color.fromARGB(255, 187, 187, 187),
+                color: AppColors.secondaryText,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -196,7 +196,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "has ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 109, 109, 109),
+                color: AppColors.tertiaryText,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -204,7 +204,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "2 interchange ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 187, 187, 187),
+                color: AppColors.secondaryText,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -212,7 +212,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "and costs ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 109, 109, 109),
+                color: AppColors.tertiaryText,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -220,7 +220,7 @@ class tripSummary extends StatelessWidget {
             TextSpan(
               text: "50 Rs. ",
               style: TextStyle(
-                color: const Color.fromARGB(255, 187, 187, 187),
+                color: AppColors.secondaryText,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -240,7 +240,6 @@ class tripSummary extends StatelessWidget {
 class routeCluster extends StatefulWidget {
   dynamic lineColor;
   routeCluster({super.key, required this.lineColor});
-
   @override
   State<routeCluster> createState() => _routeClusterState();
 }
@@ -400,7 +399,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             //heading
             "Bhikaji Cama Place", //-------------------HERE--------------------------------------------
             style: TextStyle(
-              color: const Color.fromARGB(255, 187, 187, 187),
+              color: AppColors.primaryText,
               fontSize: 18.sp,
               fontWeight: FontWeight.w500,
             ),
@@ -418,7 +417,7 @@ class _infoIndicatorState extends State<infoIndicator> {
                 Text(
                   " Heading towards Majlis Park",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: AppColors.secondaryText,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w300,
                   ),
@@ -430,7 +429,7 @@ class _infoIndicatorState extends State<infoIndicator> {
           Text(
             "Blue Line",
             style: TextStyle(
-              color: Colors.grey,
+              color: AppColors.secondaryText,
               fontSize: 15.sp,
               fontWeight: FontWeight.w300,
             ),
@@ -439,7 +438,7 @@ class _infoIndicatorState extends State<infoIndicator> {
           Text(
             "Every 2 min",
             style: TextStyle(
-              color: Colors.grey,
+              color: AppColors.secondaryText,
               fontSize: 15.sp,
               fontWeight: FontWeight.w300,
             ),
@@ -463,7 +462,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             //heading
             "Rajori Garden",
             style: TextStyle(
-              color: const Color.fromARGB(255, 187, 187, 187),
+              color: AppColors.primaryText,
               fontSize: 18.sp,
               fontWeight: FontWeight.w500,
             ),

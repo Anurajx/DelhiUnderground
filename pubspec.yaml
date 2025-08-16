@@ -130,6 +130,43 @@ flutter:
     - assets/01111100_r_rd_mon-fri.csv
     - assets/newTimeTable.json
     - assets/Map/stationOpenClose.json
+    ############
+    - assets/TimeTable/01111100_r_rd_mon-fri.csv
+    - assets/TimeTable/11111100_r_rs_mon-fri.csv
+    - assets/TimeTable/21111100_y_hs_mon-fri.csv
+    - assets/TimeTable/31111100_y_qv_mon-fri.csv
+    - assets/TimeTable/41111100_y_hq_mon-fri.csv
+    - assets/TimeTable/51111100_b_dn_mon-fri.csv
+    - assets/TimeTable/61111100_b_dv_mon-fri.csv
+    - assets/TimeTable/71111100_g_kb_mon-fri.csv
+    - assets/TimeTable/81111100_g_ib_mon-fri.csv
+    - assets/TimeTable/91111100_v_kb_mon-fri.csv
+    - assets/TimeTable/101111100_v_kr_mon-fri.csv
+    - assets/TimeTable/111111100_p_ms_mon-fri.csv
+    - assets/TimeTable/121111100_m_jb_mon-fri.csv
+    - assets/TimeTable/131111100_g_dd_mon-fri.csv
+    - assets/TimeTable/141111100_o_dn_mon-fri.csv
+    - assets/TimeTable/151111100_r_sp_mon-fri.csv
+    - assets/TimeTable/161111100_a_nn_mon-fri.csv
+    - assets/TimeTable/171111100_a_nd_mon-fri.csv
+    - assets/TimeTable/181111100_r_rd_r_mon-fri.csv
+    - assets/TimeTable/190000010_r_rs_r_sat.csv
+    - assets/TimeTable/201111100_y_hs_r_mon-fri.csv
+    - assets/TimeTable/211111100_y_qv_r_mon-fri.csv
+    - assets/TimeTable/221111100_y_hq_r_mon-fri.csv
+    - assets/TimeTable/231111100_b_dn_r_mon-fri.csv
+    - assets/TimeTable/241111100_b_dv_r_mon-fri.csv
+    - assets/TimeTable/251111100_g_kb_r_mon-fri.csv
+    - assets/TimeTable/261111100_g_ib_r_mon-fri.csv
+    - assets/TimeTable/271111100_v_kb_r_mon-fri.csv
+    - assets/TimeTable/281111100_v_kr_r_mon-fri.csv
+    - assets/TimeTable/291111100_p_ms_r_mon-fri.csv
+    - assets/TimeTable/301111100_m_jb_r_mon-fri.csv
+    - assets/TimeTable/311111100_g_dd_r_mon-fri.csv
+    - assets/TimeTable/321111100_o_dn_r_mon-fri.csv
+    - assets/TimeTable/331111100_r_sp_r_mon-fri.csv
+    - assets/TimeTable/341111100_a_nn_r_mon-fri.csv
+    - assets/TimeTable/351111100_a_nd_r_mon-fri.csv
 
   fonts:
     - family: Poppins

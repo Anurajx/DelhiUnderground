@@ -164,7 +164,7 @@ searchBar(context) {
             'Where to',
             style: TextStyle(
               fontFamily: 'Poppins',
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               fontSize: 18.sp,
               color: AppColors.background,
             ),

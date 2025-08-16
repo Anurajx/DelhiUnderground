@@ -68,9 +68,10 @@ stationCluster(context, stationDict) {
                 SizedBox(height: 2.h),
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
+
                 //newScheduleBlock(),
-                schedulePage(),
-                scheduleBlock(),
+                SchedulePage(stationName: stationDict["Source"]["Name"]),
+                //scheduleBlock(),
                 SizedBox(height: 40.h),
                 gatesElement(station: stationDict["Source"]["StationCode"]),
                 //exitBlock(),
@@ -755,154 +756,6 @@ scheduleBlock() {
         ),
         SizedBox(height: 10.h),
         newScheduleBuilder(),
-        // Stack(
-        //   alignment: Alignment.topLeft,
-        //   children: [
-        //     Container(
-        //       width: double.infinity,
-        //       height: 60.h,
-        //       color: const Color.fromARGB(255, 25, 25, 25),
-        //       child: Row(
-        //         mainAxisAlignment: MainAxisAlignment.center,
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           SizedBox(width: 10.w),
-        //           Text(
-        //             "Majlis Park",
-        //             style: TextStyle(
-        //               color: const Color.fromARGB(255, 207, 207, 207),
-        //               fontSize: 16.sp,
-        //               fontWeight: FontWeight.w500,
-        //             ),
-        //           ),
-        //           Spacer(),
-        //           Container(
-        //             width: 100.w,
-        //             height: 60.h,
-        //             color: const Color.fromARGB(255, 245, 245, 245),
-        //             child: Column(
-        //               mainAxisAlignment: MainAxisAlignment.center,
-        //               crossAxisAlignment: CrossAxisAlignment.center,
-        //               children: [
-        //                 Expanded(
-        //                   child: Container(
-        //                     color: Colors.white,
-        //                     child: Center(
-        //                       child: Text(
-        //                         "Next",
-        //                         style: TextStyle(
-        //                           color: Colors.black,
-        //                           fontSize: 14.sp,
-        //                           fontWeight: FontWeight.w500,
-        //                         ),
-        //                       ),
-        //                     ),
-        //                   ),
-        //                 ),
-        //                 Expanded(
-        //                   child: Container(
-        //                     color: const Color.fromARGB(255, 0, 0, 0),
-        //                     child: Center(
-        //                       child: Text(
-        //                         "10:15",
-        //                         style: TextStyle(
-        //                           color: const Color.fromARGB(
-        //                             255,
-        //                             255,
-        //                             255,
-        //                             255,
-        //                           ),
-        //                           fontSize: 14.sp,
-        //                           fontWeight: FontWeight.w500,
-        //                         ),
-        //                       ),
-        //                     ),
-        //                   ),
-        //                 ),
-        //               ],
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //     Container(height: 10.h, width: 10.w, color: Colors.blue),
-        //   ],
-        // ),
-        // /////////
-        // SizedBox(height: 2.h),
-        // Stack(
-        //   alignment: Alignment.topLeft,
-        //   children: [
-        //     Container(
-        //       width: double.infinity,
-        //       height: 60.h,
-        //       color: const Color.fromARGB(255, 25, 25, 25),
-        //       child: Row(
-        //         mainAxisAlignment: MainAxisAlignment.center,
-        //         crossAxisAlignment: CrossAxisAlignment.center,
-        //         children: [
-        //           SizedBox(width: 10.w),
-        //           Text(
-        //             "Maujpur",
-        //             style: TextStyle(
-        //               color: const Color.fromARGB(255, 207, 207, 207),
-        //               fontSize: 16.sp,
-        //               fontWeight: FontWeight.w500,
-        //             ),
-        //           ),
-        //           Spacer(),
-        //           Container(
-        //             width: 100.w,
-        //             height: 60.h,
-        //             color: const Color.fromARGB(255, 245, 245, 245),
-        //             child: Column(
-        //               mainAxisAlignment: MainAxisAlignment.center,
-        //               crossAxisAlignment: CrossAxisAlignment.center,
-        //               children: [
-        //                 Expanded(
-        //                   child: Container(
-        //                     color: Colors.white,
-        //                     child: Center(
-        //                       child: Text(
-        //                         "Next",
-        //                         style: TextStyle(
-        //                           color: Colors.black,
-        //                           fontSize: 14.sp,
-        //                           fontWeight: FontWeight.w500,
-        //                         ),
-        //                       ),
-        //                     ),
-        //                   ),
-        //                 ),
-        //                 Expanded(
-        //                   child: Container(
-        //                     color: const Color.fromARGB(255, 0, 0, 0),
-        //                     child: Center(
-        //                       child: Text(
-        //                         "10:00",
-        //                         style: TextStyle(
-        //                           color: const Color.fromARGB(
-        //                             255,
-        //                             255,
-        //                             255,
-        //                             255,
-        //                           ),
-        //                           fontSize: 14.sp,
-        //                           fontWeight: FontWeight.w500,
-        //                         ),
-        //                       ),
-        //                     ),
-        //                   ),
-        //                 ),
-        //               ],
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //     Container(height: 10.h, width: 10.w, color: Colors.blue),
-        //   ],
-        // ),
       ],
     ),
   );

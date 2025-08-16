@@ -267,7 +267,7 @@
     "StationCode": "APMN",
     "Name": "Ashok Park Main",
     "Hindi": "अशोक पार्क मेन",
-    "Line": "5-7",
+    "Line": "5",
     "Latitude": "28.671572",
     "Longitude": "77.155159"
   },
@@ -1561,7 +1561,7 @@
   },
   {
     "StationCode": "RKPM",
-    "Name": "R K Puram",
+    "Name": "RK Puram",
     "Hindi": "आरके पुरम",
     "Line": "8",
     "Latitude": "28.550486",

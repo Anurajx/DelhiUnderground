@@ -45,9 +45,9 @@ commonName(name) {
         "$name",
         style: TextStyle(
           fontFamily: 'Poppins',
-          color: const Color.fromARGB(255, 141, 141, 141),
+          color: AppColors.secondaryText,
           fontSize: 12.sp,
-          fontWeight: FontWeight.w200,
+          fontWeight: FontWeight.w500,
         ),
       ),
     ],
@@ -65,7 +65,7 @@ StationNameAndArrow(name) {
           fontFamily: 'Poppins',
           color: AppColors.primaryText,
           fontSize: 18.sp,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w600,
         ),
       ),
 
@@ -187,7 +187,7 @@ class stationPrimitive extends StatelessWidget {
               fontFamily: 'Poppins',
               color: AppColors.primaryText,
               fontSize: 18.sp,
-              fontWeight: FontWeight.w400, //300
+              fontWeight: FontWeight.w600, //300
             ),
           ),
         ),
@@ -269,7 +269,7 @@ class stationNearby extends StatelessWidget {
               fontFamily: 'Poppins',
               color: AppColors.primaryText,
               fontSize: 18.sp, //18
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -326,8 +326,8 @@ class bigNameInfo extends StatelessWidget {
             "$stationName",
             style: TextStyle(
               height: 1.2,
-              color: const Color.fromARGB(255, 240, 240, 240),
-              fontWeight: FontWeight.w500,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              fontWeight: FontWeight.w600,
               fontSize: 24.sp,
             ),
           ),
