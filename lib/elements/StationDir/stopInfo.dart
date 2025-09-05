@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
+import 'package:metroapp/elements/ServicesDir/newScheduleService.dart';
 import 'package:metroapp/elements/ServicesDir/openingClosingFetcher.dart';
 import 'package:metroapp/elements/ServicesDir/scheduleService.dart';
 import 'package:metroapp/elements/ServicesDir/stopInfoFetcher.dart';
@@ -47,6 +48,7 @@ class stopInfoScreen extends StatelessWidget {
 // }
 ////////////////////
 stationCluster(context, stationDict) {
+  final stationCode = stationDict["Source"]["StationCode"];
   print("TRIAL1 THE STATION CODE IS - ${stationDict}");
   return SafeArea(
     child: Container(
@@ -60,9 +62,7 @@ stationCluster(context, stationDict) {
               children: [
                 stationLineMarker(stationDict),
                 //SizedBox(height: 100),
-                StationTimesWidget(
-                  stationCode: stationDict["Source"]["StationCode"],
-                ),
+                StationTimesWidget(stationCode: stationCode),
                 //closeAndOpeningTime(),
                 stationStatus(context, stationDict["Source"]["Name"]),
                 SizedBox(height: 2.h),
@@ -70,15 +70,14 @@ stationCluster(context, stationDict) {
                 SizedBox(height: 40.h),
 
                 //newScheduleBlock(),
-                SchedulePage(stationName: stationDict["Source"]["Name"]),
+                ScheduleWidget(stationCode: stationCode),
+                //SchedulePage(stationCode: stationDict["Source"]["StationCode"]),
                 //scheduleBlock(),
                 SizedBox(height: 40.h),
-                gatesElement(station: stationDict["Source"]["StationCode"]),
+                gatesElement(station: stationCode),
                 //exitBlock(),
                 SizedBox(height: 40.h),
-                ammenitiesElemenets(
-                  stationCode: stationDict["Source"]["StationCode"],
-                ),
+                ammenitiesElemenets(stationCode: stationCode),
                 //ammenitiesBlock(),
                 SizedBox(height: 40.h),
                 reportError(),
@@ -1008,7 +1007,7 @@ reportError() {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(2)),
           //color: const Color.fromARGB(255, 17, 17, 17),
-          border: Border.all(color: const Color.fromARGB(255, 45, 45, 45)),
+          border: Border.all(color: const Color.fromARGB(255, 55, 55, 55)),
         ),
         child: GestureDetector(
           behavior:

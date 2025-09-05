@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DataProvider extends ChangeNotifier {
@@ -31,7 +32,14 @@ class DataProvider extends ChangeNotifier {
     // Deep copy the new search to prevent reference issues
     final justNow = [_deepCopyTransferData(newSearch)];
 
-    _coreTransferStationsDict = {'just': justNow, 'justBefore': justBefore};
+    //TODO: apply an check if both are different only then to run
+
+    if (jsonEncode(justNow) != jsonEncode(justBefore)) {
+      print("$justNow and also $justBefore");
+      _coreTransferStationsDict = {'just': justNow, 'justBefore': justBefore};
+    } else {
+      print("$justNow also and $justBefore");
+    }
     await _saveTransferDictToPrefs(); //SAVES DATA TO MEMORY FOR RETRIVING WHEN APP RESTARTS
     notifyListeners();
   }

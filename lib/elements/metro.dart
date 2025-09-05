@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
 import 'package:metroapp/elements/StationDir/stopInfo.dart';
+import 'package:metroapp/elements/route.dart';
 import 'package:metroapp/main.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -188,7 +189,7 @@ suggestions(context) {
         final data =
             Provider.of<DataProvider>(context).coreTransferStationsDict;
         print("transfer data NOT JSON is **$data");
-        //print(data.coreNearestStationsDict);
+        print(data);
         var just = data["just"];
         var justBefore = data["justBefore"];
         if (data.isNotEmpty &&
@@ -212,7 +213,10 @@ suggestions(context) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SearchScreen(),
+                      builder:
+                          (context) => routeScreen(
+                            coreTransferStationsDict: data["just"]?[0],
+                          ),
                     ),
                   );
                 },
@@ -229,7 +233,10 @@ suggestions(context) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SearchScreen(),
+                      builder:
+                          (context) => routeScreen(
+                            coreTransferStationsDict: data["justBefore"]?[0],
+                          ),
                     ),
                   );
                 },

@@ -143,6 +143,7 @@ Widget stationLineBadgeBuilder(List<dynamic> gates, stationCode) {
             "Line TRIAL6 is ${line["station_code"]} AND the station code is $stationCode",
           );
           if (line["station_code"] == stationCode) {
+            print("Line TRIAL1 is APPROVED");
             return ammenitiesBlock(
               line["parking_car"],
               line["parking_motorcycle"],

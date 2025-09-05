@@ -1,0 +1,314 @@
+{
+  "metro_frequency": {
+    "peak_hours": {
+      "1": [
+        {
+          "section": "Dilshad Garden to Rithala",
+          "weekday": "3 min 21 sec",
+          "saturday": "3 min 41 sec",
+          "sunday": "5 min 00 sec"
+        },
+        {
+          "section": "Dilshad Garden to Shaheed Sthal (New Bus Adda)",
+          "weekday": "6 min 42 sec",
+          "saturday": "7 min 22 sec",
+          "sunday": "10 min 00 sec"
+        }
+      ],
+      "2": [
+        {
+          "section": "Samaypur Badli to Viswavidyala",
+          "weekday": "5 min 48 sec",
+          "saturday": "6 min 10 sec",
+          "sunday": "8 min 02 sec"
+        },
+        {
+          "section": "Viswavidyala to Sultanpur",
+          "weekday": "2 min 18 sec",
+          "saturday": "3 min 05 sec",
+          "sunday": "4 min 01 sec"
+        },
+        {
+          "section": "Sultanpur to Huda City Centre",
+          "weekday": "2 min 30 sec",
+          "saturday": "3 min 05 sec",
+          "sunday": "4 min 01 sec"
+        }
+      ],
+      "3": [
+        {
+          "section": "Dwarka Sector 21 to Dwarka",
+          "weekday": "4 min 09 sec",
+          "saturday": "4 min 53 sec",
+          "sunday": "12 min 45 sec"
+        },
+        {
+          "section": "Dwarka to Yamuna Bank",
+          "weekday": "2 min 46 sec",
+          "saturday": "3 min 15 sec",
+          "sunday": "4 min 15 sec"
+        }
+      ],
+      "4": [
+        {
+          "section": "Yamuna Bank to Vaishali",
+          "weekday": "5 min 32 sec",
+          "saturday": "6 min 30 sec",
+          "sunday": "8 min 30 sec"
+        },
+        {
+          "section": "Yamuna Bank to Noida Electronic City",
+          "weekday": "5 min 32 sec",
+          "saturday": "6 min 30 sec",
+          "sunday": "8 min 30 sec"
+        }
+      ],
+      "5": [
+        {
+          "section": "Mundka to Ashok Park Main",
+          "weekday": "4 min 10 sec",
+          "saturday": "5 min 00 sec",
+          "sunday": "5 min 40 sec"
+        },
+        {
+          "section": "Kirti Nagar-Inder Lok to Ashok Park Main",
+          "weekday": "8 min 20 sec",
+          "saturday": "10 min 00 sec",
+          "sunday": "11 min 20 sec"
+        },
+        {
+          "section": "Mundka to Brigadier Hoshiyar Singh",
+          "weekday": "6 min 15 sec",
+          "saturday": "7 min 30 sec",
+          "sunday": "8 min 37 sec"
+        }
+      ],
+      "6": [
+        {
+          "section": "Kashmere Gate to Badarpur Border",
+          "weekday": "3 min 24 sec",
+          "saturday": "4 min 00 sec",
+          "sunday": "5 min 10 sec"
+        },
+        {
+          "section": "Badarpur Border to Raja Nahar Singh",
+          "weekday": "6 min 48 sec",
+          "saturday": "8 min 00 sec",
+          "sunday": "10 min 20 sec"
+        }
+      ],
+      "7": [
+        {
+          "section": "Majlis Park to Maujpur",
+          "weekday": "6 min 30 sec",
+          "saturday": "7 min 00 sec",
+          "sunday": "8 min 10 sec"
+        },
+        {
+          "section": "Maujpur to Shiv Vihar",
+          "weekday": "6 min 30 sec",
+          "saturday": "7 min 00 sec",
+          "sunday": "8 min 10 sec"
+        }
+      ],
+      "8": [
+        {
+          "section": "Janakpuri West to Botanical Garden",
+          "weekday": "5 min 10 sec",
+          "saturday": "6 min 00 sec",
+          "sunday": "8 min 00 sec"
+        }
+      ],
+      "9": [
+        {
+          "section": "Dwarka to Dhansa Border",
+          "weekday": "7 min 30 sec",
+          "saturday": "7 min 30 sec",
+          "sunday": "12 min 00 sec"
+        }
+      ],
+      "10": [
+        {
+          "section": "Yashobhoomi Dwarka Sector - 25 to New Delhi",
+          "weekday": "10 min 00 sec",
+          "saturday": "10 min 00 sec",
+          "sunday": "10 min 00 sec"
+        }
+      ],
+      "15": [
+        {
+          "section": "Morning Peak (08:00-11:00)",
+          "weekday": "4 min 30 sec",
+          "saturday": "6 min 00 sec",
+          "sunday": "10 min 00 sec"
+        },
+        {
+          "section": "Evening Peak (16:00-20:00)",
+          "weekday": "5 min 20 sec",
+          "saturday": "7 min 20 sec",
+          "sunday": "10 min 00 sec"
+        }
+      ],
+      "20": [
+        {
+          "section": "All Sections",
+          "weekday": "7 min 00 sec",
+          "saturday": "10 min 00 sec",
+          "sunday": "10 min 00 sec"
+        }
+      ]
+    },
+    "off_peak_hours": {
+      "1": [
+        {
+          "section": "Dilshad Garden to Rithala",
+          "weekday": "4 min 00 sec",
+          "saturday": "4 min 15 sec",
+          "sunday": "5 min 00 sec"
+        },
+        {
+          "section": "Dilshad Garden to Shaheed Sthal (New Bus Adda)",
+          "weekday": "8 min 00 sec",
+          "saturday": "8 min 30 sec",
+          "sunday": "10 min 00 sec"
+        }
+      ],
+      "2": [
+        {
+          "section": "Samaypur Badli to Viswavidyala",
+          "weekday": "7 min 00 sec",
+          "saturday": "7 min 10 sec",
+          "sunday": "8 min 02 sec"
+        },
+        {
+          "section": "Viswavidyala to Sultanpur",
+          "weekday": "3 min 30 sec",
+          "saturday": "3 min 35 sec",
+          "sunday": "4 min 01 sec"
+        },
+        {
+          "section": "Sultanpur to Huda City Centre",
+          "weekday": "3 min 30 sec",
+          "saturday": "3 min 35 sec",
+          "sunday": "4 min 01 sec"
+        }
+      ],
+      "3": [
+        {
+          "section": "Dwarka Sector 21 to Dwarka",
+          "weekday": "5 min 15 sec",
+          "saturday": "5 min 15 sec",
+          "sunday": "12 min 45 sec"
+        },
+        {
+          "section": "Dwarka to Yamuna Bank",
+          "weekday": "3 min 30 sec",
+          "saturday": "3 min 30 sec",
+          "sunday": "4 min 15 sec"
+        }
+      ],
+      "4": [
+        {
+          "section": "Yamuna Bank to Vaishali",
+          "weekday": "7 min 00 sec",
+          "saturday": "7 min 00 sec",
+          "sunday": "8 min 30 sec"
+        },
+        {
+          "section": "Yamuna Bank to Noida Electronic City",
+          "weekday": "7 min 00 sec",
+          "saturday": "7 min 00 sec",
+          "sunday": "8 min 30 sec"
+        }
+      ],
+      "5": [
+        {
+          "section": "Mundka to Ashok Park Main",
+          "weekday": "5 min 10 sec",
+          "saturday": "5 min 10 sec",
+          "sunday": "5 min 40 sec"
+        },
+        {
+          "section": "Kirti Nagar-Inder Lok to Ashok Park Main",
+          "weekday": "10 min 20 sec",
+          "saturday": "10 min 20 sec",
+          "sunday": "11 min 20 sec"
+        },
+        {
+          "section": "Mundka to Brigadier Hoshiyar Singh",
+          "weekday": "7 min 45 sec",
+          "saturday": "7 min 45 sec",
+          "sunday": "8 min 37 sec"
+        }
+      ],
+      "6": [
+        {
+          "section": "Kashmere Gate to Badarpur Border",
+          "weekday": "4 min 45 sec",
+          "saturday": "5 min 16 sec",
+          "sunday": "5 min 10 sec"
+        },
+        {
+          "section": "Badarpur Border to Raja Nahar Singh",
+          "weekday": "9 min 30 sec",
+          "saturday": "10 min 32 sec",
+          "sunday": "10 min 20 sec"
+        }
+      ],
+      "7": [
+        {
+          "section": "Majlis Park to Maujpur",
+          "weekday": "7 min 00 sec",
+          "saturday": "8 min 10 sec",
+          "sunday": "8 min 10 sec"
+        },
+        {
+          "section": "Maujpur to Shiv Vihar",
+          "weekday": "7 min 00 sec",
+          "saturday": "8 min 10 sec",
+          "sunday": "8 min 10 sec"
+        }
+      ],
+      "8": [
+        {
+          "section": "Janakpuri West to Botanical Garden",
+          "weekday": "7 min 05 sec",
+          "saturday": "9 min 05 sec",
+          "sunday": "8 min 00 sec"
+        }
+      ],
+      "9": [
+        {
+          "section": "Dwarka to Dhansa Border",
+          "weekday": "12 min 00 sec",
+          "saturday": "12 min 00 sec",
+          "sunday": "12 min 00 sec"
+        }
+      ],
+      "10": [
+        {
+          "section": "Yashobhoomi Dwarka Sector - 25 to New Delhi",
+          "weekday": "10 min 00 sec",
+          "saturday": "10 min 00 sec",
+          "sunday": "10 min 00 sec"
+        }
+      ],
+      "15": [
+        {
+          "section": "Non-Peak (11:00-16:00)",
+          "weekday": "7 min 20 sec",
+          "saturday": "7 min 20 sec",
+          "sunday": "10 min 00 sec"
+        }
+      ],
+      "20": [
+        {
+          "section": "All Sections",
+          "weekday": "12 min 00 sec",
+          "saturday": "15 min 00 sec",
+          "sunday": "15 min 00 sec"
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
+import 'package:metroapp/elements/RouteDir/routeDataProvider.dart';
 import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
 import 'package:metroapp/main.dart';
@@ -15,7 +16,7 @@ import './ServicesDir/minimetroStationList.dart';
 
 class routeScreen extends StatefulWidget {
   //final Map<String, Map<String, dynamic>> coreTransferStationsDict;
-  final Map<String, Map<String, dynamic>>
+  final Map<String, dynamic>
   coreTransferStationsDict; //temprory, this will have to go though the search alorithm than it will send data here. not directly
   const routeScreen({super.key, required this.coreTransferStationsDict});
 
@@ -31,7 +32,7 @@ class _routeScreenState extends State<routeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final dataProvider = context.read<DataProvider>();
       //print("PREVIOUS data is: $previous");
-
+      print("CORE STATIONS: ${widget.coreTransferStationsDict}");
       dataProvider.updateJustData(widget.coreTransferStationsDict);
     });
 
@@ -45,14 +46,18 @@ class _routeScreenState extends State<routeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        body: RouteDisplay(), //temprory
+        body: RouteScreenNew(
+          coreTransferStationsDict: widget.coreTransferStationsDict,
+        ), //temprory
       ),
     );
   }
 }
 
 class RouteDisplay extends StatelessWidget {
-  const RouteDisplay({super.key});
+  final dynamic coreTransferStationsDict;
+
+  const RouteDisplay({super.key, required this.coreTransferStationsDict});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +66,7 @@ class RouteDisplay extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          topNavBar(context),
+          topNavBar(context, coreTransferStationsDict),
           tripSummary(),
           Divider(thickness: 1, color: const Color.fromARGB(255, 35, 35, 35)),
           Expanded(
@@ -89,7 +94,7 @@ class RouteDisplay extends StatelessWidget {
   }
 }
 
-topNavBar(context) {
+topNavBar(context, coreTransferStationsDict) {
   return Container(
     //color: Colors.white,
     width: double.infinity,
@@ -125,7 +130,8 @@ topNavBar(context) {
         Container(
           width: 200.w,
           child: Marquee(
-            text: "BHIKAJI CAMA PLACE -> RAJORI GARDEN",
+            text:
+                "${coreTransferStationsDict['Source']["Name"]} --> ${coreTransferStationsDict['Destination']["Name"]}",
             showFadingOnlyWhenScrolling: true,
             fadingEdgeStartFraction: 0.2,
             fadingEdgeEndFraction: 0.1,
@@ -194,7 +200,7 @@ class tripSummary extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: "has ",
+              text: "and has ",
               style: TextStyle(
                 color: AppColors.tertiaryText,
                 fontSize: 20.sp,
@@ -209,22 +215,22 @@ class tripSummary extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            TextSpan(
-              text: "and costs ",
-              style: TextStyle(
-                color: AppColors.tertiaryText,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            TextSpan(
-              text: "50 Rs. ",
-              style: TextStyle(
-                color: AppColors.secondaryText,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
+            // TextSpan(
+            //   text: "and costs ",
+            //   style: TextStyle(
+            //     color: AppColors.tertiaryText,
+            //     fontSize: 20.sp,
+            //     fontWeight: FontWeight.w500,
+            //   ),
+            // ),
+            // TextSpan(
+            //   text: "50 Rs. ",
+            //   style: TextStyle(
+            //     color: AppColors.secondaryText,
+            //     fontSize: 20.sp,
+            //     fontWeight: FontWeight.w500,
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -250,7 +256,7 @@ class _routeClusterState extends State<routeCluster> {
   int extraStations = minimetroStations.length;
   double stationHeight = 25.h;
   double height =
-      250.h; //presetting height at one place so that text and line indicator stay at same height
+      220.h; //presetting height at one place so that text and line indicator stay at same height
   double collapsableHeight = 30.h;
   double collapsableWidth = 150.w;
   bool isExpanded = false;
@@ -435,14 +441,14 @@ class _infoIndicatorState extends State<infoIndicator> {
             ),
           ),
           SizedBox(height: 2.h),
-          Text(
-            "Every 2 min",
-            style: TextStyle(
-              color: AppColors.secondaryText,
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
+          // Text(
+          //   "Every 2 min",
+          //   style: TextStyle(
+          //     color: AppColors.secondaryText,
+          //     fontSize: 15.sp,
+          //     fontWeight: FontWeight.w300,
+          //   ),
+          // ),
           //SizedBox(height: 10),
           Spacer(),
           (widget.isExpanded == true)

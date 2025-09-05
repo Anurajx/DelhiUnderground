@@ -53,6 +53,7 @@ dependencies:
   provider: ^6.1.5
   auto_size_text: ^3.0.0
   skeletonizer: ^2.1.0+1
+  lottie: ^3.3.1
   #lottie: ^3.3.1
   url_launcher: ^6.3.2
   flutter_screenutil: ^5.9.3
@@ -130,6 +131,9 @@ flutter:
     - assets/01111100_r_rd_mon-fri.csv
     - assets/newTimeTable.json
     - assets/Map/stationOpenClose.json
+    - assets/Map/GTFS_StopsForDataRefrenceForDataMismatch.json
+    - assets/Image/scanning.json
+    - assets/Map/newRoundedTimeTable.json
     ############
     - assets/TimeTable/01111100_r_rd_mon-fri.csv
     - assets/TimeTable/11111100_r_rs_mon-fri.csv
@@ -167,6 +171,7 @@ flutter:
     - assets/TimeTable/331111100_r_sp_r_mon-fri.csv
     - assets/TimeTable/341111100_a_nn_r_mon-fri.csv
     - assets/TimeTable/351111100_a_nd_r_mon-fri.csv
+    - assets/routes.db
 
   fonts:
     - family: Poppins
