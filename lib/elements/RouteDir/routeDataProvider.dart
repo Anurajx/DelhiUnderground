@@ -79,6 +79,7 @@ class RouteService {
 
     if (result.isNotEmpty) {
       final row = result.first;
+      print("TEST123: ${jsonDecode(row["route_data"] as String)}");
       return {
         "start": row["start_station_name"],
         "end": row["end_station_name"],
@@ -127,7 +128,9 @@ class _RouteScreenState extends State<RouteScreenNew> {
         backgroundColor: Colors.black,
         body:
             (routeInfo == null)
-                ? const Center(child: CircularProgressIndicator())
+                ? const Center(
+                  child: CircularProgressIndicator(color: Colors.blueAccent),
+                )
                 : RouteDisplay(
                   coreTransferStationsDict: widget.coreTransferStationsDict,
                   routeInfo: routeInfo!,
@@ -151,12 +154,11 @@ class RouteDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("TEST123: ${routeInfo['route_data']?['legs'][0]['stops'][0]}");
     //final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      //height: screenHeight,
-      padding: EdgeInsets.fromLTRB(15, 10, 15, 5),
+      padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
       child: Column(
-        //mainAxisSize: MainAxisSize.values.last,
         children: [
           topNavBar(context, coreTransferStationsDict),
           TripSummary(
@@ -164,23 +166,54 @@ class RouteDisplay extends StatelessWidget {
             interchanges: routeInfo['interchanges'],
           ),
           Divider(thickness: 1, color: Color.fromARGB(255, 35, 35, 35)),
+
+          // Expandable area
           Expanded(
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                routeCluster(
-                  lineColor: "Blue Line", // dummy for now
-                  startStation: routeInfo['start'],
-                  endStation: routeInfo['end'],
-                  stations: (routeInfo['route_data']?['stations'] ?? []),
-                ),
-                interchangeInfo(),
-                //Spacer(),
-                SizedBox(height: 40.h),
-                reportError(),
-                SizedBox(height: 40.h),
-                companyFooter(),
-              ],
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    // force at least full height
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // Scrollable content
+                          routeCluster(
+                            lineColor: "Blue Line",
+                            startStation: routeInfo['start'],
+                            endStation: routeInfo['end'],
+                            stations: (routeInfo['route_data'] ?? []),
+                          ),
+                          interchangeInfo(),
+                          routeCluster(
+                            lineColor: "Blue Line",
+                            startStation: routeInfo['start'],
+                            endStation: routeInfo['end'],
+                            stations: (routeInfo['route_data'] ?? []),
+                          ),
+
+                          // Spacer pushes footer down when space available
+                          Spacer(),
+
+                          SizedBox(height: 40),
+                          // Footer inside the container
+                          Column(
+                            children: [
+                              reportError(),
+                              SizedBox(height: 20),
+                              companyFooter(),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ],
@@ -188,51 +221,6 @@ class RouteDisplay extends StatelessWidget {
     );
   }
 }
-
-// topNavBar(context, coreTransferStationsDict) {
-//   return Container(
-//     width: double.infinity,
-//     height: 50.h,
-//     child: Row(
-//       children: [
-//         GestureDetector(
-//           onTap: () => Navigator.pop(context),
-//           child: Row(
-//             children: [
-//               const Icon(
-//                 CupertinoIcons.back,
-//                 color: Color.fromARGB(255, 47, 130, 255),
-//               ),
-//               Text(
-//                 "Done",
-//                 style: TextStyle(
-//                   color: Color.fromARGB(255, 47, 130, 255),
-//                   fontWeight: FontWeight.w500,
-//                   fontSize: 18.sp,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//         Spacer(),
-//         Container(
-//           width: 200.w,
-//           child: Marquee(
-//             text:
-//                 "${coreTransferStationsDict['Source']["Name"]} --> ${coreTransferStationsDict['Destination']["Name"]}",
-//             showFadingOnlyWhenScrolling: true,
-//             blankSpace: 20,
-//             style: TextStyle(
-//               color: Color.fromARGB(255, 202, 202, 202),
-//               fontSize: 12.sp,
-//               fontWeight: FontWeight.w200,
-//             ),
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
 
 topNavBar(context, coreTransferStationsDict) {
   return Container(
@@ -284,29 +272,6 @@ topNavBar(context, coreTransferStationsDict) {
             ),
           ),
         ),
-        // Text(
-        //   "BHIKAJI CAMA PLACE ",
-        //   style: TextStyle(
-        //     color: const Color.fromARGB(255, 255, 255, 255),
-        //     fontWeight: FontWeight.w500,
-        //     fontFamily: 'Poppins',
-        //     fontSize: 12,
-        //   ),
-        // ),
-        // Icon(
-        //   CupertinoIcons.arrow_right,
-        //   color: const Color.fromARGB(255, 255, 255, 255),
-        //   size: 15,
-        // ),
-        // Text(
-        //   " RAJORI GARDEN",
-        //   style: TextStyle(
-        //     color: const Color.fromARGB(255, 255, 255, 255),
-        //     fontWeight: FontWeight.w500,
-        //     fontFamily: 'Poppins',
-        //     fontSize: 12,
-        //   ),
-        // ),
       ],
     ),
   );
@@ -361,22 +326,6 @@ class TripSummary extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            // TextSpan(
-            //   text: "and costs ",
-            //   style: TextStyle(
-            //     color: AppColors.tertiaryText,
-            //     fontSize: 20.sp,
-            //     fontWeight: FontWeight.w500,
-            //   ),
-            // ),
-            // TextSpan(
-            //   text: "50 Rs. ",
-            //   style: TextStyle(
-            //     color: AppColors.secondaryText,
-            //     fontSize: 20.sp,
-            //     fontWeight: FontWeight.w500,
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -388,7 +337,7 @@ class routeCluster extends StatefulWidget {
   final String lineColor;
   final String startStation;
   final String endStation;
-  final List<dynamic> stations;
+  final Map<String, dynamic> stations;
 
   const routeCluster({
     super.key,
@@ -445,7 +394,7 @@ class _routeClusterState extends State<routeCluster> {
           children: [
             lineIndicator(
               height: height,
-              lineColor: widget.lineColor,
+              lineColor: widget.stations['legs'][0]['line_color'],
               extraStations: 5,
             ),
             Expanded(
@@ -456,6 +405,17 @@ class _routeClusterState extends State<routeCluster> {
                 collapsableHeight: collapsableHeight,
                 collapsableWidth: collapsableWidth,
                 isExpanded: isExpanded,
+                // heading:
+                //     widget.stations['legs'][0]['line_name']
+                //         .toString()
+                //         .split("to")
+                //         .last
+                //         .trim(), //gives only heading part
+                // colorName:
+                //     widget.stations['legs'][0]['line_color']
+                //         .toString()
+                //         .toLowerCase(),
+                legs: widget.stations['legs'],
               ),
             ),
             // InkWell(
@@ -469,28 +429,6 @@ class _routeClusterState extends State<routeCluster> {
   }
 }
 
-// class lineIndicator extends StatelessWidget {
-// final double height;
-// final String lineColor;
-// const lineIndicator({
-//   super.key,
-//   required this.height,
-//   required this.lineColor,
-// });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       width: 7.w,
-//       height: height,
-//       decoration: BoxDecoration(
-//         color: Colors.blueAccent,
-//         borderRadius: BorderRadius.circular(50),
-//       ),
-//     );
-//   }
-// }
-
 class infoIndicator extends StatefulWidget {
   double height;
   double collapsableWidth = 150.w;
@@ -498,6 +436,9 @@ class infoIndicator extends StatefulWidget {
   bool isExpanded;
   String start;
   String end;
+  // String heading;
+  // String colorName;
+  List legs;
   infoIndicator({
     super.key,
     required this.height,
@@ -506,6 +447,9 @@ class infoIndicator extends StatefulWidget {
     required this.isExpanded,
     required this.start,
     required this.end,
+    // required this.heading,
+    // required this.colorName,
+    required this.legs,
   });
 
   @override
@@ -515,6 +459,9 @@ class infoIndicator extends StatefulWidget {
 class _infoIndicatorState extends State<infoIndicator> {
   @override
   Widget build(BuildContext context) {
+    String heading =
+        widget.legs[0]['line_name'].toString().split("to").last.trim();
+    String colorName = widget.legs[0]['line_color'].toString().toLowerCase();
     //right line info
     return Container(
       margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -524,14 +471,20 @@ class _infoIndicatorState extends State<infoIndicator> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            //heading
-            "${widget.start}", //-------------------HERE--------------------------------------------
-            style: TextStyle(
-              color: AppColors.primaryText,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w500,
-            ),
+          Row(
+            children: [
+              Text(
+                //heading
+                "${widget.start}", //-------------------HERE--------------------------------------------
+                style: TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Spacer(),
+              Icon(Icons.login_rounded, color: AppColors.primaryText, size: 20),
+            ],
           ),
           SizedBox(height: 10.h),
           Container(
@@ -544,8 +497,12 @@ class _infoIndicatorState extends State<infoIndicator> {
                   size: 15,
                 ),
                 Text(
-                  " Heading towards Majlis Park",
+                  " Heading towards ${heading}",
+                  maxLines: 2,
+                  overflow: TextOverflow.visible,
+                  softWrap: true,
                   style: TextStyle(
+                    overflow: TextOverflow.visible,
                     color: AppColors.secondaryText,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w500,
@@ -556,7 +513,7 @@ class _infoIndicatorState extends State<infoIndicator> {
           ),
           SizedBox(height: 2.h),
           Text(
-            "Blue Line",
+            "${colorName} line",
             style: TextStyle(
               color: AppColors.secondaryText,
               fontSize: 15.sp,
@@ -579,7 +536,7 @@ class _infoIndicatorState extends State<infoIndicator> {
               : Row(
                 children: [
                   Text(
-                    "6 Stations",
+                    "${widget.legs[0]['stops'].length - 2} Stations",
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 15.sp,
@@ -591,14 +548,24 @@ class _infoIndicatorState extends State<infoIndicator> {
                 ],
               ),
           Spacer(), //SPACERRRR
-          Text(
-            //heading
-            "${widget.end}",
-            style: TextStyle(
-              color: AppColors.primaryText,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w500,
-            ),
+          Row(
+            children: [
+              Text(
+                //heading
+                "${widget.end}",
+                style: TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Spacer(),
+              Icon(
+                Icons.logout_rounded,
+                color: AppColors.primaryText,
+                size: 20,
+              ),
+            ],
           ),
         ],
       ),
@@ -610,7 +577,7 @@ class lineIndicator extends StatefulWidget {
   double height = 250.h;
   int extraStations = 0;
   double stationHeight = 5.h;
-  dynamic lineColor;
+  String lineColor;
   lineIndicator({
     super.key,
     required this.height,
@@ -630,7 +597,9 @@ class _lineIndicatorState extends State<lineIndicator> {
       width: 7.w,
       height: widget.height,
       decoration: BoxDecoration(
-        color: Colors.blueAccent, //impllemt line color to change dynamically
+        color: _getLineColor(
+          widget.lineColor,
+        ), //impllemt line color to change dynamically
         borderRadius: BorderRadius.all(Radius.circular(50)),
       ),
       child: Column(
@@ -655,6 +624,35 @@ class _lineIndicatorState extends State<lineIndicator> {
         ],
       ),
     );
+  }
+}
+
+Color _getLineColor(String lineColor) {
+  switch (lineColor.toUpperCase()) {
+    case 'RED':
+      return Colors.red;
+    case 'BLUE':
+      return Colors.blue;
+    case 'GREEN':
+      return Colors.green;
+    case 'YELLOW':
+      return Colors.yellow;
+    case 'PURPLE':
+      return Colors.purple;
+    case 'PINK':
+      return Colors.pink;
+    case 'ORANGE':
+      return Colors.orange;
+    case 'CYAN':
+      return Colors.cyan;
+    case 'GREY':
+      return Colors.grey;
+    case 'VIOLET':
+      return Colors.deepPurple;
+    case 'MAGENTA':
+      return Colors.pinkAccent;
+    default:
+      return Colors.blueAccent;
   }
 }
 

@@ -3170,7 +3170,7 @@
   {
     "station_name": "panchsheel park",
     "station_code": "PSPK",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "FALSE",
     "parking_cycle": "0",
@@ -3188,7 +3188,7 @@
   {
     "station_name": "patel chowk",
     "station_code": "PTCK",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "79",
@@ -3206,7 +3206,7 @@
   {
     "station_name": "patel chowk",
     "station_code": "PTCK",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "91",
@@ -3224,7 +3224,7 @@
   {
     "station_name": "patel chowk",
     "station_code": "PTCK",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "49",
@@ -3242,7 +3242,7 @@
   {
     "station_name": "supreme court",
     "station_code": "PTMD",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "20",
@@ -3260,7 +3260,7 @@
   {
     "station_name": "pitampura",
     "station_code": "PTP",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -3278,7 +3278,7 @@
   {
     "station_name": "preet vihar",
     "station_code": "PTVR",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -3296,7 +3296,7 @@
   {
     "station_name": "paschim vihar east",
     "station_code": "PVE",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "30",
@@ -3314,7 +3314,7 @@
   {
     "station_name": "paschim vihar west",
     "station_code": "PVW",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "FALSE",
     "parking_cycle": "0",
@@ -3332,7 +3332,7 @@
   {
     "station_name": "qutab minar",
     "station_code": "QM",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "49",
@@ -3368,7 +3368,7 @@
   {
     "station_name": "rajdhani park",
     "station_code": "RDPK",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "FALSE",
     "parking_cycle": "0",
@@ -3386,7 +3386,7 @@
   {
     "station_name": "rajouri garden",
     "station_code": "RG",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "35",
@@ -3404,7 +3404,7 @@
   {
     "station_name": "rohini east",
     "station_code": "RHE",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "20",
@@ -3422,7 +3422,7 @@
   {
     "station_name": "rohini east",
     "station_code": "RHE",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "4",
@@ -3458,7 +3458,7 @@
   {
     "station_name": "rithala",
     "station_code": "RI",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "125",
@@ -3476,7 +3476,7 @@
   {
     "station_name": "rithala",
     "station_code": "RI",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "125",
@@ -3494,7 +3494,7 @@
   {
     "station_name": "rohini sector - 18, 19",
     "station_code": "RISE",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "82",
@@ -3512,7 +3512,7 @@
   {
     "station_name": "raj bagh",
     "station_code": "RJBH",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -3530,7 +3530,7 @@
   {
     "station_name": "major mohit sharma rajendra nagar",
     "station_code": "RJNM",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -3548,7 +3548,7 @@
   {
     "station_name": "ramakrishna ashram marg",
     "station_code": "RKAM",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "52",
@@ -3584,7 +3584,7 @@
   {
     "station_name": "ramesh nagar",
     "station_code": "RN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "63",
@@ -3602,7 +3602,7 @@
   {
     "station_name": "rajendra place",
     "station_code": "RP",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "32",
@@ -3656,7 +3656,7 @@
   {
     "station_name": "saket",
     "station_code": "SAKT",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "85",
@@ -3674,7 +3674,7 @@
   {
     "station_name": "saket",
     "station_code": "SAKT",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "85",
@@ -3692,7 +3692,7 @@
   {
     "station_name": "sector - 59 noida",
     "station_code": "SFNN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -3710,7 +3710,7 @@
   {
     "station_name": "sector - 52 noida",
     "station_code": "SFTN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -3728,7 +3728,7 @@
   {
     "station_name": "shahdara",
     "station_code": "SHD",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "163",
@@ -3746,7 +3746,7 @@
   {
     "station_name": "shahdara",
     "station_code": "SHD",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "163",
@@ -3764,7 +3764,7 @@
   {
     "station_name": "shaheed nagar",
     "station_code": "SHDN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "74",
@@ -3782,7 +3782,7 @@
   {
     "station_name": "shastri park",
     "station_code": "SHPK",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "50",
@@ -3800,7 +3800,7 @@
   {
     "station_name": "shastri park",
     "station_code": "SHPK",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "0",
@@ -3818,7 +3818,7 @@
   {
     "station_name": "shastri nagar",
     "station_code": "SHT",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "9",
@@ -3836,7 +3836,7 @@
   {
     "station_name": "shastri nagar",
     "station_code": "SHT",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "9",
@@ -3854,7 +3854,7 @@
   {
     "station_name": "shastri nagar",
     "station_code": "SHT",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "10",
@@ -3872,7 +3872,7 @@
   {
     "station_name": "shivaji park",
     "station_code": "SHVP",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "FALSE",
     "parking_cycle": "0",
@@ -3890,7 +3890,7 @@
   {
     "station_name": "sikanderpur",
     "station_code": "SKRP",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "45",
@@ -3908,7 +3908,7 @@
   {
     "station_name": "shankar vihar",
     "station_code": "SKVR",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "FALSE",
     "parking_cycle": "0",
@@ -3926,7 +3926,7 @@
   {
     "station_name": "seelampur",
     "station_code": "SLAP",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "unavailable",
     "parking_available": "1",
     "parking_cycle": "90",
@@ -3944,7 +3944,7 @@
   {
     "station_name": "sultanpur",
     "station_code": "SLTP",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "9",
@@ -3980,7 +3980,7 @@
   {
     "station_name": "shyam park",
     "station_code": "SMPK",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -3998,7 +3998,7 @@
   {
     "station_name": "maharaja surajmal stadium",
     "station_code": "SMSM",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4016,7 +4016,7 @@
   {
     "station_name": "subhash nagar",
     "station_code": "SN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "27",
@@ -4034,7 +4034,7 @@
   {
     "station_name": "south extension",
     "station_code": "SOEN",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4052,7 +4052,7 @@
   {
     "station_name": "sarojini nagar",
     "station_code": "SOJI",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4070,7 +4070,7 @@
   {
     "station_name": "shadipur",
     "station_code": "SP",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "95",
@@ -4088,7 +4088,7 @@
   {
     "station_name": "samaypur badli",
     "station_code": "SPBI",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "FALSE",
     "parking_cycle": "0",
@@ -4106,7 +4106,7 @@
   {
     "station_name": "sarai",
     "station_code": "SRAI",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "25",
@@ -4124,7 +4124,7 @@
   {
     "station_name": "satguru ram singh marg",
     "station_code": "SRSM",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4142,7 +4142,7 @@
   {
     "station_name": "sector - 61 noida",
     "station_code": "SSON",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4160,7 +4160,7 @@
   {
     "station_name": "sector - 62 noida",
     "station_code": "SSTN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4178,7 +4178,7 @@
   {
     "station_name": "sector - 34 noida",
     "station_code": "STFN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4196,7 +4196,7 @@
   {
     "station_name": "sector-28",
     "station_code": "STTA",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "44",
@@ -4214,7 +4214,7 @@
   {
     "station_name": "sarita vihar",
     "station_code": "STVR",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "70",
@@ -4232,7 +4232,7 @@
   {
     "station_name": "sir m. vishweshwaraiah moti bagh",
     "station_code": "SVMB",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4250,7 +4250,7 @@
   {
     "station_name": "shiv vihar",
     "station_code": "SVVR",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4268,7 +4268,7 @@
   {
     "station_name": "tagore garden",
     "station_code": "TG",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "36",
@@ -4286,7 +4286,7 @@
   {
     "station_name": "tagore garden",
     "station_code": "TG",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "36",
@@ -4304,7 +4304,7 @@
   {
     "station_name": "tikri border",
     "station_code": "TKBR",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4322,7 +4322,7 @@
   {
     "station_name": "tughlakabad station",
     "station_code": "TKDS",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4340,7 +4340,7 @@
   {
     "station_name": "tikri kalan",
     "station_code": "TKLM",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4358,7 +4358,7 @@
   {
     "station_name": "trilokpuri-sanjay lake",
     "station_code": "TKPR",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4376,7 +4376,7 @@
   {
     "station_name": "tilak nagar",
     "station_code": "TN",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "12",
@@ -4394,7 +4394,7 @@
   {
     "station_name": "tis hazari",
     "station_code": "TZI",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "50",
@@ -4430,7 +4430,7 @@
   {
     "station_name": "uttam nagar east",
     "station_code": "UNE",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "105",
@@ -4448,7 +4448,7 @@
   {
     "station_name": "uttam nagar east",
     "station_code": "UNE",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "105",
@@ -4466,7 +4466,7 @@
   {
     "station_name": "uttam nagar east",
     "station_code": "UNE",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "105",
@@ -4484,7 +4484,7 @@
   {
     "station_name": "udyog nagar",
     "station_code": "UNRG",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "87",
@@ -4502,7 +4502,7 @@
   {
     "station_name": "uttam nagar west",
     "station_code": "UNW",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "40",
@@ -4520,7 +4520,7 @@
   {
     "station_name": "vaishali",
     "station_code": "VASI",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "20",
@@ -4538,7 +4538,7 @@
   {
     "station_name": "vaishali",
     "station_code": "VASI",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "20",
@@ -4556,7 +4556,7 @@
   {
     "station_name": "east vinod nagar-mayur vihar -ii",
     "station_code": "VENT",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4574,7 +4574,7 @@
   {
     "station_name": "mandawali - west vinod nagar",
     "station_code": "VNNR",
-    "elevated": "available",
+    "elevated": "Yes",
     "toilet": "available",
     "parking_available": "0",
     "parking_cycle": "0",
@@ -4592,7 +4592,7 @@
   {
     "station_name": "vinobapuri",
     "station_code": "VNPR",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "TRUE",
     "parking_cycle": "7",
@@ -4610,7 +4610,7 @@
   {
     "station_name": "vidhan sabha",
     "station_code": "VS",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "FALSE",
     "parking_cycle": "0",
@@ -4628,7 +4628,7 @@
   {
     "station_name": "vasant vihar",
     "station_code": "VTVR",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "148",
@@ -4646,7 +4646,7 @@
   {
     "station_name": "vishwavidyalaya",
     "station_code": "VW",
-    "elevated": "unavailable",
+    "elevated": "No",
     "toilet": "available",
     "parking_available": "1",
     "parking_cycle": "126",

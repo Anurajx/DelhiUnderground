@@ -66,15 +66,16 @@ stationCluster(context, stationDict) {
                 //closeAndOpeningTime(),
                 stationStatus(context, stationDict["Source"]["Name"]),
                 SizedBox(height: 2.h),
+
                 //toAndFromBlock(),
+                SizedBox(height: 40.h),
+                gatesElement(station: stationCode),
                 SizedBox(height: 40.h),
 
                 //newScheduleBlock(),
                 ScheduleWidget(stationCode: stationCode),
                 //SchedulePage(stationCode: stationDict["Source"]["StationCode"]),
                 //scheduleBlock(),
-                SizedBox(height: 40.h),
-                gatesElement(station: stationCode),
                 //exitBlock(),
                 SizedBox(height: 40.h),
                 ammenitiesElemenets(stationCode: stationCode),

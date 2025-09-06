@@ -313,27 +313,25 @@ class _ScheduleWidgetState extends State<ScheduleWidget> {
                     horizontal: 12.0,
                     vertical: 6.0,
                   ),
-                  decoration: BoxDecoration(
-                    color:
-                        schedule.minutesLeft >= 5
-                            ? Colors.red.shade50
-                            : Colors.green.shade50,
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(
-                      color:
-                          schedule.minutesLeft >= 5
-                              ? Colors.red.shade200
-                              : Colors.green.shade200,
-                      width: 1,
-                    ),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color:
+                  //       schedule.minutesLeft >= 5
+                  //           ? Colors.red.shade50
+                  //           : Colors.green.shade50,
+                  //   borderRadius: BorderRadius.circular(50),
+                  //   border: Border.all(
+                  //     color:
+                  //         schedule.minutesLeft >= 5
+                  //             ? Colors.red.shade200
+                  //             : Colors.green.shade200,
+                  //     width: 1,
+                  //   ),
+                  // ),
                   child: Text(
                     schedule.frequencyText,
                     style: TextStyle(
-                      color:
-                          schedule.minutesLeft >= 5
-                              ? Colors.red.shade700
-                              : Colors.green.shade700,
+                      color: Colors.white,
+
                       fontWeight: FontWeight.w600,
                       fontSize: 14.0,
                     ),
