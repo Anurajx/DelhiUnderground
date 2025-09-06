@@ -151,9 +151,12 @@ class RouteDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //final screenHeight = MediaQuery.of(context).size.height;
     return Container(
+      //height: screenHeight,
       padding: EdgeInsets.fromLTRB(15, 10, 15, 5),
       child: Column(
+        //mainAxisSize: MainAxisSize.values.last,
         children: [
           topNavBar(context, coreTransferStationsDict),
           TripSummary(
@@ -172,6 +175,7 @@ class RouteDisplay extends StatelessWidget {
                   stations: (routeInfo['route_data']?['stations'] ?? []),
                 ),
                 interchangeInfo(),
+                //Spacer(),
                 SizedBox(height: 40.h),
                 reportError(),
                 SizedBox(height: 40.h),
@@ -267,7 +271,7 @@ topNavBar(context, coreTransferStationsDict) {
           width: 200.w,
           child: Marquee(
             text:
-                "${coreTransferStationsDict['Source']["Name"]} --> ${coreTransferStationsDict['Destination']["Name"]}",
+                "${coreTransferStationsDict['Source']["Name"]} → ${coreTransferStationsDict['Destination']["Name"]}",
             showFadingOnlyWhenScrolling: true,
             fadingEdgeStartFraction: 0.2,
             fadingEdgeEndFraction: 0.1,
@@ -275,8 +279,8 @@ topNavBar(context, coreTransferStationsDict) {
             style: TextStyle(
               fontFamily: 'Poppins',
               color: Color.fromARGB(255, 202, 202, 202),
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w200,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -544,7 +548,7 @@ class _infoIndicatorState extends State<infoIndicator> {
                   style: TextStyle(
                     color: AppColors.secondaryText,
                     fontSize: 15.sp,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
@@ -556,7 +560,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             style: TextStyle(
               color: AppColors.secondaryText,
               fontSize: 15.sp,
-              fontWeight: FontWeight.w300,
+              fontWeight: FontWeight.w500,
             ),
           ),
           SizedBox(height: 2.h),
@@ -576,7 +580,11 @@ class _infoIndicatorState extends State<infoIndicator> {
                 children: [
                   Text(
                     "6 Stations",
-                    style: TextStyle(color: Colors.grey, fontSize: 15.sp),
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   SizedBox(width: 5.w),
                   Icon(CupertinoIcons.sort_down, color: Colors.grey, size: 20),
@@ -686,7 +694,7 @@ interchangeInfo() {
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 15.sp,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
 
@@ -700,7 +708,7 @@ interchangeInfo() {
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 15.sp,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -732,7 +740,11 @@ collapsedExpandedView() {
                 SizedBox(width: 2.w),
                 Text(
                   station["name"],
-                  style: TextStyle(fontSize: 16.sp, color: Colors.grey),
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ],
             ),
