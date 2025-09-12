@@ -154,7 +154,8 @@ class RouteDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("TEST123: ${routeInfo['route_data']?['legs'][0]['stops'][0]}");
+    print("TEST123: ${routeInfo['route_data']}");
+    //print("TEST123: ${routeInfo['route_data']?['legs'][0]['stops'][0]}");
     //final screenHeight = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
@@ -460,8 +461,12 @@ class _infoIndicatorState extends State<infoIndicator> {
   @override
   Widget build(BuildContext context) {
     String heading =
-        widget.legs[0]['line_name'].toString().split("to").last.trim();
+        widget.legs[0]['line_name'].toString().split(" to ").last.trim();
     String colorName = widget.legs[0]['line_color'].toString().toLowerCase();
+    String StartStnName = widget.legs[0]['stops'][0];
+    String EndStnName =
+        widget.legs[0]['stops'][widget.legs[0]['stops'].length - 1];
+    print("TEST525 $StartStnName to $EndStnName"); //First leg of route
     //right line info
     return Container(
       margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -475,7 +480,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             children: [
               Text(
                 //heading
-                "${widget.start}", //-------------------HERE--------------------------------------------
+                "${StartStnName}", //-------------------HERE--------------------------------------------
                 style: TextStyle(
                   color: AppColors.primaryText,
                   fontSize: 18.sp,
@@ -532,7 +537,9 @@ class _infoIndicatorState extends State<infoIndicator> {
           //SizedBox(height: 10),
           Spacer(),
           (widget.isExpanded == true)
-              ? collapsedExpandedView() //add the collapsed station expanded display logo
+              ? collapsedExpandedView(
+                widget.legs[0]['stops'],
+              ) //add the collapsed station expanded display logo
               : Row(
                 children: [
                   Text(
@@ -552,7 +559,7 @@ class _infoIndicatorState extends State<infoIndicator> {
             children: [
               Text(
                 //heading
-                "${widget.end}",
+                "${EndStnName}",
                 style: TextStyle(
                   color: AppColors.primaryText,
                   fontSize: 18.sp,
@@ -721,33 +728,38 @@ interchangeInfo() {
   );
 }
 
-collapsedExpandedView() {
-  //learn how itsss DONEE
+collapsedExpandedView(insideStations) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children:
-        minimetroStations.entries.map((entry) {
-          final station = entry.value;
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.arrow_right_rounded, color: Colors.grey, size: 15),
-                SizedBox(width: 2.w),
-                Text(
-                  station["name"],
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                  ),
+        insideStations
+            .map((station) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.arrow_right_rounded,
+                      color: Colors.grey,
+                      size: 15,
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      station,
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        }).toList(),
+              );
+            })
+            .toList()
+            .cast<Widget>(),
   );
 }
 
