@@ -353,7 +353,7 @@ class routeCluster extends StatefulWidget {
 }
 
 class _routeClusterState extends State<routeCluster> {
-  int extraStations = minimetroStations.length;
+  int extraStations = 0;
   double stationHeight = 25.h;
   double height =
       220.h; //presetting height at one place so that text and line indicator stay at same height
@@ -363,10 +363,11 @@ class _routeClusterState extends State<routeCluster> {
   void _containerToggle() {
     setState(() {
       isExpanded = !isExpanded;
+      extraStations = widget.stations['legs'][0]['stops'].length;
       print(isExpanded);
       if (isExpanded) {
         collapsableHeight =
-            20.h +
+            0.h +
             extraStations * stationHeight; //collapsed and increased height
         collapsableWidth = 250.w; //collapsed and increased width
         height = height + collapsableHeight;
@@ -729,10 +730,15 @@ interchangeInfo() {
 }
 
 collapsedExpandedView(insideStations) {
+  //List<String> middleStations = insideStations.sublist(1, insideStations.length - 1);
+  List<dynamic> middleStations = insideStations.sublist(
+    1,
+    insideStations.length - 1,
+  );
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children:
-        insideStations
+        middleStations
             .map((station) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2.0),

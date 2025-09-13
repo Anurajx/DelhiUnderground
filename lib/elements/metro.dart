@@ -778,7 +778,7 @@ appFooter(context) {
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
-            "Delhi\nSubway",
+            "Delhi\nUnderground",
             textAlign: TextAlign.left,
             style: TextStyle(
               color: const Color.fromARGB(255, 255, 255, 255),
