@@ -5,6 +5,7 @@ import 'package:metroapp/elements/ServicesDir/Station_element.dart';
 import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
 import 'package:metroapp/elements/ServicesDir/newScheduleService.dart';
 import 'package:metroapp/elements/ServicesDir/openingClosingFetcher.dart';
+import 'package:metroapp/elements/ServicesDir/reportErrorService.dart';
 import 'package:metroapp/elements/ServicesDir/scheduleService.dart';
 import 'package:metroapp/elements/ServicesDir/stopInfoFetcher.dart';
 import 'package:metroapp/elements/StationDir/stationSearch.dart';
@@ -1008,13 +1009,19 @@ reportError() {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(2)),
           //color: const Color.fromARGB(255, 17, 17, 17),
-          border: Border.all(color: const Color.fromARGB(255, 55, 55, 55)),
+          border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
         ),
         child: GestureDetector(
           behavior:
               HitTestBehavior
                   .opaque, // to make sure that when tapped on white space the button is tapped
-          onTap: () {},
+          onTap: () {
+            try {
+              sendToGoogleForm();
+            } catch (e) {
+              debugPrint("Error sending email: $e");
+            }
+          },
           child: Align(
             alignment: Alignment.center,
             child: Text(

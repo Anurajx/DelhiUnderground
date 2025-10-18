@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
 import 'package:metroapp/elements/ServicesDir/minimetroStationList.dart';
+import 'package:metroapp/elements/ServicesDir/reportErrorService.dart';
 import 'package:metroapp/main.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -36,7 +37,6 @@ class RouteService {
 
       await File(path).writeAsBytes(bytes, flush: true);
     }
-
     // Open database
     _db = await openDatabase(path, readOnly: true);
   }
@@ -79,6 +79,7 @@ class RouteService {
 
     if (result.isNotEmpty) {
       final row = result.first;
+      print("TEST123: ${jsonDecode(row["route_data"] as String)}");
       print("TEST123: ${jsonDecode(row["route_data"] as String)}");
       return {
         "start": row["start_station_name"],
@@ -154,7 +155,8 @@ class RouteDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("TEST123: ${routeInfo['route_data']}");
+    print("TEST125: ${routeInfo['route_data']['legs'].length}");
+    print("TEST125: ${routeInfo['route_data']['legs'][0]}");
     //print("TEST123: ${routeInfo['route_data']?['legs'][0]['stops'][0]}");
     //final screenHeight = MediaQuery.of(context).size.height;
     return Container(
@@ -183,18 +185,25 @@ class RouteDisplay extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           // Scrollable content
-                          routeCluster(
-                            lineColor: "Blue Line",
-                            startStation: routeInfo['start'],
-                            endStation: routeInfo['end'],
-                            stations: (routeInfo['route_data'] ?? []),
-                          ),
-                          interchangeInfo(),
-                          routeCluster(
-                            lineColor: "Blue Line",
-                            startStation: routeInfo['start'],
-                            endStation: routeInfo['end'],
-                            stations: (routeInfo['route_data'] ?? []),
+                          Column(
+                            children: List.generate(
+                              routeInfo['route_data']['legs'].length * 2 - 1,
+                              (index) {
+                                if (index.isEven) {
+                                  final legIndex = index ~/ 2;
+                                  final leg =
+                                      routeInfo['route_data']['legs'][legIndex];
+                                  return routeCluster(
+                                    lineColor: leg['line_color'],
+                                    startStation: routeInfo['start'],
+                                    endStation: routeInfo['end'],
+                                    stations: leg,
+                                  );
+                                } else {
+                                  return interchangeInfo();
+                                }
+                              },
+                            ),
                           ),
 
                           // Spacer pushes footer down when space available
@@ -361,9 +370,10 @@ class _routeClusterState extends State<routeCluster> {
   double collapsableWidth = 150.w;
   bool isExpanded = false;
   void _containerToggle() {
+    print("TEST5244${widget.stations["stops"]}");
     setState(() {
       isExpanded = !isExpanded;
-      extraStations = widget.stations['legs'][0]['stops'].length;
+      extraStations = widget.stations['stops'].length;
       print(isExpanded);
       if (isExpanded) {
         collapsableHeight =
@@ -396,7 +406,7 @@ class _routeClusterState extends State<routeCluster> {
           children: [
             lineIndicator(
               height: height,
-              lineColor: widget.stations['legs'][0]['line_color'],
+              lineColor: widget.lineColor,
               extraStations: 5,
             ),
             Expanded(
@@ -417,7 +427,7 @@ class _routeClusterState extends State<routeCluster> {
                 //     widget.stations['legs'][0]['line_color']
                 //         .toString()
                 //         .toLowerCase(),
-                legs: widget.stations['legs'],
+                legs: widget.stations,
               ),
             ),
             // InkWell(
@@ -440,7 +450,7 @@ class infoIndicator extends StatefulWidget {
   String end;
   // String heading;
   // String colorName;
-  List legs;
+  Map<String, dynamic> legs;
   infoIndicator({
     super.key,
     required this.height,
@@ -462,11 +472,10 @@ class _infoIndicatorState extends State<infoIndicator> {
   @override
   Widget build(BuildContext context) {
     String heading =
-        widget.legs[0]['line_name'].toString().split(" to ").last.trim();
-    String colorName = widget.legs[0]['line_color'].toString().toLowerCase();
-    String StartStnName = widget.legs[0]['stops'][0];
-    String EndStnName =
-        widget.legs[0]['stops'][widget.legs[0]['stops'].length - 1];
+        widget.legs['line_name'].toString().split(" to ").last.trim();
+    String colorName = widget.legs['line_color'].toString().toLowerCase();
+    String StartStnName = widget.legs['stops'][0];
+    String EndStnName = widget.legs['stops'][widget.legs['stops'].length - 1];
     print("TEST525 $StartStnName to $EndStnName"); //First leg of route
     //right line info
     return Container(
@@ -539,12 +548,12 @@ class _infoIndicatorState extends State<infoIndicator> {
           Spacer(),
           (widget.isExpanded == true)
               ? collapsedExpandedView(
-                widget.legs[0]['stops'],
+                widget.legs['stops'],
               ) //add the collapsed station expanded display logo
               : Row(
                 children: [
                   Text(
-                    "${widget.legs[0]['stops'].length - 2} Stations",
+                    "${widget.legs['stops'].length - 2} Stations",
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 15.sp,
@@ -784,7 +793,13 @@ reportError() {
           behavior:
               HitTestBehavior
                   .opaque, // to make sure that when tapped on white space the button is tapped
-          onTap: () {},
+          onTap: () {
+            try {
+              sendToGoogleForm();
+            } catch (e) {
+              debugPrint("Error sending email: $e");
+            }
+          },
           child: Align(
             alignment: Alignment.center,
             child: Text(
