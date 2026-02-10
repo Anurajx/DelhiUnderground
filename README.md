@@ -4,14 +4,16 @@ also known as Delhi underground it offers clean and intuitive interface for user
 
 ## How to use
 
--Download the latest .apk file from the [Releases](https://github.com/Anurajx/DelhiUnderground/releases/)
+1.Download the latest .apk file from the [Releases](https://github.com/Anurajx/DelhiUnderground/releases/)
  section.
 
--Open the file on your Android device.
+2.Open the file on your Android device.
 
--Allow installation from external sources if prompted.
+3.Allow installation from external sources if prompted.
 
--Launch the app and ENJOY!
+4.Launch the app and ENJOY!
+
+5.<img width="150" alt="branding" src="https://github.com/user-attachments/assets/65ed3b61-de95-4c04-a6be-1b6791aba15f" />
 
 ## Working/ how to use
 
