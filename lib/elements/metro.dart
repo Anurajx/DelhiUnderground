@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'dart:convert';
-import 'dart:ui';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
-import 'package:metroapp/elements/ServicesDir/geolocatorService.dart';
-import 'package:metroapp/elements/StationDir/stopInfo.dart';
+import 'package:metroapp/elements/ServicesDir/geolocator_service.dart';
+import 'package:metroapp/elements/StationDir/stop_info.dart';
 import 'package:metroapp/elements/route.dart';
 import 'package:metroapp/main.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -11,14 +9,14 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'package:metroapp/elements/ServicesDir/whatsappURLTransfer.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import './MapDir/mapMetro.dart';
+import './MapDir/map_metro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
-import './ServicesDir/Station_element.dart';
+import './ServicesDir/station_element.dart';
 import 'search.dart';
-import 'StationDir/stationSearch.dart';
-import 'ServicesDir/data_Provider.dart';
+import 'StationDir/station_search.dart';
+import 'ServicesDir/data_provider.dart';
 import 'package:provider/provider.dart';
 
 //import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
@@ -42,23 +40,23 @@ class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
     //print(Geolocatorservice());
-    return metroHomeScreen();
+    return MetroHomeScreen();
     // return Scaffold(
     //   backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-    //   body: metroHomeScreen(),
+    //   body: MetroHomeScreen(),
     // ); //add this inside an scaffold
     // return metroScreen(context);
   }
 }
 
-class metroHomeScreen extends StatefulWidget {
-  const metroHomeScreen({super.key});
+class MetroHomeScreen extends StatefulWidget {
+  const MetroHomeScreen({super.key});
 
   @override
-  State<metroHomeScreen> createState() => _metroHomeScreenState();
+  State<MetroHomeScreen> createState() => _MetroHomeScreenState();
 }
 
-class _metroHomeScreenState extends State<metroHomeScreen> {
+class _MetroHomeScreenState extends State<MetroHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -214,13 +212,13 @@ suggestions(context) {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (context) => routeScreen(
+                          (context) => RouteScreen(
                             coreTransferStationsDict: data["just"]?[0],
                           ),
                     ),
                   );
                 },
-                child: stationPrimitive(
+                child: StationPrimitive(
                   name:
                       data["just"]?[0]["Destination"]?["Name"]
                           .toString(), //CHECK NOT ERROR SAFE
@@ -234,13 +232,13 @@ suggestions(context) {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (context) => routeScreen(
+                          (context) => RouteScreen(
                             coreTransferStationsDict: data["justBefore"]?[0],
                           ),
                     ),
                   );
                 },
-                child: stationPrimitive(
+                child: StationPrimitive(
                   name:
                       data["justBefore"]?[0]?["Destination"]?["Name"]
                           .toString(), //CHECK NOT ERROR SAFE
@@ -249,19 +247,47 @@ suggestions(context) {
             ],
           );
         } else {
-          //DEFAULT DATA WHEN SAVED SUGGESTIONAS ARE NOT AVAILABLE
+          //DEFAULT DATA WHEN SAVED SUGGESTIONS ARE NOT AVAILABLE
           final String defaultData = '''
                         {
                           "just": [
                             {
-                              "Source": [59, "हौज खास", "Hauz Khas", [2, 8], 28.543346, 77.206673],
-                              "Destination": [44, "विश्वविद्यालय", "Vishwavidyalaya", [2], 28.694765, 77.212418]
+                              "Source": {
+                                "StationCode": "HKS",
+                                "Name": "Hauz Khas",
+                                "Hindi": "हौज खास",
+                                "Line": "2-8",
+                                "Latitude": "28.543346",
+                                "Longitude": "77.206673"
+                              },
+                              "Destination": {
+                                "StationCode": "VW",
+                                "Name": "Vishwavidyalaya",
+                                "Hindi": "विश्वविद्यालय",
+                                "Line": "2",
+                                "Latitude": "28.694765",
+                                "Longitude": "77.212418"
+                              }
                             }
                           ],
                           "justBefore": [
                             {
-                              "Source": [52, "सेंट्रल सेक्रेटेरिएट", "Central Secretariat", [2, 6], 28.614973, 77.212029],
-                              "Destination": [130, "नेहरू प्लेस", "Nehru Place", [6], 28.551134, 77.251511]
+                              "Source": {
+                                "StationCode": "CTST",
+                                "Name": "Central Secretariat",
+                                "Hindi": "सेंट्रल सेक्रेटेरिएट",
+                                "Line": "2-6",
+                                "Latitude": "28.614973",
+                                "Longitude": "77.212029"
+                              },
+                              "Destination": {
+                                "StationCode": "NP",
+                                "Name": "Nehru Place",
+                                "Hindi": "नेहरू प्लेस",
+                                "Line": "6",
+                                "Latitude": "28.551134",
+                                "Longitude": "77.251511"
+                              }
                             }
                           ]
                         }
@@ -279,15 +305,17 @@ suggestions(context) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SearchScreen(),
+                      builder:
+                          (context) => RouteScreen(
+                            coreTransferStationsDict: defaultDataParsed["just"]?[0],
+                          ),
                     ),
                   );
                 },
-                child: stationPrimitive(
+                child: StationPrimitive(
                   name:
-                      defaultDataParsed["just"]?[0]["Destination"]?[2]
-                          .toString(), //CHECK NOT ERROR SAFE
-                  //STILL HAS BUG
+                      defaultDataParsed["just"]?[0]["Destination"]?["Name"]
+                          .toString(),
                 ),
               ),
               GestureDetector(
@@ -296,14 +324,18 @@ suggestions(context) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SearchScreen(),
+                      builder:
+                          (context) => RouteScreen(
+                            coreTransferStationsDict:
+                                defaultDataParsed["justBefore"]?[0],
+                          ),
                     ),
                   );
                 },
-                child: stationPrimitive(
+                child: StationPrimitive(
                   name:
-                      defaultDataParsed["justBefore"]?[0]?["Destination"]?[2]
-                          .toString(), //CHECK NOT ERROR SAFE
+                      defaultDataParsed["justBefore"]?[0]?["Destination"]?["Name"]
+                          .toString(),
                 ),
               ),
             ],
@@ -372,15 +404,15 @@ nearYou(context) {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (context) => stopInfoScreen(
+                          (context) => StopInfoScreen(
                             stationDict: coreTransferStationsDictNE,
                           ),
                     ),
                   );
                 },
-                child: stationNearby(
+                child: StationNearby(
                   name: data["NearEnough"]?[0]["Name"],
-                  line: lineNumbersN,
+                  line: lineNumbersNE,
                 ),
               ),
               //Spacer(),
@@ -392,15 +424,15 @@ nearYou(context) {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (context) => stopInfoScreen(
+                          (context) => StopInfoScreen(
                             stationDict: coreTransferStationsDictN,
                           ),
                     ),
                   );
                 },
-                child: stationNearby(
+                child: StationNearby(
                   name: data["Near"]?[0]["Name"],
-                  line: lineNumbersNE,
+                  line: lineNumbersN,
                 ),
               ),
             ],
@@ -568,7 +600,7 @@ ticketAndExit(context) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => mapMetroScreen(),
+                          builder: (context) => MapMetroScreen(),
                         ),
                       );
                     },
@@ -608,7 +640,7 @@ ticketAndExit(context) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => stationSearchScreen(),
+                    builder: (context) => StationSearchScreen(),
                   ),
                 );
               },
@@ -650,7 +682,7 @@ ticketAndExit(context) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => stationSearchScreen(),
+                              builder: (context) => StationSearchScreen(),
                             ),
                           );
                         },

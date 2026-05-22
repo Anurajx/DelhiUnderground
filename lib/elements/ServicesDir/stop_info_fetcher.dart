@@ -1,29 +1,26 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:metroapp/elements/StationDir/stopInfo.dart';
 
-class ammenitiesElemenets extends StatefulWidget {
+class AmenitiesElements extends StatefulWidget {
   final stationCode;
-  const ammenitiesElemenets({super.key, required this.stationCode});
+  const AmenitiesElements({super.key, required this.stationCode});
 
   @override
-  State<ammenitiesElemenets> createState() => _ammenitiesElemenetsState();
+  State<AmenitiesElements> createState() => _AmenitiesElementsState();
 }
 
-class _ammenitiesElemenetsState extends State<ammenitiesElemenets> {
-  List<dynamic> gatesJson = [];
+class _AmenitiesElementsState extends State<AmenitiesElements> {
+  List<dynamic> parkingJson = [];
   @override
   void initState() {
     super.initState();
-    loadStationsFromCSV().then((stations) {
+    loadParkingFromJson().then((stations) {
       if (mounted) {
         setState(() {
-          gatesJson = stations;
-          print("JSON OF GATES IS $gatesJson");
+          parkingJson = stations;
         });
       }
     });
@@ -49,28 +46,24 @@ class _ammenitiesElemenetsState extends State<ammenitiesElemenets> {
             ),
           ),
           SizedBox(height: 10.h),
-          stationLineBadgeBuilder(gatesJson, widget.stationCode),
+          parkingInfoBuilder(parkingJson, widget.stationCode),
         ],
       ),
     );
-    //stationLineBadgeBuilder(gatesJson, widget.stationCode);
-    // stationList(gatesJson);
+    //parkingInfoBuilder(parkingJson, widget.stationCode);
+    // stationList(parkingJson);
   }
 }
 
-Future<List> loadStationsFromCSV() async {
-  //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
-  //fetching data from CSV file logic
+Future<List> loadParkingFromJson() async {
   try {
     final jsonRawData = await rootBundle.loadString(
       "assets/Map/parkingjson.json",
     );
     final List<dynamic> jsonList = jsonDecode(jsonRawData);
-    print("JSON TRIAL1 RAW DATA IS $jsonList");
     return jsonList;
   } catch (e) {
     return [];
-    //error protection
   }
 }
 
@@ -135,10 +128,10 @@ Future<List> loadStationsFromCSV() async {
 //   );
 // }
 
-Widget stationLineBadgeBuilder(List<dynamic> gates, stationCode) {
+Widget parkingInfoBuilder(List<dynamic> parking, stationCode) {
   return Column(
     children:
-        gates.map<Widget>((line) {
+        parking.map<Widget>((line) {
           print(
             "Line TRIAL6 is ${line["station_code"]} AND the station code is $stationCode",
           );

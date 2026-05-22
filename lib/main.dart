@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
+import 'package:metroapp/elements/ServicesDir/data_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'elements/metro.dart';
@@ -50,12 +50,10 @@ class MyApp extends StatelessWidget {
             dividerColor: AppColors.divider,
             primaryColor: AppColors.primaryAccent,
             colorScheme: ColorScheme.dark(
-              background: AppColors.background,
               primary: AppColors.primaryAccent,
               secondary: AppColors.secondaryAccent,
               error: AppColors.destructive,
               surface: AppColors.surface,
-              onBackground: AppColors.primaryText,
               onPrimary: AppColors.whiteAccent,
               onSecondary: AppColors.primaryText,
               onSurface: AppColors.primaryText,

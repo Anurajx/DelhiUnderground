@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'dart:isolate';
 
-import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
-import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
+import 'package:metroapp/elements/ServicesDir/data_provider.dart';
 
 /// Call this from a widget’s `initState` using
 /// WidgetsBinding.instance.addPostFrameCallback((_) => initialize(context));
@@ -18,8 +16,8 @@ Future<void> initialize(BuildContext context) async {
     final double userLat = userPosition.latitude;
     final double userLon = userPosition.longitude;
 
-    // 2️⃣ Load station CSV
-    List<dynamic> originalStations = await loadStationsFromCSV();
+    // 2️⃣ Load station JSON
+    List<dynamic> originalStations = await loadStationsFromJson();
 
     // (Optional) skip CSV header row
     // if (originalStations.isNotEmpty &&
@@ -51,8 +49,8 @@ Future<void> initialize(BuildContext context) async {
       return distA.compareTo(distB);
     });
 
-    final nearest = originalStations[1];
-    final nextNearest = originalStations[0];
+    final nearest = originalStations[0];
+    final nextNearest = originalStations[1];
 
     // 4️⃣ Push into Provider
     if (context.mounted) {
@@ -89,43 +87,14 @@ Future<Position> getCurrentLocation() async {
   return Geolocator.getCurrentPosition();
 }
 
-// Future<List<List<dynamic>>> loadStationsFromCSV() async {
-//   final rawData = await rootBundle.loadString('assets/Map/stops.csv');
-//   return Isolate.run(
-//     () => CsvToListConverter(
-//       eol: '\n',
-//       fieldDelimiter: ',',
-//       textDelimiter: '"',
-//       shouldParseNumbers: false,
-//     ).convert(rawData),
-//   );
-// }
-
-Future<List> loadStationsFromCSV() async {
-  //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
-  //fetching data from CSV file logic
+Future<List> loadStationsFromJson() async {
   try {
-    //final rawData = await rootBundle.loadString('assets/Map/stops.csv'); //stops
-    //TRYING OUT EXPERIMENTAL JSON METHOD
     final jsonRawData = await rootBundle.loadString(
       "assets/Map/stationsjson.json",
     );
     final List<dynamic> jsonList = jsonDecode(jsonRawData);
-    print("JSON RAW DATA IS $jsonList");
     return jsonList;
-    // final List<List<dynamic>> rows = await Isolate.run(() {
-    //   return CsvToListConverter(
-    //     eol: '\n',
-    //     fieldDelimiter: ',',
-    //     textDelimiter: '"',
-    //     shouldParseNumbers: false,
-    //   ).convert(rawData);
-    // });
-    // return rows;
   } catch (e) {
     return [];
-    //error protection
   }
-  //print("Total rows parsed: ${rows}");
-  //return rows;
 }

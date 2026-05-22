@@ -1,15 +1,14 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/main.dart';
 
-class stationUnit extends StatelessWidget {
+class StationUnit extends StatelessWidget {
   final dynamic name;
   final dynamic hindiName;
   final List lines;
 
-  const stationUnit({
+  const StationUnit({
     super.key,
     required this.name,
     required this.hindiName,
@@ -164,11 +163,11 @@ stationLineBadge(line) {
   );
 }
 
-class stationPrimitive extends StatelessWidget {
+class StationPrimitive extends StatelessWidget {
   //for station list on main screen
   final dynamic name;
 
-  const stationPrimitive({super.key, required this.name});
+  const StationPrimitive({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -251,11 +250,11 @@ class stationPrimitive extends StatelessWidget {
   }
 }
 
-class stationNearby extends StatelessWidget {
+class StationNearby extends StatelessWidget {
   //for station list on main screen
   final dynamic name;
   final dynamic line;
-  const stationNearby({super.key, required this.name, required this.line});
+  const StationNearby({super.key, required this.name, required this.line});
 
   @override
   Widget build(BuildContext context) {
@@ -299,11 +298,11 @@ class stationNearby extends StatelessWidget {
 }
 
 ///////////////////////
-class bigNameInfo extends StatelessWidget {
+class BigNameInfo extends StatelessWidget {
   final dynamic stationName;
   final dynamic stationNameHindiCommon;
   final dynamic lineofStation;
-  const bigNameInfo({
+  const BigNameInfo({
     super.key,
     required this.stationName,
     required this.stationNameHindiCommon,

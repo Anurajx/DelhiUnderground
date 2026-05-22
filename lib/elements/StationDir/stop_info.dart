@@ -1,21 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:metroapp/elements/ServicesDir/Station_element.dart';
-import 'package:metroapp/elements/ServicesDir/gatesFetcher.dart';
-import 'package:metroapp/elements/ServicesDir/newScheduleService.dart';
-import 'package:metroapp/elements/ServicesDir/openingClosingFetcher.dart';
-import 'package:metroapp/elements/ServicesDir/reportErrorService.dart';
-import 'package:metroapp/elements/ServicesDir/scheduleService.dart';
-import 'package:metroapp/elements/ServicesDir/stopInfoFetcher.dart';
-import 'package:metroapp/elements/StationDir/stationSearch.dart';
-import 'package:metroapp/elements/route.dart';
-import 'package:path/path.dart';
-//import 'package:lottie/lottie.dart';
+import 'package:metroapp/elements/ServicesDir/station_element.dart';
+import 'package:metroapp/elements/ServicesDir/gates_fetcher.dart';
+import 'package:metroapp/elements/ServicesDir/new_schedule_service.dart';
+import 'package:metroapp/elements/ServicesDir/opening_closing_fetcher.dart';
+import 'package:metroapp/elements/ServicesDir/report_error_service.dart';
+import 'package:metroapp/elements/ServicesDir/stop_info_fetcher.dart';
 
-class stopInfoScreen extends StatelessWidget {
+class StopInfoScreen extends StatelessWidget {
   final dynamic stationDict;
-  const stopInfoScreen({super.key, required this.stationDict});
+  const StopInfoScreen({super.key, required this.stationDict});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +65,7 @@ stationCluster(context, stationDict) {
 
                 //toAndFromBlock(),
                 SizedBox(height: 40.h),
-                gatesElement(station: stationCode),
+                GatesElement(station: stationCode),
                 SizedBox(height: 40.h),
 
                 //newScheduleBlock(),
@@ -79,7 +74,7 @@ stationCluster(context, stationDict) {
                 //scheduleBlock(),
                 //exitBlock(),
                 SizedBox(height: 40.h),
-                ammenitiesElemenets(stationCode: stationCode),
+                AmenitiesElements(stationCode: stationCode),
                 //ammenitiesBlock(),
                 SizedBox(height: 40.h),
                 reportError(),
@@ -140,7 +135,7 @@ stationLineMarker(stationDict) {
   line = line.replaceAll(RegExp(r'[\[\]]'), '');
   List<String> parts = line.split('-');
   List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
-  return bigNameInfo(
+  return BigNameInfo(
     stationName: stationName,
     stationNameHindiCommon: stationNameHindiCommon,
     lineofStation: lineNumbers,

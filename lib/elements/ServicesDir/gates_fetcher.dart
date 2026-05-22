@@ -4,27 +4,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:metroapp/elements/StationDir/stopInfo.dart';
 import 'package:metroapp/main.dart';
 
-class gatesElement extends StatefulWidget {
+class GatesElement extends StatefulWidget {
   final station;
-  const gatesElement({super.key, required this.station});
+  const GatesElement({super.key, required this.station});
 
   @override
-  State<gatesElement> createState() => _gatesElementState();
+  State<GatesElement> createState() => _GatesElementState();
 }
 
-class _gatesElementState extends State<gatesElement> {
-  List<dynamic> gatesJson = [];
+class _GatesElementState extends State<GatesElement> {
+  List<dynamic> gatesList = [];
   @override
   void initState() {
     super.initState();
-    loadStationsFromCSV().then((stations) {
+    loadGatesFromJson().then((stations) {
       if (mounted) {
         setState(() {
-          gatesJson = stations;
-          print("JSON OF GATES IS $gatesJson");
+          gatesList = stations;
         });
       }
     });
@@ -32,9 +30,6 @@ class _gatesElementState extends State<gatesElement> {
 
   @override
   Widget build(BuildContext context) {
-    // print(
-    //   "TRIAL1 THE STATION CODE IS /// ${widget.station["Source"]["StationCode"]}",
-    // );
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,34 +39,28 @@ class _gatesElementState extends State<gatesElement> {
             "EXIT",
             style: TextStyle(
               color: const Color.fromARGB(255, 109, 109, 109),
-              fontSize: 16.sp, //processedFontheight(context),
+              fontSize: 16.sp,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w500,
             ),
           ),
           SizedBox(height: 10.h),
-          stationLineBadgeBuilder(gatesJson, widget.station),
+          gatesInfoBuilder(gatesList, widget.station),
         ],
       ),
     );
-    //stationLineBadgeBuilder(gatesJson, widget.stationCode);
-    // stationList(gatesJson);
   }
 }
 
-Future<List> loadStationsFromCSV() async {
-  //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
-  //fetching data from CSV file logic
+Future<List> loadGatesFromJson() async {
   try {
     final jsonRawData = await rootBundle.loadString(
       "assets/Map/gatesjson.json",
     );
     final List<dynamic> jsonList = jsonDecode(jsonRawData);
-    print("JSON TRIAL1 RAW DATA IS $jsonList");
     return jsonList;
   } catch (e) {
     return [];
-    //error protection
   }
 }
 
@@ -136,25 +125,15 @@ Future<List> loadStationsFromCSV() async {
 //   );
 // }
 
-Widget stationLineBadgeBuilder(List<dynamic> gates, stationCode) {
+Widget gatesInfoBuilder(List<dynamic> gates, stationCode) {
   return Column(
     children:
         gates.map<Widget>((line) {
-          // print(
-          //   "Line TRIAL1 is ${line["Station Code Name"]} AND the station code is $stationCode",
-          // );
           if (line["Station Code Name"] == stationCode) {
-            //print("Fcukkkkk yeah");
             return exitBlock(line["Gate Name"], line["Location"]);
           } else {
-            //print(" Fcukkkkk yeahhellll naahhh");
-            //print("Line TRIAL1 is NOT APPROVED");
-            return SizedBox.shrink();
+            return const SizedBox.shrink();
           }
-          // return Padding(
-          //   padding: const EdgeInsets.only(right: 3),
-          //   child: exitBlock("GATE", "NEW DOG"),
-          // );
         }).toList(),
   );
 }

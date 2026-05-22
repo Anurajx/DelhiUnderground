@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
-import 'package:metroapp/elements/ServicesDir/minimetroStationList.dart';
-import 'package:metroapp/elements/ServicesDir/reportErrorService.dart';
+import 'package:metroapp/elements/ServicesDir/mini_metro_station_list.dart';
+import 'package:metroapp/elements/ServicesDir/report_error_service.dart';
 import 'package:metroapp/main.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -193,7 +193,7 @@ class RouteDisplay extends StatelessWidget {
                                   final legIndex = index ~/ 2;
                                   final leg =
                                       routeInfo['route_data']['legs'][legIndex];
-                                  return routeCluster(
+                                  return RouteCluster(
                                     lineColor: leg['line_color'],
                                     startStation: routeInfo['start'],
                                     endStation: routeInfo['end'],
@@ -343,13 +343,13 @@ class TripSummary extends StatelessWidget {
   }
 }
 
-class routeCluster extends StatefulWidget {
+class RouteCluster extends StatefulWidget {
   final String lineColor;
   final String startStation;
   final String endStation;
   final Map<String, dynamic> stations;
 
-  const routeCluster({
+  const RouteCluster({
     super.key,
     required this.lineColor,
     required this.startStation,
@@ -358,10 +358,10 @@ class routeCluster extends StatefulWidget {
   });
 
   @override
-  State<routeCluster> createState() => _routeClusterState();
+  State<RouteCluster> createState() => _RouteClusterState();
 }
 
-class _routeClusterState extends State<routeCluster> {
+class _RouteClusterState extends State<RouteCluster> {
   int extraStations = 0;
   double stationHeight = 25.h;
   double height =
@@ -404,13 +404,13 @@ class _routeClusterState extends State<routeCluster> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            lineIndicator(
+            LineIndicator(
               height: height,
               lineColor: widget.lineColor,
               extraStations: 5,
             ),
             Expanded(
-              child: infoIndicator(
+              child: InfoIndicator(
                 start: widget.startStation,
                 end: widget.endStation,
                 height: height,
@@ -441,17 +441,16 @@ class _routeClusterState extends State<routeCluster> {
   }
 }
 
-class infoIndicator extends StatefulWidget {
-  double height;
-  double collapsableWidth = 150.w;
-  double collapsableHeight = 30.h;
-  bool isExpanded;
-  String start;
-  String end;
-  // String heading;
-  // String colorName;
-  Map<String, dynamic> legs;
-  infoIndicator({
+class InfoIndicator extends StatefulWidget {
+  final double height;
+  final double collapsableWidth;
+  final double collapsableHeight;
+  final bool isExpanded;
+  final String start;
+  final String end;
+  final Map<String, dynamic> legs;
+
+  const InfoIndicator({
     super.key,
     required this.height,
     required this.collapsableHeight,
@@ -459,16 +458,14 @@ class infoIndicator extends StatefulWidget {
     required this.isExpanded,
     required this.start,
     required this.end,
-    // required this.heading,
-    // required this.colorName,
     required this.legs,
   });
 
   @override
-  State<infoIndicator> createState() => _infoIndicatorState();
+  State<InfoIndicator> createState() => _InfoIndicatorState();
 }
 
-class _infoIndicatorState extends State<infoIndicator> {
+class _InfoIndicatorState extends State<InfoIndicator> {
   @override
   Widget build(BuildContext context) {
     String heading =
@@ -590,23 +587,24 @@ class _infoIndicatorState extends State<infoIndicator> {
   }
 }
 
-class lineIndicator extends StatefulWidget {
-  double height = 250.h;
-  int extraStations = 0;
-  double stationHeight = 5.h;
-  String lineColor;
-  lineIndicator({
+class LineIndicator extends StatefulWidget {
+  final double height;
+  final int extraStations;
+  final double stationHeight;
+  final String lineColor;
+
+  LineIndicator({
     super.key,
     required this.height,
     required this.lineColor,
     required this.extraStations,
-  });
+  }) : stationHeight = 5.h;
 
   @override
-  State<lineIndicator> createState() => _lineIndicatorState();
+  State<LineIndicator> createState() => _LineIndicatorState();
 }
 
-class _lineIndicatorState extends State<lineIndicator> {
+class _LineIndicatorState extends State<LineIndicator> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(

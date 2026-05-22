@@ -1,54 +1,46 @@
-// import 'dart:ffi';
-// import 'dart:math';
 import 'dart:convert';
 
-import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:metroapp/elements/ServicesDir/Station_element.dart';
-// import 'package:neopop/neopop.dart';
-import 'stopInfo.dart';
-//import './ServicesDir/metroStationsList.dart';
+import 'package:metroapp/elements/ServicesDir/station_element.dart';
+import 'stop_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import './ServicesDir/Station_element.dart';
-import 'package:neopop/neopop.dart';
-import 'dart:isolate';
 import 'package:string_similarity/string_similarity.dart';
 
-class stationSearchScreen extends StatefulWidget {
+class StationSearchScreen extends StatefulWidget {
   final String? destination;
-  const stationSearchScreen({
+  const StationSearchScreen({
     super.key,
     this.destination,
   }); //if destination comes as an argument aslo calulate sopurce station with gps location if gps not available use homestation if that too now available leave that space empty
 
   @override
-  State<stationSearchScreen> createState() => _SearchScreenState();
+  State<StationSearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<stationSearchScreen> {
+class _SearchScreenState extends State<StationSearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 8, 8, 8),
-      body: searchBody(context: context, destination: widget.destination),
+      body: SearchBody(context: context, destination: widget.destination),
       //resizeToAvoidBottomInset: true,
     );
   }
 }
 
-class searchBody extends StatefulWidget {
+class SearchBody extends StatefulWidget {
   final dynamic context;
   final String? destination;
 
-  const searchBody({super.key, required this.context, this.destination});
+  const SearchBody({super.key, required this.context, this.destination});
 
   @override
-  State<searchBody> createState() => _searchBodyState();
+  State<SearchBody> createState() => _SearchBodyState();
 }
 
-class _searchBodyState extends State<searchBody> {
+class _SearchBodyState extends State<SearchBody> {
   final FocusNode _focusNode1 = FocusNode();
   //final FocusNode _focusNode2 = FocusNode();
   final TextEditingController _controller1 = TextEditingController();
@@ -60,22 +52,15 @@ class _searchBodyState extends State<searchBody> {
   @override
   void initState() {
     super.initState();
-    // _focusNode1.addListener(() {
-    //   setState(() {
-    //     filterStationsLogic(_controller1.text);
 
-    //     ///FUCKKKKK YESSSS
-    //   });
-    // });
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode1.requestFocus();
     });
-    loadStationsFromCSV().then((stations) {
+    loadStationsFromJson().then((stations) {
       setState(() {
         orignalStations = stations;
         filteredStations = stations;
-        print("JSON STATIONS IS $orignalStations");
       });
     });
   }
@@ -148,35 +133,16 @@ class _searchBodyState extends State<searchBody> {
     });
   }
 
-  Future<List> loadStationsFromCSV() async {
-    //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
-    //fetching data from CSV file logic
+  Future<List> loadStationsFromJson() async {
     try {
-      // final rawData = await rootBundle.loadString(
-      //   'assets/Map/stops.csv',
-      // ); //stops
-      //TRYING OUT EXPERIMENTAL JSON METHOD
       final jsonRawData = await rootBundle.loadString(
         "assets/Map/stationsjson.json",
       );
       final List<dynamic> jsonList = jsonDecode(jsonRawData);
-      print("JSON RAW DATA IS $jsonList");
       return jsonList;
-      // final List<List<dynamic>> rows = await Isolate.run(() {
-      //   return CsvToListConverter(
-      //     eol: '\n',
-      //     fieldDelimiter: ',',
-      //     textDelimiter: '"',
-      //     shouldParseNumbers: false,
-      //   ).convert(rawData);
-      // });
-      // return rows;width
     } catch (e) {
       return [];
-      //error protection
     }
-    //print("Total rows parsed: ${rows}");
-    //return rows;
   }
 
   @override
@@ -414,7 +380,7 @@ Widget stationList(
               }
             }
           },
-          child: stationUnit(
+          child: StationUnit(
             name: name,
             hindiName: hindiName,
             lines: lineNumbers,
@@ -440,7 +406,7 @@ screenTransferController(
       context,
       MaterialPageRoute(
         builder:
-            (context) => stopInfoScreen(stationDict: coreTransferStationsDict),
+            (context) => StopInfoScreen(stationDict: coreTransferStationsDict),
       ),
     );
     //checks for source and destination in dectinory and the text controller text if all are valid only then proceed and destination is not same as source

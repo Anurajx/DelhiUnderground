@@ -1,20 +1,12 @@
-// import 'dart:ffi';
-// import 'dart:math';
 import 'dart:convert';
 
-import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:metroapp/elements/ServicesDir/data_Provider.dart';
 import 'package:metroapp/main.dart';
-import 'package:provider/provider.dart';
-// import 'package:neopop/neopop.dart';
 import 'route.dart';
-//import './ServicesDir/metroStationsList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './ServicesDir/Station_element.dart';
-import 'dart:isolate';
+import './ServicesDir/station_element.dart';
 import 'package:string_similarity/string_similarity.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -34,24 +26,24 @@ class _SearchScreenState extends State<SearchScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        body: searchBody(context: context, destination: widget.destination),
+        body: SearchBody(context: context, destination: widget.destination),
         //resizeToAvoidBottomInset: true,
       ),
     );
   }
 }
 
-class searchBody extends StatefulWidget {
+class SearchBody extends StatefulWidget {
   final dynamic context;
   final String? destination;
 
-  const searchBody({super.key, required this.context, this.destination});
+  const SearchBody({super.key, required this.context, this.destination});
 
   @override
-  State<searchBody> createState() => _searchBodyState();
+  State<SearchBody> createState() => _SearchBodyState();
 }
 
-class _searchBodyState extends State<searchBody> {
+class _SearchBodyState extends State<SearchBody> {
   final FocusNode _focusNode1 = FocusNode();
   final FocusNode _focusNode2 = FocusNode();
   final TextEditingController _controller1 = TextEditingController();
@@ -66,8 +58,6 @@ class _searchBodyState extends State<searchBody> {
     _focusNode1.addListener(() {
       setState(() {
         filterStationsLogic(_controller1.text);
-
-        ///FUCKKKKK YESSSS
       });
     });
     _focusNode2.addListener(() {
@@ -79,11 +69,10 @@ class _searchBodyState extends State<searchBody> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode1.requestFocus();
     });
-    loadStationsFromCSV().then((stations) {
+    loadStationsFromJson().then((stations) {
       setState(() {
         orignalStations = stations;
         filteredStations = stations;
-        print("JSON STATIONS IS $orignalStations");
       });
     });
   }
@@ -158,19 +147,15 @@ class _searchBodyState extends State<searchBody> {
     });
   }
 
-  Future<List> loadStationsFromCSV() async {
-    //IF I EVER CHANGE TO JSON CHANGE IT HERE TO MAKE A LIST OUT OF IT
-    //fetching data from CSV file logic
+  Future<List> loadStationsFromJson() async {
     try {
       final jsonRawData = await rootBundle.loadString(
         "assets/Map/stationsjson.json",
       );
       final List<dynamic> jsonList = jsonDecode(jsonRawData);
-      print("JSON RAW DATA IS $jsonList");
       return jsonList;
     } catch (e) {
       return [];
-      //error protection
     }
   }
 
@@ -470,7 +455,7 @@ Widget stationList(
             //   FocusScope.of(context).requestFocus(focusNode2);
             // }
           },
-          child: stationUnit(
+          child: StationUnit(
             name: name,
             hindiName: hindiName,
             lines: lineNumbers,
@@ -506,7 +491,7 @@ screenTransferController(context, controller1, controller2) {
             (context) => AlertDialog(
               backgroundColor: const Color.fromARGB(255, 31, 200, 127),
               title: Text(
-                "${coreTransferStationsDict['Source']![2]} to ${coreTransferStationsDict['Destination']![2]}",
+                "${coreTransferStationsDict['Source']!['Name']} to ${coreTransferStationsDict['Destination']!['Name']}",
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
                   fontFamily: "Poppins",
@@ -551,7 +536,7 @@ screenTransferController(context, controller1, controller2) {
                       context,
                       CupertinoPageRoute(
                         builder:
-                            (context) => routeScreen(
+                            (context) => RouteScreen(
                               coreTransferStationsDict:
                                   coreTransferStationsDict,
                             ),
@@ -571,7 +556,7 @@ screenTransferController(context, controller1, controller2) {
         context,
         MaterialPageRoute(
           builder:
-              (context) => routeScreen(
+              (context) => RouteScreen(
                 coreTransferStationsDict: coreTransferStationsDict,
               ),
         ),
