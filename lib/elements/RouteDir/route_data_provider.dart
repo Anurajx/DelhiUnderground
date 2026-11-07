@@ -157,8 +157,7 @@ class RouteDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     print("TEST125: ${routeInfo['route_data']['legs'].length}");
     print("TEST125: ${routeInfo['route_data']['legs'][0]}");
-    //print("TEST123: ${routeInfo['route_data']?['legs'][0]['stops'][0]}");
-    //final screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
       padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
       child: Column(
@@ -168,13 +167,16 @@ class RouteDisplay extends StatelessWidget {
             totalTime: routeInfo['time'],
             interchanges: routeInfo['interchanges'],
           ),
-          Divider(thickness: 1, color: Color.fromARGB(255, 35, 35, 35)),
+          const Divider(thickness: 1, color: Color.fromARGB(255, 35, 35, 35)),
 
           // Expandable area
           Expanded(
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics(),
+                  ),
                   child: ConstrainedBox(
                     // force at least full height
                     constraints: BoxConstraints(
@@ -207,14 +209,14 @@ class RouteDisplay extends StatelessWidget {
                           ),
 
                           // Spacer pushes footer down when space available
-                          Spacer(),
+                          const Spacer(),
 
-                          SizedBox(height: 40),
+                          const SizedBox(height: 40),
                           // Footer inside the container
                           Column(
                             children: [
                               reportError(),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               companyFooter(),
                             ],
                           ),
@@ -321,7 +323,7 @@ class TripSummary extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: "and has ",
+              text: " has ",
               style: TextStyle(
                 color: AppColors.tertiaryText,
                 fontSize: 20.sp,
@@ -330,6 +332,22 @@ class TripSummary extends StatelessWidget {
             ),
             TextSpan(
               text: "${interchanges} interchange ",
+              style: TextStyle(
+                color: AppColors.secondaryText,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            TextSpan(
+              text: "and costs ",
+              style: TextStyle(
+                color: AppColors.tertiaryText,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            TextSpan(
+              text: "20 Rs", //make these a variable
               style: TextStyle(
                 color: AppColors.secondaryText,
                 fontSize: 20.sp,

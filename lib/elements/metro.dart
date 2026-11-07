@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+// import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocator_service.dart';
 import 'package:metroapp/elements/StationDir/stop_info.dart';
 import 'package:metroapp/elements/route.dart';
@@ -93,44 +93,44 @@ class _MetroHomeScreenState extends State<MetroHomeScreen> {
   }
 }
 
-class InfoBar extends StatelessWidget {
-  // stateless widget for informatics bar
-  const InfoBar({super.key});
+// class InfoBar extends StatelessWidget {
+//   // stateless widget for informatics bar
+//   const InfoBar({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return LiquidGlass(
-      shape: LiquidRoundedSuperellipse(borderRadius: Radius.circular(50)),
-      blur: 5,
-      settings: const LiquidGlassSettings(
-        thickness: 10,
-        glassColor: Color(0x1AFFFFFF), // A subtle white tint
-        lightIntensity: 1.5,
-        blend: 40,
+//   @override
+//   Widget build(BuildContext context) {
+//     return LiquidGlass(
+//       shape: LiquidRoundedSuperellipse(borderRadius: Radius.circular(50)),
+//       blur: 5,
+//       settings: const LiquidGlassSettings(
+//         thickness: 10,
+//         glassColor: Color(0x1AFFFFFF), // A subtle white tint
+//         lightIntensity: 1.5,
+//         blend: 40,
 
-        //outlineIntensity: 0.5,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(0),
-        height: 35.h,
-        decoration: const BoxDecoration(color: Color.fromARGB(0, 8, 8, 8)),
-        width: double.infinity,
-        child: Marquee(
-          //adding marquee effect to text with help of the package
-          text:
-              "DELHI SUBWAY - ALL METRO LINES OPERATING ON SCHEDULE ", //Hard coded text for now, will add an feature to dyanmically change it
-          blankSpace: 20,
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            color: Color.fromARGB(255, 243, 243, 243),
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-    );
-  }
-}
+//         //outlineIntensity: 0.5,
+//       ),
+//       child: Container(
+//         padding: const EdgeInsets.all(0),
+//         height: 35.h,
+//         decoration: const BoxDecoration(color: Color.fromARGB(0, 8, 8, 8)),
+//         width: double.infinity,
+//         child: Marquee(
+//           //adding marquee effect to text with help of the package
+//           text:
+//               "DELHI SUBWAY - ALL METRO LINES OPERATING ON SCHEDULE ", //Hard coded text for now, will add an feature to dyanmically change it
+//           blankSpace: 20,
+//           style: TextStyle(
+//             fontFamily: 'Poppins',
+//             color: Color.fromARGB(255, 243, 243, 243),
+//             fontSize: 12.sp,
+//             fontWeight: FontWeight.w600,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 //
 
@@ -307,7 +307,8 @@ suggestions(context) {
                     MaterialPageRoute(
                       builder:
                           (context) => RouteScreen(
-                            coreTransferStationsDict: defaultDataParsed["just"]?[0],
+                            coreTransferStationsDict:
+                                defaultDataParsed["just"]?[0],
                           ),
                     ),
                   );
@@ -544,164 +545,127 @@ nearYou(context) {
   );
 }
 
-ticketAndExit(context) {
-  // chat gpt
+Widget ticketAndExit(BuildContext context) {
   return Container(
     width: double.infinity,
-    height: 60.h, //processedHeight(context, 0.1, 50, 70),
-    //height: MediaQuery.of(context).size.height * 0.1,
-    // decoration: BoxDecoration(
-    //   border: Border(
-    //     bottom: BorderSide(color: const Color.fromARGB(255, 35, 35, 35)),
-    //   ),
-    // ),
+    height: 60.h,
     margin: const EdgeInsets.all(5),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              //borderRadius: BorderRadius.all(Radius.circular(5)),
-              //border: Border.all(color: AppColors.divider),
-              //color: const Color.fromARGB(255, 17, 17, 17),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () async {
-                      final whatsappUrl = Uri.parse(
-                        'https://wa.me/+919650855800?text=Hi',
-                      ); //add ?text=hi
-                      await launchUrl(whatsappUrl);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.inputBackground,
-                        borderRadius: BorderRadius.all(Radius.circular(80)),
-                      ),
-                      child: Center(
-                        child: Icon(
-                          CupertinoIcons.tickets,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 5.w),
-                Expanded(
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MapMetroScreen(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.inputBackground,
-                        borderRadius: BorderRadius.all(Radius.circular(80)),
-                      ),
-                      child: Center(
-                        child: Icon(CupertinoIcons.map, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+    child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Button 1: WhatsApp Tickets
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () async {
+              final whatsappUrl = Uri.parse(
+                'https://wa.me/+919650855800?text=Hi',
+              );
+              await launchUrl(whatsappUrl);
+            },
+            child: Container(
+              width: 60.w, // Set explicit width for scrollable items
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.inputBackground,
+                borderRadius: const BorderRadius.all(Radius.circular(80)),
+              ),
+              child: const Center(
+                child: Icon(CupertinoIcons.tickets, color: Colors.white),
+              ),
             ),
           ),
-        ),
+          SizedBox(width: 5.w),
 
-        SizedBox(
-          width: 5.w,
-          // height: 50,
-          // child: VerticalDivider(color: const Color.fromARGB(255, 35, 35, 35)),
-        ),
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              color: AppColors.inputBackground,
-              borderRadius: BorderRadius.all(Radius.circular(80)),
+          // Button 2: Map Metro
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MapMetroScreen()),
+              );
+            },
+            child: Container(
+              width: 60.w,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.inputBackground,
+                borderRadius: const BorderRadius.all(Radius.circular(80)),
+              ),
+              child: const Center(
+                child: Icon(CupertinoIcons.map, color: Colors.white),
+              ),
             ),
-            child: GestureDetector(
-              behavior:
-                  HitTestBehavior
-                      .opaque, // to make sure that when tapped on white space the button is tapped
-              onTap: () {
-                //TEMPROARY
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => StationSearchScreen(),
-                  ),
-                );
-              },
+          ),
+          SizedBox(width: 5.w),
+
+          // Button 3: Stop Information
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StationSearchScreen(),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.inputBackground,
+                borderRadius: const BorderRadius.all(Radius.circular(80)),
+              ),
               child: Center(
-                child: Row(
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  //mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.fromLTRB(25, 0, 5, 0),
-                      child: Text(
-                        "Stop",
-                        style: TextStyle(
-                          color: const Color.fromARGB(255, 244, 244, 244),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    DefaultTextStyle(
-                      style: const TextStyle(
-                        fontSize: 15.0,
-                        fontFamily: 'poppins',
-                        color: Color.fromARGB(255, 194, 194, 194),
-                        fontWeight: FontWeight.w500,
-                      ),
-                      child: AnimatedTextKit(
-                        //pause = const Duration(milliseconds: 1000),
-                        repeatForever: true,
-                        animatedTexts: [
-                          RotateAnimatedText('Information'),
-                          RotateAnimatedText('Exit Gates'),
-                          RotateAnimatedText('Schedule'),
-                          RotateAnimatedText('Status'),
-                        ],
-                        onTap: () {
-                          HitTestBehavior.opaque;
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => StationSearchScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  "Metro Stations",
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 244, 244, 244),
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
+          SizedBox(width: 5.w),
 
-        // Container(
-        //   width: 1,
-        //   height: 50,
-        //   color: const Color.fromARGB(255, 35, 35, 35),
-        //   margin: EdgeInsets.symmetric(horizontal: 10),
-        // ),
-      ],
+          // Button 3: Stop Information
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StationSearchScreen(),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.inputBackground,
+                borderRadius: const BorderRadius.all(Radius.circular(80)),
+              ),
+              child: Center(
+                child: Text(
+                  "Bus Stops",
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 244, 244, 244),
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
@@ -797,7 +761,7 @@ appFooter(context) {
       //   ],
       // ),
       image: DecorationImage(
-        image: AssetImage('assets/Image/carfooter.jpg'),
+        image: AssetImage('assets/Image/artOnPlatform.jpg'),
         fit: BoxFit.cover,
       ),
     ),
@@ -810,10 +774,10 @@ appFooter(context) {
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
-            "Delhi\nUnderground",
+            "art on\nPlatform",
             textAlign: TextAlign.left,
             style: TextStyle(
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: const Color.fromARGB(255, 243, 242, 242),
               //color: const Color.fromARGB(255, 61, 61, 61),
               height: 1.h,
               fontSize: 30.sp,

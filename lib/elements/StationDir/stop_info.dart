@@ -43,42 +43,40 @@ class StopInfoScreen extends StatelessWidget {
 //   }
 // }
 ////////////////////
-stationCluster(context, stationDict) {
+Widget stationCluster(BuildContext context, Map<String, dynamic> stationDict) {
   final stationCode = stationDict["Source"]["StationCode"];
   print("TRIAL1 THE STATION CODE IS - ${stationDict}");
+
   return SafeArea(
     child: Container(
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 0), //IMPLEMENT ON ALL
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
           topNavBar(context),
           Expanded(
             child: ListView(
-              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
               children: [
                 stationLineMarker(stationDict),
-                //SizedBox(height: 100),
                 StationTimesWidget(stationCode: stationCode),
-                //closeAndOpeningTime(),
                 stationStatus(context, stationDict["Source"]["Name"]),
                 SizedBox(height: 2.h),
 
-                //toAndFromBlock(),
                 SizedBox(height: 40.h),
                 GatesElement(station: stationCode),
                 SizedBox(height: 40.h),
 
-                //newScheduleBlock(),
                 ScheduleWidget(stationCode: stationCode),
-                //SchedulePage(stationCode: stationDict["Source"]["StationCode"]),
-                //scheduleBlock(),
-                //exitBlock(),
                 SizedBox(height: 40.h),
+
                 AmenitiesElements(stationCode: stationCode),
-                //ammenitiesBlock(),
                 SizedBox(height: 40.h),
+
                 reportError(),
                 SizedBox(height: 40.h),
+
                 companyFooter(),
               ],
             ),

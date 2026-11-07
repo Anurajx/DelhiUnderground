@@ -49,7 +49,7 @@ dependencies:
   jovial_svg: ^1.1.25
   neopop: ^1.0.2
   string_similarity: ^2.1.1
-  liquid_glass_renderer: ^0.1.1-dev.6
+  # liquid_glass_renderer: ^0.1.1-dev.6
   provider: ^6.1.5
   auto_size_text: ^3.0.0
   skeletonizer: ^2.1.0+1
@@ -172,6 +172,8 @@ flutter:
     - assets/TimeTable/341111100_a_nn_r_mon-fri.csv
     - assets/TimeTable/351111100_a_nd_r_mon-fri.csv
     - assets/routes.db
+    - assets/Image/artOnPlatform.jpg
+    - assets/Image/artOnPlatform2.jpg
 
   fonts:
     - family: Poppins
@@ -209,6 +211,7 @@ flutter_launcher_icons:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 
+#OLD
 flutter_native_splash:
   color: "#000000"
   image: assets/Image/branding.png
@@ -221,3 +224,16 @@ flutter_native_splash:
   fullscreen: true
   android_gravity: center
   ios_content_mode: center
+
+# flutter_native_splash:
+#   color: "#FFFFFF"
+#   background_image: assets/Image/artOnPlatform2.jpg
+
+#   android_12:
+#     color: "#FFFFFF"
+#     background_image: assets/Image/artOnPlatform2.jpg # Explicitly sets this as the Android 12-15 splash icon
+
+#   android: true
+#   ios: true
+#   web: false
+#   fullscreen: true
