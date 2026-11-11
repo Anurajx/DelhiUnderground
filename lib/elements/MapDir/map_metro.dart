@@ -10,6 +10,9 @@ class MapMetroScreen extends StatefulWidget {
 }
 
 class _MapMetroScreenState extends State<MapMetroScreen> {
+  String selectedOption = "Delhi Metro";
+  bool isMapLoaded = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,90 +20,136 @@ class _MapMetroScreenState extends State<MapMetroScreen> {
       body: mapScreenCluster(context),
     );
   }
-}
 
-mapScreenCluster(context) {
-  return SafeArea(child: Stack(children: [metroMap(), topNavBar(context)]));
-}
+  Widget mapScreenCluster(BuildContext context) {
+    return SafeArea(child: Stack(children: [metroMap(), topNavBar(context)]));
+  }
 
-topNavBar(context) {
-  return Container(
-    color: const Color.fromARGB(255, 0, 0, 0),
-    // decoration: BoxDecoration(
-    //   color: Colors.black,
-    //   boxShadow: [
-    //     BoxShadow(
-    //       color: const Color.fromARGB(29, 255, 255, 255),
-    //       blurRadius: 50,
-    //       offset: Offset(0, 25),
-    //     ),
-    //   ],
-    // ),
-    padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
+  Widget topNavBar(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
+        Container(
+          color: const Color.fromARGB(255, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                CupertinoIcons.back,
-                color: const Color.fromARGB(255, 47, 130, 255),
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Row(
+                  children: [
+                    const Icon(
+                      CupertinoIcons.back,
+                      color: Color.fromARGB(255, 47, 130, 255),
+                    ),
+                    Text(
+                      "Done",
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 47, 130, 255),
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins',
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text(
-                "Done",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 47, 130, 255),
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Poppins',
-                  fontSize: 18.sp,
+              const Spacer(),
+              DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: selectedOption,
+                  dropdownColor: const Color.fromARGB(255, 10, 10, 10),
+                  icon: Icon(
+                    CupertinoIcons.chevron_down,
+                    size: 14.sp,
+                    color: const Color.fromARGB(255, 245, 245, 245),
+                  ),
+                  style: TextStyle(
+                    color: const Color.fromARGB(255, 241, 240, 240),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14.sp,
+                  ),
+                  onChanged: (String? newValue) {
+                    if (newValue != null && newValue != selectedOption) {
+                      setState(() {
+                        selectedOption = newValue;
+                        isMapLoaded =
+                            false; // Reset loading state when switching maps
+                      });
+                    }
+                  },
+                  items:
+                      <String>[
+                        'Delhi Metro',
+                        'Airport Express',
+                        'RapidMetro',
+                        'RRTS',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 4.w),
+                            child: Text(value),
+                          ),
+                        );
+                      }).toList(),
                 ),
               ),
             ],
           ),
         ),
-        Spacer(),
-        Text(
-          "From DMRC  ",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 177, 177, 177),
-            fontWeight: FontWeight.w700,
-            fontSize: 14.sp,
+        // Progress bar displays until isMapLoaded is true
+        if (!isMapLoaded)
+          LinearProgressIndicator(
+            minHeight: 1.h,
+            backgroundColor: const Color.fromARGB(101, 47, 130, 255),
+            color: const Color.fromARGB(255, 47, 130, 255),
+            stopIndicatorColor: Colors.white,
+            borderRadius: BorderRadius.circular(10.r),
+          )
+        else
+          SizedBox(),
+      ],
+    );
+  }
+
+  Widget metroMap() {
+    return SizedBox(
+      height: double.infinity,
+      width: double.infinity,
+      child: InteractiveViewer(
+        panEnabled: true,
+        scaleEnabled: true,
+        minScale: 1,
+        maxScale: 20,
+        child: Center(
+          child: Image.asset(
+            "assets/Map/DelhiMetroMap0.png",
+            fit: BoxFit.contain,
+            filterQuality: FilterQuality.high,
+            frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+              if (wasSynchronouslyLoaded || frame != null) {
+                if (!isMapLoaded) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    // Delay setting state to true by 2 seconds to inspect the loader
+                    Future.delayed(const Duration(seconds: 1), () {
+                      if (mounted) {
+                        setState(() {
+                          isMapLoaded = true;
+                        });
+                      }
+                    });
+                  });
+                }
+                return child;
+              }
+              return child;
+            },
           ),
         ),
-      ],
-    ),
-  ); //////////////
-}
-
-// topNavBlur(context) {
-//   return BackdropFilter(
-//     filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-//     child: topNavBar(context),
-//   );
-// }
-
-metroMap() {
-  return Container(
-    height: double.infinity,
-    width: double.infinity,
-
-    child: InteractiveViewer(
-      panEnabled: true,
-      scaleEnabled: true,
-      minScale: 1,
-      maxScale: 20,
-      child: Center(
-        child: Image.asset(
-          "assets/Map/DelhiMetroMap0.png",
-          fit: BoxFit.contain,
-          filterQuality: FilterQuality.high,
-        ),
       ),
-    ),
-  );
+    );
+  }
 }

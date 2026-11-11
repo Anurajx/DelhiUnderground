@@ -84,7 +84,8 @@ class _SearchBodyState extends State<SearchBody> {
     // context.read<DataProvider>().updateCoreTransferStationsDict({
     // });
     if (!Navigator.canPop(context)) {
-      coreTransferStationsDict.clear();
+      coreTransferStationsDict['Source'] = {};
+      coreTransferStationsDict['Destination'] = {};
     }
   }
   //////////////

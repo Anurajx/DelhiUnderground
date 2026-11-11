@@ -267,23 +267,36 @@ topNavBar(context, coreTransferStationsDict) {
           ),
         ),
         Spacer(),
-        Container(
-          width: 200.w,
-          child: Marquee(
-            text:
-                "${coreTransferStationsDict['Source']["Name"]} → ${coreTransferStationsDict['Destination']["Name"]}",
-            showFadingOnlyWhenScrolling: true,
-            fadingEdgeStartFraction: 0.2,
-            fadingEdgeEndFraction: 0.1,
-            blankSpace: 20,
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              color: Color.fromARGB(255, 202, 202, 202),
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
-            ),
+        Icon(
+          CupertinoIcons.info,
+          color: Color.fromARGB(255, 126, 126, 126),
+          size: 15.sp,
+        ),
+        const SizedBox(width: 5),
+        Text(
+          "Least Interchange",
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            color: Color.fromARGB(255, 126, 126, 126),
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
           ),
         ),
+
+        //  Marquee(
+        //   text:
+        //       "${coreTransferStationsDict['Source']["Name"]} → ${coreTransferStationsDict['Destination']["Name"]}",
+        //   showFadingOnlyWhenScrolling: true,
+        //   fadingEdgeStartFraction: 0.2,
+        //   fadingEdgeEndFraction: 0.1,
+        //   blankSpace: 20,
+        //   style: TextStyle(
+        //     fontFamily: 'Poppins',
+        //     color: Color.fromARGB(255, 202, 202, 202),
+        //     fontSize: 16.sp,
+        //     fontWeight: FontWeight.w500,
+        //   ),
+        // ),
       ],
     ),
   );

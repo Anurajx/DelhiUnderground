@@ -53,7 +53,6 @@ class _SearchBodyState extends State<SearchBody> {
   void initState() {
     super.initState();
 
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode1.requestFocus();
     });
@@ -195,7 +194,7 @@ class _SearchBodyState extends State<SearchBody> {
                               onChanged: filterStationsLogic,
                               decoration: InputDecoration.collapsed(
                                 border: InputBorder.none,
-                                hintText: "Search",
+                                hintText: "Metro station, Lines",
                                 hintStyle: TextStyle(
                                   color: const Color.fromARGB(200, 68, 68, 68),
                                   fontWeight: FontWeight.w500,

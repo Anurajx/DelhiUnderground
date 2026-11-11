@@ -761,27 +761,52 @@ appFooter(context) {
       //   ],
       // ),
       image: DecorationImage(
-        image: AssetImage('assets/Image/artOnPlatform.jpg'),
+        image: AssetImage('assets/Image/reddit.png'),
         fit: BoxFit.cover,
       ),
     ),
 
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    child: Row(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //Padding(padding: const EdgeInsets.all(8.0), child: InfoBar()),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+          child: Image.asset(
+            'assets/Image/Vector2.png',
+            width: 30.w,
+            height: 30.h,
+            // fit: BoxFit.cover,
+          ),
+        ),
+        // Container(
+        //   margin: EdgeInsets.all(20),
+        //   child: Text(
+        //     "Platform",
+        //     textAlign: TextAlign.left,
+        //     style: TextStyle(
+        //       color: const Color.fromARGB(255, 7, 7, 7),
+        //       //color: const Color.fromARGB(255, 61, 61, 61),
+        //       height: 1.h,
+        //       fontSize: 18.sp,
+        //       fontFamily: 'Poppins',
+        //       fontWeight: FontWeight.w500,
+        //     ),
+        //   ),
+        // ),
+        // Spacer(),
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
-            "art on\nPlatform",
+            "Art on Platform\nHauzKhas",
             textAlign: TextAlign.left,
             style: TextStyle(
-              color: const Color.fromARGB(255, 243, 242, 242),
+              color: const Color.fromARGB(255, 203, 202, 202),
               //color: const Color.fromARGB(255, 61, 61, 61),
               height: 1.h,
-              fontSize: 30.sp,
-              fontFamily: 'Poppins',
+              fontSize: 16.sp,
+              fontFamily: 'Doto',
               fontWeight: FontWeight.w800,
             ),
           ),
