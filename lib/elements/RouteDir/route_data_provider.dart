@@ -268,9 +268,9 @@ topNavBar(context, coreTransferStationsDict) {
         ),
         Spacer(),
         Icon(
-          CupertinoIcons.info,
+          CupertinoIcons.hare_fill,
           color: Color.fromARGB(255, 126, 126, 126),
-          size: 15.sp,
+          size: 18.sp,
         ),
         const SizedBox(width: 5),
         Text(
@@ -278,7 +278,7 @@ topNavBar(context, coreTransferStationsDict) {
           style: TextStyle(
             fontFamily: 'Poppins',
             color: Color.fromARGB(255, 126, 126, 126),
-            fontSize: 16.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -401,11 +401,11 @@ class _RouteClusterState extends State<RouteCluster> {
   double collapsableWidth = 150.w;
   bool isExpanded = false;
   void _containerToggle() {
-    print("TEST5244${widget.stations["stops"]}");
+    // print("TEST5244${widget.stations["stops"]}");
     setState(() {
       isExpanded = !isExpanded;
       extraStations = widget.stations['stops'].length;
-      print(isExpanded);
+      // print(isExpanded);
       if (isExpanded) {
         collapsableHeight =
             0.h +

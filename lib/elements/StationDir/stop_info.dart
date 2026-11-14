@@ -206,7 +206,7 @@ stationStatus(BuildContext context, stationName) {
                     (context) => AlertDialog(
                       backgroundColor: const Color.fromARGB(255, 31, 200, 127),
                       title: Text(
-                        "No disruption found on this route",
+                        "No disruption at this Station & Line",
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           fontFamily: "Poppins",
@@ -221,7 +221,7 @@ stationStatus(BuildContext context, stationName) {
                         style: TextStyle(
                           fontFamily: "Poppins",
                           color: Colors.black,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       actions: [

@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
               onError: AppColors.whiteAccent,
             ),
             //backgroundColor: AppColors.background,
-            extensions: const [SkeletonizerConfigData.dark()],
+            // extensions: const [SkeletonizerConfigData.dark()],
             textTheme: TextTheme(
               bodyLarge: TextStyle(color: AppColors.primaryText),
               bodyMedium: TextStyle(

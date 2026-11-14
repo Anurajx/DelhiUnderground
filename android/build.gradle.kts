@@ -12,8 +12,21 @@ subprojects {
     val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
     project.layout.buildDirectory.value(newSubprojectBuildDir)
 }
+
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+subprojects {
+    subprojects {
+        project.configurations.all {
+            resolutionStrategy.eachDependency {
+                if (requested.group == "androidx.core" && requested.name == "core-ktx") {
+                    useVersion("1.12.0")
+                }
+            }
+        }
+    }
 }
 
 tasks.register<Delete>("clean") {

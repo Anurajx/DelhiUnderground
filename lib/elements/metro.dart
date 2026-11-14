@@ -573,7 +573,11 @@ Widget ticketAndExit(BuildContext context) {
                 borderRadius: const BorderRadius.all(Radius.circular(80)),
               ),
               child: const Center(
-                child: Icon(CupertinoIcons.tickets, color: Colors.white),
+                child: Icon(
+                  CupertinoIcons.flag_circle,
+                  color: Color.fromARGB(255, 251, 92, 92),
+                  size: 30,
+                ),
               ),
             ),
           ),
@@ -761,12 +765,12 @@ appFooter(context) {
       //   ],
       // ),
       image: DecorationImage(
-        image: AssetImage('assets/Image/reddit.png'),
+        image: AssetImage('assets/Image/hauzkhas2.jpg'),
         fit: BoxFit.cover,
       ),
     ),
 
-    child: Row(
+    child: Column(
       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -775,8 +779,8 @@ appFooter(context) {
           padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
           child: Image.asset(
             'assets/Image/Vector2.png',
-            width: 30.w,
-            height: 30.h,
+            width: 50.w,
+            height: 50.h,
             // fit: BoxFit.cover,
           ),
         ),
@@ -795,11 +799,11 @@ appFooter(context) {
         //     ),
         //   ),
         // ),
-        // Spacer(),
+        Spacer(),
         Container(
           margin: EdgeInsets.all(20),
           child: Text(
-            "Art on Platform\nHauzKhas",
+            "Art on the Platform\nHauzKhas",
             textAlign: TextAlign.left,
             style: TextStyle(
               color: const Color.fromARGB(255, 203, 202, 202),
