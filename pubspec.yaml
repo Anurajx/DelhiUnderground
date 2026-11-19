@@ -172,6 +172,7 @@ flutter:
     - assets/TimeTable/341111100_a_nn_r_mon-fri.csv
     - assets/TimeTable/351111100_a_nd_r_mon-fri.csv
     - assets/routes.db
+    - assets/metro.db
     - assets/Image/artOnPlatform.jpg
     - assets/Image/artOnPlatform2.jpg
     - assets/Image/reddit.png

@@ -2,6 +2,7 @@ import 'dart:convert';
 // import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocator_service.dart';
 import 'package:metroapp/elements/StationDir/stop_info.dart';
+import 'package:metroapp/elements/metroLines.dart';
 import 'package:metroapp/elements/route.dart';
 import 'package:metroapp/main.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -560,10 +561,12 @@ Widget ticketAndExit(BuildContext context) {
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () async {
-              final whatsappUrl = Uri.parse(
-                'https://wa.me/+919650855800?text=Hi',
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LineStatusScreen(),
+                ),
               );
-              await launchUrl(whatsappUrl);
             },
             child: Container(
               width: 60.w, // Set explicit width for scrollable items

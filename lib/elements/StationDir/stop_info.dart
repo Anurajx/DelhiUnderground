@@ -1,308 +1,389 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:metroapp/elements/ServicesDir/station_element.dart';
-import 'package:metroapp/elements/ServicesDir/gates_fetcher.dart';
-import 'package:metroapp/elements/ServicesDir/new_schedule_service.dart';
-import 'package:metroapp/elements/ServicesDir/opening_closing_fetcher.dart';
-import 'package:metroapp/elements/ServicesDir/report_error_service.dart';
-import 'package:metroapp/elements/ServicesDir/stop_info_fetcher.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class StopInfoScreen extends StatelessWidget {
+import 'package:metroapp/elements/ServicesDir/report_error_service.dart';
+import 'package:metroapp/main.dart';
+
+// ---------------------- DATABASE SERVICE ----------------------
+class MetroDbService {
+  static Database? _db;
+
+  static Future<Database> getDatabase() async {
+    if (_db != null && _db!.isOpen) {
+      return _db!;
+    }
+
+    final dbPath = await getDatabasesPath();
+    final path = join(dbPath, "metro.db");
+
+    final exists = await databaseExists(path);
+    if (!exists) {
+      await Directory(dirname(path)).create(recursive: true);
+
+      final ByteData data = await rootBundle.load("assets/metro.db");
+      final List<int> bytes = data.buffer.asUint8List(
+        data.offsetInBytes,
+        data.lengthInBytes,
+      );
+      await File(path).writeAsBytes(bytes, flush: true);
+    }
+
+    _db = await openDatabase(path, readOnly: true);
+    return _db!;
+  }
+
+  static Future<Map<String, dynamic>?> fetchStation({
+    String? stationCode,
+    String? stationName,
+  }) async {
+    final db = await getDatabase();
+    if (stationCode != null && stationCode.trim().isNotEmpty) {
+      final rows = await db.query(
+        'metro_stations',
+        where: 'UPPER(station_code) = UPPER(?)',
+        whereArgs: [stationCode.trim()],
+        limit: 1,
+      );
+      if (rows.isNotEmpty) return rows.first;
+    }
+
+    // if (stationName != null && stationName.trim().isNotEmpty) {
+    //   final rows = await db.query(
+    //     'metro_stations',
+    //     where: 'UPPER(station_name) = UPPER(?)',
+    //     whereArgs: [stationName.trim()],
+    //     limit: 1,
+    //   );
+    //   if (rows.isNotEmpty) return rows.first;
+    // }
+
+    return null;
+  }
+
+  static Future<List<Map<String, Object?>>> fetchLines(
+    List<dynamic> lineReferences,
+  ) async {
+    final lineCodes = <String>[];
+    for (final reference in lineReferences) {
+      if (reference is Map && reference['line_code'] != null) {
+        lineCodes.add(reference['line_code'].toString());
+      }
+    }
+    if (lineCodes.isEmpty) return [];
+
+    final db = await getDatabase();
+    final bindMarkers = List.filled(lineCodes.length, '?').join(', ');
+    return db.query(
+      'metro_lines',
+      where: 'line_code IN ($bindMarkers)',
+      whereArgs: lineCodes,
+    );
+  }
+}
+
+// ---------------------- STOP INFO SCREEN ----------------------
+class StopInfoScreen extends StatefulWidget {
   final dynamic stationDict;
   const StopInfoScreen({super.key, required this.stationDict});
+
+  @override
+  State<StopInfoScreen> createState() => _StopInfoScreenState();
+}
+
+class _StopInfoScreenState extends State<StopInfoScreen> {
+  bool _isLoading = true;
+  Map<String, dynamic>? _stationData;
+  List<Map<String, Object?>> _lineData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadStation();
+  }
+
+  String? _extractStationCode(dynamic dict) {
+    if (dict == null) return null;
+    if (dict is String) return dict;
+    if (dict is Map) {
+      if (dict['Source'] is Map) {
+        final s = dict['Source'];
+        return s['StationCode']?.toString();
+      }
+      return dict['station_code']?.toString();
+    }
+    return null;
+  }
+
+  String? _extractStationName(dynamic dict) {
+    if (dict == null) return null;
+    if (dict is String) return dict;
+    if (dict is Map) {
+      if (dict['Source'] is Map) {
+        final s = dict['Source'];
+        return s['station_name']?.toString();
+      }
+    }
+    return null;
+  }
+
+  Future<void> _loadStation() async {
+    try {
+      final code = _extractStationCode(widget.stationDict);
+      final name = _extractStationName(widget.stationDict);
+      final data = await MetroDbService.fetchStation(
+        stationCode: code,
+        stationName: name,
+      );
+      final lines = await MetroDbService.fetchLines(
+        _tryDecodeList(data?['metro_lines']) ?? [],
+      );
+      if (mounted) {
+        setState(() {
+          _stationData = data;
+          _lineData = lines;
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      debugPrint("Error loading station data from metro_stations: $e");
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
+
+  List<dynamic>? _tryDecodeList(dynamic value) {
+    if (value == null) return null;
+    if (value is List) return value;
+    if (value is String) {
+      final trimmed = value.trim();
+      if (trimmed.isEmpty) return null;
+      try {
+        final decoded = jsonDecode(trimmed);
+        if (decoded is List) return decoded;
+      } on FormatException catch (error) {
+        debugPrint('Invalid station data JSON: $error');
+      }
+    }
+    return null;
+  }
+
+  Color _lineColor(Map<String, Object?> line) {
+    final colorCode = line['primary_color_code']?.toString();
+    if (colorCode == null) return Colors.grey;
+    final hex = colorCode.replaceFirst('#', '');
+    final value = int.tryParse(hex, radix: 16);
+    return value == null ? Colors.grey : Color(0xFF000000 | value);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      body: stationCluster(context, stationDict),
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            children: [
+              topNavBar(context),
+              Expanded(
+                child:
+                    _isLoading
+                        ? const Center(
+                          child: CupertinoActivityIndicator(
+                            color: Colors.white,
+                            radius: 16,
+                          ),
+                        )
+                        : ListView(
+                          physics: const BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics(),
+                          ),
+                          children:
+                              _stationData == null
+                                  ? const []
+                                  : [
+                                    _buildStationLineMarker(),
+                                    _buildStationTimesWidget(),
+                                    _buildStationStatus(context),
+                                    SizedBox(height: 2.h),
+                                    SizedBox(height: 40.h),
+                                    _buildScheduleWidget(),
+
+                                    SizedBox(height: 40.h),
+                                    _buildGatesWidget(),
+                                    SizedBox(height: 40.h),
+                                    _buildAmenitiesWidget(),
+                                    SizedBox(height: 40.h),
+                                    reportError(),
+                                    SizedBox(height: 40.h),
+                                    companyFooter(),
+                                  ],
+                        ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
-}
 
-/////////////////
-// class stopInfoScreen extends StatefulWidget {
-//   final dynamic stationDict;
-//   final station;
-//   //final List<dynamic> stationList = [];
-//   const stopInfoScreen({super.key, required this.stationDict, this.station});
+  // 1. Station Line Marker
+  Widget _buildStationLineMarker() {
+    final name = _stationData?['station_name'] ?? '';
+    final hindiName = _stationData?['station_name_hindi'];
+    // print('Station Name: $name, Hindi Name: $hindiName');
 
-//   @override
-//   State<stopInfoScreen> createState() => _stopInfoScreenState();
-// }
-
-// class _stopInfoScreenState extends State<stopInfoScreen> {
-//   //final List<dynamic> stationList = stationD;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       body: stationCluster(context),
-//     );
-//   }
-// }
-////////////////////
-Widget stationCluster(BuildContext context, Map<String, dynamic> stationDict) {
-  final stationCode = stationDict["Source"]["StationCode"];
-  print("TRIAL1 THE STATION CODE IS - ${stationDict}");
-
-  return SafeArea(
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+    return SizedBox(
+      height: 230.h,
+      width: double.infinity,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          topNavBar(context),
-          Expanded(
-            child: ListView(
-              physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
+          const Spacer(),
+          Text(
+            name,
+            style: TextStyle(
+              height: 1.2,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 24.sp,
+            ),
+          ),
+          if (hindiName != null && hindiName.trim().isNotEmpty) ...[
+            SizedBox(height: 5.h),
+            Text(
+              hindiName,
+              style: TextStyle(
+                color: const Color.fromARGB(255, 240, 240, 240),
+                fontWeight: FontWeight.w300,
+                fontSize: 18.sp,
               ),
-              children: [
-                stationLineMarker(stationDict),
-                StationTimesWidget(stationCode: stationCode),
-                stationStatus(context, stationDict["Source"]["Name"]),
-                SizedBox(height: 2.h),
+            ),
+          ],
+          SizedBox(height: 5.h),
+          Row(
+            children:
+                _lineData.map((line) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 3),
+                    child: Container(
+                      width: 20.w,
+                      height: 20.h,
+                      decoration: BoxDecoration(
+                        color: _lineColor(line),
+                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          line['id']?.toString() ?? '',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+          ),
+          const Spacer(),
+          SizedBox(height: 30.h),
+        ],
+      ),
+    );
+  }
 
-                SizedBox(height: 40.h),
-                GatesElement(station: stationCode),
-                SizedBox(height: 40.h),
+  // 2. Station Times Widget (Opening & Closing times)
+  Widget _buildStationTimesWidget() {
+    final rawOpen = _stationData?['opening_time']?.toString().trim();
+    final rawClose = _stationData?['closing_time']?.toString().trim();
+    final openTime =
+        rawOpen == null || rawOpen.isEmpty
+            ? ''
+            : rawOpen.length >= 5
+            ? rawOpen.substring(0, 5)
+            : rawOpen;
+    final closeTime =
+        rawClose == null || rawClose.isEmpty
+            ? ''
+            : rawClose.length >= 5
+            ? rawClose.substring(0, 5)
+            : rawClose;
 
-                ScheduleWidget(stationCode: stationCode),
-                SizedBox(height: 40.h),
-
-                AmenitiesElements(stationCode: stationCode),
-                SizedBox(height: 40.h),
-
-                reportError(),
-                SizedBox(height: 40.h),
-
-                companyFooter(),
-              ],
+    return Container(
+      padding: const EdgeInsets.all(5),
+      child: Row(
+        children: [
+          Text(
+            'Opens from $openTime until $closeTime',
+            style: const TextStyle(
+              color: AppColors.secondaryText,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ],
       ),
-    ),
-  );
-}
+    );
+  }
 
-topNavBar(context) {
-  return Container(
-    //color: const Color.fromARGB(0, 8, 8, 8),
-    //height: 50,
-    padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Row(
-            children: [
-              Icon(
-                CupertinoIcons.back,
-                color: const Color.fromARGB(255, 47, 130, 255),
-              ),
-              Text(
-                "Done",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 47, 130, 255),
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Poppins',
-                  fontSize: 18.sp,
-                ),
-              ),
-            ],
-          ),
-        ),
-        //
-      ],
-    ),
-  ); //////////////
-}
+  // 3. Station Status
+  Widget _buildStationStatus(BuildContext context) {
+    final linesList = _tryDecodeList(_stationData?['metro_lines']);
+    final statuses = linesList?.whereType<Map>().toList() ?? [];
+    final disruptionText =
+        statuses.isEmpty
+            ? 'NO DISRUPTION'
+            : statuses
+                .map((line) => line['status']?.toString().trim())
+                .whereType<String>()
+                .where((status) => status.isNotEmpty)
+                .map(
+                  (status) =>
+                      status.toLowerCase().contains('normal')
+                          ? 'NO DISRUPTION'
+                          : status.toUpperCase(),
+                )
+                .toSet()
+                .join(' · ');
+    final stationName = _stationData?['station_name']?.toString() ?? '';
 
-stationLineMarker(stationDict) {
-  dynamic station =
-      stationDict["Source"]; //uses station to change the name of station dynamically
-  String stationName = station["Name"].toString();
-  String stationNameHindiCommon = station["Hindi"].toString();
-  String line = station["Line"];
-  line = line.replaceAll(RegExp(r'[\[\]]'), '');
-  List<String> parts = line.split('-');
-  List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
-  return BigNameInfo(
-    stationName: stationName,
-    stationNameHindiCommon: stationNameHindiCommon,
-    lineofStation: lineNumbers,
-  );
-}
-
-closeAndOpeningTime() {
-  return Container(
-    padding: EdgeInsets.all(5),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        //Lottie.asset('assets/Image/radaranim.json', height: 30, width: 35),
-        Text(
-          "Opens from 06:00 until 23:00",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 130, 130, 130),
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        //Spacer(),
-      ],
-    ),
-  );
-}
-
-stationStatus(BuildContext context, stationName) {
-  return Container(
-    height: 80.h,
-    width: double.infinity,
-
-    //color: Colors.teal,
-    child: Row(
-      children: [
-        Container(
-          color: const Color.fromARGB(255, 25, 25, 25),
-          width: 90.w,
-          height: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "QUIET",
-                style: TextStyle(
-                  color: Colors.green,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15.sp,
-                ),
-              ),
-              Text(
-                "crowd",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 130, 130, 130),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15.sp,
-                ),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(width: 2.w),
-        Expanded(
-          child: GestureDetector(
-            onTap: () {
-              showDialog(
-                //warns user with that BIG GREEN BOX for mis match
-                context: context,
-                builder:
-                    (context) => AlertDialog(
-                      backgroundColor: const Color.fromARGB(255, 31, 200, 127),
-                      title: Text(
-                        "No disruption at this Station & Line",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontFamily: "Poppins",
-                          color: Colors.black,
-                        ),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                      content: Text(
-                        '$stationName',
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      actions: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.black,
-                            foregroundColor: const Color.fromARGB(
-                              255,
-                              255,
-                              255,
-                              255,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(
-                              context,
-                            ); //reset just so user does not gets even more confused
-                            // controller1.text = ''; //reset
-                            // controller2.text = ''; //reset
-                          },
-                          child: Text(
-                            'Okay',
-                            style: TextStyle(fontFamily: "Poppins"),
-                          ),
-                        ),
-                        // TextButton(
-                        //   style: TextButton.styleFrom(
-                        //     backgroundColor: Colors.black,
-                        //     foregroundColor: const Color.fromARGB(
-                        //       255,
-                        //       255,
-                        //       255,
-                        //       255,
-                        //     ),
-                        //   ),
-                        //   onPressed: () {
-                        //     Navigator.push(
-                        //       context,
-                        //       CupertinoPageRoute(
-                        //         builder:
-                        //             (context) => routeScreen(
-                        //               coreTransferStationsDict:
-                        //                   coreTransferStationsDict,
-                        //             ),
-                        //       ),
-                        //     );
-                        //   },
-                        //   child: Text(
-                        //     'Continue',
-                        //     style: TextStyle(fontFamily: "Poppins"),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-              );
-            },
+    return SizedBox(
+      height: 80.h,
+      width: double.infinity,
+      child: Row(
+        children: [
+          GestureDetector(
+            onTap: () => _callStation(context),
             child: Container(
-              padding: EdgeInsets.all(10),
               color: const Color.fromARGB(255, 25, 25, 25),
-              //width: 90,
+              width: 90.w,
               height: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        "NO DISRUPTION",
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15.sp,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(Icons.arrow_forward, color: Colors.green, size: 20),
-                    ],
+                  Text(
+                    'CALL',
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15.sp,
+                    ),
                   ),
                   Text(
-                    "check details",
+                    'station',
                     style: TextStyle(
                       color: const Color.fromARGB(255, 130, 130, 130),
                       fontWeight: FontWeight.w500,
@@ -313,109 +394,293 @@ stationStatus(BuildContext context, stationName) {
               ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
-}
+          SizedBox(width: 2.w),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder:
+                      (context) => AlertDialog(
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          31,
+                          200,
+                          127,
+                        ),
+                        title: const Text(
+                          'No disruption at this Station & Line',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontFamily: 'Poppins',
+                            color: Colors.black,
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                        content: Text(
+                          stationName,
+                          style: const TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        actions: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.black,
+                              foregroundColor: Colors.white,
+                            ),
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text(
+                              'Okay',
+                              style: TextStyle(fontFamily: 'Poppins'),
+                            ),
+                          ),
+                        ],
+                      ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                color: const Color.fromARGB(255, 25, 25, 25),
+                height: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          disruptionText,
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15.sp,
+                          ),
+                        ),
+                        const Spacer(),
+                        const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.green,
+                          size: 20,
+                        ),
+                      ],
+                    ),
+                    Text(
+                      'check details',
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 130, 130, 130),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15.sp,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-toAndFromBlock() {
-  return Container(
-    height: 70.h,
-    width: double.infinity,
-    //color: Colors.teal,
-    child: Row(
+  Future<void> _callStation(BuildContext context) async {
+    final phone = [_stationData?['mobile'], _stationData?['landline']]
+        .whereType<Object>()
+        .map((value) => value.toString().split(RegExp(r'[,;/]')).first.trim())
+        .firstWhere((value) => value.isNotEmpty, orElse: () => '');
+    if (phone.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Station phone number is unavailable')),
+      );
+      return;
+    }
+
+    try {
+      final launched = await launchUrl(
+        Uri(scheme: 'tel', path: phone),
+        mode: LaunchMode.externalApplication,
+      );
+      if (!launched && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Could not open the phone dialer')),
+        );
+      }
+    } catch (error) {
+      debugPrint('Error opening station phone number: $error');
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Could not open the phone dialer')),
+        );
+      }
+    }
+  }
+
+  // 4. Schedule Widget
+  Widget _buildScheduleWidget() {
+    final platforms = _tryDecodeList(_stationData?['platforms']) ?? [];
+    final lineReferences = _tryDecodeList(_stationData?['metro_lines']) ?? [];
+    final scheduleBlocks = <Widget>[];
+    for (final platform in platforms.whereType()) {
+      final platformName = platform['platform_name']?.toString().trim();
+      final towards = platform['train_towards'];
+      final destination =
+          towards is Map ? towards['station_name']?.toString().trim() : null;
+      if (platformName == null ||
+          platformName.isEmpty ||
+          destination == null ||
+          destination.isEmpty) {
+        continue;
+      }
+      final destinationUpper = destination.toUpperCase();
+      final matchingReference =
+          lineReferences.whereType().where((reference) {
+            final start = reference['start_station']?.toString().toUpperCase();
+            final end = reference['end_station']?.toString().toUpperCase();
+            return start == destinationUpper || end == destinationUpper;
+          }).firstOrNull;
+      final lineReference =
+          matchingReference ??
+          (lineReferences.isNotEmpty ? lineReferences.first : null);
+      final lineCode =
+          lineReference is Map ? lineReference['line_code']?.toString() : null;
+      final line =
+          _lineData.where((row) => row['line_code'] == lineCode).firstOrNull;
+      scheduleBlocks.add(
+        _buildScheduleBlock(
+          destination: destination,
+          platformName: platformName,
+          lineName:
+              line?['name']?.toString() ??
+              (lineReference is Map
+                  ? lineReference['name']?.toString() ?? ''
+                  : ''),
+          lineColor: line == null ? Colors.grey : _lineColor(line),
+        ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            color: const Color.fromARGB(255, 207, 207, 207),
-            width: 90.w,
-            height: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "GO TO",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15.sp,
-                      ),
-                    ),
-                    Spacer(),
-                    Icon(
-                      Icons.arrow_downward,
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      size: 20,
-                    ),
-                  ],
-                ),
-                Text(
-                  "this station",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 108, 108, 108),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15.sp,
-                  ),
-                ),
-              ],
+        Container(
+          margin: const EdgeInsets.only(bottom: 10.0),
+          child: const Text(
+            "SCHEDULE",
+            style: TextStyle(
+              color: Color.fromARGB(255, 109, 109, 109),
+              fontSize: 16.0,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
-        SizedBox(width: 2.w),
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            color: const Color.fromARGB(255, 207, 207, 207),
-            width: 90.w,
-            height: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "GET FROM",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 15.sp,
-                      ),
-                    ),
-                    Spacer(),
-                    Icon(
-                      Icons.arrow_upward,
-                      color: const Color.fromARGB(255, 0, 0, 0),
-                      size: 20,
-                    ),
-                  ],
-                ),
-                Text(
-                  "this station",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 108, 108, 108),
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15.sp,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        ...scheduleBlocks,
       ],
-    ),
-  );
-}
+    );
+  }
 
-exitBlock() {
-  //EXIT BLOCK UNDERPROGRESS
-  return Container(
-    child: Column(
+  Widget _buildScheduleBlock({
+    required String destination,
+    required String platformName,
+    required String lineName,
+    required Color lineColor,
+  }) {
+    const cardBg = Color.fromARGB(255, 25, 25, 25);
+    const lightText = Color.fromARGB(255, 207, 207, 207);
+    const mutedText = Color.fromARGB(255, 182, 182, 182);
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 2.0),
+      color: cardBg,
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Top Direction Row
+          Row(
+            children: [
+              const Text(
+                "towards ",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 109, 109, 109),
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+
+              Expanded(
+                child: Text(
+                  destination.toLowerCase(),
+                  style: const TextStyle(
+                    color: lightText,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8.0),
+          // Bottom Flush Tag Strip
+          Row(
+            children: [
+              // Line color accent block
+              Container(width: 6.0, height: 27.0, color: lineColor),
+              // Platform tag on black background
+              Container(
+                color: const Color.fromARGB(255, 243, 243, 243),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 7.0,
+                  vertical: 5.0,
+                ),
+                child: Text(
+                  platformName,
+                  style: const TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w600,
+                    height: 1.2,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  // 5. Gates Widget
+  Widget _buildGatesWidget() {
+    final gatesList = _tryDecodeList(_stationData?['gates']);
+    final List<Widget> gateWidgets = [];
+
+    if (gatesList != null && gatesList.isNotEmpty) {
+      for (final g in gatesList) {
+        if (g is! Map) continue;
+        final gateCode = g['gate_code']?.toString().trim();
+        final location = g['location']?.toString().trim();
+        if (gateCode == null ||
+            gateCode.isEmpty ||
+            location == null ||
+            location.isEmpty) {
+          continue;
+        }
+        gateWidgets.add(exitBlock(gateCode, location));
+      }
+    }
+    if (gateWidgets.isEmpty) return const SizedBox.shrink();
+
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -423,341 +688,128 @@ exitBlock() {
           "EXIT",
           style: TextStyle(
             color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16.sp, //processedFontheight(context),
+            fontSize: 16.sp,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
         ),
         SizedBox(height: 10.h),
-        Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Container(
-              height: 60.h,
-              width: double.infinity,
-              child: Row(
-                children: [
-                  Container(width: 80.w),
-                  Expanded(
-                    child: Container(
-                      height: 60.h,
-                      color: const Color.fromARGB(255, 25, 25, 25),
-                      child: Row(
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 12.w),
-                          Expanded(
-                            child: Text(
-                              "Palika Bhawan, RK Puram Sector-13, New Delhi",
-                              overflow: TextOverflow.ellipsis,
-                              softWrap: true,
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 232, 232, 232),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 60.h,
-              width: 80.w,
-              decoration: BoxDecoration(
-                //color: Color.fromARGB(255, 0, 0, 0),
-                border: Border.all(
-                  color: const Color.fromARGB(255, 25, 25, 25),
-                ),
-              ),
-              //margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: Center(
-                child: Text(
-                  "GATE 1",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 172, 172, 172),
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              //color: Colors.blueAccent,
-            ),
-          ],
-        ),
-        ////////////////////////////////////////
-        SizedBox(height: 2.h),
-        Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Container(
-              height: 60.h,
-              width: double.infinity,
-              child: Row(
-                children: [
-                  Container(width: 80.w),
-                  Expanded(
-                    child: Container(
-                      height: 60.h,
-                      color: const Color.fromARGB(255, 25, 25, 25),
-                      child: Row(
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 12.w),
-                          Expanded(
-                            child: Text(
-                              "DTC Sarojini Nagar Depot",
-                              overflow: TextOverflow.ellipsis,
-                              softWrap: true,
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 182, 182, 182),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 60.h,
-              width: 80.w,
-              decoration: BoxDecoration(
-                //color: Color.fromARGB(255, 0, 0, 0),
-                border: Border.all(
-                  color: const Color.fromARGB(255, 25, 25, 25),
-                ),
-              ),
-              //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: Center(
-                child: Text(
-                  "GATE 2",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 172, 172, 172),
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              //color: Colors.blueAccent,
-            ),
-          ],
-        ),
-        SizedBox(height: 2.h),
-        Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Container(
-              height: 60.h,
-              width: double.infinity,
-              child: Row(
-                children: [
-                  Container(width: 80.w),
-                  Expanded(
-                    child: Container(
-                      height: 60.h,
-                      color: const Color.fromARGB(255, 25, 25, 25),
-                      child: Row(
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 12.w),
-                          Expanded(
-                            child: Text(
-                              "EIL,Hyatt Regency, Gail India Ltd",
-                              overflow: TextOverflow.ellipsis,
-                              softWrap: true,
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: const Color.fromARGB(255, 182, 182, 182),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              height: 60.h,
-              width: 80.w,
-              decoration: BoxDecoration(
-                //color: Color.fromARGB(255, 0, 0, 0),
-                border: Border.all(
-                  color: const Color.fromARGB(255, 25, 25, 25),
-                ),
-              ),
-              //margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: Center(
-                child: Text(
-                  "GATE 3",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 172, 172, 172),
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              //color: Colors.blueAccent,
-            ),
-          ],
-        ),
-        SizedBox(height: 2.h),
-        Container(
-          //image with visualize of map blocl
-          padding: EdgeInsets.all(10),
-          width: double.infinity,
-          height: 90.h,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
-              image: AssetImage("assets/Image/mapimg.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Row(
-            children: [
-              Text(
-                "VIEW ON MAP",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 179, 179, 179),
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              Spacer(),
-              Icon(
-                Icons.chevron_right,
-                color: const Color.fromARGB(255, 179, 179, 179),
-              ),
-            ],
-          ),
-        ),
-        ////////
+        ...gateWidgets,
       ],
-    ),
-  );
-}
+    );
+  }
 
-newScheduleBuilder() {
-  return Container(
-    child: Row(
-      children: [newScheduleBlock(), SizedBox(width: 2.w), newScheduleBlock()],
-    ),
-  );
-}
-
-newScheduleBlock() {
-  return Expanded(
-    child: Container(
-      //height: 150.h,
-      color: const Color.fromARGB(255, 255, 255, 255),
-      child: Column(
-        children: [
-          Stack(
-            alignment: Alignment.topLeft,
-            children: [
-              Container(
-                padding: EdgeInsets.all(15.sp),
-                color: const Color.fromARGB(255, 33, 33, 33),
-                width: double.infinity,
-                child: Text(
-                  "Majlis Park",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              Container(color: Colors.pinkAccent, height: 10.h, width: 10.w),
-            ],
-          ),
-          Container(
-            padding: EdgeInsets.all(15.sp),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "10:00 AM",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Spacer(),
-                    Text(
-                      "5 Min",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "10:00 AM",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Spacer(),
-                    Text(
-                      "5 Min",
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-scheduleBlock() {
-  //schedule
-  return Container(
-    child: Column(
+  Widget exitBlock(String gateCode, String location) {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          "SCHEDULE",
-          style: TextStyle(
-            color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16.sp, //processedFontheight(context),
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-          ),
+        Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            SizedBox(
+              height: 60.h,
+              width: double.infinity,
+              child: Row(
+                children: [
+                  Container(width: 80.w),
+                  Expanded(
+                    child: Container(
+                      height: 60.h,
+                      color: const Color.fromARGB(255, 25, 25, 25),
+                      child: Row(
+                        children: [
+                          SizedBox(width: 12.w),
+                          Expanded(
+                            child: Text(
+                              location.toLowerCase(),
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: true,
+                              maxLines: 2,
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.primaryText,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              height: 60.h,
+              width: 80.w,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: const Color.fromARGB(255, 25, 25, 25),
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  gateCode,
+                  overflow: TextOverflow.fade,
+                  softWrap: false,
+                  style: TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        SizedBox(height: 10.h),
-        newScheduleBuilder(),
+        SizedBox(height: 2.h),
       ],
-    ),
-  );
-}
+    );
+  }
 
-ammenitiesBlock() {
-  return Container(
-    child: Column(
+  // 6. Amenities Widget
+  Widget _buildAmenitiesWidget() {
+    final parkingsList = _tryDecodeList(_stationData?['parkings']);
+    int carSlots = 0;
+    int bikeSlots = 0;
+    int cycleSlots = 0;
+
+    if (parkingsList != null && parkingsList.isNotEmpty) {
+      for (final p in parkingsList) {
+        if (p is Map) {
+          carSlots += (p['capacity_car'] as num?)?.toInt() ?? 0;
+          bikeSlots += (p['capacity_motorcycle'] as num?)?.toInt() ?? 0;
+          cycleSlots += (p['capacity_cycle'] as num?)?.toInt() ?? 0;
+        }
+      }
+    }
+
+    final carStatus = carSlots > 0 ? 'available' : 'unavailable';
+    final carSlotsText = '$carSlots slots';
+    final bikeStatus = bikeSlots > 0 ? 'available' : 'unavailable';
+    final bikeSlotsText = '$bikeSlots slots';
+    final cycleStatus = cycleSlots > 0 ? 'available' : 'unavailable';
+    final cycleSlotsText = '$cycleSlots slots';
+
+    final stationType = _stationData?['station_type']?.toString() ?? '';
+    final elevated =
+        stationType.toLowerCase().contains('elevated') ? 'Yes' : 'No';
+    final facilitiesList = _tryDecodeList(_stationData?['stations_facilities']);
+    final washroom =
+        facilitiesList?.any(
+                  (facility) =>
+                      facility is Map &&
+                      facility['kind']?.toString().toLowerCase().contains(
+                            'toilet',
+                          ) ==
+                          true,
+                ) ==
+                true
+            ? 'available'
+            : 'unavailable';
+
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -765,21 +817,49 @@ ammenitiesBlock() {
           "INFORMATION",
           style: TextStyle(
             color: const Color.fromARGB(255, 109, 109, 109),
-            fontSize: 16.sp, //processedFontheight(context),
+            fontSize: 16.sp,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w500,
           ),
         ),
         SizedBox(height: 10.h),
+        _ammenitiesBlock(
+          carStatus: carStatus,
+          carSlotsText: carSlotsText,
+          bikeStatus: bikeStatus,
+          bikeSlotsText: bikeSlotsText,
+          cycleStatus: cycleStatus,
+          cycleSlotsText: cycleSlotsText,
+          elevated: elevated,
+          washroom: washroom,
+        ),
+      ],
+    );
+  }
+
+  Widget _ammenitiesBlock({
+    required String carStatus,
+    required String carSlotsText,
+    required String bikeStatus,
+    required String bikeSlotsText,
+    required String cycleStatus,
+    required String cycleSlotsText,
+    required String elevated,
+    required String washroom,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(height: 2.h),
         Container(
           width: double.infinity,
-          //height: 90.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -794,28 +874,49 @@ ammenitiesBlock() {
                       ),
                       SizedBox(height: 8.h),
                       Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Container(
-                            color: const Color.fromARGB(255, 207, 207, 207),
-                            padding: EdgeInsets.all(5),
-                            child: Text(
-                              "available",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 14, 14, 14),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
+                          Flexible(
+                            child: Container(
+                              color: const Color.fromARGB(255, 207, 207, 207),
+                              padding: const EdgeInsets.all(5),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  carStatus,
+                                  style: TextStyle(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      14,
+                                      14,
+                                      14,
+                                    ),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                          Container(
-                            color: Colors.black,
-                            padding: EdgeInsets.all(5),
-                            child: Text(
-                              "30 slots",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 207, 207, 207),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
+                          Flexible(
+                            child: Container(
+                              color: Colors.black,
+                              padding: const EdgeInsets.all(5),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  carSlotsText,
+                                  style: TextStyle(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      207,
+                                      207,
+                                      207,
+                                    ),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -825,26 +926,26 @@ ammenitiesBlock() {
                   ),
                 ),
               ),
-              //Spacer(),
               Image.asset(
                 "assets/Image/carinf.jpeg",
-                height: 80.h, //prev 80
+                height: 80.h,
                 width: 130.w,
                 fit: BoxFit.cover,
               ),
             ],
           ),
         ),
+
+        // Bike parking
         SizedBox(height: 2.h),
         Container(
           width: double.infinity,
-          //height: 80.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -859,28 +960,49 @@ ammenitiesBlock() {
                       ),
                       SizedBox(height: 8.h),
                       Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Container(
-                            color: const Color.fromARGB(255, 207, 207, 207),
-                            padding: EdgeInsets.all(5),
-                            child: Text(
-                              "unavailable",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 14, 14, 14),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
+                          Flexible(
+                            child: Container(
+                              color: const Color.fromARGB(255, 207, 207, 207),
+                              padding: const EdgeInsets.all(5),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  bikeStatus,
+                                  style: TextStyle(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      14,
+                                      14,
+                                      14,
+                                    ),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                          Container(
-                            color: Colors.black,
-                            padding: EdgeInsets.all(5),
-                            child: Text(
-                              "0 slots",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 207, 207, 207),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
+                          Flexible(
+                            child: Container(
+                              color: Colors.black,
+                              padding: const EdgeInsets.all(5),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  bikeSlotsText,
+                                  style: TextStyle(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      207,
+                                      207,
+                                      207,
+                                    ),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -899,60 +1021,138 @@ ammenitiesBlock() {
             ],
           ),
         ),
+
+        // Cycle parking
         SizedBox(height: 2.h),
         Container(
-          padding: EdgeInsets.all(10),
+          width: double.infinity,
+          color: const Color.fromARGB(255, 25, 25, 25),
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "cycle parking",
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 182, 182, 182),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      SizedBox(height: 8.h),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Container(
+                              color: const Color.fromARGB(255, 207, 207, 207),
+                              padding: const EdgeInsets.all(5),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  cycleStatus,
+                                  style: TextStyle(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      14,
+                                      14,
+                                      14,
+                                    ),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: Container(
+                              color: Colors.black,
+                              padding: const EdgeInsets.all(5),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  cycleSlotsText,
+                                  style: TextStyle(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      207,
+                                      207,
+                                      207,
+                                    ),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Image.asset(
+                "assets/Image/cycleinf.jpeg",
+                height: 80.h,
+                width: 130.w,
+                fit: BoxFit.cover,
+              ),
+            ],
+          ),
+        ),
+
+        SizedBox(height: 2.h),
+        Container(
+          padding: const EdgeInsets.all(10),
           width: double.infinity,
           height: 50.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
-              //SizedBox(width: 10),
               Text(
-                "elevator",
+                'elevated',
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
-                ">",
+                '>',
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
-                "available",
+                elevated,
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              // Spacer(),
-              // Image.asset(
-              //   "assets/Image/elevatorinf.jpeg",
-              //   height: 80,
-              //   width: 130,
-              //   fit: BoxFit.cover,
-              // ),
             ],
           ),
         ),
         SizedBox(height: 2.h),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           width: double.infinity,
           height: 50.h,
           color: const Color.fromARGB(255, 25, 25, 25),
           child: Row(
             children: [
-              //SizedBox(width: 10),
               Text(
                 "washroom",
                 style: TextStyle(
@@ -961,7 +1161,7 @@ ammenitiesBlock() {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 ">",
                 style: TextStyle(
@@ -970,21 +1170,50 @@ ammenitiesBlock() {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
-                "available",
+                washroom,
                 style: TextStyle(
                   color: const Color.fromARGB(255, 182, 182, 182),
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              // Image.asset(
-              //   "assets/Image/washroominf.jpeg",
-              //   height: 80,
-              //   width: 130,
-              //   fit: BoxFit.cover,
-              // ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ---------------------- TOP NAV BAR ----------------------
+Widget topNavBar(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Row(
+            children: [
+              const Icon(
+                CupertinoIcons.back,
+                color: Color.fromARGB(255, 47, 130, 255),
+              ),
+              Text(
+                "Done",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 47, 130, 255),
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                  fontSize: 18.sp,
+                ),
+              ),
             ],
           ),
         ),
@@ -993,26 +1222,24 @@ ammenitiesBlock() {
   );
 }
 
-reportError() {
+// ---------------------- REPORT ERROR ----------------------
+Widget reportError() {
   return Row(
     children: [
       Container(
         height: 50.h,
         width: 170.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(2)),
-          //color: const Color.fromARGB(255, 17, 17, 17),
+          borderRadius: const BorderRadius.all(Radius.circular(2)),
           border: Border.all(color: const Color.fromARGB(255, 35, 35, 35)),
         ),
         child: GestureDetector(
-          behavior:
-              HitTestBehavior
-                  .opaque, // to make sure that when tapped on white space the button is tapped
+          behavior: HitTestBehavior.opaque,
           onTap: () {
             try {
               sendToGoogleForm();
             } catch (e) {
-              debugPrint("Error sending email: $e");
+              debugPrint("Error sending form: $e");
             }
           },
           child: Align(
@@ -1021,7 +1248,7 @@ reportError() {
               "report error",
               style: TextStyle(
                 color: const Color.fromARGB(255, 187, 187, 187),
-                fontSize: 18.sp, //processedFontheight(context),
+                fontSize: 18.sp,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w500,
               ),
@@ -1033,15 +1260,11 @@ reportError() {
   );
 }
 
-companyFooter() {
-  return Container(
-    decoration: BoxDecoration(
-      //color: const Color.fromARGB(255, 11, 11, 11),
-      //borderRadius: BorderRadius.all(Radius.circular(10)),
-    ),
+// ---------------------- COMPANY FOOTER ----------------------
+Widget companyFooter() {
+  return SizedBox(
     width: double.infinity,
     height: 50.h,
-    //color: const Color.fromARGB(255, 57, 57, 57),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -1056,15 +1279,6 @@ companyFooter() {
             fontSize: 14.sp,
           ),
         ),
-        // Text(
-        //   "From New Delhi",
-        //   textAlign: TextAlign.center,
-        //   style: TextStyle(
-        //     color: Colors.grey,
-        //     fontWeight: FontWeight.w300,
-        //     fontSize: 12,
-        //   ),
-        // ),
       ],
     ),
   );
