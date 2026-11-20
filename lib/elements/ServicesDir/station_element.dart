@@ -7,12 +7,14 @@ class StationUnit extends StatelessWidget {
   final dynamic name;
   final dynamic hindiName;
   final List lines;
+  final Map<int, Color>? lineColorsById;
 
   const StationUnit({
     super.key,
     required this.name,
     required this.hindiName,
     required this.lines,
+    this.lineColorsById,
   });
 
   @override
@@ -29,7 +31,7 @@ class StationUnit extends StatelessWidget {
           SizedBox(
             height: 5.h,
           ), //added to even out the padding from top and bottom
-          stationLineBadgeBuilder(lines),
+          stationLineBadgeBuilder(lines, lineColorsById: lineColorsById),
         ],
       ),
     );
@@ -121,19 +123,22 @@ Color getColorFromLineNumber(int lineNumber) {
 } //build this line indicator builder tommorow
 
 //9,
-Widget stationLineBadgeBuilder(List<dynamic> lines) {
+Widget stationLineBadgeBuilder(
+  List<dynamic> lines, {
+  Map<int, Color>? lineColorsById,
+}) {
   return Row(
     children:
         lines.map<Widget>((line) {
           return Padding(
             padding: const EdgeInsets.only(right: 3),
-            child: stationLineBadge(line),
+            child: stationLineBadge(line, lineColorsById: lineColorsById),
           );
         }).toList(),
   );
 }
 
-stationLineBadge(line) {
+stationLineBadge(line, {Map<int, Color>? lineColorsById}) {
   //int lineNumber = line[0];
   return Row(
     children: [
@@ -144,7 +149,10 @@ stationLineBadge(line) {
         width: 17.w,
         height: 17.h,
         decoration: BoxDecoration(
-          color: getColorFromLineNumber(line),
+          color:
+              lineColorsById == null
+                  ? getColorFromLineNumber(line)
+                  : lineColorsById[line] ?? Colors.grey,
           borderRadius: BorderRadius.all(Radius.circular(50)),
         ),
         child: Center(

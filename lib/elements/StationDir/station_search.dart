@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/station_element.dart';
 import 'stop_info.dart';
@@ -47,6 +46,7 @@ class _SearchBodyState extends State<SearchBody> {
   //final TextEditingController _controller2 = TextEditingController();
   List<dynamic> orignalStations = [];
   List<dynamic> filteredStations = [];
+  Map<int, Color> _lineColorsById = {};
   //bool _shouldClear = false;
 
   @override
@@ -56,12 +56,36 @@ class _SearchBodyState extends State<SearchBody> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode1.requestFocus();
     });
-    loadStationsFromJson().then((stations) {
+    _loadStations();
+  }
+
+  Future<void> _loadStations() async {
+    try {
+      final db = await MetroDbService.getDatabase();
+      final stations = await db.query('metro_stations');
+      final lineRows = await db.query(
+        'metro_lines',
+        columns: ['id', 'primary_color_code'],
+      );
+      final lineColorsById = <int, Color>{};
+      for (final line in lineRows) {
+        final lineId = line['id'] as int;
+        final colorCode = line['primary_color_code'] as String;
+        lineColorsById[lineId] = Color(
+          int.parse(colorCode.substring(1), radix: 16) | 0xFF000000,
+        );
+      }
+
+      if (!mounted) return;
       setState(() {
         orignalStations = stations;
         filteredStations = stations;
+        _lineColorsById = lineColorsById;
       });
-    });
+    } catch (error, stackTrace) {
+      debugPrint('Error loading stations from metro.db: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
   }
 
   @override
@@ -75,7 +99,6 @@ class _SearchBodyState extends State<SearchBody> {
   //////////////
 
   void filterStationsLogic(String query) {
-    //TODO: MAKE THIS COMPAITABLE WITH JSON
     //Logiv to find the best match
     final lowerQuery = query.toLowerCase();
 
@@ -86,13 +109,15 @@ class _SearchBodyState extends State<SearchBody> {
             orignalStations
                 .where(
                   (station) =>
-                      station["Name"] != null && station["Hindi"] != null,
+                      station["station_name"] != null &&
+                      station["station_name_hindi"] != null,
                 )
-                //print("JSON STATIONS IS $orignalStations")
                 .map((station) {
-                  final name = station["Name"]?.toString().toLowerCase() ?? "";
-                  final zone = station["Hindi"]?.toString().toLowerCase() ?? "";
-                  print("JSON ZONE IS $zone");
+                  final name =
+                      station["station_name"]?.toString().toLowerCase() ?? "";
+                  final zone =
+                      station["station_name_hindi"]?.toString().toLowerCase() ??
+                      "";
                   final nameScore = StringSimilarity.compareTwoStrings(
                     name,
                     lowerQuery,
@@ -110,13 +135,15 @@ class _SearchBodyState extends State<SearchBody> {
                 .where(
                   (entry) =>
                       entry.value > 0.7 || // Similarity threshold
-                      entry.key["Name"]?.toString().toLowerCase().contains(
-                            lowerQuery,
-                          ) ==
-                          true || //checks if the query matches the name or hindi name/common name
-                      entry.key["Hindi"]?.toString().toLowerCase().contains(
-                            lowerQuery,
-                          ) ==
+                      entry.key["station_name"]
+                              ?.toString()
+                              .toLowerCase()
+                              .contains(lowerQuery) ==
+                          true ||
+                      entry.key["station_name_hindi"]
+                              ?.toString()
+                              .toLowerCase()
+                              .contains(lowerQuery) ==
                           true,
                 )
                 .toList();
@@ -130,18 +157,6 @@ class _SearchBodyState extends State<SearchBody> {
         filteredStations = orignalStations;
       }
     });
-  }
-
-  Future<List> loadStationsFromJson() async {
-    try {
-      final jsonRawData = await rootBundle.loadString(
-        "assets/Map/stationsjson.json",
-      );
-      final List<dynamic> jsonList = jsonDecode(jsonRawData);
-      return jsonList;
-    } catch (e) {
-      return [];
-    }
   }
 
   @override
@@ -228,6 +243,7 @@ class _SearchBodyState extends State<SearchBody> {
               //_controller2,
               _focusNode1,
               //_focusNode2,
+              _lineColorsById,
             ),
           ],
         ),
@@ -307,6 +323,7 @@ Widget stationList(
   List<dynamic> stations,
   controller1,
   focusNode1,
+  Map<int, Color> lineColorsById,
 ) {
   if (stations.isEmpty) {
     return const Center(
@@ -342,47 +359,40 @@ Widget stationList(
           return const SizedBox(); // or some error placeholder
         }
 
-        String line = station["Line"];
-        line = line.replaceAll(RegExp(r'[\[\]]'), '');
-        List<String> parts = line.split('-');
-        List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
-        //List<int> lineNumbers = [1, 4];
-        //HARD CODED LINE NUMBERS FOR NOW
-        //print("Line numbers: $lineNumbers");
-        String name = station["Name"]; // Station Name
-        String hindiName =
-            station["Hindi"]; // not hindiName actually hindi name
+        final lineData =
+            jsonDecode(station['metro_lines']?.toString() ?? '[]')
+                as List<dynamic>;
+        final lineNumbers =
+            lineData.map<int>((line) => line['id'] as int).toList();
+        final name = station['station_name'] as String;
+        final hindiName = station['station_name_hindi'];
 
         return InkWell(
           focusColor: const Color.fromARGB(0, 255, 255, 255),
           splashColor: const Color.fromARGB(86, 76, 76, 76),
           onTap: () {
-            if (focusNode1.hasFocus) {
-              print("coreTransferStationsDict is focus node 2 fault");
-              //inputs text in the text filed on tap
-              controller1.text = name;
-              //FocusScope.of(context).requestFocus(focusNode2);
-              print("JSON TRIAL69 STATION CODE IS ${station}");
-              coreTransferStationsDict['Source'] = //TODO: MAKE IT COMAPITABLE WITH TRAFER DICT SO THAT SUGGESTION ON HOMESCREEN ADAPT TO FORMAT
-                  station;
-              print(
-                "JSON TRIAL69 STATION CODE coretransferdict IS ${coreTransferStationsDict}",
+            controller1.text = name;
+            focusNode1.requestFocus();
+            print("Selected station: $station");
+            coreTransferStationsDict['Source'] = Map<String, dynamic>.from(
+              station as Map,
+            );
+            print("Selected station dictionary: $coreTransferStationsDict");
+            if (ifSourceSelected()) {
+              screenTransferController(
+                context,
+                controller1, //changed
+                //controller2,
               );
-              if (ifSourceSelected()) {
-                screenTransferController(
-                  context,
-                  controller1, //changed
-                  //controller2,
-                );
-              } else {
-                //focusNode2.requestFocus();
-              }
+            } else {
+              //focusNode2.requestFocus();
             }
           },
           child: StationUnit(
             name: name,
             hindiName: hindiName,
             lines: lineNumbers,
+            lineColorsById: lineColorsById,
           ),
         );
       },

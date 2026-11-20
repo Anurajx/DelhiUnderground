@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/main.dart';
+import 'package:metroapp/elements/StationDir/stop_info.dart';
 import 'route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +50,7 @@ class _SearchBodyState extends State<SearchBody> {
   final TextEditingController _controller2 = TextEditingController();
   List<dynamic> orignalStations = [];
   List<dynamic> filteredStations = [];
+  Map<int, Color> _lineColorsById = {};
   //bool _shouldClear = false;
 
   @override
@@ -69,12 +70,36 @@ class _SearchBodyState extends State<SearchBody> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode1.requestFocus();
     });
-    loadStationsFromJson().then((stations) {
+    _loadStations();
+  }
+
+  Future<void> _loadStations() async {
+    try {
+      final db = await MetroDbService.getDatabase();
+      final stations = await db.query('metro_stations');
+      final lineRows = await db.query(
+        'metro_lines',
+        columns: ['id', 'primary_color_code'],
+      );
+      final lineColorsById = <int, Color>{};
+      for (final line in lineRows) {
+        final lineId = line['id'] as int;
+        final colorCode = line['primary_color_code'] as String;
+        lineColorsById[lineId] = Color(
+          int.parse(colorCode.substring(1), radix: 16) | 0xFF000000,
+        );
+      }
+
+      if (!mounted) return;
       setState(() {
         orignalStations = stations;
         filteredStations = stations;
+        _lineColorsById = lineColorsById;
       });
-    });
+    } catch (error, stackTrace) {
+      debugPrint('Error loading stations from metro.db: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
   }
 
   @override
@@ -91,7 +116,6 @@ class _SearchBodyState extends State<SearchBody> {
   //////////////
 
   void filterStationsLogic(String query) {
-    //TODO: MAKE THIS COMPAITABLE WITH JSON
     //Logiv to find the best match
     final lowerQuery = query.toLowerCase();
 
@@ -102,13 +126,15 @@ class _SearchBodyState extends State<SearchBody> {
             orignalStations
                 .where(
                   (station) =>
-                      station["Name"] != null && station["Hindi"] != null,
+                      station["station_name"] != null &&
+                      station["station_name_hindi"] != null,
                 )
-                //print("JSON STATIONS IS $orignalStations")
                 .map((station) {
-                  final name = station["Name"]?.toString().toLowerCase() ?? "";
-                  final zone = station["Hindi"]?.toString().toLowerCase() ?? "";
-                  print("JSON ZONE IS $zone");
+                  final name =
+                      station["station_name"]?.toString().toLowerCase() ?? "";
+                  final zone =
+                      station["station_name_hindi"]?.toString().toLowerCase() ??
+                      "";
                   final nameScore = StringSimilarity.compareTwoStrings(
                     name,
                     lowerQuery,
@@ -126,13 +152,15 @@ class _SearchBodyState extends State<SearchBody> {
                 .where(
                   (entry) =>
                       entry.value > 0.7 || // Similarity threshold
-                      entry.key["Name"]?.toString().toLowerCase().contains(
-                            lowerQuery,
-                          ) ==
-                          true || //checks if the query matches the name or hindi name/common name
-                      entry.key["Hindi"]?.toString().toLowerCase().contains(
-                            lowerQuery,
-                          ) ==
+                      entry.key["station_name"]
+                              ?.toString()
+                              .toLowerCase()
+                              .contains(lowerQuery) ==
+                          true ||
+                      entry.key["station_name_hindi"]
+                              ?.toString()
+                              .toLowerCase()
+                              .contains(lowerQuery) ==
                           true,
                 )
                 .toList();
@@ -146,18 +174,6 @@ class _SearchBodyState extends State<SearchBody> {
         filteredStations = orignalStations;
       }
     });
-  }
-
-  Future<List> loadStationsFromJson() async {
-    try {
-      final jsonRawData = await rootBundle.loadString(
-        "assets/Map/stationsjson.json",
-      );
-      final List<dynamic> jsonList = jsonDecode(jsonRawData);
-      return jsonList;
-    } catch (e) {
-      return [];
-    }
   }
 
   @override
@@ -271,6 +287,7 @@ class _SearchBodyState extends State<SearchBody> {
             _controller2,
             _focusNode1,
             _focusNode2,
+            _lineColorsById,
           ),
         ],
       ),
@@ -278,17 +295,18 @@ class _SearchBodyState extends State<SearchBody> {
   }
 }
 
-backBox(BuildContext context, controller1, controller2) {
+Widget backBox(BuildContext context, controller1, controller2) {
+  bool isLeastInterchange = false; // Local state for the toggle
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Container(
         //back button sized box
         padding: EdgeInsets.fromLTRB(0, 20, 15, 20),
-        //height: 50.h,
         child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: () {
-            HitTestBehavior.opaque;
             if (MediaQuery.of(context).viewInsets.bottom != 0) {
               //if keyboard is open it closes first then the screen goes back
               FocusScope.of(context).unfocus();
@@ -300,8 +318,7 @@ backBox(BuildContext context, controller1, controller2) {
           child: Row(
             children: [
               Icon(
-                CupertinoIcons
-                    .back, //check if the icon gesture detector working
+                CupertinoIcons.back,
                 color: const Color.fromARGB(255, 47, 130, 255),
               ),
               Text(
@@ -317,7 +334,40 @@ backBox(BuildContext context, controller1, controller2) {
           ),
         ),
       ),
-      //Icon(Icons.route, color: const Color.fromARGB(255, 175, 175, 175)),
+      // Right side: "Least Interchange" label + self-contained Material Switch
+      Row(
+        children: [
+          Text(
+            "Least Interchange",
+            style: TextStyle(
+              color: const Color.fromARGB(221, 115, 115, 115),
+              fontWeight: FontWeight.w500,
+              fontFamily: 'Poppins',
+              fontSize: 18.sp,
+            ),
+          ),
+          // SizedBox(width: 2.w),
+          StatefulBuilder(
+            builder: (BuildContext context, StateSetter setLocalState) {
+              return Transform.scale(
+                scale: 0.8,
+                alignment: Alignment.centerRight,
+                child: Switch(
+                  value: isLeastInterchange,
+                  activeTrackColor: const Color.fromARGB(255, 47, 130, 255),
+                  activeThumbColor: Colors.white,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  onChanged: (bool value) {
+                    setLocalState(() {
+                      isLeastInterchange = value;
+                    });
+                  },
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     ],
   );
 }
@@ -361,6 +411,7 @@ Widget stationList(
   controller2,
   focusNode1,
   focusNode2,
+  Map<int, Color> lineColorsById,
 ) {
   if (stations.isEmpty) {
     return const Center(
@@ -395,18 +446,18 @@ Widget stationList(
         if (station.length < 3) {
           return const SizedBox(); // or some error placeholder
         }
-        print("Later JSON station is $station");
-        print("Later JSON station name is ${station["Name"]}");
-        String line = station["Line"];
-        line = line.replaceAll(RegExp(r'[\[\]]'), '');
-        List<String> parts = line.split('-');
-        List<int> lineNumbers = parts.map((e) => int.parse(e)).toList();
-        //List<int> lineNumbers = [1, 4];
-        //HARD CODED LINE NUMBERS FOR NOW
-        //print("Line numbers: $lineNumbers");
-        String name = station["Name"]; // Station Name
-        String hindiName =
-            station["Hindi"]; // not hindiName actually hindi name
+        final lineData =
+            jsonDecode(station['metro_lines']?.toString() ?? '[]')
+                as List<dynamic>;
+        final lineNumbers =
+            lineData.map<int>((line) => line['id'] as int).toList();
+        final name = station['station_name'] as String;
+        final hindiName = station['station_name_hindi'];
+        final stationSelection =
+            Map<String, dynamic>.from(station as Map)
+              ..['Name'] = name
+              ..['Hindi'] = hindiName
+              ..['StationCode'] = station['station_code'];
 
         return InkWell(
           focusColor: const Color.fromARGB(0, 255, 255, 255),
@@ -418,9 +469,7 @@ Widget stationList(
               //inputs text in the text filed on tap
               controller1.text = name;
               //FocusScope.of(context).requestFocus(focusNode2);
-              print("JSON STATION CODE IS ${station["Station Code"]}");
-              coreTransferStationsDict['Source'] = //TODO: MAKE IT COMAPITABLE WITH TRAFER DICT SO THAT SUGGESTION ON HOMESCREEN ADAPT TO FORMAT
-                  station;
+              coreTransferStationsDict['Source'] = stationSelection;
               if (ifDestinationSelected() && ifSourceSelected()) {
                 /////////NEWLY ADDED-------------
                 print("Destination selected ${controller2.text}");
@@ -436,7 +485,7 @@ Widget stationList(
             if (focusNode2.hasFocus) {
               print("coreTransferStationsDict is focus node 2 fault");
               controller2.text = name;
-              coreTransferStationsDict['Destination'] = station;
+              coreTransferStationsDict['Destination'] = stationSelection;
 
               // screenTransferController(
               //   context,
@@ -460,6 +509,7 @@ Widget stationList(
             name: name,
             hindiName: hindiName,
             lines: lineNumbers,
+            lineColorsById: lineColorsById,
           ),
         );
       },

@@ -114,7 +114,7 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
     if (dict is Map) {
       if (dict['Source'] is Map) {
         final s = dict['Source'];
-        return s['StationCode']?.toString();
+        return (s['StationCode'] ?? s['station_code'])?.toString();
       }
       return dict['station_code']?.toString();
     }
@@ -494,7 +494,17 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
         .firstWhere((value) => value.isNotEmpty, orElse: () => '');
     if (phone.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Station phone number is unavailable')),
+        const SnackBar(
+          backgroundColor: const Color.fromARGB(255, 31, 200, 127),
+          content: Text(
+            'Station phone number is unavailable',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontFamily: 'Poppins',
+              color: Colors.black,
+            ),
+          ),
+        ),
       );
       return;
     }
@@ -535,30 +545,30 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
           destination.isEmpty) {
         continue;
       }
-      final destinationUpper = destination.toUpperCase();
-      final matchingReference =
-          lineReferences.whereType().where((reference) {
-            final start = reference['start_station']?.toString().toUpperCase();
-            final end = reference['end_station']?.toString().toUpperCase();
-            return start == destinationUpper || end == destinationUpper;
-          }).firstOrNull;
-      final lineReference =
-          matchingReference ??
-          (lineReferences.isNotEmpty ? lineReferences.first : null);
-      final lineCode =
-          lineReference is Map ? lineReference['line_code']?.toString() : null;
-      final line =
-          _lineData.where((row) => row['line_code'] == lineCode).firstOrNull;
+      // final destinationUpper = destination.toUpperCase();
+      // final matchingReference =
+      //     lineReferences.whereType().where((reference) {
+      //       final start = reference['start_station']?.toString().toUpperCase();
+      //       final end = reference['end_station']?.toString().toUpperCase();
+      //       return start == destinationUpper || end == destinationUpper;
+      //     }).firstOrNull;
+      // final lineReference =
+      //     matchingReference ??
+      //     (lineReferences.isNotEmpty ? lineReferences.first : null);
+      // final lineCode =
+      //     lineReference is Map ? lineReference['line_code']?.toString() : null;
+      // final line =
+      //     _lineData.where((row) => row['line_code'] == lineCode).firstOrNull;
       scheduleBlocks.add(
         _buildScheduleBlock(
           destination: destination,
           platformName: platformName,
-          lineName:
-              line?['name']?.toString() ??
-              (lineReference is Map
-                  ? lineReference['name']?.toString() ?? ''
-                  : ''),
-          lineColor: line == null ? Colors.grey : _lineColor(line),
+          // lineName:
+          //     line?['name']?.toString() ??
+          //     (lineReference is Map
+          //         ? lineReference['name']?.toString() ?? ''
+          //         : ''),
+          // lineColor: line == null ? Colors.grey : _lineColor(line),
         ),
       );
     }
@@ -587,12 +597,12 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
   Widget _buildScheduleBlock({
     required String destination,
     required String platformName,
-    required String lineName,
-    required Color lineColor,
+    // required String lineName,
+    // required Color lineColor,
   }) {
     const cardBg = Color.fromARGB(255, 25, 25, 25);
     const lightText = Color.fromARGB(255, 207, 207, 207);
-    const mutedText = Color.fromARGB(255, 182, 182, 182);
+    // const mutedText = Color.fromARGB(255, 182, 182, 182);
 
     return Container(
       width: double.infinity,
@@ -606,7 +616,7 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
           Row(
             children: [
               // Line color accent block
-              Container(width: 6.0, height: 27.0, color: lineColor),
+              // Container(width: 6.0, height: 27.0, color: lineColor),
               // Platform tag on black background
               Container(
                 color: const Color.fromARGB(255, 243, 243, 243),

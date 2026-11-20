@@ -366,19 +366,25 @@ nearYou(context) {
         if (data["Near"] != null && data["NearEnough"] != null) {
           //isNear= !isNear;
           /////////////
-          coreTransferStationsDictNE['Source'] =
-              data["NearEnough"]![0]; //handles forwording of screen
-          String lineNE = data["NearEnough"]![0]["Line"].toString();
-          lineNE = lineNE.replaceAll(RegExp(r'[\[\]]'), '');
-          List<String> partsNE = lineNE.split('-');
-          List<int> lineNumbersNE = partsNE.map((e) => int.parse(e)).toList();
+          final nearEnough = data["NearEnough"]![0] as Map<String, Object?>;
+          final nearest = data["Near"]![0] as Map<String, Object?>;
+          coreTransferStationsDictNE['Source'] = Map<String, dynamic>.from(
+            nearEnough,
+          );
+          final lineRefsNE =
+              jsonDecode(nearEnough['metro_lines']?.toString() ?? '[]')
+                  as List<dynamic>;
+          final lineNumbersNE =
+              lineRefsNE.map<int>((line) => line['id'] as int).toList();
           /////
-          coreTransferStationsDictN['Source'] =
-              data["Near"]![0]; //handles forwording of screen
-          String lineN = data["Near"]![0]["Line"].toString();
-          lineN = lineN.replaceAll(RegExp(r'[\[\]]'), '');
-          List<String> partsN = lineN.split('-');
-          List<int> lineNumbersN = partsN.map((e) => int.parse(e)).toList();
+          coreTransferStationsDictN['Source'] = Map<String, dynamic>.from(
+            nearest,
+          );
+          final lineRefsN =
+              jsonDecode(nearest['metro_lines']?.toString() ?? '[]')
+                  as List<dynamic>;
+          final lineNumbersN =
+              lineRefsN.map<int>((line) => line['id'] as int).toList();
           /////////////
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -413,7 +419,7 @@ nearYou(context) {
                   );
                 },
                 child: StationNearby(
-                  name: data["NearEnough"]?[0]["Name"],
+                  name: nearEnough['station_name'],
                   line: lineNumbersNE,
                 ),
               ),
@@ -433,7 +439,7 @@ nearYou(context) {
                   );
                 },
                 child: StationNearby(
-                  name: data["Near"]?[0]["Name"],
+                  name: nearest['station_name'],
                   line: lineNumbersN,
                 ),
               ),

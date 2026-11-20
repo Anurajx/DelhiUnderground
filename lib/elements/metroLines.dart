@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +22,7 @@ class LineStatusInfo {
     this.disruptionMessage,
   });
 
-  factory LineStatusInfo.fromDatabase(Map<String, Object?> row) {
+  factory LineStatusInfo.fromDatabase(Map<String, dynamic> row) {
     final lineId = row['id'] as int;
     final lineName = row['line_color_verbose'] as String;
     final colorCode = row['primary_color_code'] as String;
@@ -79,13 +78,14 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
       }
 
       final db = await openDatabase(path, readOnly: true);
-      final List<Map<String, Object?>> rows;
+      var lines = <LineStatusInfo>[];
       try {
-        rows = await db.query('metro_lines');
+        final rows = await db.query('metro_lines');
+        lines = rows.map((row) => LineStatusInfo.fromDatabase(row)).toList();
       } finally {
         await db.close();
       }
-      final lines = rows.map(LineStatusInfo.fromDatabase).toList();
+
       if (!mounted) return;
       setState(() {
         _lineStatuses = lines;
@@ -205,75 +205,82 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                     style: const TextStyle(color: Colors.white),
                   ),
                 )
-                : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 12.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Large Status Header at Top
-                      Text(
-                        anyDisruption
-                            ? "Disrupted services"
-                            : "All services operational",
-                        style: TextStyle(
-                          color:
+                : Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 12.0,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Large Status Header at Top
+                          Text(
+                            anyDisruption
+                                ? "Disrupted services"
+                                : "All services operational",
+                            style: TextStyle(
+                              color:
+                                  anyDisruption
+                                      ? const Color(0xFFF97316)
+                                      : Colors.white,
+                              fontSize: 22.0.sp,
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: -0.5,
+                            ),
+                          ),
+                          const SizedBox(height: 24.0),
+
+                          // Container holding all line circles
+                          Wrap(
+                            spacing: 14.0,
+                            runSpacing: 14.0,
+                            children:
+                                _lineStatuses.map(_buildLineCircle).toList(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 24.0),
+
+                    // Lower section container with "Updates" heading
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 234, 234, 234),
+                          // borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Updates",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 18.0.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 12.0),
+                            Text(
                               anyDisruption
-                                  ? const Color(0xFFF97316)
-                                  : Colors.white,
-                          fontSize: 22.0.sp,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: -0.5,
+                                  ? "Check individual lines for delay details."
+                                  : "No recent service updates.",
+                              style: TextStyle(
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 14.0.sp,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 24.0),
-
-                      // Container holding all line circles
-                      Wrap(
-                        spacing: 14.0,
-                        runSpacing: 14.0,
-                        children: _lineStatuses.map(_buildLineCircle).toList(),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
       ),
     );
   }
-}
-
-Widget topNavBar(BuildContext context) {
-  return Container(
-    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Row(
-            children: [
-              const Icon(
-                CupertinoIcons.back,
-                color: Color.fromARGB(255, 47, 130, 255),
-              ),
-              Text(
-                "Done",
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 47, 130, 255),
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Poppins',
-                  fontSize: 18.sp,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
 }
