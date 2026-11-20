@@ -1,52 +1,38 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
-// -------------------- LINE COLORS --------------------
-Color getLineColor(int lineNumber) {
-  switch (lineNumber) {
-    case 1:
-      return const Color.fromARGB(255, 209, 52, 56); // Red
-    case 2:
-      return const Color.fromARGB(255, 200, 155, 0); // Yellow
-    case 3:
-      return const Color.fromARGB(255, 0, 122, 204); // Blue main
-    case 4:
-      return const Color.fromARGB(255, 0, 142, 224); // Blue branch
-    case 5:
-      return const Color.fromARGB(255, 0, 168, 107); // Green
-    case 6:
-      return const Color.fromARGB(255, 125, 68, 157); // Violet
-    case 7:
-      return const Color.fromARGB(255, 219, 112, 147); // Pink
-    case 8:
-      return const Color.fromARGB(255, 170, 0, 119); // Magenta
-    case 9:
-      return const Color.fromARGB(255, 130, 130, 130); // Grey
-    case 10:
-      return const Color.fromARGB(255, 255, 114, 12); // Airport
-    case 15:
-      return const Color.fromARGB(255, 0, 185, 235); // Rapid Metro
-    case 20:
-      return const Color.fromARGB(255, 0, 185, 235); // Aqua Line
-    default:
-      return Colors.grey;
-  }
-}
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 // -------------------- MODEL --------------------
 class LineStatusInfo {
-  final int lineNumber;
+  final int lineId;
   final String lineName;
+  final Color color;
   final bool hasDisruption;
   final String? disruptionMessage;
 
   const LineStatusInfo({
-    required this.lineNumber,
+    required this.lineId,
     required this.lineName,
+    required this.color,
     this.hasDisruption = false,
     this.disruptionMessage,
   });
 
-  Color get color => getLineColor(lineNumber);
+  factory LineStatusInfo.fromDatabase(Map<String, Object?> row) {
+    final lineId = row['id'] as int;
+    final lineName = row['line_color_verbose'] as String;
+    final colorCode = row['primary_color_code'] as String;
+    return LineStatusInfo(
+      lineId: lineId,
+      lineName: lineName,
+      color: Color(int.parse(colorCode.substring(1), radix: 16) | 0xFF000000),
+    );
+  }
 }
 
 // -------------------- FULL SCREEN WIDGET --------------------
@@ -63,128 +49,102 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
   static const Color _screenBg = Colors.black;
   static const Color _headerText = Color.fromARGB(255, 109, 109, 109);
 
-  late List<LineStatusInfo> _lineStatuses;
+  List<LineStatusInfo> _lineStatuses = [];
+  bool _isLoading = true;
+  String? _loadError;
 
   @override
   void initState() {
     super.initState();
-    _lineStatuses = widget.statuses ?? _defaultLines();
+    if (widget.statuses != null) {
+      _lineStatuses = widget.statuses!;
+      _isLoading = false;
+    } else {
+      _loadLines();
+    }
   }
 
-  List<LineStatusInfo> _defaultLines() {
-    return const [
-      LineStatusInfo(lineNumber: 1, lineName: "Red Line"),
-      LineStatusInfo(lineNumber: 2, lineName: "Yellow Line"),
-      LineStatusInfo(lineNumber: 3, lineName: "Blue Line"),
-      LineStatusInfo(lineNumber: 4, lineName: "Blue Branch"),
-      LineStatusInfo(lineNumber: 5, lineName: "Green Line"),
-      LineStatusInfo(lineNumber: 6, lineName: "Violet Line"),
-      LineStatusInfo(lineNumber: 7, lineName: "Pink Line"),
-      LineStatusInfo(lineNumber: 8, lineName: "Magenta Line"),
-      LineStatusInfo(lineNumber: 9, lineName: "Grey Line"),
-      LineStatusInfo(lineNumber: 10, lineName: "Airport Express"),
-      LineStatusInfo(lineNumber: 15, lineName: "Rapid Metro"),
-      LineStatusInfo(lineNumber: 20, lineName: "Aqua Line"),
-    ];
+  Future<void> _loadLines() async {
+    try {
+      final dbPath = await getDatabasesPath();
+      final path = join(dbPath, 'metro.db');
+      if (!await databaseExists(path)) {
+        await Directory(dirname(path)).create(recursive: true);
+        final data = await rootBundle.load('assets/metro.db');
+        final bytes = data.buffer.asUint8List(
+          data.offsetInBytes,
+          data.lengthInBytes,
+        );
+        await File(path).writeAsBytes(bytes, flush: true);
+      }
+
+      final db = await openDatabase(path, readOnly: true);
+      final List<Map<String, Object?>> rows;
+      try {
+        rows = await db.query('metro_lines');
+      } finally {
+        await db.close();
+      }
+      final lines = rows.map(LineStatusInfo.fromDatabase).toList();
+      if (!mounted) return;
+      setState(() {
+        _lineStatuses = lines;
+        _isLoading = false;
+      });
+    } catch (error, stackTrace) {
+      debugPrint('Error loading metro lines: $error');
+      debugPrintStack(stackTrace: stackTrace);
+      if (!mounted) return;
+      setState(() {
+        _loadError = 'Unable to load metro lines.';
+        _isLoading = false;
+      });
+    }
   }
 
-  Widget _buildLineRow(LineStatusInfo info) {
-    final bool isDisrupted = info.hasDisruption;
-    final String statusText =
-        isDisrupted
-            ? (info.disruptionMessage != null &&
-                    info.disruptionMessage!.isNotEmpty
-                ? "Disruption · ${info.disruptionMessage!.toLowerCase()}"
-                : "Disruption")
-            : "Normal Service";
+  Widget _buildLineCircle(LineStatusInfo info) {
+    final Color statusDotColor =
+        info.hasDisruption
+            ? const Color(0xFFF97316) // Orange if disrupted
+            : const Color(0xFF22C55E); // Green if operational
 
-    final Color tonedDownColor =
-        Color.lerp(info.color, const Color(0xFF161616), 0.72)!;
-
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(bottom: 2.0),
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: tonedDownColor,
-        borderRadius: BorderRadius.circular(4.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+    return Tooltip(
+      message: info.disruptionMessage ?? info.lineName,
+      child: Stack(
+        clipBehavior: Clip.none,
         children: [
-          // Top-left saturated tab holding only the line number & name width
           Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12.0,
-              vertical: 6.0,
-            ),
+            width: 50.0,
+            height: 50.0,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               color: info.color,
-              borderRadius: const BorderRadius.only(
-                bottomRight: Radius.circular(4.0),
+              shape: BoxShape.circle,
+            ),
+            child: Text(
+              info.lineId.toString(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0.sp,
+                fontWeight: FontWeight.w700,
               ),
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Text(
-                //   "L${info.lineNumber}",
-                //   style: TextStyle(
-                //     color: Colors.white.withValues(alpha: 0.8),
-                //     fontSize: 12.0,
-                //     fontWeight: FontWeight.w700,
-                //   ),
-                // ),
-                // const SizedBox(width: 8.0),
-                Text(
-                  info.lineName,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
           ),
-          // Status row in the toned-down lower section
-          Padding(
-            padding: const EdgeInsets.fromLTRB(14.0, 18.0, 14.0, 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 8.0,
-                  height: 8.0,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        isDisrupted
-                            ? const Color(0xFFEF4444)
-                            : const Color(0xFF22C55E),
-                  ),
+          // Status dot at bottom right
+          Positioned(
+            right: 0,
+            bottom: 0,
+            child: Container(
+              width: 14.0,
+              height: 14.0,
+              decoration: BoxDecoration(
+                color: statusDotColor,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: const Color(0xFF161616), // Matches card background
+                  width: 2.5,
                 ),
-                const SizedBox(width: 8.0),
-                Flexible(
-                  child: Text(
-                    statusText,
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color:
-                          isDisrupted
-                              ? Colors.white
-                              : Colors.white.withValues(alpha: 0.9),
-                      fontSize: 14.0,
-                      fontWeight:
-                          isDisrupted ? FontWeight.w700 : FontWeight.w500,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ],
@@ -194,41 +154,126 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Check if any line has a disruption
+    final bool anyDisruption = _lineStatuses.any((line) => line.hasDisruption);
+
     return Scaffold(
       backgroundColor: _screenBg,
       appBar: AppBar(
         backgroundColor: _screenBg,
         elevation: 0,
         scrolledUnderElevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.white70,
-            size: 18.0,
-          ),
-          onPressed: () => Navigator.of(context).maybePop(),
-        ),
-        titleSpacing: 0,
-        title: const Text(
-          "LINE STATUS",
-          style: TextStyle(
-            color: _headerText,
-            fontSize: 16.0,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-            letterSpacing: 0.5,
+        automaticallyImplyLeading: false,
+        titleSpacing: 8.0,
+        title: InkWell(
+          onTap: () => Navigator.of(context).maybePop(),
+          borderRadius: BorderRadius.circular(8.0),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.white70,
+                  size: 18.0,
+                ),
+                SizedBox(width: 6.0),
+                Text(
+                  "Done",
+                  style: TextStyle(
+                    color: _headerText,
+                    fontSize: 16.0,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
       body: SafeArea(
-        child: ListView(
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
-          ),
-          padding: const EdgeInsets.fromLTRB(12.0, 4.0, 12.0, 24.0),
-          children: _lineStatuses.map(_buildLineRow).toList(),
-        ),
+        child:
+            _isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : _loadError != null
+                ? Center(
+                  child: Text(
+                    _loadError!,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                )
+                : Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 12.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Large Status Header at Top
+                      Text(
+                        anyDisruption
+                            ? "Disrupted services"
+                            : "All services operational",
+                        style: TextStyle(
+                          color:
+                              anyDisruption
+                                  ? const Color(0xFFF97316)
+                                  : Colors.white,
+                          fontSize: 22.0.sp,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                      const SizedBox(height: 24.0),
+
+                      // Container holding all line circles
+                      Wrap(
+                        spacing: 14.0,
+                        runSpacing: 14.0,
+                        children: _lineStatuses.map(_buildLineCircle).toList(),
+                      ),
+                    ],
+                  ),
+                ),
       ),
     );
   }
+}
+
+Widget topNavBar(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Row(
+            children: [
+              const Icon(
+                CupertinoIcons.back,
+                color: Color.fromARGB(255, 47, 130, 255),
+              ),
+              Text(
+                "Done",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 47, 130, 255),
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                  fontSize: 18.sp,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }

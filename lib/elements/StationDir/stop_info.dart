@@ -598,39 +598,11 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 2.0),
       color: cardBg,
-      padding: const EdgeInsets.all(10.0),
+      // padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Top Direction Row
-          Row(
-            children: [
-              const Text(
-                "towards ",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 109, 109, 109),
-                  fontSize: 13.0,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-
-              Expanded(
-                child: Text(
-                  destination.toLowerCase(),
-                  style: const TextStyle(
-                    color: lightText,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8.0),
-          // Bottom Flush Tag Strip
           Row(
             children: [
               // Line color accent block
@@ -654,6 +626,38 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
               ),
             ],
           ),
+          // Top Direction Row
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                const Text(
+                  "towards ",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 109, 109, 109),
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+
+                Expanded(
+                  child: Text(
+                    destination.toLowerCase(),
+                    style: const TextStyle(
+                      color: lightText,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // const SizedBox(height: 8.0),
+          // Bottom Flush Tag Strip
         ],
       ),
     );
