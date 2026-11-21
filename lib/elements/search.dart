@@ -296,7 +296,8 @@ class _SearchBodyState extends State<SearchBody> {
 }
 
 Widget backBox(BuildContext context, controller1, controller2) {
-  bool isLeastInterchange = false; // Local state for the toggle
+  bool isLeastInterchange =
+      coreTransferStationsDict['RouteType'] == 'minimum-interchange';
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -340,7 +341,7 @@ Widget backBox(BuildContext context, controller1, controller2) {
           Text(
             "Least Interchange",
             style: TextStyle(
-              color: const Color.fromARGB(221, 115, 115, 115),
+              color: Color.fromARGB(255, 126, 126, 126),
               fontWeight: FontWeight.w500,
               fontFamily: 'Poppins',
               fontSize: 18.sp,
@@ -356,10 +357,15 @@ Widget backBox(BuildContext context, controller1, controller2) {
                   value: isLeastInterchange,
                   activeTrackColor: const Color.fromARGB(255, 47, 130, 255),
                   activeThumbColor: Colors.white,
+                  inactiveThumbColor: const Color.fromARGB(255, 126, 126, 126),
+
+                  // inactiveThumbImage: Color.fromARGB(255, 126, 126, 126),
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onChanged: (bool value) {
                     setLocalState(() {
                       isLeastInterchange = value;
+                      coreTransferStationsDict['RouteType'] =
+                          value ? 'minimum-interchange' : 'least-distance';
                     });
                   },
                 ),
@@ -397,11 +403,12 @@ Widget fromToIcon() {
   );
 }
 
-Map<String, Map<String, dynamic>> coreTransferStationsDict = {
+Map<String, dynamic> coreTransferStationsDict = {
   //used for transfer screen process, making sure both source and destination are available
   //Dictionary format
   'Source': {}, //adding some defaults
   'Destination': {},
+  'RouteType': 'least-distance',
 };
 
 Widget stationList(

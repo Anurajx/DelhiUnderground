@@ -124,9 +124,9 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
             child: Text(
               info.lineId.toString(),
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.0.sp,
-                fontWeight: FontWeight.w700,
+                color: const Color.fromARGB(255, 0, 0, 0),
+                fontSize: 20.0.sp,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
@@ -209,7 +209,7 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
+                        horizontal: 4.0,
                         vertical: 12.0,
                       ),
                       child: Column(
@@ -250,7 +250,7 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 234, 234, 234),
+                          color: const Color.fromARGB(255, 26, 26, 26),
                           // borderRadius: BorderRadius.circular(16.0),
                         ),
                         child: Column(
@@ -259,7 +259,7 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                             Text(
                               "Updates",
                               style: TextStyle(
-                                color: const Color.fromARGB(255, 0, 0, 0),
+                                color: const Color.fromARGB(255, 216, 216, 216),
                                 fontSize: 18.0.sp,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -270,7 +270,7 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                                   ? "Check individual lines for delay details."
                                   : "No recent service updates.",
                               style: TextStyle(
-                                color: const Color.fromARGB(255, 0, 0, 0),
+                                color: const Color.fromARGB(255, 216, 216, 216),
                                 fontSize: 14.0.sp,
                               ),
                             ),

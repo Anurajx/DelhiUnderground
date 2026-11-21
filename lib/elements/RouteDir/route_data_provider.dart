@@ -2,95 +2,136 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:marquee/marquee.dart';
-import 'package:metroapp/elements/ServicesDir/mini_metro_station_list.dart';
 import 'package:metroapp/elements/ServicesDir/report_error_service.dart';
 import 'package:metroapp/main.dart';
-import 'package:provider/provider.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 // ---------------------- DB SERVICE ----------------------
 
+String formatRouteStationName(String stationName) {
+  final trimmedName = stationName.trim();
+  if (trimmedName.isEmpty) return '';
+  return '${trimmedName[0].toUpperCase()}${trimmedName.substring(1).toLowerCase()}';
+}
+
 class RouteService {
-  Database? _db;
-
-  Future<void> initDB() async {
-    if (_db != null) return;
-
-    // App documents path
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, "routes.db");
-
-    // Check if the database already exists
-    final exists = await databaseExists(path);
-
-    if (!exists) {
-      // Copy from assets to the path
-      ByteData data = await rootBundle.load("assets/routes.db");
-      List<int> bytes = data.buffer.asUint8List(
-        data.offsetInBytes,
-        data.lengthInBytes,
-      );
-
-      await File(path).writeAsBytes(bytes, flush: true);
-    }
-    // Open database
-    _db = await openDatabase(path, readOnly: true);
-  }
-
-  Future<String> _resolveStationName(String stationCode) async {
-    try {
-      final jsonData = await rootBundle.loadString(
-        'assets/Map/GTFS_StopsForDataRefrenceForDataMismatch.json',
-      );
-      final List<dynamic> stops = jsonDecode(jsonData);
-      for (var stop in stops) {
-        if (stop['stationCode']?.toString().toLowerCase() ==
-            stationCode.toLowerCase()) {
-          return stop['stop_name'];
-        }
-      }
-    } catch (e) {
-      debugPrint("Error resolving station code: $e");
-    }
-    return stationCode;
-  }
-
   Future<Map<String, dynamic>?> getRouteFromDict(
     Map<String, dynamic> input,
   ) async {
-    await initDB();
+    try {
+      final sourceCode = input["Source"]["StationCode"].toString();
+      final destCode = input["Destination"]["StationCode"].toString();
+      final routeType =
+          input["RouteType"] == "minimum-interchange"
+              ? "minimum-interchange"
+              : "least-distance";
 
-    final sourceCode = input["Source"]["StationCode"];
-    final destCode = input["Destination"]["StationCode"];
+      final uri = Uri(
+        scheme: 'http',
+        host: 'delhiplatform.duckdns.org',
+        port: 3000,
+        path: '/api/DMRC_route',
+        queryParameters: {
+          'fromCode': sourceCode,
+          'toCode': destCode,
+          'routeType': routeType,
+          'time': DateTime.now().toIso8601String(),
+        },
+      );
 
-    final startStation = await _resolveStationName(sourceCode);
-    final endStation = await _resolveStationName(destCode);
+      final client = HttpClient();
+      client.connectionTimeout = const Duration(seconds: 15);
+      final request = await client.getUrl(uri);
+      final response = await request.close();
+      final body = await response.transform(utf8.decoder).join();
+      client.close();
 
-    final result = await _db!.query(
-      "routes",
-      where: "start_station_name = ? AND end_station_name = ?",
-      whereArgs: [startStation, endStation],
-      limit: 1,
-    );
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        debugPrint('DMRC route API error: ${response.statusCode} $body');
+        return null;
+      }
 
-    if (result.isNotEmpty) {
-      final row = result.first;
-      print("TEST123: ${jsonDecode(row["route_data"] as String)}");
-      print("TEST123: ${jsonDecode(row["route_data"] as String)}");
+      final responseData = jsonDecode(body) as Map<String, dynamic>;
+      final apiRoute =
+          (responseData['route'] as List<dynamic>? ?? const [])
+              .whereType<Map>()
+              .map<Map<String, dynamic>>((leg) {
+                final legData = Map<String, dynamic>.from(leg);
+                final path =
+                    (legData['path'] as List<dynamic>? ?? const [])
+                        .whereType<Map>()
+                        .map(
+                          (station) => formatRouteStationName(
+                            station['name']?.toString() ?? '',
+                          ),
+                        )
+                        .where((name) => name.isNotEmpty)
+                        .toList();
+                final lineName = legData['line']?.toString() ?? '';
+                final lineColor = lineName.replaceAll(
+                  RegExp(r'\s*Line\s*$', caseSensitive: false),
+                  '',
+                );
+                final start =
+                    legData['start']?.toString() ??
+                    (path.isNotEmpty ? path.first : '');
+                final end =
+                    legData['towards_station']?.toString() ??
+                    (legData['end']?.toString() ?? '');
+
+                return {
+                  'line_name':
+                      '${formatRouteStationName(start)} to ${formatRouteStationName(end)}',
+                  'line_color': lineColor,
+                  'stops': path,
+                  'station_interchange_time':
+                      (legData['station_interchange_time'] ?? 0),
+                  'platform_name': legData['platform_name']?.toString() ?? '',
+                };
+              })
+              .toList();
+
+      final interchanges = apiRoute.length > 1 ? apiRoute.length - 1 : 0;
+      final totalTime = _parseApiDuration(
+        responseData['total_time']?.toString(),
+      );
+      final fare =
+          (responseData['fare'] is num)
+              ? responseData['fare'] as num
+              : num.tryParse(responseData['fare']?.toString() ?? '') ?? 0;
+
       return {
-        "start": row["start_station_name"],
-        "end": row["end_station_name"],
-        "time": row["total_time_minutes"],
-        "interchanges": row["interchange_count"],
-        "price": row["price"],
-        "route_data": jsonDecode(row["route_data"] as String),
+        'start': formatRouteStationName(
+          responseData['from']?.toString() ??
+              input["Source"]["Name"]?.toString() ??
+              '',
+        ),
+        'end': formatRouteStationName(
+          responseData['to']?.toString() ??
+              input["Destination"]["Name"]?.toString() ??
+              '',
+        ),
+        'time': totalTime,
+        'interchanges': interchanges,
+        'price': fare,
+        'route_data': {'legs': apiRoute},
       };
+    } catch (error, stackTrace) {
+      debugPrint('Error fetching DMRC route: $error');
+      debugPrintStack(stackTrace: stackTrace);
+      return null;
     }
-    return null;
+  }
+
+  int _parseApiDuration(String? duration) {
+    if (duration == null || duration.isEmpty) return 0;
+    final parts = duration.split(':');
+    if (parts.isEmpty) return 0;
+    final hours = int.tryParse(parts[0]) ?? 0;
+    final minutes = parts.length > 1 ? int.tryParse(parts[1]) ?? 0 : 0;
+    final seconds = parts.length > 2 ? int.tryParse(parts[2]) ?? 0 : 0;
+    return hours * 60 + minutes + (seconds > 0 ? 1 : 0);
   }
 }
 
@@ -129,8 +170,9 @@ class _RouteScreenState extends State<RouteScreenNew> {
         backgroundColor: Colors.black,
         body:
             (routeInfo == null)
-                ? const Center(
-                  child: CircularProgressIndicator(color: Colors.blueAccent),
+                ? _RouteLoadingSkeleton(
+                  context: context,
+                  coreTransferStationsDict: widget.coreTransferStationsDict,
                 )
                 : RouteDisplay(
                   coreTransferStationsDict: widget.coreTransferStationsDict,
@@ -142,6 +184,60 @@ class _RouteScreenState extends State<RouteScreenNew> {
 }
 
 // ---------------------- UI ----------------------
+
+class _RouteLoadingSkeleton extends StatelessWidget {
+  final BuildContext context;
+  final Map<String, dynamic> coreTransferStationsDict;
+
+  const _RouteLoadingSkeleton({
+    required this.context,
+    required this.coreTransferStationsDict,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
+      child: Column(
+        children: [
+          topNavBar(context, coreTransferStationsDict),
+          Skeletonizer(
+            enabled: true,
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  child: Text(
+                    'Your trip takes 49 Minutes has 1 interchange and costs 54 Rs.',
+                    style: TextStyle(
+                      color: AppColors.tertiaryText,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                const Divider(
+                  thickness: 1,
+                  color: Color.fromARGB(255, 35, 35, 35),
+                ),
+                SizedBox(height: 50.sp),
+                Center(
+                  child: SizedBox(
+                    width: 100.sp,
+                    child: LinearProgressIndicator(
+                      color: Colors.blueAccent,
+                      year2023: false,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class RouteDisplay extends StatelessWidget {
   final dynamic coreTransferStationsDict;
@@ -166,6 +262,7 @@ class RouteDisplay extends StatelessWidget {
           TripSummary(
             totalTime: routeInfo['time'],
             interchanges: routeInfo['interchanges'],
+            price: routeInfo['price'] ?? 0,
           ),
           const Divider(thickness: 1, color: Color.fromARGB(255, 35, 35, 35)),
 
@@ -202,7 +299,12 @@ class RouteDisplay extends StatelessWidget {
                                     stations: leg,
                                   );
                                 } else {
-                                  return interchangeInfo();
+                                  final nextLegIndex = (index ~/ 2) + 1;
+                                  final nextLeg =
+                                      routeInfo['route_data']['legs'][nextLegIndex];
+                                  return interchangeInfo(
+                                    nextLeg['station_interchange_time'],
+                                  );
                                 }
                               },
                             ),
@@ -235,6 +337,11 @@ class RouteDisplay extends StatelessWidget {
 }
 
 topNavBar(context, coreTransferStationsDict) {
+  final routeLabel =
+      coreTransferStationsDict['RouteType'] == 'minimum-interchange'
+          ? 'Least Interchange'
+          : 'Fastest Route';
+
   return Container(
     //color: Colors.white,
     width: double.infinity,
@@ -274,7 +381,7 @@ topNavBar(context, coreTransferStationsDict) {
         ),
         const SizedBox(width: 5),
         Text(
-          "Least Interchange",
+          routeLabel,
           style: TextStyle(
             fontFamily: 'Poppins',
             color: Color.fromARGB(255, 126, 126, 126),
@@ -305,11 +412,13 @@ topNavBar(context, coreTransferStationsDict) {
 class TripSummary extends StatelessWidget {
   final int totalTime;
   final int interchanges;
+  final num price;
 
   const TripSummary({
     super.key,
     required this.totalTime,
     required this.interchanges,
+    required this.price,
   });
 
   @override
@@ -360,7 +469,7 @@ class TripSummary extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: "20 Rs", //make these a variable
+              text: "${price.toString().replaceAll(RegExp(r'\.0+$'), '')} Rs.",
               style: TextStyle(
                 color: AppColors.secondaryText,
                 fontSize: 20.sp,
@@ -499,11 +608,17 @@ class InfoIndicator extends StatefulWidget {
 class _InfoIndicatorState extends State<InfoIndicator> {
   @override
   Widget build(BuildContext context) {
-    String heading =
-        widget.legs['line_name'].toString().split(" to ").last.trim();
+    String heading = formatRouteStationName(
+      widget.legs['line_name'].toString().split(" to ").last.trim(),
+    );
+    final platformName = widget.legs['platform_name']?.toString().trim() ?? '';
     String colorName = widget.legs['line_color'].toString().toLowerCase();
-    String StartStnName = widget.legs['stops'][0];
-    String EndStnName = widget.legs['stops'][widget.legs['stops'].length - 1];
+    String StartStnName = formatRouteStationName(
+      widget.legs['stops'][0].toString(),
+    );
+    String EndStnName = formatRouteStationName(
+      widget.legs['stops'][widget.legs['stops'].length - 1].toString(),
+    );
     print("TEST525 $StartStnName to $EndStnName"); //First leg of route
     //right line info
     return Container(
@@ -534,18 +649,24 @@ class _InfoIndicatorState extends State<InfoIndicator> {
             //train heading info
             child: Row(
               children: [
-                Icon(
-                  CupertinoIcons.train_style_two,
-                  color: Colors.grey,
-                  size: 15,
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 19, 19, 19),
+                    // borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    platformName.isNotEmpty ? platformName : 'Platform',
+                    style: TextStyle(
+                      color: const Color.fromARGB(255, 255, 148, 8),
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
                 Text(
-                  " Heading towards ${heading}",
-                  maxLines: 2,
-                  overflow: TextOverflow.visible,
-                  softWrap: true,
+                  " ${colorName} line",
                   style: TextStyle(
-                    overflow: TextOverflow.visible,
                     color: AppColors.secondaryText,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w500,
@@ -555,9 +676,14 @@ class _InfoIndicatorState extends State<InfoIndicator> {
             ),
           ),
           SizedBox(height: 2.h),
+
           Text(
-            "${colorName} line",
+            " Towards ${heading}",
+            maxLines: 2,
+            overflow: TextOverflow.visible,
+            softWrap: true,
             style: TextStyle(
+              overflow: TextOverflow.visible,
               color: AppColors.secondaryText,
               fontSize: 15.sp,
               fontWeight: FontWeight.w500,
@@ -702,7 +828,15 @@ Color _getLineColor(String lineColor) {
   }
 }
 
-interchangeInfo() {
+interchangeInfo(dynamic interchangeTime) {
+  final interchangeMinutes =
+      interchangeTime is num
+          ? interchangeTime
+          : num.tryParse(interchangeTime?.toString() ?? '') ?? 0;
+  final formattedTime = interchangeMinutes.toString().replaceAll(
+    RegExp(r'\.0+$'),
+    '',
+  );
   return Container(
     height: 70.h,
     margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
@@ -748,7 +882,7 @@ interchangeInfo() {
                     children: [
                       Icon(Icons.directions_walk, color: Colors.grey, size: 15),
                       Text(
-                        "5 Min",
+                        "$formattedTime Min",
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 15.sp,
@@ -791,7 +925,7 @@ collapsedExpandedView(insideStations) {
                     ),
                     SizedBox(width: 8),
                     Text(
-                      station,
+                      formatRouteStationName(station.toString()),
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.grey,
