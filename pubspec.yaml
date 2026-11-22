@@ -181,6 +181,9 @@ flutter:
     - assets/Image/hauzkhas1.jpg
     - assets/Image/hauzkhas2.jpg
     - assets/Image/hauzkhas3.jpg
+    - assets/Image/NFClogo.png
+    - assets/Image/RupayLogo.webp
+    - assets/Image/tapCard.png
 
   fonts:
     - family: Poppins

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,15 @@ class LineStatusInfo {
   final int lineId;
   final String lineName;
   final Color color;
+  final String name;
+  final String lineCode;
+  final String lineColorFamily;
+  final String secondaryColorCode;
+  final int stationCount;
+  final String startStation;
+  final String endStation;
+  final int junctionCount;
+  final String status;
   final bool hasDisruption;
   final String? disruptionMessage;
 
@@ -18,19 +28,59 @@ class LineStatusInfo {
     required this.lineId,
     required this.lineName,
     required this.color,
+    this.name = '',
+    this.lineCode = '',
+    this.lineColorFamily = '',
+    this.secondaryColorCode = '',
+    this.stationCount = 0,
+    this.startStation = '',
+    this.endStation = '',
+    this.junctionCount = 0,
+    this.status = 'Normal Service',
     this.hasDisruption = false,
     this.disruptionMessage,
   });
 
   factory LineStatusInfo.fromDatabase(Map<String, dynamic> row) {
     final lineId = row['id'] as int;
-    final lineName = row['line_color_verbose'] as String;
-    final colorCode = row['primary_color_code'] as String;
+    final lineName = row['line_color_verbose']?.toString() ?? 'Line $lineId';
+    final colorCode = row['primary_color_code']?.toString() ?? '#808080';
+    final status = row['status']?.toString() ?? 'Normal Service';
+    final hasDisruption =
+        status.toLowerCase() != 'normal service' && status.trim().isNotEmpty;
+
     return LineStatusInfo(
       lineId: lineId,
       lineName: lineName,
       color: Color(int.parse(colorCode.substring(1), radix: 16) | 0xFF000000),
+      name: row['name']?.toString() ?? '',
+      lineCode: row['line_code']?.toString() ?? '',
+      lineColorFamily: row['line_color_family']?.toString() ?? '',
+      secondaryColorCode: row['secondary_color_code']?.toString() ?? '',
+      stationCount:
+          row['station_count'] is int ? row['station_count'] as int : 0,
+      startStation: _stationName(row['start_station']),
+      endStation: _stationName(row['end_station']),
+      junctionCount:
+          row['junction_count'] is int ? row['junction_count'] as int : 0,
+      status: status,
+      hasDisruption: hasDisruption,
+      disruptionMessage: hasDisruption ? status : null,
     );
+  }
+
+  static String _stationName(dynamic value) {
+    if (value is String) {
+      try {
+        final decoded = jsonDecode(value);
+        if (decoded is Map && decoded['station_name'] != null) {
+          return decoded['station_name'].toString();
+        }
+      } catch (_) {}
+    } else if (value is Map && value['station_name'] != null) {
+      return value['station_name'].toString();
+    }
+    return '';
   }
 }
 
@@ -46,7 +96,6 @@ class LineStatusScreen extends StatefulWidget {
 
 class _LineStatusScreenState extends State<LineStatusScreen> {
   static const Color _screenBg = Colors.black;
-  static const Color _headerText = Color.fromARGB(255, 109, 109, 109);
 
   List<LineStatusInfo> _lineStatuses = [];
   bool _isLoading = true;
@@ -108,47 +157,151 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
             ? const Color(0xFFF97316) // Orange if disrupted
             : const Color(0xFF22C55E); // Green if operational
 
-    return Tooltip(
-      message: info.disruptionMessage ?? info.lineName,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Container(
-            width: 50.0,
-            height: 50.0,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: info.color,
-              shape: BoxShape.circle,
-            ),
-            child: Text(
-              info.lineId.toString(),
-              style: TextStyle(
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontSize: 20.0.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          // Status dot at bottom right
-          Positioned(
-            right: 0,
-            bottom: 0,
-            child: Container(
-              width: 14.0,
-              height: 14.0,
+    return GestureDetector(
+      onTap: () => _showLineInfo(info),
+      behavior: HitTestBehavior.opaque,
+      child: Tooltip(
+        message: info.disruptionMessage ?? info.lineName,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: 50.0.sp,
+              height: 50.0.sp,
+              alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: statusDotColor,
+                color: info.color,
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: const Color(0xFF161616), // Matches card background
-                  width: 2.5,
+              ),
+              child: Text(
+                info.lineId.toString(),
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                  fontSize: 20.0.sp,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
-          ),
-        ],
+            // Status dot at bottom right
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Container(
+                width: 14.0,
+                height: 14.0,
+                decoration: BoxDecoration(
+                  color: statusDotColor,
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: const Color(0xFF161616), // Matches card background
+                    width: 2.5,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+
+  List<TextSpan> _buildLineInfoSpans(LineStatusInfo info) {
+    final spans = <TextSpan>[];
+
+    void addField(String label, String value) {
+      spans
+        ..add(TextSpan(text: '$label: '))
+        ..add(
+          TextSpan(
+            text: value,
+            style: const TextStyle(decoration: TextDecoration.underline),
+          ),
+        )
+        ..add(const TextSpan(text: '\n'));
+    }
+
+    if (info.name.isNotEmpty) {
+      addField('Line', info.name);
+    }
+    addField('Stations', info.stationCount.toString());
+    addField('Interchanges', info.junctionCount.toString());
+    if (info.startStation.isNotEmpty) {
+      addField('Start', info.startStation);
+    }
+    if (info.endStation.isNotEmpty) {
+      addField('End', info.endStation);
+    }
+    // if (info.status.isNotEmpty) {
+    //   addField('Status', info.status);
+    // }
+    // if (info.lineCode.isNotEmpty) {
+    //   addField('Line code', info.lineCode);
+    // }
+
+    if (spans.isNotEmpty && spans.last.text == '\n') {
+      spans.removeLast();
+    }
+    return spans;
+  }
+
+  Future<void> _showLineInfo(LineStatusInfo info) async {
+    await showDialog<void>(
+      context: this.context,
+      barrierDismissible: true,
+      builder:
+          (dialogContext) => AlertDialog(
+            backgroundColor: Colors.black,
+            titlePadding: EdgeInsets.zero,
+            title: Container(
+              width: double.infinity,
+              color: info.color,
+              padding: const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 20.0),
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontFamily: 'Poppins',
+                    color: Colors.black,
+                    fontSize: 20.0,
+                  ),
+                  children: [TextSpan(text: info.lineName)],
+                ),
+              ),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(2),
+            ),
+            contentPadding: EdgeInsets.zero,
+            content: Container(
+              width: double.infinity,
+              color: Colors.black,
+              padding: const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 8.0),
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    height: 1.6,
+                  ),
+                  children: _buildLineInfoSpans(info),
+                ),
+              ),
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+                ),
+                onPressed: () => Navigator.pop(dialogContext),
+                child: const Text(
+                  'Okay',
+                  style: TextStyle(fontFamily: 'Poppins'),
+                ),
+              ),
+            ],
+          ),
     );
   }
 
@@ -175,14 +328,14 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
               children: [
                 Icon(
                   Icons.arrow_back_ios_new,
-                  color: Colors.white70,
+                  color: Color.fromARGB(255, 47, 130, 255),
                   size: 18.0,
                 ),
                 SizedBox(width: 6.0),
                 Text(
                   "Done",
                   style: TextStyle(
-                    color: _headerText,
+                    color: Color.fromARGB(255, 47, 130, 255),
                     fontSize: 16.0,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
@@ -209,7 +362,7 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 4.0,
+                        horizontal: 2.0,
                         vertical: 12.0,
                       ),
                       child: Column(
@@ -225,17 +378,17 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                                   anyDisruption
                                       ? const Color(0xFFF97316)
                                       : Colors.white,
-                              fontSize: 22.0.sp,
+                              fontSize: 18.0.sp,
                               fontWeight: FontWeight.w500,
-                              letterSpacing: -0.5,
+                              // letterSpacing: -0.5,
                             ),
                           ),
                           const SizedBox(height: 24.0),
 
                           // Container holding all line circles
                           Wrap(
-                            spacing: 14.0,
-                            runSpacing: 14.0,
+                            spacing: 10.0.sp,
+                            runSpacing: 10.0.sp,
                             children:
                                 _lineStatuses.map(_buildLineCircle).toList(),
                           ),
