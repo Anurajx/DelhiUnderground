@@ -81,12 +81,9 @@ class _MapMetroScreenState extends State<MapMetroScreen> {
                     }
                   },
                   items:
-                      <String>[
-                        'Delhi Metro',
-                        'Airport Express',
-                        'RapidMetro',
-                        'RRTS',
-                      ].map<DropdownMenuItem<String>>((String value) {
+                      <String>['Delhi Metro'].map<DropdownMenuItem<String>>((
+                        String value,
+                      ) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Padding(

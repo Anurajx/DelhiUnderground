@@ -18,6 +18,7 @@ import './ServicesDir/station_element.dart';
 import 'Card.dart' as metro_card;
 import 'search.dart';
 import 'StationDir/station_search.dart';
+import 'BusDir/busStop_search.dart';
 import 'ServicesDir/data_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -167,7 +168,7 @@ searchBar(context) {
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w600,
               fontSize: 18.sp,
-              color: AppColors.background,
+              color: const Color.fromARGB(255, 52, 52, 52),
             ),
           ),
           Icon(CupertinoIcons.search, color: AppColors.background),
@@ -655,7 +656,7 @@ Widget ticketAndExit(BuildContext context) {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const StationSearchScreen(),
+                  builder: (context) => const BusStopSearchScreen(),
                 ),
               );
             },
@@ -845,42 +846,42 @@ appFooter(context) {
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              Spacer(),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const metro_card.MetroCardScreen(),
-                    ),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    borderRadius: BorderRadius.circular(70),
-                  ),
-                  padding: EdgeInsets.all(8),
-                  // margin: EdgeInsets.all(20),
-                  child: Row(
-                    children: [
-                      Icon(CupertinoIcons.creditcard, color: Colors.black),
-                      SizedBox(width: 3.sp),
-                      Text(
-                        "Check Card\nBalance",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                          //color: const Color.fromARGB(255, 61, 61, 61),
-                          height: 1.h,
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Spacer(),
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const metro_card.MetroCardScreen(),
+              //       ),
+              //     );
+              //   },
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       color: const Color.fromARGB(255, 255, 255, 255),
+              //       borderRadius: BorderRadius.circular(70),
+              //     ),
+              //     padding: EdgeInsets.all(8),
+              //     // margin: EdgeInsets.all(20),
+              //     child: Row(
+              //       children: [
+              //         Icon(CupertinoIcons.creditcard, color: Colors.black),
+              //         SizedBox(width: 3.sp),
+              //         Text(
+              //           "Check Card\nBalance",
+              //           textAlign: TextAlign.left,
+              //           style: TextStyle(
+              //             color: const Color.fromARGB(255, 0, 0, 0),
+              //             //color: const Color.fromARGB(255, 61, 61, 61),
+              //             height: 1.h,
+              //             fontSize: 10.sp,
+              //             fontWeight: FontWeight.w500,
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
