@@ -245,63 +245,73 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
   }
 
   Future<void> _showLineInfo(LineStatusInfo info) async {
-    await showDialog<void>(
+    await showModalBottomSheet<void>(
       context: this.context,
-      barrierDismissible: true,
-      builder:
-          (dialogContext) => AlertDialog(
-            backgroundColor: Colors.black,
-            titlePadding: EdgeInsets.zero,
-            title: Container(
-              width: double.infinity,
-              color: info.color,
-              padding: const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 20.0),
-              child: RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w800,
-                    fontFamily: 'Poppins',
-                    color: Colors.black,
-                    fontSize: 20.0,
+      isScrollControlled: true,
+      backgroundColor: Colors.black,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(2)),
+      ),
+      builder: (sheetContext) {
+        return SafeArea(
+          top: false,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                width: double.infinity,
+                color: info.color,
+                padding: const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 20.0),
+                child: RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Poppins',
+                      color: Colors.black,
+                      fontSize: 20.0,
+                    ),
+                    children: [TextSpan(text: info.lineName)],
                   ),
-                  children: [TextSpan(text: info.lineName)],
                 ),
               ),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(2),
-            ),
-            contentPadding: EdgeInsets.zero,
-            content: Container(
-              width: double.infinity,
-              color: Colors.black,
-              padding: const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 8.0),
-              child: RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    height: 1.6,
+              Container(
+                width: double.infinity,
+                color: Colors.black,
+                padding: const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 8.0),
+                child: RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      height: 1.6,
+                    ),
+                    children: _buildLineInfoSpans(info),
                   ),
-                  children: _buildLineInfoSpans(info),
                 ),
               ),
-            ),
-            actions: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-                  foregroundColor: const Color.fromARGB(255, 0, 0, 0),
-                ),
-                onPressed: () => Navigator.pop(dialogContext),
-                child: const Text(
-                  'Okay',
-                  style: TextStyle(fontFamily: 'Poppins'),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 16.0),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                      foregroundColor: const Color.fromARGB(255, 0, 0, 0),
+                    ),
+                    onPressed: () => Navigator.pop(sheetContext),
+                    child: const Text(
+                      'Okay',
+                      style: TextStyle(fontFamily: 'Poppins'),
+                    ),
+                  ),
                 ),
               ),
             ],
           ),
+        );
+      },
     );
   }
 

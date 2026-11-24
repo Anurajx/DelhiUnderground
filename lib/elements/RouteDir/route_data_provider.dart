@@ -163,6 +163,23 @@ class _RouteScreenState extends State<RouteScreenNew> {
     });
   }
 
+  Future<void> _selectRouteType(String routeType) async {
+    if (widget.coreTransferStationsDict['RouteType'] == routeType) return;
+
+    setState(() {
+      widget.coreTransferStationsDict['RouteType'] = routeType;
+      routeInfo = null;
+    });
+
+    final result = await _routeService.getRouteFromDict(
+      widget.coreTransferStationsDict,
+    );
+    if (!mounted) return;
+    setState(() {
+      routeInfo = result;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -173,10 +190,12 @@ class _RouteScreenState extends State<RouteScreenNew> {
                 ? _RouteLoadingSkeleton(
                   context: context,
                   coreTransferStationsDict: widget.coreTransferStationsDict,
+                  onRouteTypeChanged: _selectRouteType,
                 )
                 : RouteDisplay(
                   coreTransferStationsDict: widget.coreTransferStationsDict,
                   routeInfo: routeInfo!,
+                  onRouteTypeChanged: _selectRouteType,
                 ),
       ),
     );
@@ -188,10 +207,12 @@ class _RouteScreenState extends State<RouteScreenNew> {
 class _RouteLoadingSkeleton extends StatelessWidget {
   final BuildContext context;
   final Map<String, dynamic> coreTransferStationsDict;
+  final ValueChanged<String> onRouteTypeChanged;
 
   const _RouteLoadingSkeleton({
     required this.context,
     required this.coreTransferStationsDict,
+    required this.onRouteTypeChanged,
   });
 
   @override
@@ -200,7 +221,11 @@ class _RouteLoadingSkeleton extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
       child: Column(
         children: [
-          topNavBar(context, coreTransferStationsDict),
+          topNavBar(
+            context,
+            coreTransferStationsDict,
+            onRouteTypeChanged: onRouteTypeChanged,
+          ),
           Skeletonizer(
             enabled: true,
             child: Column(
@@ -242,11 +267,13 @@ class _RouteLoadingSkeleton extends StatelessWidget {
 class RouteDisplay extends StatelessWidget {
   final dynamic coreTransferStationsDict;
   final Map<String, dynamic> routeInfo;
+  final ValueChanged<String> onRouteTypeChanged;
 
   const RouteDisplay({
     super.key,
     required this.coreTransferStationsDict,
     required this.routeInfo,
+    required this.onRouteTypeChanged,
   });
 
   @override
@@ -258,7 +285,11 @@ class RouteDisplay extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
       child: Column(
         children: [
-          topNavBar(context, coreTransferStationsDict),
+          topNavBar(
+            context,
+            coreTransferStationsDict,
+            onRouteTypeChanged: onRouteTypeChanged,
+          ),
           TripSummary(
             totalTime: routeInfo['time'],
             interchanges: routeInfo['interchanges'],
@@ -336,14 +367,12 @@ class RouteDisplay extends StatelessWidget {
   }
 }
 
-topNavBar(context, coreTransferStationsDict) {
-  final routeLabel =
-      coreTransferStationsDict['RouteType'] == 'minimum-interchange'
-          ? 'Least Interchange'
-          : 'Fastest Route';
-
+Widget topNavBar(
+  BuildContext context,
+  Map<String, dynamic> coreTransferStationsDict, {
+  required ValueChanged<String> onRouteTypeChanged,
+}) {
   return Container(
-    //color: Colors.white,
     width: double.infinity,
     height: 50.h,
     child: Row(
@@ -374,20 +403,68 @@ topNavBar(context, coreTransferStationsDict) {
           ),
         ),
         Spacer(),
-        Icon(
-          CupertinoIcons.hare_fill,
-          color: Color.fromARGB(255, 126, 126, 126),
-          size: 18.sp,
-        ),
-        const SizedBox(width: 5),
-        Text(
-          routeLabel,
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            color: Color.fromARGB(255, 126, 126, 126),
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w500,
-          ),
+        StatefulBuilder(
+          builder: (context, setLocalState) {
+            final isFastest =
+                coreTransferStationsDict['RouteType'] != 'minimum-interchange';
+
+            return SegmentedButton<String>(
+              segments: const [
+                ButtonSegment<String>(
+                  value: 'least-distance',
+                  label: Text('Fastest'),
+                ),
+                ButtonSegment<String>(
+                  value: 'minimum-interchange',
+                  label: Text('Shortest'),
+                ),
+              ],
+              selected: {isFastest ? 'least-distance' : 'minimum-interchange'},
+              onSelectionChanged: (selection) {
+                final routeType = selection.first;
+                setLocalState(() {});
+                onRouteTypeChanged(routeType);
+              },
+              showSelectedIcon: false,
+              style: ButtonStyle(
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity.compact,
+                padding: WidgetStatePropertyAll(
+                  EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
+                ),
+                textStyle: WidgetStatePropertyAll(
+                  TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                foregroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.selected)) {
+                    return Colors.white;
+                  }
+                  return const Color.fromARGB(255, 126, 126, 126);
+                }),
+                backgroundColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.selected)) {
+                    return const Color.fromARGB(255, 47, 130, 255);
+                  }
+                  return const Color.fromARGB(255, 26, 26, 26);
+                }),
+                side: WidgetStatePropertyAll(
+                  BorderSide(
+                    color: const Color.fromARGB(255, 35, 35, 35),
+                    width: 1,
+                  ),
+                ),
+                shape: WidgetStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
 
         //  Marquee(

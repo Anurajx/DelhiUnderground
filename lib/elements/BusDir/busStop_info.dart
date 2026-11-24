@@ -96,7 +96,7 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
                     SizedBox(width: 8.w),
                     Icon(
                       CupertinoIcons.antenna_radiowaves_left_right,
-                      color: AppColors.secondaryText,
+                      color: const Color.fromARGB(255, 126, 255, 86),
                       size: 16.sp,
                     ),
                   ],
