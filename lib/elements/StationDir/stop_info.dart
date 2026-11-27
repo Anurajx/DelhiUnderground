@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
@@ -101,11 +102,21 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
   bool _isLoading = true;
   Map<String, dynamic>? _stationData;
   List<Map<String, Object?>> _lineData = [];
+  Timer? _clockTimer;
 
   @override
   void initState() {
     super.initState();
     _loadStation();
+    _clockTimer = Timer.periodic(const Duration(minutes: 1), (_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _clockTimer?.cancel();
+    super.dispose();
   }
 
   String? _extractStationCode(dynamic dict) {
@@ -342,22 +353,23 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
   Widget _buildStationStatus(BuildContext context) {
     final linesList = _tryDecodeList(_stationData?['metro_lines']);
     final statuses = linesList?.whereType<Map>().toList() ?? [];
+    final openStatus = _isStationOpenNow() ? 'OPEN NOW' : 'CLOSED NOW';
+    final disruptionStatuses =
+        statuses
+            .map((line) => line['status']?.toString().trim())
+            .whereType<String>()
+            .where((status) => status.isNotEmpty)
+            .map(
+              (status) =>
+                  status.toLowerCase().contains('normal')
+                      ? openStatus
+                      : status.toUpperCase(),
+            )
+            .toSet();
     final disruptionText =
-        statuses.isEmpty
-            ? 'NO DISRUPTION'
-            : statuses
-                .map((line) => line['status']?.toString().trim())
-                .whereType<String>()
-                .where((status) => status.isNotEmpty)
-                .map(
-                  (status) =>
-                      status.toLowerCase().contains('normal')
-                          ? 'NO DISRUPTION'
-                          : status.toUpperCase(),
-                )
-                .toSet()
-                .join(' · ');
-    final stationName = _stationData?['station_name']?.toString() ?? '';
+        disruptionStatuses.isEmpty
+            ? openStatus
+            : disruptionStatuses.join(' · ');
 
     return SizedBox(
       height: 80.h,
@@ -397,52 +409,7 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
           SizedBox(width: 2.w),
           Expanded(
             child: GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder:
-                      (context) => AlertDialog(
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          31,
-                          200,
-                          127,
-                        ),
-                        title: const Text(
-                          'No disruption at this Station & Line',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
-                          ),
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                        content: Text(
-                          stationName,
-                          style: const TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        actions: [
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.black,
-                              foregroundColor: Colors.white,
-                            ),
-                            onPressed: () => Navigator.pop(context),
-                            child: const Text(
-                              'Okay',
-                              style: TextStyle(fontFamily: 'Poppins'),
-                            ),
-                          ),
-                        ],
-                      ),
-                );
-              },
+              onTap: _showStationInfo,
               child: Container(
                 padding: const EdgeInsets.all(10),
                 color: const Color.fromARGB(255, 25, 25, 25),
@@ -453,12 +420,16 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
                   children: [
                     Row(
                       children: [
-                        Text(
-                          disruptionText,
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15.sp,
+                        Flexible(
+                          child: Text(
+                            disruptionText,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15.sp,
+                            ),
                           ),
                         ),
                         const Spacer(),
@@ -483,6 +454,146 @@ class _StopInfoScreenState extends State<StopInfoScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  bool _isStationOpenNow() {
+    int? toMinutes(dynamic value) {
+      if (value == null) return null;
+      final match = RegExp(
+        r'^(\d{1,2}):(\d{2})(?::\d{2})?$',
+      ).firstMatch(value.toString().trim());
+      if (match == null) return null;
+      final hour = int.parse(match.group(1)!);
+      final minute = int.parse(match.group(2)!);
+      if (hour > 23 || minute > 59) return null;
+      return hour * 60 + minute;
+    }
+
+    final opening = toMinutes(_stationData?['opening_time']);
+    final closing = toMinutes(_stationData?['closing_time']);
+    if (opening == null || closing == null) return false;
+
+    final now = TimeOfDay.now();
+    final currentMinutes = now.hour * 60 + now.minute;
+    if (closing < opening) {
+      return currentMinutes >= opening || currentMinutes < closing;
+    }
+    return currentMinutes >= opening && currentMinutes < closing;
+  }
+
+  Future<void> _showStationInfo() async {
+    final description =
+        _stationData?['station_description']?.toString().trim() ?? '';
+    final isInterchange =
+        _stationData?['interchange'] == true ||
+        _stationData?['interchange']?.toString() == '1';
+
+    final details = <Widget>[
+      if (description.isNotEmpty)
+        Text(
+          description,
+          style: const TextStyle(
+            fontFamily: 'Poppins',
+            color: Colors.white,
+            height: 1.6,
+          ),
+        ),
+      if (isInterchange) _stationInfoRow('Interchange', 'Yes'),
+    ];
+
+    await showModalBottomSheet<void>(
+      context: this.context,
+      isScrollControlled: true,
+      backgroundColor: Colors.black,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(2)),
+      ),
+      builder: (sheetContext) {
+        return SafeArea(
+          top: false,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  color: const Color.fromARGB(255, 31, 200, 127),
+                  padding: const EdgeInsets.fromLTRB(24, 20, 24, 20),
+                  child: Text(
+                    _stationData?['station_name']?.toString() ??
+                        'Station information',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontFamily: 'Poppins',
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 20, 24, 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children:
+                        details.isEmpty
+                            ? [
+                              const Text(
+                                'No additional station information is available.',
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ]
+                            : details,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 16),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                      ),
+                      onPressed: () => Navigator.pop(sheetContext),
+                      child: const Text(
+                        'Okay',
+                        style: TextStyle(fontFamily: 'Poppins'),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _stationInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: RichText(
+        text: TextSpan(
+          style: const TextStyle(
+            fontFamily: 'Poppins',
+            color: Colors.white,
+            height: 1.6,
+          ),
+          children: [
+            TextSpan(
+              text: '$label: ',
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+            TextSpan(text: value),
+          ],
+        ),
       ),
     );
   }
@@ -1284,7 +1395,7 @@ Widget companyFooter() {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          "DELHI\nUNDERGROUND",
+          "PLATFORM",
           textAlign: TextAlign.center,
           style: TextStyle(
             height: 1.h,

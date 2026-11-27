@@ -16,7 +16,7 @@ class _MapMetroScreenState extends State<MapMetroScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 8, 8, 8),
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: mapScreenCluster(context),
     );
   }

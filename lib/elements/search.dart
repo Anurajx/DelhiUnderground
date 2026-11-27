@@ -7,7 +7,6 @@ import 'route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './ServicesDir/station_element.dart';
-import 'package:string_similarity/string_similarity.dart';
 
 class SearchScreen extends StatefulWidget {
   final String? destination;
@@ -56,6 +55,10 @@ class _SearchBodyState extends State<SearchBody> {
   @override
   void initState() {
     super.initState();
+    _controller1.text =
+        coreTransferStationsDict['Source']?['Name']?.toString() ?? '';
+    _controller2.text =
+        coreTransferStationsDict['Destination']?['Name']?.toString() ?? '';
     _focusNode1.addListener(() {
       setState(() {
         filterStationsLogic(_controller1.text);
@@ -71,6 +74,54 @@ class _SearchBodyState extends State<SearchBody> {
       _focusNode1.requestFocus();
     });
     _loadStations();
+  }
+
+  void _searchRoutes() {
+    final sourceName = _controller1.text.trim();
+    final destinationName = _controller2.text.trim();
+    final savedSource = coreTransferStationsDict['Source'];
+    final savedDestination = coreTransferStationsDict['Destination'];
+    final source =
+        savedSource is Map && savedSource['Name'] == sourceName
+            ? Map<String, dynamic>.from(savedSource)
+            : _findStationSelection(sourceName);
+    final destination =
+        savedDestination is Map && savedDestination['Name'] == destinationName
+            ? Map<String, dynamic>.from(savedDestination)
+            : _findStationSelection(destinationName);
+
+    if (sourceName.isEmpty ||
+        destinationName.isEmpty ||
+        source == null ||
+        destination == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: Color.fromARGB(255, 31, 200, 127),
+          content: Text(
+            'Please select both departure and arrival correctly',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Poppins',
+            ),
+          ),
+        ),
+      );
+      return;
+    }
+
+    coreTransferStationsDict['Source'] = source;
+    coreTransferStationsDict['Destination'] = destination;
+    screenTransferController(context, _controller1, _controller2);
+  }
+
+  Map<String, dynamic>? _findStationSelection(String name) {
+    for (final station in orignalStations) {
+      if (station['station_name'] == name) {
+        return _stationSelectionFromRow(station);
+      }
+    }
+    return null;
   }
 
   Future<void> _loadStations() async {
@@ -103,72 +154,47 @@ class _SearchBodyState extends State<SearchBody> {
   }
 
   @override
-  void deactivate() {
-    // when the router is poped and user goes back to home screen this is triggered
-    super.deactivate();
-    // context.read<DataProvider>().updateCoreTransferStationsDict({
-    // });
-    if (!Navigator.canPop(context)) {
-      coreTransferStationsDict['Source'] = {};
-      coreTransferStationsDict['Destination'] = {};
-    }
+  void dispose() {
+    _focusNode1.dispose();
+    _focusNode2.dispose();
+    _controller1.dispose();
+    _controller2.dispose();
+    coreTransferStationsDict['Source'] = {};
+    coreTransferStationsDict['Destination'] = {};
+    super.dispose();
   }
-  //////////////
 
   void filterStationsLogic(String query) {
-    //Logiv to find the best match
-    final lowerQuery = query.toLowerCase();
+    final normalizedQuery = _normalizeStationSearchText(query);
 
     setState(() {
-      if (query.isNotEmpty) {
-        // Create list of entries with scores
+      if (normalizedQuery.isNotEmpty) {
         final scoredList =
             orignalStations
-                .where(
-                  (station) =>
-                      station["station_name"] != null &&
-                      station["station_name_hindi"] != null,
-                )
+                .where((station) => station["station_name"] != null)
                 .map((station) {
-                  final name =
-                      station["station_name"]?.toString().toLowerCase() ?? "";
-                  final zone =
-                      station["station_name_hindi"]?.toString().toLowerCase() ??
-                      "";
-                  final nameScore = StringSimilarity.compareTwoStrings(
-                    name,
-                    lowerQuery,
+                  final name = _normalizeStationSearchText(
+                    station["station_name"].toString(),
                   );
-                  final zoneScore = StringSimilarity.compareTwoStrings(
-                    zone,
-                    lowerQuery,
+                  final hindiName = _normalizeStationSearchText(
+                    station["station_name_hindi"]?.toString() ?? "",
+                  );
+                  final nameScore = _stationSearchScore(name, normalizedQuery);
+                  final hindiScore = _stationSearchScore(
+                    hindiName,
+                    normalizedQuery,
                   );
 
-                  // Combine both scores (weight name higher if needed)
-                  final combinedScore = (nameScore + zoneScore);
-
-                  return MapEntry(station, combinedScore);
+                  return MapEntry(
+                    station,
+                    nameScore > hindiScore ? nameScore : hindiScore,
+                  );
                 })
-                .where(
-                  (entry) =>
-                      entry.value > 0.7 || // Similarity threshold
-                      entry.key["station_name"]
-                              ?.toString()
-                              .toLowerCase()
-                              .contains(lowerQuery) ==
-                          true ||
-                      entry.key["station_name_hindi"]
-                              ?.toString()
-                              .toLowerCase()
-                              .contains(lowerQuery) ==
-                          true,
-                )
+                .where((entry) => entry.value >= 0.65)
                 .toList();
 
-        // Sort stations by score descending
         scoredList.sort((a, b) => b.value.compareTo(a.value));
 
-        // Extract only the station entries
         filteredStations = scoredList.map((entry) => entry.key).toList();
       } else {
         filteredStations = orignalStations;
@@ -185,7 +211,15 @@ class _SearchBodyState extends State<SearchBody> {
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          backBox(context, _controller1, _controller2), //leave as is
+          backBox(
+            context,
+            _controller1,
+            _controller2,
+            onSearch: () {
+              FocusScope.of(context).unfocus();
+              _searchRoutes();
+            },
+          ),
           screenName(), //leave as is
           Stack(
             //adding the search cluster here
@@ -288,6 +322,7 @@ class _SearchBodyState extends State<SearchBody> {
             _focusNode1,
             _focusNode2,
             _lineColorsById,
+            () => setState(() {}),
           ),
         ],
       ),
@@ -295,10 +330,68 @@ class _SearchBodyState extends State<SearchBody> {
   }
 }
 
-Widget backBox(BuildContext context, controller1, controller2) {
-  bool isLeastInterchange =
-      coreTransferStationsDict['RouteType'] == 'minimum-interchange';
+final RegExp _stationSearchSeparators = RegExp(
+  r'[^\p{L}\p{M}\p{N}]',
+  unicode: true,
+);
 
+String _normalizeStationSearchText(String value) =>
+    value.toLowerCase().replaceAll(_stationSearchSeparators, '');
+
+double _stationSearchScore(String station, String query) {
+  if (station.isEmpty || query.isEmpty) return 0;
+  if (station.contains(query)) {
+    return station.startsWith(query) ? 1 : 0.9;
+  }
+
+  final stationCharacters = station.runes.toList();
+  final queryCharacters = query.runes.toList();
+  var previousRow = List<int>.generate(
+    queryCharacters.length + 1,
+    (index) => index,
+  );
+
+  for (
+    var stationIndex = 1;
+    stationIndex <= stationCharacters.length;
+    stationIndex++
+  ) {
+    final currentRow = List<int>.filled(queryCharacters.length + 1, 0)
+      ..[0] = stationIndex;
+    for (
+      var queryIndex = 1;
+      queryIndex <= queryCharacters.length;
+      queryIndex++
+    ) {
+      final substitutionCost =
+          stationCharacters[stationIndex - 1] == queryCharacters[queryIndex - 1]
+              ? 0
+              : 1;
+      final insertion = currentRow[queryIndex - 1] + 1;
+      final deletion = previousRow[queryIndex] + 1;
+      final substitution = previousRow[queryIndex - 1] + substitutionCost;
+      currentRow[queryIndex] = [
+        insertion,
+        deletion,
+        substitution,
+      ].reduce((first, second) => first < second ? first : second);
+    }
+    previousRow = currentRow;
+  }
+
+  final longestLength =
+      stationCharacters.length > queryCharacters.length
+          ? stationCharacters.length
+          : queryCharacters.length;
+  return 1 - previousRow.last / longestLength;
+}
+
+Widget backBox(
+  BuildContext context,
+  controller1,
+  controller2, {
+  required VoidCallback onSearch,
+}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -335,44 +428,30 @@ Widget backBox(BuildContext context, controller1, controller2) {
           ),
         ),
       ),
-      // Right side: "Least Interchange" label + self-contained Material Switch
-      Row(
-        children: [
-          Text(
-            "Least Interchange",
-            style: TextStyle(
-              color: Color.fromARGB(255, 126, 126, 126),
-              fontWeight: FontWeight.w500,
-              fontFamily: 'Poppins',
-              fontSize: 18.sp,
-            ),
-          ),
-          // SizedBox(width: 2.w),
-          StatefulBuilder(
-            builder: (BuildContext context, StateSetter setLocalState) {
-              return Transform.scale(
-                scale: 0.8,
-                alignment: Alignment.centerRight,
-                child: Switch(
-                  value: isLeastInterchange,
-                  activeTrackColor: const Color.fromARGB(255, 47, 130, 255),
-                  activeThumbColor: Colors.white,
-                  inactiveThumbColor: const Color.fromARGB(255, 126, 126, 126),
-
-                  // inactiveThumbImage: Color.fromARGB(255, 126, 126, 126),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  onChanged: (bool value) {
-                    setLocalState(() {
-                      isLeastInterchange = value;
-                      coreTransferStationsDict['RouteType'] =
-                          value ? 'minimum-interchange' : 'least-distance';
-                    });
-                  },
+      Padding(
+        padding: EdgeInsets.fromLTRB(15, 20, 0, 20),
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: onSearch,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "Search",
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 47, 130, 255),
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                  fontSize: 18.sp,
                 ),
-              );
-            },
+              ),
+              Icon(
+                CupertinoIcons.forward,
+                color: const Color.fromARGB(255, 47, 130, 255),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     ],
   );
@@ -411,6 +490,14 @@ Map<String, dynamic> coreTransferStationsDict = {
   'RouteType': 'least-distance',
 };
 
+Map<String, dynamic> _stationSelectionFromRow(dynamic station) {
+  final name = station['station_name'] as String;
+  return Map<String, dynamic>.from(station as Map)
+    ..['Name'] = name
+    ..['Hindi'] = station['station_name_hindi']
+    ..['StationCode'] = station['station_code'];
+}
+
 Widget stationList(
   // widget that is expanded and scrollable of stations at bottom
   List<dynamic> stations,
@@ -419,6 +506,7 @@ Widget stationList(
   focusNode1,
   focusNode2,
   Map<int, Color> lineColorsById,
+  VoidCallback onSelectionChanged,
 ) {
   if (stations.isEmpty) {
     return const Center(
@@ -460,11 +548,7 @@ Widget stationList(
             lineData.map<int>((line) => line['id'] as int).toList();
         final name = station['station_name'] as String;
         final hindiName = station['station_name_hindi'];
-        final stationSelection =
-            Map<String, dynamic>.from(station as Map)
-              ..['Name'] = name
-              ..['Hindi'] = hindiName
-              ..['StationCode'] = station['station_code'];
+        final stationSelection = _stationSelectionFromRow(station);
 
         return InkWell(
           focusColor: const Color.fromARGB(0, 255, 255, 255),
@@ -477,14 +561,9 @@ Widget stationList(
               controller1.text = name;
               //FocusScope.of(context).requestFocus(focusNode2);
               coreTransferStationsDict['Source'] = stationSelection;
-              if (ifDestinationSelected() && ifSourceSelected()) {
-                /////////NEWLY ADDED-------------
-                print("Destination selected ${controller2.text}");
-                screenTransferController(
-                  context,
-                  controller1, //changed
-                  controller2,
-                );
+              onSelectionChanged();
+              if (ifDestinationSelected()) {
+                screenTransferController(context, controller1, controller2);
               } else {
                 focusNode2.requestFocus();
               }
@@ -493,14 +572,14 @@ Widget stationList(
               print("coreTransferStationsDict is focus node 2 fault");
               controller2.text = name;
               coreTransferStationsDict['Destination'] = stationSelection;
+              onSelectionChanged();
 
               // screenTransferController(
               //   context,
               //   controller1.text,
               //   controller2.text,
               // );
-              if (ifSourceSelected() && ifDestinationSelected()) {
-                /////////NEWLY ADDED-------------
+              if (ifSourceSelected()) {
                 screenTransferController(context, controller1, controller2);
               } else {
                 focusNode1.requestFocus();

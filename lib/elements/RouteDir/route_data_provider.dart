@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:metroapp/elements/ServicesDir/report_error_service.dart';
 import 'package:metroapp/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 // ---------------------- DB SERVICE ----------------------
@@ -16,6 +17,15 @@ String formatRouteStationName(String stationName) {
 }
 
 class RouteService {
+  static final Map<String, Map<String, dynamic>> _routeCache = {};
+  static SharedPreferences? _preferences;
+
+  static Future<SharedPreferences> _getPreferences() async {
+    final preferences = _preferences ?? await SharedPreferences.getInstance();
+    _preferences = preferences;
+    return preferences;
+  }
+
   Future<Map<String, dynamic>?> getRouteFromDict(
     Map<String, dynamic> input,
   ) async {
@@ -26,6 +36,28 @@ class RouteService {
           input["RouteType"] == "minimum-interchange"
               ? "minimum-interchange"
               : "least-distance";
+      final cacheKey = jsonEncode([sourceCode, destCode, routeType]);
+      final preferenceKey =
+          'dmrc_route_cache_${base64Url.encode(utf8.encode(cacheKey))}';
+      final cachedRoute = _routeCache[cacheKey];
+      if (cachedRoute != null) return cachedRoute;
+
+      try {
+        final preferences = await _getPreferences();
+        final cachedJson = preferences.getString(preferenceKey);
+        if (cachedJson != null) {
+          final decodedRoute = jsonDecode(cachedJson);
+          if (decodedRoute is Map) {
+            final route = Map<String, dynamic>.from(decodedRoute);
+            _routeCache[cacheKey] = route;
+            return route;
+          }
+          debugPrint('Invalid cached DMRC route format for $cacheKey.');
+        }
+      } catch (error, stackTrace) {
+        debugPrint('Error reading cached DMRC route: $error');
+        debugPrintStack(stackTrace: stackTrace);
+      }
 
       final uri = Uri(
         scheme: 'http',
@@ -101,7 +133,7 @@ class RouteService {
               ? responseData['fare'] as num
               : num.tryParse(responseData['fare']?.toString() ?? '') ?? 0;
 
-      return {
+      final routeInfo = {
         'start': formatRouteStationName(
           responseData['from']?.toString() ??
               input["Source"]["Name"]?.toString() ??
@@ -117,6 +149,15 @@ class RouteService {
         'price': fare,
         'route_data': {'legs': apiRoute},
       };
+      _routeCache[cacheKey] = routeInfo;
+      try {
+        final preferences = await _getPreferences();
+        await preferences.setString(preferenceKey, jsonEncode(routeInfo));
+      } catch (error, stackTrace) {
+        debugPrint('Error saving cached DMRC route: $error');
+        debugPrintStack(stackTrace: stackTrace);
+      }
+      return routeInfo;
     } catch (error, stackTrace) {
       debugPrint('Error fetching DMRC route: $error');
       debugPrintStack(stackTrace: stackTrace);
@@ -246,15 +287,7 @@ class _RouteLoadingSkeleton extends StatelessWidget {
                   color: Color.fromARGB(255, 35, 35, 35),
                 ),
                 SizedBox(height: 50.sp),
-                Center(
-                  child: SizedBox(
-                    width: 100.sp,
-                    child: LinearProgressIndicator(
-                      color: Colors.blueAccent,
-                      year2023: false,
-                    ),
-                  ),
-                ),
+                Center(child: CupertinoActivityIndicator(radius: 14.sp)),
               ],
             ),
           ),
@@ -416,7 +449,7 @@ Widget topNavBar(
                 ),
                 ButtonSegment<String>(
                   value: 'minimum-interchange',
-                  label: Text('Shortest'),
+                  label: Text('Least change'),
                 ),
               ],
               selected: {isFastest ? 'least-distance' : 'minimum-interchange'},
@@ -453,13 +486,13 @@ Widget topNavBar(
                 }),
                 side: WidgetStatePropertyAll(
                   BorderSide(
-                    color: const Color.fromARGB(255, 35, 35, 35),
+                    color: const Color.fromARGB(255, 0, 0, 0),
                     width: 1,
                   ),
                 ),
                 shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                 ),
               ),
@@ -1072,7 +1105,7 @@ companyFooter() {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          "DELHI\nUNDERGROUND",
+          "PLATFORM",
           textAlign: TextAlign.center,
           style: TextStyle(
             height: 1.h,

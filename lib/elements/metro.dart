@@ -2,7 +2,6 @@ import 'dart:convert';
 // import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 import 'package:metroapp/elements/ServicesDir/geolocator_service.dart';
 import 'package:metroapp/elements/StationDir/stop_info.dart';
-import 'package:metroapp/elements/metroLines.dart';
 import 'package:metroapp/elements/route.dart';
 import 'package:metroapp/main.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -569,12 +568,15 @@ Widget ticketAndExit(BuildContext context) {
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () async {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LineStatusScreen(),
-                ),
+              final launched = await launchUrl(
+                Uri.parse('https://wa.me/919650855800'),
+                mode: LaunchMode.externalApplication,
               );
+              if (!launched && context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Unable to open WhatsApp.')),
+                );
+              }
             },
             child: Container(
               width: 60.w, // Set explicit width for scrollable items
@@ -585,8 +587,8 @@ Widget ticketAndExit(BuildContext context) {
               ),
               child: const Center(
                 child: Icon(
-                  CupertinoIcons.flag_circle,
-                  color: Color.fromARGB(255, 251, 92, 92),
+                  CupertinoIcons.tickets,
+                  color: Colors.white,
                   size: 30,
                 ),
               ),

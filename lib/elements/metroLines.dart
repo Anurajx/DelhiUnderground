@@ -4,10 +4,43 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // -------------------- MODEL --------------------
+class ServiceUpdateInfo {
+  final String content;
+  final List<String> links;
+  final String severity;
+  final String code;
+  final String type;
+
+  const ServiceUpdateInfo({
+    required this.content,
+    required this.links,
+    required this.severity,
+    required this.code,
+    required this.type,
+  });
+
+  factory ServiceUpdateInfo.fromJson(Map<String, dynamic> json) {
+    final links = json['Links'];
+    if (links is! List) {
+      throw const FormatException('Service update links must be a list.');
+    }
+
+    return ServiceUpdateInfo(
+      content: json['Content']?.toString() ?? '',
+      links: links.map((link) => link.toString()).toList(),
+      severity: (json['Severirty'] ?? json['Severity'] ?? 'Unknown').toString(),
+      code: json['code']?.toString() ?? '',
+      type: json['type']?.toString() ?? '',
+    );
+  }
+}
+
 class LineStatusInfo {
   final int lineId;
   final String lineName;
@@ -96,10 +129,17 @@ class LineStatusScreen extends StatefulWidget {
 
 class _LineStatusScreenState extends State<LineStatusScreen> {
   static const Color _screenBg = Colors.black;
+  static const String _androidApiHost = String.fromEnvironment(
+    'METRO_SERVICE_UPDATE_HOST',
+    defaultValue: '192.168.1.7',
+  );
 
   List<LineStatusInfo> _lineStatuses = [];
   bool _isLoading = true;
   String? _loadError;
+  ServiceUpdateInfo? _serviceUpdate;
+  bool _isUpdateLoading = true;
+  String? _updateError;
 
   @override
   void initState() {
@@ -110,6 +150,145 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
     } else {
       _loadLines();
     }
+    _loadServiceUpdate();
+  }
+
+  Future<void> _loadServiceUpdate() async {
+    try {
+      final apiHost = Platform.isAndroid ? _androidApiHost : 'localhost';
+      final response = await http
+          .get(Uri.parse('http://$apiHost:3000/api/serviceUpdate'))
+          .timeout(const Duration(seconds: 10));
+      if (response.statusCode != HttpStatus.ok) {
+        throw HttpException(
+          'Service update request failed with status ${response.statusCode}.',
+        );
+      }
+
+      final decoded = jsonDecode(response.body);
+      if (decoded is! Map<String, dynamic>) {
+        throw const FormatException(
+          'Service update response must be an object.',
+        );
+      }
+      final update = ServiceUpdateInfo.fromJson(decoded);
+
+      if (!mounted) return;
+      setState(() {
+        _serviceUpdate = update;
+        _isUpdateLoading = false;
+      });
+    } catch (error, stackTrace) {
+      debugPrint('Error loading service update: $error');
+      debugPrintStack(stackTrace: stackTrace);
+      if (!mounted) return;
+      setState(() {
+        _updateError = 'Unable to load service updates.';
+        _isUpdateLoading = false;
+      });
+    }
+  }
+
+  Future<void> _openUpdateLink(String link) async {
+    final launched = await launchUrl(Uri.parse(link));
+    if (!launched && mounted) {
+      ScaffoldMessenger.of(this.context).showSnackBar(
+        const SnackBar(
+          content: Text('Unable to open this service update link.'),
+        ),
+      );
+    }
+  }
+
+  Widget _buildServiceUpdate() {
+    if (_isUpdateLoading) {
+      return const Expanded(child: Center(child: CircularProgressIndicator()));
+    }
+    if (_updateError != null) {
+      return Expanded(
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            _updateError!,
+            style: TextStyle(
+              color: const Color.fromARGB(255, 216, 216, 216),
+              fontSize: 14.0.sp,
+            ),
+          ),
+        ),
+      );
+    }
+
+    final update = _serviceUpdate!;
+
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          // padding: const EdgeInsets.all(4.0),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 14, 14, 14),
+            // borderRadius: BorderRadius.circular(10.0),
+            border: Border.all(color: const Color.fromARGB(255, 0, 0, 0)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                update.content,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0.sp,
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 14.0),
+              Wrap(
+                spacing: 8.0,
+                runSpacing: 4.0,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  _updateTag('Type: ${update.type}', Colors.white70),
+                  if (update.links.isNotEmpty)
+                    TextButton.icon(
+                      onPressed: () => _openUpdateLink(update.links.first),
+                      icon: const Icon(Icons.open_in_new, size: 16.0),
+                      label: const Text('Link', maxLines: 1),
+                      style: TextButton.styleFrom(
+                        foregroundColor: const Color(0xFF60A5FA),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 4.0,
+                        ),
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
+                    ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _updateTag(String label, Color color) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 9.0, vertical: 5.0),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          color: color,
+          fontSize: 12.0.sp,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
   }
 
   Future<void> _loadLines() async {
@@ -183,22 +362,22 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
               ),
             ),
             // Status dot at bottom right
-            Positioned(
-              right: 0,
-              bottom: 0,
-              child: Container(
-                width: 14.0,
-                height: 14.0,
-                decoration: BoxDecoration(
-                  color: statusDotColor,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: const Color(0xFF161616), // Matches card background
-                    width: 2.5,
-                  ),
-                ),
-              ),
-            ),
+            // Positioned(
+            //   right: 0,
+            //   bottom: 0,
+            //   child: Container(
+            //     width: 14.0,
+            //     height: 14.0,
+            //     decoration: BoxDecoration(
+            //       color: statusDotColor,
+            //       shape: BoxShape.circle,
+            //       border: Border.all(
+            //         color: const Color(0xFF161616), // Matches card background
+            //         width: 2.5,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -370,77 +549,72 @@ class _LineStatusScreenState extends State<LineStatusScreen> {
                 )
                 : Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 2.0,
-                        vertical: 12.0,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Large Status Header at Top
-                          Text(
-                            anyDisruption
-                                ? "Disrupted services"
-                                : "All services operational",
-                            style: TextStyle(
-                              color:
-                                  anyDisruption
-                                      ? const Color(0xFFF97316)
-                                      : Colors.white,
-                              fontSize: 18.0.sp,
-                              fontWeight: FontWeight.w500,
-                              // letterSpacing: -0.5,
-                            ),
-                          ),
-                          const SizedBox(height: 24.0),
-
-                          // Container holding all line circles
-                          Wrap(
-                            spacing: 10.0.sp,
-                            runSpacing: 10.0.sp,
-                            children:
-                                _lineStatuses.map(_buildLineCircle).toList(),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24.0),
-
-                    // Lower section container with "Updates" heading
                     Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 26, 26, 26),
-                          // borderRadius: BorderRadius.circular(16.0),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 12.0,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // Large Status Header at Top
                             Text(
-                              "Updates",
+                              "Metro Lines",
                               style: TextStyle(
-                                color: const Color.fromARGB(255, 216, 216, 216),
-                                fontSize: 18.0.sp,
-                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: 24.0.sp,
+                                fontWeight: FontWeight.w500,
+                                // letterSpacing: -0.5,
                               ),
                             ),
-                            const SizedBox(height: 12.0),
-                            Text(
-                              anyDisruption
-                                  ? "Check individual lines for delay details."
-                                  : "No recent service updates.",
-                              style: TextStyle(
-                                color: const Color.fromARGB(255, 216, 216, 216),
-                                fontSize: 14.0.sp,
+                            const SizedBox(height: 15.0),
+                            Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Wrap(
+                                  direction: Axis.vertical,
+                                  spacing: 15.0.sp,
+                                  runSpacing: 15.0.sp,
+                                  children:
+                                      _lineStatuses
+                                          .map(_buildLineCircle)
+                                          .toList(),
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                     ),
+                    // const SizedBox(height: 24.0),
+
+                    // // Lower section container with "Updates" heading
+                    // Expanded(
+                    //   child: Container(
+                    //     width: double.infinity,
+                    //     padding: const EdgeInsets.all(16.0),
+                    //     decoration: BoxDecoration(
+                    //       color: const Color.fromARGB(255, 26, 26, 26),
+                    //       // borderRadius: BorderRadius.circular(16.0),
+                    //     ),
+                    //     child: Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         Text(
+                    //           "Updates",
+                    //           style: TextStyle(
+                    //             color: const Color.fromARGB(255, 216, 216, 216),
+                    //             fontSize: 18.0.sp,
+                    //             fontWeight: FontWeight.w600,
+                    //           ),
+                    //         ),
+                    //         // const SizedBox(height: 12.0),
+                    //         // _buildServiceUpdate(),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
       ),
